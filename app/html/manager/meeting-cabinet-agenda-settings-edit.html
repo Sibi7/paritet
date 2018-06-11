@@ -1,0 +1,213 @@
+<main class="content">
+    <section id="manager-meeting-agenda" class="content__section">
+        <div class="meeting meeting__agenda" id="manager-agenda-settings">
+
+            <h2 class="title">Вопрос №1</h2>
+
+            <div class="string">
+                <div class="string__value-row">Об определении порядка ведения общего собрания акционеров</div>
+            </div>
+            <div class="string">
+                <div class="string__key">Эмитент</div>
+                <div class="string__value-row">
+                    <div class="checkbox">
+                        <input type="checkbox" id="can_change">
+                        <label for="can_change">может изменять настройки голосования</label>
+                    </div>
+                </div>
+            </div>
+            <div class="string">
+                <div class="string__key">Кворум</div>
+                <div class="string__value-row">
+                    <input class="noborder" style="width: 140px" type="number" value="50">
+                </div>
+            </div>
+            <div class="string">
+                <div class="string__key">Решение</div>
+                <div class="string__value-row">
+                    <input class="noborder" style="width: 140px; margin-right: 10px" type="number" data-val="true"
+                           data-val-required="The DecisionLevelMain field is required." id="DecisionLevelMain"
+                           name="DecisionLevelMain" value="50">
+                    <div class="select noborder-select">
+                        <select style="width: 300px" id="MeetingCountingBaseMain" name="MeetingCountingBaseMain">
+                            <option value="BYREG" selected="selected">От зарегистрированных</option>
+                            <option value="BYVOTE">От принимающих участие</option>
+                            <option value="BYTOTAL">От всех по списку</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+            <div class="string">
+                <div class="string__key">Способ расчета</div>
+                <div class="string__value-row">
+                    <div class="select noborder-select">
+                        <select style="width: 450px" class="calculationMethod" id="MeetingCountingType"
+                                name="MeetingCountingType">
+                            <option value="SIMPLE">Простой, с учетом настроек вопроса</option>
+                            <option value="EXCEPT_PRIV">О выплате дивидендов по привилегированным акциям</option>
+                            <option value="DEALING_OVER50">Крупная сделка с заинтересованностью (более 50)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="string calculationAdd" style="display: none">
+                <div class="string__key">Доп. условие</div>
+                <div class="string__value-row">
+                    <input class="noborder" style="width: 140px; margin-right: 10px" type="number" id="DecisionLevelAux"
+                           name="DecisionLevelAux" value="">
+
+                    <div class="select noborder-select">
+                        <select style="width: 300px" id="MeetingCountingBaseAux" name="MeetingCountingBaseAux">
+                            <option value="BYREG">От зарегистрированных</option>
+                            <option value="BYVOTE">От принимающих участие</option>
+                            <option value="BYTOTAL">От всех по списку</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hr"></div>
+
+            <div class="string" style="margin-top: 10px">
+                <div class="string__key">Участвуют</div>
+                <div class="string__value-col">
+                    <div class="string">
+                        <div class="checkbox">
+                            <input type="checkbox" id="ORDN" checked="checked" name="MeetingVoiceTypes" value="ORDN">
+                            <label for="ORDN">
+                                Обыкновенная (550&nbsp;300&nbsp;300 ⅓ из 550&nbsp;500&nbsp;800 ⅓ голосов)
+                            </label>
+                        </div>
+                    </div>
+                    <div class="string">
+                        <div class="checkbox">
+                            <input type="checkbox" id="PREF" name="MeetingVoiceTypes" value="PREF">
+                            <label for="PREF">
+                                Привилегированная (413&nbsp;960&nbsp;400 из 414&nbsp;040&nbsp;400 голосов)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="string">
+                <div class="string__key">Комментарий эмитента</div>
+            </div>
+            <div class="string">
+                <textarea class="restraint" id="RestrictNote" name="RestrictNote"></textarea>
+            </div>
+            <div class="string">
+                <div class="string__key">Примененные ограничения уровня собрания</div>
+            </div>
+            <table class="constraint-table">
+                <thead>
+                <tr>
+                    <th class="ast-quorum">Искл. кворум</th>
+                    <th class="ast-solution">Искл. решение</th>
+                    <th class="ast-bill">Счет</th>
+                    <th class="ast-name">Наименование</th>
+                    <th class="ast-type">Тип акций</th>
+                    <th class="ast-all">Всего</th>
+                    <th class="ast-voting">Голосуют</th>
+                    <th class="ast-reason">Причина</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="ast-quorum">
+                        <input type="checkbox" id="RestrictQuorum0" checked="&quot;checked&quot;" disabled="disabled"
+                               readonly="readonly">
+                        <label for="RestrictQuorum0"></label>
+                    </td>
+                    <td class="ast-solution">
+                        <input type="checkbox" id="RestrictVoting0" checked="&quot;checked&quot;" disabled="disabled"
+                               readonly="readonly">
+                        <label for="RestrictVoting0"></label>
+                    </td>
+                    <td>358010001</td>
+                    <td>Корнилов Роман Семенович</td>
+                    <td>
+                        Обыкновенная
+                    </td>
+                    <td>302&nbsp;050&nbsp;500</td>
+                    <td>
+                        100&nbsp;000&nbsp;100
+                    </td>
+                    <td>
+                        Акции неоплаченные в полном объеме
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ast-quorum">
+                        <input type="checkbox" id="RestrictQuorum1" checked="&quot;checked&quot;" disabled="disabled"
+                               readonly="readonly">
+                        <label for="RestrictQuorum1"></label>
+                    </td>
+                    <td class="ast-solution">
+                        <input type="checkbox" id="RestrictVoting1" checked="&quot;checked&quot;" disabled="disabled"
+                               readonly="readonly">
+                        <label for="RestrictVoting1"></label>
+                    </td>
+                    <td>358010002</td>
+                    <td>Сиротин Павел Петрович,Зверева Мария Сергеевна</td>
+                    <td>
+                        Обыкновенная
+                    </td>
+                    <td>352&nbsp;400&nbsp;100</td>
+                    <td>
+                        200&nbsp;000&nbsp;100
+                    </td>
+                    <td>
+                        Акции, составляющие более 30,50 ил 75% от общего объема...
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ast-quorum">
+                        <input type="checkbox" id="RestrictQuorum2" checked="checked" disabled="disabled" readonly="readonly">
+                        <label for="RestrictQuorum2"></label>
+                    </td>
+                    <td class="ast-solution">
+                        <input type="checkbox" id="RestrictVoting2" checked="checked" disabled="disabled" readonly="readonly">
+                        <label for="RestrictVoting2"></label>
+                    </td>
+                    <td>358010002</td>
+                    <td>Сиротин Павел Петрович,Зверева Мария Сергеевна</td>
+                    <td>Привилегированная</td>
+                    <td>352&nbsp;400&nbsp;100</td>
+                    <td>1&nbsp;300&nbsp;000</td>
+                    <td>Акции, составляющие более 30,50 ил 75% от общего объема...</td>
+                </tr>
+                <tr>
+                    <td class="ast-quorum">
+                        <input type="checkbox" id="RestrictQuorum3" checked="&quot;checked&quot;" disabled="disabled" readonly="readonly">
+                        <label for="RestrictQuorum3"></label>
+                    </td>
+                    <td class="ast-solution">
+                        <input type="checkbox" id="RestrictVoting3" checked="&quot;checked&quot;" disabled="disabled" readonly="readonly">
+                        <label for="RestrictVoting3"></label>
+                    </td>
+                    <td>358050001</td>
+                    <td>ООО "Финанс Групп"</td>
+                    <td>Обыкновенная</td>
+                    <td>411&nbsp;060&nbsp;100 ⅓</td>
+                    <td>200&nbsp;000 ⅓</td>
+                    <td>Акции неоплаченные в полном объеме</td>
+                </tr>
+
+                </tbody>
+            </table>
+            <div class="string string__row-center">
+                <div class="string__key">Примененные ограничения</div>
+                <div class="string__value-row"> Редактирование структурных ограничений невозможно : нет реестра к собранию</div>
+            </div>
+            <div class="string">
+                <div class="string__value-row">нет</div>
+            </div>
+            <div class="string footer-actions">
+                <button class="submit">Сохранить</button>
+                <button class="cancel">Отмена</button>
+            </div>
+
+        </div>
+    </section>
+</main>

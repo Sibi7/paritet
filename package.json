@@ -1,0 +1,56 @@
+{
+  "name": "paritet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "browser-sync": "^2.24.4",
+    "calipers-gif": "^2.0.0",
+    "calipers-jpeg": "^2.0.0",
+    "calipers-png": "^2.0.0",
+    "cssnano": "^3.10.0",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-cache": "^1.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-html-extend": "^1.1.6",
+    "gulp-plumber": "^1.2.0",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-postcss": "^7.0.1",
+    "gulp-sass": "^3.2.1",
+    "gulp-rename": "^1.2.3",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-svgmin": "^1.2.4",
+    "gulp-svgstore": "^6.1.1",
+    "gulp-uglifyjs": "^0.6.2",
+    "gulp.spritesmith": "^6.9.0",
+    "imagemin-pngquant": "^5.1.0",
+    "postcss-assets": "^5.0.0",
+    "postcss-fixes": "^2.0.1",
+    "postcss-focus": "^3.0.0",
+    "postcss-font-magician": "^2.1.1",
+    "postcss-px-to-em": "^1.0.1",
+    "postcss-pxtorem": "^4.0.1",
+    "postcss-short": "^4.1.0",
+    "postcss-short-spacing": "^3.0.0",
+    "postcss-sorting": "^3.1.0",
+    "rimraf": "^2.6.2",
+    "stylefmt": "^6.0.0",
+    "stylelint-config-standard": "^18.2.0",
+    "autoprefixer": "^7.2.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Volizik/paritet.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Volizik/paritet/issues"
+  },
+  "homepage": "https://github.com/Volizik/paritet#readme"
+}

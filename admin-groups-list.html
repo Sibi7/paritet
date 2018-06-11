@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head lang="ru">
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="css/libs.min.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.min.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="images/icons/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/icons/favicon.ico" type="image/x-icon">
+    <script src="js/fractions.js"></script>
+</head>
+<body>
+<!-- open .header -->
+<div class="wrap wrap-groups">
+<aside class="sidebar">
+    <div class="sidebar__logo">
+        <span class="logo"></span>
+        <h2>паритет <span>интернет реестр</span></h2>
+    </div>
+    <div class="sidebar__item">
+        <div class="sidebar__item--header">
+            <div class="sidebar__item--icon">
+                <span class="icon-sidebar-icon3"></span>
+            </div>
+            <a href="admin-users-list.html">Пользователи</a>
+        </div>
+        <ul>
+            <li><a href="admin-users-list.html">Все пользователи</a></li>
+            <li><span>Внутренние</span></li>
+            <li><span>Внешние</span></li>
+        </ul>
+    </div>
+    <div class="sidebar__item sidebar__item--active">
+        <div class="sidebar__item--header">
+            <div class="sidebar__item--icon">
+                <span class="icon-sidebar-icon2"></span>
+            </div>
+            <a href="admin-groups-list.html">Группы</a>
+        </div>
+    </div>
+    <div class="sidebar__item">
+        <div class="sidebar__item--header">
+            <div class="sidebar__item--icon">
+                <span class="icon-sidebar-icon1"></span>
+            </div>
+            <a href="admin-issuers-list.html">Эмитенты</a>
+        </div>
+    </div>
+</aside>
+    <div class="container">
+<header class="header">
+
+    <div class="header__filter">
+
+        <div class="header__filter--field">
+            <span class="filter--icon"><img src="images/icons/filter-icon.png" alt=""></span>
+            <input class="filter--input" type="text" placeholder="Примените фильтр или введите слово">
+        </div>
+
+        <div class="filter">
+            <div class="filter__header">
+                <h2>Добавление фильтра</h2>
+                <span class="t-delete"></span>
+            </div>
+            <div class="filter__body">
+                <div class="filter__body--item">
+                    <h3>Пользователи</h3>
+                    <input type="text" class="t-search" placeholder="Логин или имя пользователя">
+                </div>
+                <div class="filter__body--item">
+                    <h3>Эмитенты</h3>
+                    <input type="text" class="t-search" placeholder="Номер или название эмитента">
+                </div>
+                <div class="filter__body--item">
+                    <h3>Счета</h3>
+                    <input type="text" class="t-search" placeholder="Номер или наименование счета">
+                    <div class="filter">
+                        <div class="filter__body">
+                            <table>
+                                <tr><td>4567878</td><td><span>АО «Станкостроитель»</span></td></tr>
+                                <tr><td>4567878</td><td><span>АО «Лосиноостровской производственной»</span></td></tr>
+                                <tr><td>4567878</td><td><span>АО «Русские валенки»</span></td></tr>
+                                <tr><td>4567878</td><td><span>АО «Завод резинотехнических изделий»</span></td></tr>
+                                <tr><td>4567878</td><td><span>АО «Подшипник»</span></td></tr>
+                                <tr><td>4567878</td><td><span>АО «Станкостроитель»</span></td></tr>
+                                <tr><td>4567878</td><td><span>АО «Лосиноостровской производственной»</span></td></tr>
+                                <tr><td>4567878</td><td><span>АО «Русские валенки»</span></td></tr>
+                                <tr><td>4567878</td><td><span>АО «Завод резинотехнических изделий»</span></td></tr>
+                                <tr><td>4567878</td><td><span>АО «Подшипник»</span></td></tr>
+                                <tr><td>4567878</td><td><span>АО «Станкостроитель»</span></td></tr>
+                                <tr><td>4567878</td><td><span>АО «Лосиноостровской производственной»</span></td></tr>
+                                <tr><td>4567878</td><td><span>АО «Русские валенки»</span></td></tr>
+                                <tr><td>4567878</td><td><span>АО «Завод резинотехнических изделий»</span></td></tr>
+                                <tr><td>4567878</td><td><span>АО «Подшипник»</span></td></tr>
+                            </table>
+                        </div>
+                        <div class="filter__footer">
+                            <button class="submit">Выбрать</button>
+                            <button class="cancel">Отмена</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="filter__footer">
+                <button class="submit">Подобрать</button>
+                <button class="cancel">Отмена</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="action-btn">
+        <a href="#" class="action-btn--edit">Создать</a>
+        <span class="action-btn--arrow arrow-down"></span>
+        <ul>
+            <li><a href="#">Создать</a></li>
+            <li><a href="#">Изменить</a></li>
+            <li><span class="delete">Удалить</span></li>
+        </ul>
+    </div>
+
+    <div class="header__user">
+        <img src="images/icons/user-icon.png" alt="">
+        <a href="#" class="user-icon">Анатолий Полевой<span>Администратор</span></a>
+        <ul class="header__user--menu">
+            <li><a href="admin-user-pass.html">Изменить пароль</a></li>
+            <li><a href="#">Настройки</a></li>
+            <li><a href="#">Выход</a></li>
+        </ul>
+    </div>
+
+</header>
+<main class="content">
+    <div class="content__section">
+        <table class="groups-list table">
+
+            <thead>
+            <tr>
+                <th class="g-name"><span>Название</span></th>
+                <th class="g-review"><span>Описание</span></th>
+                <th class="g-inside"><span>Внутр.</span></th>
+                <th class="g-outside"><span>Внеш.</span></th>
+                <th class="g-regs"><span>Реестров</span></th>
+                <th class="g-bills"><span>Счетов</span></th>
+                <th class="g-delete"></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td class="someone-group g-name"><a href="#">Филиал «Питер»</a></td>
+                <td class="g-review"><span>Все реестры и счета филиала Питер</span></td>
+                <td class="g-inside"><span>6</span></td>
+                <td class="g-outside"><span>0</span></td>
+                <td class="g-regs"><span>25</span></td>
+                <td class="g-bills"><span>6778</span></td>
+                <td class="g-delete"><span class="t-delete"></span></td>
+            </tr>
+            <tr>
+                <td class="someone-group g-name"><a href="#">Филиал «Южносахалинск»</a></td>
+                <td class="g-review"><span>Все реестры и счетафилиала Южносахалинск</span></td>
+                <td class="g-inside"><span>5</span></td>
+                <td class="g-outside"><span>0</span></td>
+                <td class="g-regs"><span>19</span></td>
+                <td class="g-bills"><span>12709</span></td>
+                <td class="g-delete"><span class="t-delete"></span></td>
+            </tr>
+            <tr>
+                <td class="someone-group g-name"><a href="#">VIP реестры</a></td>
+                <td class="g-review"><span>Реестры с персональным менеджером</span></td>
+                <td class="g-inside"><span>12</span></td>
+                <td class="g-outside"><span>0</span></td>
+                <td class="g-regs"><span>48</span></td>
+                <td class="g-bills"><span>4571</span></td>
+                <td class="g-delete"><span class="t-delete"></span></td>
+            </tr>
+            <tr>
+                <td class="someone-group g-name"><a href="#">Реестры Петровой</a></td>
+                <td class="g-review"><span>Все реестры и счета Петровой</span></td>
+                <td class="g-inside"><span>1</span></td>
+                <td class="g-outside"><span>0</span></td>
+                <td class="g-regs"><span>51</span></td>
+                <td class="g-bills"><span>6098</span></td>
+                <td class="g-delete"><span class="t-delete"></span></td>
+            </tr>
+            <tr>
+                <td class="someone-group g-name"><a href="#">Реестры Ивановой</a></td>
+                <td class="g-review"><span>Все реестры и счета Ивановой</span></td>
+                <td class="g-inside"><span>2</span></td>
+                <td class="g-outside"><span>0</span></td>
+                <td class="g-regs"><span>67</span></td>
+                <td class="g-bills"><span>9077</span></td>
+                <td class="g-delete"><span class="t-delete"></span></td>
+            </tr>
+
+            </tbody>
+
+        </table>
+
+        <div class="list__footer">
+            <p>Больше нет групп для показа</p>
+        </div>
+    </div>
+
+</main>
+    </div>
+</div>
+
+
+
+<script src='js/jquery-3.2.1.min.js' type="text/javascript"></script>
+<script src="js/script.min.js" type="text/javascript"></script>
+<script src="js/admin.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head lang="ru">
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="css/libs.min.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.min.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="images/icons/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/icons/favicon.ico" type="image/x-icon">
+    <script src="js/fractions.js"></script>
+</head>
+<body>
+<!-- open .header -->
+<div class="wrap">
+<aside class="sidebar">
+    <div class="sidebar__logo">
+        <span class="logo"></span>
+        <h2>паритет <span>интернет реестр</span></h2>
+    </div>
+    <div class="sidebar__item">
+        <div class="sidebar__item--header">
+            <div class="sidebar__item--icon">
+                <span class="icon-sidebar-icon5"></span>
+            </div>
+            <a href="owner-bills-list.html">Счета</a>
+        </div>
+    </div>
+    <div class="sidebar__item">
+        <div class="sidebar__item--header">
+            <div class="sidebar__item--icon">
+                <span class="icon-sidebar-icon1"></span>
+            </div>
+            <a href="owner-issuer-list.html">Эмитенты</a>
+        </div>
+    </div>
+    <div class="sidebar__item sidebar__item--active">
+        <div class="sidebar__item--header">
+            <div class="sidebar__item--icon">
+                <span class="icon-sidebar-icon6"></span>
+            </div>
+            <a href="owner-voting-list.html">Голосование <span class="sidebar__item--amount">1</span></a>
+        </div>
+    </div>
+
+    <div class="sidebar__footer">
+        <p>Ваш персональный менеджер:<strong>Анастасия Мельникова</strong></p>
+        <p>a.melnikova@paritet.ru<span>+7 495 994 7275</span></p>
+    </div>
+</aside>
+    <div class="container">
+<header class="header">
+
+    <div class="header__filter">
+
+        <div class="header__filter--field">
+            <span class="filter--icon"><img src="images/icons/filter-icon.png" alt=""></span>
+            <input class="filter--input" type="text" placeholder="Примените фильтр или введите слово">
+        </div>
+
+        <div class="filter">
+            <div class="filter__header">
+                <h2>Добавление фильтра</h2>
+                <span class="t-delete"></span>
+            </div>
+            <div class="filter__body">
+                <div class="filter__body--item">
+                    <h3>Пользователи</h3>
+                    <input type="text" class="t-search" placeholder="Логин или имя пользователя">
+                </div>
+                <div class="filter__body--item">
+                    <h3>Эмитенты</h3>
+                    <input type="text" class="t-search" placeholder="Номер или название эмитента">
+                </div>
+                <div class="filter__body--item">
+                    <h3>Счета</h3>
+                    <input type="text" class="t-search" placeholder="Номер или наименование счета">
+                </div>
+            </div>
+            <div class="filter__footer">
+                <button class="submit">Подобрать</button>
+                <button class="cancel">Отмена</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="action-btn">
+        <a href="#" class="action-btn--edit">Обновить</a>
+        <span class="action-btn--arrow arrow-down"></span>
+        <ul>
+            <li><a href="#">Создать</a></li>
+            <li><a href="#">Изменить</a></li>
+            <li><span class="delete">Удалить</span></li>
+        </ul>
+    </div>
+
+    <div class="header__user">
+        <img src="images/icons/add-photo.png" alt="">
+        <a href="#" class="someone">Павел Михайлов<span>Владелец</span></a>
+    </div>
+</header>
+<main class="content">
+    <div class="content__section">
+        <table class="table">
+
+            <thead>
+            <tr>
+                <th class="ov-register"><span>Номер</span></th>
+                <th class="ov-issuer"><span>Эмитент</span></th>
+                <th class="ov-meeting"><span>Собрание</span></th>
+                <th class="ov-voting"><span>Голосование</span></th>
+                <th class="ov-status"><span>Статус собрания</span></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td><a href="#" class="ov-register">7876565</a></td>
+                <td><span>АО «Теплотехстроймаш»</span></td>
+                <td><span>Годовое общее собрание акционеров АО «Теплотехстроймаш»</span></td>
+                <td><span>Проголосовал</span></td>
+                <td class="orange"><span>Редактируется регистратором</span></td>
+            </tr>
+            <tr>
+                <td><a href="#" class="ov-register">7855561</a></td>
+                <td><span>АО «Строительно-монтажное управление №4»</span></td>
+                <td><span>Годовое общее собрание акционеров</span></td>
+                <td><span>Не голосовал</span></td>
+                <td class="green"><span>Редактируется эмитентом</span></td>
+            </tr>
+            <tr>
+                <td><a href="#" class="ov-register">2355678</a></td>
+                <td><span>АО «Рога и копыта»</span></td>
+                <td><span>Внеочередное общее собрание акционеров</span></td>
+                <td><span>Проголосовал</span></td>
+                <td class="red"><span>Досрочное голосование</span></td>
+            </tr>
+            </tbody>
+
+        </table>
+
+        <div class="list__footer">
+            <p><span>Больше нет собраний для показа</span></p>
+        </div>
+    </div>
+
+</main>
+    </div>
+</div>
+
+
+
+<script src='js/jquery-3.2.1.min.js' type="text/javascript"></script>
+<script src="js/script.min.js" type="text/javascript"></script>
+<script src="js/admin.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!-- start html_open.html-->
+<!DOCTYPE html>
+<html>
+<head lang="ru">
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="css/libs.min.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.min.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="images/icons/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/icons/favicon.ico" type="image/x-icon">
+    <script src="js/fractions.js"></script>
+</head>
+<body>
+<!-- open .header -->
+<!-- end html_open.html-->
+<div class="wrap">
+<!-- start meeting-sidebar.html-->
+<aside class="sidebar">
+    <div class="sidebar__logo">
+        <span class="logo"></span>
+        <h2>паритет <span>интернет реестр</span></h2>
+    </div>
+    <div class="sidebar__item">
+        <div class="sidebar__item--header sidebar__item--active">
+            <div class="sidebar__item--icon">
+                <span class="icon-sidebar-icon4"></span>
+            </div>
+            <a href="manager-meeting-list.html">Корп. Действия</a>
+        </div>
+        <ul>
+            <li><span>Активные сейчас</span></li>
+            <li><span>Собрания</span></li>
+        </ul>
+    </div>
+    <div class="sidebar__item">
+        <div class="sidebar__item--header">
+            <div class="sidebar__item--icon">
+                <span class="icon-sidebar-icon6"></span>
+            </div>
+            <a href="manager-voting-list.html">Голосование</a>
+        </div>
+    </div>
+    <div class="sidebar__item">
+        <div class="sidebar__item--header">
+            <div class="sidebar__item--icon">
+                <span class="icon-sidebar-icon1"></span>
+            </div>
+            <a href="manager-issuer-list.html">Эмитенты</a>
+        </div>
+        <ul>
+            <li><a href="manager-issuer-list.html">Мои эмитенты</a></li>
+        </ul>
+    </div>
+</aside>
+<!-- end meeting-sidebar.html-->
+    <div class="container">
+<!-- start meeting-cabinet-header-info.html-->
+<header class="header manager-header">
+
+    <ul class="header__menu">
+        <li><a href="/paritet/manager-meeting-cabinet-info.html" class="header__menu--active">Информация</a></li>
+        <li><a href="/paritet/manager-meeting-cabinet-agenda-main.html">Повестка дня</a></li>
+        <li><a href="/paritet/manager-meeting-cabinet-bulleting.html">Бюллетени</a></li>
+        <li><a href="/paritet/manager-meeting-cabinet-results.html">Итоги</a></li>
+    </ul>
+
+    <div class="action-btn">
+        <a href="/paritet/manager-meeting-cabinet-agenda-settings.html" class="action-btn--edit">Изменить</a>
+        <span class="action-btn--arrow arrow-down"></span>
+        <ul>
+            <li><a href="#">Создать</a></li>
+            <li><a href="#">Изменить</a></li>
+            <li><span class="delete">Удалить</span></li>
+        </ul>
+    </div>
+
+    <div class="header__user">
+        <img src="images/icons/issuer-icon.png" alt="">
+        <a href="#" class="someone">Анастасия Мельникова<span>Менеджер</span></a>
+    </div>
+
+</header>
+
+
+
+<!-- end meeting-cabinet-header-info.html-->
+<!-- start meeting-cabinet-info-edit.html-->
+<main class="content">
+
+    <section class="content__section">
+
+        <h2 class="title">Внеочередное повторное общее собрание акционеров</h2>
+
+        <div class="string">
+            <div class="string__key"><span>Статус собрания:</span></div>
+            <div class="string__value-row"><span class="edit-status-meeting">Редактируется регистратором</span></div>
+        </div>
+        <div class="string">
+            <div class="string__key"><span>Эмитент:</span></div>
+            <div class="string__value-row"><span>ОАО «Теплостройтехмаш»</span></div>
+        </div>
+
+        <div class="hr"></div>
+
+        <div class="meeting__info">
+
+            <div class="string">
+                <div class="string__key"><span>Форма проведения:</span></div>
+                <div class="string__value-row">
+                    <div class="select noborder-select">
+                        <select style="width: 300px" id="FormId" name="FormId">
+                            <option value="ABSENT">Заочное голосование</option>
+                            <option selected="selected" value="JOINT">Собрание</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="string">
+                <div class="string__key"><span>Дата проведения:</span></div>
+                <div class="string__value-row">
+                    <input class="noborder" type="date" id="MeetingDate" name="MeetingDate" value="2017-12-11">
+                </div>
+            </div>
+            <div class="string">
+                <div class="string__key"><span>Время начала проведения:</span></div>
+                <div class="string__value-row">
+                    <input class="noborder" type="time" id="MeetingOpenTime" name="MeetingOpenTime" value="14:00">
+                </div>
+            </div>
+            <div class="string">
+                <div class="string__key"><span>Дата начала регистрации:</span></div>
+                <div class="string__value-row">
+                    <input class="noborder" type="date" id="RegistrationStartDate" name="RegistrationStartDate" value="2017-12-11">
+                </div>
+            </div>
+            <div class="string">
+                <div class="string__key"><span>Время начала регистрации:</span></div>
+                <div class="string__value-row">
+                    <input class="noborder" type="time" id="RegistrationStartTime" name="RegistrationStartTime" value="13:00">
+                </div>
+            </div>
+            <div class="string">
+                <div class="string__key"><span>Место проведения:</span></div>
+                <div class="string__value-row">
+                    <input class="noborder" style="width: 100%" type="text" id="MeetingAddress" name="MeetingAddress" value="Россия, 125728, обл Московская ., Раменский р-н, ул.Трудовая, д.10,,">
+                </div>
+            </div>
+            <div class="string">
+                <div class="string__key"><span>Почтовый адрес направления бюллетеней:</span></div>
+                <div class="string__value-row">
+                    <input class="noborder" style="width: 100%" type="text" id="PostAddress" name="PostAddress" value="Россия, 125728, обл Московская ., Раменский р-н, ул.Трудовая, д.10,,офис 145">
+                </div>
+            </div>
+
+            <div class="hr"></div>
+
+            <div class="string">
+                <div class="string__key"><span>Дата фиксации реестра:</span></div>
+                <div class="string__value-row">
+                    <input class="noborder" type="date" id="RegistryFixingDate" name="RegistryFixingDate" value="2017-10-02">
+                </div>
+            </div>
+
+            <div class="hr"></div>
+
+            <div class="string">
+                <div class="string__key"><span>Досрочное голосование:</span></div>
+                <div class="string__value-row">
+                    <div class="checkbox">
+                        <input type="checkbox" id="applies">
+                        <label for="applies">Применяется</label>
+                    </div>
+                </div>
+            </div>
+            <div class="string voting-date">
+                <div class="string__key"><span>Дата начала приема бюллетеней:</span></div>
+                <div class="string__value-row">
+                    <input class="noborder" type="date" id="EarlyVotingStartDate" name="EarlyVotingStartDate" value="">
+                </div>
+            </div>
+            <div class="string voting-date">
+                <div class="string__key"><span>Дата окончания приема бюллетеней:</span></div>
+                <div class="string__value-row">
+                    <input class="noborder" type="date" id="EarlyVotingEndDate" name="EarlyVotingEndDate" value="">
+                </div>
+            </div>
+
+            <div class="hr"></div>
+
+            <div class="string">
+                <form>
+                    <button class="link show-meetings" type="button">Показать ход собрания</button>
+                </form>
+            </div>
+            <div class="meetings meetings-hidden">
+                <div class="string">
+                    <div class="string__key"><span>Время окончания регистрации:</span></div>
+                    <div class="string__value-row">
+                        <input class="noborder" type="time" id="RegistrationEndTime" name="RegistrationEndTime" value="13:00">
+                    </div>
+                </div>
+                <div class="string">
+                    <div class="string__key"><span>Время закрытия собрания:</span></div>
+                    <div class="string__value-row">
+                        <input class="noborder" type="time" id="MeetingCloseTime" name="MeetingCloseTime" value="">
+                    </div>
+                </div>
+                <div class="string">
+                    <div class="string__key"><span>Время начала подсчета голосов:</span></div>
+                    <div class="string__value-row">
+                        <input class="noborder" type="time" id="VotesCountingStartTime" name="VotesCountingStartTime" value="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="hr"></div>
+
+            <div class="string">
+                <div class="string__key">Комментарий эмитента</div>
+            </div>
+            <div class="string">
+                <textarea class="restraint" id="RestrictionsText" name="RestrictionsText">Члены совета директоров: Петров И.В., Максимов А.П.</textarea>
+            </div>
+            <div class="string">
+                <div class="string__key">Примененные ограничения</div>
+            </div>
+            <div class="string">
+                <br>
+                <div class="string__value-row"> Редактирование структурных ограничений невозможно : не загружен реестр к собранию</div>
+            </div>
+
+            <div class="hr"></div>
+
+            <div class="string">
+                <button class="submit">Сохранить</button>
+                <button class="cancel">Отмена</button>
+            </div>
+
+        </div>
+
+    </section>
+</main>
+<!-- end meeting-cabinet-info-edit.html-->
+    </div>
+</div>
+<!-- start html_close.html-->
+
+
+
+<script src='js/jquery-3.2.1.min.js' type="text/javascript"></script>
+<script src='js/Cookie.js' type="text/javascript"></script>
+<script src="js/script.min.js" type="text/javascript"></script>
+<script src="js/admin.js" type="text/javascript"></script>
+</body>
+</html>
+<!-- end html_close.html-->

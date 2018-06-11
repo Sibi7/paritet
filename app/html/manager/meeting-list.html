@@ -1,0 +1,105 @@
+<main class="content manager-meeting-list">
+
+    <div class="content__section">
+        <table class="manager-voting-list table">
+
+            <thead>
+            <tr>
+                <th class="mml-number"><span>Номер</span></th>
+                <th class="mml-name"><span>Наименование</span></th>
+                <th class="mml-status"><span>Статус</span></th>
+                <th class="mml-date"><span>Дата</span></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td><a href="#" class="mml-number">5003456</a></td>
+                <td class="mml-name"><span>Годовое общее собрание акционеров АО«Теплотехстроймаш»</span></td>
+                <td class="green"><span>Голосование</span></td>
+                <td><span>04.06.2017</span></td>
+            </tr>
+            <tr>
+                <td><a href="#" class="mml-number">5003456</a></td>
+                <td class="mml-name"><span>Раскрытие информации о существенном факте деятельности АО«Рога и копыта»</span></td>
+                <td class="orange"><span>Проверка регистратором</span></td>
+                <td><span>03.06.2017</span></td>
+            </tr>
+            <tr>
+                <td><a href="#" class="mml-number">5003456</a></td>
+                <td class="mml-name"><span>Годовое общее собрание акционеров АО«Теплотехстроймаш»</span></td>
+                <td class="green"><span>Редактирование эмитентом</span></td>
+                <td><span>04.06.2017</span></td>
+            </tr>
+            <tr class="grey">
+                <td><a href="#" class="mml-number">5003456</a></td>
+                <td class="mml-name"><span>Годовое общее собрание акционеров АО«Теплотехстроймаш»</span></td>
+                <td ><span>Закрыто</span></td>
+                <td><span>12.02.2017</span></td>
+            </tr>
+            <tr class="grey">
+                <td><a href="#" class="mml-number">5003456</a></td>
+                <td class="mml-name"><span>Годовое общее собрание акционеров АО«Теплотехстроймаш»</span></td>
+                <td><span>Закрыто</span></td>
+                <td><span>12.02.2017</span></td>
+            </tr>
+            </tbody>
+
+        </table>
+
+        <div class="list__footer">
+            <p><span>Больше нет документов для просмотра</span> <span>Для создания нового
+или запроса на услугу нажмите кнопку</span></p>
+            <img src="images/hint.png" alt="">
+        </div>
+    </div>
+
+    <div class="content-aside">
+        <div class="calendar">
+            <table id="calendar2">
+                <thead>
+                <tr class="calendar__head"><td class="calendar__arrow">‹<td colspan="5"><td class="calendar__arrow">›
+                <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+                <tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal">
+        <div class="modal__body">
+            <strong class="modal__body-title">Эмитент</strong>
+            <div class="select">
+                <select name="newMeetingIssuer">
+                    <option value="1">Племзавод Родники ОАО</option>
+                    <option value="2">КМЗ ПАО</option>
+                    <option value="3">ДИОД ОАО</option>
+                </select>
+            </div>
+            <strong class="modal__body-title">Шаблон собрания</strong>
+            <label><input type="radio" name="newMeetingType" value="Annual" checked="&quot;checked&quot;">Годовое общее собрание</label>
+            <label><input type="radio" name="newMeetingType" value="Extraordinary">Внеочередное общее собрание</label>
+            <label><input type="radio" name="newMeetingType" value="Remeeting">Повторное собрание</label>
+            <div class="select sub-select" style="display: none">
+                <select name="basedOnMeetingId"><option value="1">Годовое общее собрание акционеров ОАО "Племзавод Родники"</option>
+                    <option value="2">Годовое общее собрание акционеров ОАО "Племзавод Родники"</option>
+                    <option value="3">Внеочередное общее собрание акционеров ОАО "Племзавод Родники"</option>
+                    <option value="4">Внеочередное общее собрание акционеров ОАО "Племзавод Родники"</option>
+                    <option value="5">Внеочередное общее собрание акционеров ОАО "Племзавод Родники"</option>
+                    <option value="6">Внеочередное общее собрание акционеров ОАО "Племзавод Родники"</option>
+                </select>
+            </div>
+            <label><input type="radio" name="newMeetingType" value="Copyof">Создать по прошедшему собранию</label>
+            <div class="select sub-select" style="display: none">
+                <select name="basedOnMeetingId"><option value="1">Годовое общее собрание акционеров ОАО "Племзавод Родники"</option>
+                    <option value="2">Годовое общее собрание акционеров ОАО "Племзавод Родники"</option>
+                    <option value="3">Внеочередное общее собрание акционеров ОАО "Племзавод Родники"</option>
+                    <option value="4">Внеочередное общее собрание акционеров ОАО "Племзавод Родники"</option>
+                    <option value="5">Внеочередное общее собрание акционеров ОАО "Племзавод Родники"</option>
+                    <option value="6">Внеочередное общее собрание акционеров ОАО "Племзавод Родники"</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+
+</main>

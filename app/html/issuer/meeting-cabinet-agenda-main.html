@@ -1,0 +1,734 @@
+<main class="content manager-meeting-cabinet">
+
+    <section id="manager-meeting-agenda" class="content__section">
+
+        <div class="manager-meeting-agenda" id="manager-agenda">
+            <h2>Внеочередное повторное общее собрание акционеров</h2>
+
+            <div class="content__block">
+                <div class="content__block--row">
+                    <div class="content__block--type"><span>Статус собрания:</span></div>
+                    <div class="content__block--value orange"><span>До окончания заочного голосования остались одни сутки</span></div>
+                </div>
+                <div class="content__block--row">
+                    <div class="content__block--type"><span>Эмитент:</span></div>
+                    <div class="content__block--value"><span>ОАО «Теплостройтехмаш»</span></div>
+                </div>
+            </div>
+
+            <div class="content__block">
+
+                <div class="agenda-actions">
+                    <h3 class="meeting-question-title">Вопрос №1</h3>
+                    <button class="agenda-btn agenda-btn-edit"><img src="images/icons/edit.png" alt=""></button>
+                    <button class="agenda-btn"><img src="images/icons/up.png" alt=""></button>
+                    <button class="agenda-btn"><img src="images/icons/down.png" alt=""></button>
+                    <button class="agenda-btn agenda-btn-new-question"><img src="images/icons/plus.png" alt=""></button>
+                    <button class="agenda-btn"><img src="images/icons/del.png" alt=""></button>
+                </div>
+
+                <div class="agenda-question-content">
+                    <p class="meeting-question">Об утверждении годового отчета, годовой бухгалтерской отчетности АО«Теплотехстроймаш» за 2016 год.</p>
+
+                    <p class="bulleting-number">Бюллетень №1</p>
+
+                    <div class="bulleting-items">
+                        <div class="bulleting-item">
+                            <span class="bulleting-item--key">Кворум:</span>
+                            <span class="bulleting-item--value">>50%</span>
+                        </div>
+                        <div class="bulleting-item">
+                            <span class="bulleting-item--key">Решение:</span>
+                            <span class="bulleting-item--value">>50%, простое</span>
+                        </div>
+                        <div class="bulleting-item">
+                            <span class="bulleting-item--key">Ограничения:</span>
+                            <span class="bulleting-item--value">нет</span>
+                        </div>
+                    </div>
+
+                    <h3 class="meeting-answer-title">Формулировка решения:</h3>
+                    <p class="meeting-answer">Утвердить годовой отчет, годовую бухгалтерскую отчетность АО«Теплотехстроймаш» за 2016 год. </p>
+                </div>
+
+                <div class="agenda-question-edit">
+                    <div class="manager-meeting-agenda agenda-settings__table">
+                        <div class="agenda-settings__cell">
+                            <p>Об утверждении годового отчета, годовой бухгалтерской отчетности АО «Теплотехстроймаш» за 2016 год.</p>
+                        </div>
+                        <div class="agenda-settings__cell">
+                            <div class="agenda-settings__line">
+                                <p>Бюллетень №</p>
+                                <div class="bullet-numbers">
+                                    <span class="bullet-number activeBullet">1</span>
+                                    <span class="bullet-number">2</span>
+                                    <span class="bullet-number">3</span>
+                                    <span class="bullet-number">4</span>
+                                    <span class="bullet-number">5</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="agenda-settings__cell">
+                            <button class="hide-voting-settings settings-btn">Показать настройки голосования</button>
+                            <div class="agenda-settings__hidden is-hidden">
+                                <div class="agenda-settings__row">
+                                    <div class="agenda-settings__key">Эмитент</div>
+                                    <div class="agenda-settings__value">
+                                        <input type="checkbox" id="can_change">
+                                        <label for="can_change">может изменять настройки голосования</label>
+                                    </div>
+                                </div>
+                                <div class="agenda-settings__row">
+                                    <div class="agenda-settings__key">Кворум</div>
+                                    <div class="agenda-settings__value">
+                                        <div class="select">
+                                            <select class="width-sm">
+                                                <option>&gt;25%</option>
+                                                <option>&gt;50%</option>
+                                                <option>&gt;75%</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="agenda-settings__row">
+                                    <div class="agenda-settings__key">Решение</div>
+                                    <div class="agenda-settings__value">
+                                        <div class="select">
+                                            <select class="width-sm">
+                                                <option>&gt;25%</option>
+                                                <option>&gt;50%</option>
+                                                <option>&gt;75%</option>
+                                            </select>
+                                        </div>
+                                        <div class="select">
+                                            <select class="width-md">
+                                                <option>От зарегистрированных</option>
+                                                <option>От не зарегистрированных</option>
+                                                <option>От всех по списку</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <button class="show-condition settings-btn">Добавить условие</button>
+                                </div>
+                                <div class="agenda-settings__row condition-hidden">
+                                    <div class="agenda-settings__key">Способ расчета</div>
+                                    <div class="agenda-settings__value">
+                                        <div class="select"><select class="width-lg">
+                                            <option>Алгоритм 01</option>
+                                            <option>Алгоритм 02</option>
+                                            <option>Алгоритм 03</option>
+                                        </select></div>
+                                    </div>
+                                </div>
+                                <div class="agenda-settings__row condition-hidden">
+                                    <div class="agenda-settings__key">Доп. условие</div>
+                                    <div class="agenda-settings__value">
+                                        <div class="select"><select class="width-sm">
+                                            <option>&gt;25%</option>
+                                            <option>&gt;50%</option>
+                                            <option>&gt;75%</option>
+                                        </select></div>
+                                        <div class="select"><select class="width-md">
+                                            <option>От зарегистрированных</option>
+                                            <option>От не зарегистрированных</option>
+                                            <option>От всех по списку</option>
+                                        </select></div>
+                                        <button class="hide-condition settings-btn">Убрать условие</button>
+                                    </div>
+                                </div>
+                                <div class="agenda-settings__row">
+                                    <div class="agenda-settings__key">Участвуют</div>
+                                    <div class="agenda-settings__value">
+                                        <div class="agenda-settings__input">
+                                            <input type="checkbox" id="participant1">
+                                            <label for="participant1">678 765 из 680 000 зарегистрированных акций</label>
+                                        </div>
+                                        <div class="agenda-settings__input">
+                                            <input type="checkbox" id="participant2">
+                                            <label for="participant2">120 000 привилегированных акций</label>
+                                        </div>
+                                        <div class="agenda-settings__input">
+                                            <input type="checkbox" id="participant3">
+                                            <label for="participant3">1 специальное право</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="agenda-settings__cell agenda-settings__hidden is-hidden">
+                            <p>Ограничения</p>
+                            <textarea class="restraint">Иванов Иван Иванович, паспорт №34433234 (ограничен до 6 700 акций, по уставу) ООО «Жилстройсервис» ИНН 4455787765, ООО «Рога и копыта», Петров Алексей Александрович, Новицкий Сергей Викторович</textarea>
+                            <div class="agenda-settings__row">
+                                <p>Ограничения</p>
+                                <input type="text" class="t-search" placeholder="Номер счета или имя">
+                                <button class="submit bg-grey">Добавить</button>
+                                <div class="filter">
+                                    <div class="filter__body">
+                                        <table>
+                                            <tbody><tr><td><span>1</span></td></tr>
+                                            <tr><td><span>2</span></td></tr>
+                                            <tr><td><span>358050001</span></td></tr>
+                                            <tr><td><span>358010001</span></td></tr>
+                                            <tr><td><span>358010002</span></td></tr>
+                                            </tbody></table>
+                                    </div>
+                                    <div class="filter__footer">
+                                        <button class="submit">Выбрать</button>
+                                        <button class="cancel">Отмена</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th class="ast-quorum">Искл. кворум</th>
+                                    <th class="ast-solution">Искл. решение</th>
+                                    <th class="ast-bill">Счет</th>
+                                    <th class="ast-name">Наименование</th>
+                                    <th class="ast-type">Тип акций</th>
+                                    <th class="ast-all">Всего</th>
+                                    <th class="ast-voting">Голосуют</th>
+                                    <th class="ast-reason">Причина</th>
+                                    <th class="ast-actions"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="ast-quorum"><input type="checkbox" id="quorum1"><label for="quorum1"></label></td>
+                                    <td class="ast-solution"><input type="checkbox" id="solution1"><label for="solution1"></label></td>
+                                    <td>6764672</td>
+                                    <td>Иванов Александр</td>
+                                    <td>обыкновенная</td>
+                                    <td>67 000</td>
+                                    <td>
+                                        <input type="text" class="small-input">
+                                        <input type="text" class="small-input">
+                                        <input type="text" class="small-input">
+                                    </td>
+                                    <td>
+                                        <div class="select">
+                                            <select class="table-select">
+                                                <option value="">qwertyuioasdfghjklqwertyuiop</option>
+                                                <option value="">asdfghjklqwertyuiop</option>
+                                                <option value="">zxcvbnmqwertyuiopasdfghjkl</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button class="ast-action-btn"><img src="/images/icons/edit2.png" alt=""></button>
+                                        <button class="ast-action-btn"><img src="/images/icons/cross.png" alt=""></button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="agenda-settings__cell">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem corporis cupiditate delectus esse fuga iste numquam possimus qui. Assumenda corporis fugit nesciunt reiciendis? A, cupiditate fuga minima non odio perferendis?</p>
+                        </div>
+                        <div class="agenda-settings__cell agenda-settings__footer">
+                            <button class="submit">Сохранить</button>
+                            <button class="cancel">Отмена</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal">
+                    <div class="modal__header">
+                        <h2>Новый вопрос</h2>
+                        <span class="t-delete"></span>
+                    </div>
+                    <div class="modal__body">
+                        <select>
+                            <option>Новый вопрос</option>
+                            <option>Новый вопрос</option>
+                            <option>Новый вопрос</option>
+                            <option>Новый вопрос</option>
+                            <option>Новый вопрос</option>
+                        </select>
+                        <label><input type="radio" name="question-agenda">Об утверждении устава</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении счетной комиссии</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении аудитора</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении прибыли, начисления дивидентов</label>
+                        <label><input type="radio" name="question-agenda">О крупной сделке от 25 до 50%</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении устава</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении счетной комиссии</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении аудитора</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении прибыли, начисления дивидентов</label>
+                        <label><input type="radio" name="question-agenda">О крупной сделке от 25 до 50%</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении устава</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении счетной комиссии</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении аудитора</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении прибыли, начисления дивидентов</label>
+                        <label><input type="radio" name="question-agenda">О крупной сделке от 25 до 50%</label>
+                    </div>
+                    <div class="modal__footer">
+                        <button class="submit">Создать</button>
+                        <button class="cancel">Отмена</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="content__block">
+
+                <div class="agenda-actions">
+                    <h3 class="meeting-question-title">Вопрос №2</h3>
+                    <button class="agenda-btn agenda-btn-edit"><img src="images/icons/edit.png" alt=""></button>
+                    <button class="agenda-btn"><img src="images/icons/up.png" alt=""></button>
+                    <button class="agenda-btn"><img src="images/icons/down.png" alt=""></button>
+                    <button class="agenda-btn agenda-btn-new-question"><img src="images/icons/plus.png" alt=""></button>
+                    <button class="agenda-btn"><img src="images/icons/del.png" alt=""></button>
+                </div>
+
+                <div class="agenda-question-content">
+                    <p class="meeting-question">Об утверждении годового отчета, годовой бухгалтерской отчетности АО«Теплотехстроймаш» за 2016 год.</p>
+
+                    <p class="bulleting-number">Бюллетень №2</p>
+
+                    <div class="bulleting-items">
+                        <div class="bulleting-item">
+                            <span class="bulleting-item--key">Кворум:</span>
+                            <span class="bulleting-item--value">>50%</span>
+                        </div>
+                        <div class="bulleting-item">
+                            <span class="bulleting-item--key">Решение:</span>
+                            <span class="bulleting-item--value">>50%, простое</span>
+                        </div>
+                        <div class="bulleting-item">
+                            <span class="bulleting-item--key">Ограничения:</span>
+                            <span class="bulleting-item--value">нет</span>
+                        </div>
+                    </div>
+
+                    <h3 class="meeting-answer-title">Формулировка решения:</h3>
+                    <p class="meeting-answer">Утвердить годовой отчет, годовую бухгалтерскую отчетность АО«Теплотехстроймаш» за 2016 год. </p>
+                </div>
+
+                <div class="agenda-question-edit">
+                    <div class="manager-meeting-agenda agenda-settings__table">
+                        <div class="agenda-settings__cell">
+                            <p>Об утверждении годового отчета, годовой бухгалтерской отчетности АО «Теплотехстроймаш» за 2016 год.</p>
+                        </div>
+                        <div class="agenda-settings__cell">
+                            <div class="agenda-settings__line">
+                                <p>Бюллетень №</p>
+                                <div class="bullet-numbers">
+                                    <span class="bullet-number activeBullet">1</span>
+                                    <span class="bullet-number">2</span>
+                                    <span class="bullet-number">3</span>
+                                    <span class="bullet-number">4</span>
+                                    <span class="bullet-number">5</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="agenda-settings__cell">
+                            <button class="hide-voting-settings settings-btn">Показать настройки голосования</button>
+                            <div class="agenda-settings__hidden is-hidden">
+                                <div class="agenda-settings__row">
+                                    <div class="agenda-settings__key">Эмитент</div>
+                                    <div class="agenda-settings__value">
+                                        <input type="checkbox" id="can_change">
+                                        <label for="can_change">может изменять настройки голосования</label>
+                                    </div>
+                                </div>
+                                <div class="agenda-settings__row">
+                                    <div class="agenda-settings__key">Кворум</div>
+                                    <div class="agenda-settings__value">
+                                        <div class="select">
+                                            <select class="width-sm">
+                                                <option>&gt;25%</option>
+                                                <option>&gt;50%</option>
+                                                <option>&gt;75%</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="agenda-settings__row">
+                                    <div class="agenda-settings__key">Решение</div>
+                                    <div class="agenda-settings__value">
+                                        <div class="select">
+                                            <select class="width-sm">
+                                                <option>&gt;25%</option>
+                                                <option>&gt;50%</option>
+                                                <option>&gt;75%</option>
+                                            </select>
+                                        </div>
+                                        <div class="select">
+                                            <select class="width-md">
+                                                <option>От зарегистрированных</option>
+                                                <option>От не зарегистрированных</option>
+                                                <option>От всех по списку</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <button class="show-condition settings-btn">Добавить условие</button>
+                                </div>
+                                <div class="agenda-settings__row condition-hidden">
+                                    <div class="agenda-settings__key">Способ расчета</div>
+                                    <div class="agenda-settings__value">
+                                        <div class="select">
+                                            <select class="width-lg">
+                                                <option>Алгоритм 01</option>
+                                                <option>Алгоритм 02</option>
+                                                <option>Алгоритм 03</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="agenda-settings__row condition-hidden">
+                                    <div class="agenda-settings__key">Доп. условие</div>
+                                    <div class="agenda-settings__value">
+                                        <div class="select">
+                                            <select class="width-sm">
+                                                <option>&gt;25%</option>
+                                                <option>&gt;50%</option>
+                                                <option>&gt;75%</option>
+                                            </select>
+                                        </div>
+                                        <div class="select">
+                                            <select class="width-md">
+                                                <option>От зарегистрированных</option>
+                                                <option>От не зарегистрированных</option>
+                                                <option>От всех по списку</option>
+                                            </select>
+                                        </div>
+                                        <button class="hide-condition settings-btn">Убрать условие</button>
+                                    </div>
+                                </div>
+                                <div class="agenda-settings__row">
+                                    <div class="agenda-settings__key">Участвуют</div>
+                                    <div class="agenda-settings__value">
+                                        <div class="agenda-settings__input">
+                                            <input type="checkbox" id="participant1">
+                                            <label for="participant1">678 765 из 680 000 зарегистрированных акций</label>
+                                        </div>
+                                        <div class="agenda-settings__input">
+                                            <input type="checkbox" id="participant2">
+                                            <label for="participant2">120 000 привилегированных акций</label>
+                                        </div>
+                                        <div class="agenda-settings__input">
+                                            <input type="checkbox" id="participant3">
+                                            <label for="participant3">1 специальное право</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="agenda-settings__cell agenda-settings__hidden is-hidden">
+                            <p>Ограничения</p>
+                            <textarea class="restraint">
+                                Иванов Иван Иванович, паспорт №34433234 (ограничен до 6 700 акций, по уставу) ООО «Жилстройсервис»
+                                ИНН 4455787765, ООО «Рога и копыта», Петров Алексей Александрович, Новицкий Сергей Викторович
+                            </textarea>
+                            <div class="agenda-settings__row">
+                                <p>Ограничения</p>
+                                <input type="text" class="t-search" placeholder="Номер счета или имя">
+                                <button class="submit bg-grey">Добавить</button>
+                            </div>
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th class="ast-quorum">Искл. кворум</th>
+                                    <th class="ast-solution">Искл. решение</th>
+                                    <th class="ast-bill">Счет</th>
+                                    <th class="ast-name">Наименование</th>
+                                    <th class="ast-type">Тип акций</th>
+                                    <th class="ast-all">Всего</th>
+                                    <th class="ast-voting">Голосуют</th>
+                                    <th class="ast-reason">Причина</th>
+                                    <th class="ast-actions"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="ast-quorum"><input type="checkbox" id="quorum1"><label for="quorum1"></label></td>
+                                    <td class="ast-solution"><input type="checkbox" id="solution1"><label for="solution1"></label></td>
+                                    <td>6764672</td>
+                                    <td>Иванов Александр</td>
+                                    <td>обыкновенная</td>
+                                    <td>67 000</td>
+                                    <td>40 200</td>
+                                    <td>Не сделал обязательное что-то</td>
+                                    <td>
+                                        <button class="ast-action-btn"><img src="/images/icons/del.png" alt=""></button>
+                                        <button class="ast-action-btn"><img src="/images/icons/edit.png" alt=""></button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="agenda-settings__cell">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem corporis cupiditate delectus esse fuga iste numquam possimus qui. Assumenda corporis fugit nesciunt reiciendis? A, cupiditate fuga minima non odio perferendis?</p>
+                        </div>
+                        <div class="agenda-settings__cell agenda-settings__footer">
+                            <button class="submit">Сохранить</button>
+                            <button class="cancel">Отмена</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal">
+                    <div class="modal__header">
+                        <h2>Новый вопрос</h2>
+                        <span class="t-delete"></span>
+                    </div>
+                    <div class="modal__body">
+                        <select>
+                            <option>Новый вопрос</option>
+                            <option>Новый вопрос</option>
+                            <option>Новый вопрос</option>
+                            <option>Новый вопрос</option>
+                            <option>Новый вопрос</option>
+                        </select>
+                        <label><input type="radio" name="question-agenda">Об утверждении устава</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении счетной комиссии</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении аудитора</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении прибыли, начисления дивидентов</label>
+                        <label><input type="radio" name="question-agenda">О крупной сделке от 25 до 50%</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении устава</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении счетной комиссии</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении аудитора</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении прибыли, начисления дивидентов</label>
+                        <label><input type="radio" name="question-agenda">О крупной сделке от 25 до 50%</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении устава</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении счетной комиссии</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении аудитора</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении прибыли, начисления дивидентов</label>
+                        <label><input type="radio" name="question-agenda">О крупной сделке от 25 до 50%</label>
+                    </div>
+                    <div class="modal__footer">
+                        <button class="submit">Создать</button>
+                        <button class="cancel">Отмена</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="content__block">
+
+                <div class="agenda-actions">
+                    <h3 class="meeting-question-title">Вопрос №3</h3>
+                    <button class="agenda-btn agenda-btn-edit"><img src="images/icons/edit.png" alt=""></button>
+                    <button class="agenda-btn"><img src="images/icons/up.png" alt=""></button>
+                    <button class="agenda-btn"><img src="images/icons/down.png" alt=""></button>
+                    <button class="agenda-btn agenda-btn-new-question"><img src="images/icons/plus.png" alt=""></button>
+                    <button class="agenda-btn"><img src="images/icons/del.png" alt=""></button>
+                </div>
+
+                <div class="agenda-question-content">
+                    <p class="meeting-question">Об утверждении годового отчета, годовой бухгалтерской отчетности АО«Теплотехстроймаш» за 2016 год.</p>
+
+                    <p class="bulleting-number">Бюллетень №3</p>
+
+                    <div class="bulleting-items">
+                        <div class="bulleting-item">
+                            <span class="bulleting-item--key">Кворум:</span>
+                            <span class="bulleting-item--value">>50%</span>
+                        </div>
+                        <div class="bulleting-item">
+                            <span class="bulleting-item--key">Решение:</span>
+                            <span class="bulleting-item--value">>50%, простое</span>
+                        </div>
+                        <div class="bulleting-item">
+                            <span class="bulleting-item--key">Ограничения:</span>
+                            <span class="bulleting-item--value">нет</span>
+                        </div>
+                    </div>
+
+                    <h3 class="meeting-answer-title">Формулировка решения:</h3>
+                    <p class="meeting-answer">Утвердить годовой отчет, годовую бухгалтерскую отчетность АО«Теплотехстроймаш» за 2016 год. </p>
+                </div>
+
+                <div class="agenda-question-edit">
+                    <div class="manager-meeting-agenda agenda-settings__table">
+                        <div class="agenda-settings__cell">
+                            <p>Об утверждении годового отчета, годовой бухгалтерской отчетности АО «Теплотехстроймаш» за 2016 год.</p>
+                        </div>
+                        <div class="agenda-settings__cell">
+                            <div class="agenda-settings__line">
+                                <p>Бюллетень №</p>
+                                <div class="bullet-numbers">
+                                    <span class="bullet-number activeBullet">1</span>
+                                    <span class="bullet-number">2</span>
+                                    <span class="bullet-number">3</span>
+                                    <span class="bullet-number">4</span>
+                                    <span class="bullet-number">5</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="agenda-settings__cell">
+                            <button class="hide-voting-settings settings-btn">Показать настройки голосования</button>
+                            <div class="agenda-settings__hidden is-hidden">
+                                <div class="agenda-settings__row">
+                                    <div class="agenda-settings__key">Эмитент</div>
+                                    <div class="agenda-settings__value">
+                                        <input type="checkbox" id="can_change">
+                                        <label for="can_change">может изменять настройки голосования</label>
+                                    </div>
+                                </div>
+                                <div class="agenda-settings__row">
+                                    <div class="agenda-settings__key">Кворум</div>
+                                    <div class="agenda-settings__value">
+                                        <select class="width-sm">
+                                            <option>&gt;25%</option>
+                                            <option>&gt;50%</option>
+                                            <option>&gt;75%</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="agenda-settings__row">
+                                    <div class="agenda-settings__key">Решение</div>
+                                    <div class="agenda-settings__value">
+                                        <select class="width-sm">
+                                            <option>&gt;25%</option>
+                                            <option>&gt;50%</option>
+                                            <option>&gt;75%</option>
+                                        </select>
+                                        <select class="width-md">
+                                            <option>От зарегистрированных</option>
+                                            <option>От не зарегистрированных</option>
+                                            <option>От всех по списку</option>
+                                        </select>
+                                    </div>
+                                    <button class="show-condition settings-btn">Добавить условие</button>
+                                </div>
+                                <div class="agenda-settings__row condition-hidden">
+                                    <div class="agenda-settings__key">Способ расчета</div>
+                                    <div class="agenda-settings__value">
+                                        <select class="width-lg">
+                                            <option>Алгоритм 01</option>
+                                            <option>Алгоритм 02</option>
+                                            <option>Алгоритм 03</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="agenda-settings__row condition-hidden">
+                                    <div class="agenda-settings__key">Доп. условие</div>
+                                    <div class="agenda-settings__value">
+                                        <select class="width-sm">
+                                            <option>&gt;25%</option>
+                                            <option>&gt;50%</option>
+                                            <option>&gt;75%</option>
+                                        </select>
+                                        <select class="width-md">
+                                            <option>От зарегистрированных</option>
+                                            <option>От не зарегистрированных</option>
+                                            <option>От всех по списку</option>
+                                        </select>
+                                        <button class="hide-condition settings-btn">Убрать условие</button>
+                                    </div>
+                                </div>
+                                <div class="agenda-settings__row">
+                                    <div class="agenda-settings__key">Участвуют</div>
+                                    <div class="agenda-settings__value">
+                                        <div class="agenda-settings__input">
+                                            <input type="checkbox" id="participant1">
+                                            <label for="participant1">678 765 из 680 000 зарегистрированных акций</label>
+                                        </div>
+                                        <div class="agenda-settings__input">
+                                            <input type="checkbox" id="participant2">
+                                            <label for="participant2">120 000 привилегированных акций</label>
+                                        </div>
+                                        <div class="agenda-settings__input">
+                                            <input type="checkbox" id="participant3">
+                                            <label for="participant3">1 специальное право</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="agenda-settings__cell agenda-settings__hidden is-hidden">
+                            <p>Ограничения</p>
+                            <p class="restraint">
+                                Иванов Иван Иванович, паспорт №34433234 (ограничен до 6 700 акций, по уставу) ООО «Жилстройсервис»
+                                ИНН 4455787765, ООО «Рога и копыта», Петров Алексей Александрович, Новицкий Сергей Викторович
+                            </p>
+                            <div class="agenda-settings__row">
+                                <p>Ограничения</p>
+                                <input type="text" class="t-search" placeholder="Номер счета или имя">
+                                <button class="submit bg-grey">Добавить</button>
+                            </div>
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th class="ast-quorum">Искл. кворум</th>
+                                    <th class="ast-solution">Искл. решение</th>
+                                    <th class="ast-bill">Счет</th>
+                                    <th class="ast-name">Наименование</th>
+                                    <th class="ast-type">Тип акций</th>
+                                    <th class="ast-all">Всего</th>
+                                    <th class="ast-voting">Голосуют</th>
+                                    <th class="ast-reason">Причина</th>
+                                    <th class="ast-actions"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="ast-quorum"><input type="checkbox" id="quorum1"><label for="quorum1"></label></td>
+                                    <td class="ast-solution"><input type="checkbox" id="solution1"><label for="solution1"></label></td>
+                                    <td>6764672</td>
+                                    <td>Иванов Александр</td>
+                                    <td>обыкновенная</td>
+                                    <td>67 000</td>
+                                    <td>40 200</td>
+                                    <td>Не сделал обязательное что-то</td>
+                                    <td>
+                                        <button class="ast-action-btn"><img src="/images/icons/del.png" alt=""></button>
+                                        <button class="ast-action-btn"><img src="/images/icons/edit.png" alt=""></button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="agenda-settings__cell">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem corporis cupiditate delectus esse fuga iste numquam possimus qui. Assumenda corporis fugit nesciunt reiciendis? A, cupiditate fuga minima non odio perferendis?</p>
+                        </div>
+                        <div class="agenda-settings__cell agenda-settings__footer">
+                            <button class="submit">Сохранить</button>
+                            <button class="cancel">Отмена</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal">
+                    <div class="modal__header">
+                        <h2>Новый вопрос</h2>
+                        <span class="t-delete"></span>
+                    </div>
+                    <div class="modal__body">
+                        <select>
+                            <option>Новый вопрос</option>
+                            <option>Новый вопрос</option>
+                            <option>Новый вопрос</option>
+                            <option>Новый вопрос</option>
+                            <option>Новый вопрос</option>
+                        </select>
+                        <label><input type="radio" name="question-agenda">Об утверждении устава</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении счетной комиссии</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении аудитора</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении прибыли, начисления дивидентов</label>
+                        <label><input type="radio" name="question-agenda">О крупной сделке от 25 до 50%</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении устава</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении счетной комиссии</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении аудитора</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении прибыли, начисления дивидентов</label>
+                        <label><input type="radio" name="question-agenda">О крупной сделке от 25 до 50%</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении устава</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении счетной комиссии</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении аудитора</label>
+                        <label><input type="radio" name="question-agenda">Об утверждении прибыли, начисления дивидентов</label>
+                        <label><input type="radio" name="question-agenda">О крупной сделке от 25 до 50%</label>
+                    </div>
+                    <div class="modal__footer">
+                        <button class="submit">Создать</button>
+                        <button class="cancel">Отмена</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+</main>

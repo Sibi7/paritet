@@ -1,0 +1,132 @@
+.voting-enter {
+  &__row {
+    position: relative;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    height: 31px;
+  }
+  &__block-name, &__block-voting {
+    display: flex;
+    align-items: center;
+  }
+  &__block-name {
+    width: 330px;
+  }
+  &__select-all {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    color: #777;
+    &__tag {
+      display: block;
+      margin-right: 20px;
+    }
+    &__label {
+      padding: 0 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 50px;
+      height: 25px;
+      color: #fff;
+      background-color: $pink;
+    }
+  }
+  .bulletins-numbers {
+    margin-left: 30px;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+  }
+  .voting-actions {
+    margin-top: auto;
+    margin-left: auto;
+    padding-top: 0;
+  }
+  .voting-actions__choice--item {
+    border: 1px solid transparent;
+    &:last-of-type {
+      margin-right: 0;
+    }
+    &:hover, &:focus {
+      border: 1px solid;
+    }
+  }
+  &__table {
+    width: 100%;
+  }
+  &__tr {
+    padding: 15px 0;
+    display: flex;
+    width: 100%;
+    border-top: 1px solid #ccc;
+    .voting-enter__tr {
+      padding-top: 0;
+      border: 0;
+      &:last-of-type {
+        padding-bottom: 0;
+      }
+    }
+  }
+  &__td {
+    display: flex;
+    flex-direction: column;
+    &:first-of-type {
+      margin-right: 18px;
+      width: 100%;
+      max-width: 300px;
+      min-width: 250px;
+      flex-grow: 1;
+    }
+    &:last-of-type {
+      width: 100%;
+    }
+  }
+  &__td-title {
+    margin-bottom: 5px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  &__td-text {
+    margin: 0;
+    font-size: 13px;
+    &--hidden {
+      position: relative;
+      height: 30px;
+      overflow: hidden;
+      cursor: pointer;
+      &:before {
+        content: '...';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 15px;
+        background-color: #fff;
+      }
+    }
+    &--visible {
+      cursor: pointer;
+      height: auto;
+      &:before {
+        display: none;
+      }
+    }
+  }
+  &__tfoot {
+    padding: 15px 0;
+    border-top: 1px solid #00aeef
+  }
+  .voting-for-all {
+    pointer-events: none;
+    &--active {
+      pointer-events: auto;
+    }
+  }
+}
+
+[class^="cumulative-voting-warning"] {
+  color: #e62e2e;
+  font-size: 13px;
+}

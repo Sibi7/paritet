@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head lang="ru">
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="css/libs.min.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.min.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="images/icons/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/icons/favicon.ico" type="image/x-icon">
+    <script src="js/fractions.js"></script>
+</head>
+<body>
+<!-- open .header -->
+<div class="wrap wrap-groups">
+<aside class="sidebar">
+    <div class="sidebar__logo">
+        <span class="logo"></span>
+        <h2>паритет <span>интернет реестр</span></h2>
+    </div>
+    <div class="sidebar__item">
+        <div class="sidebar__item--header">
+            <div class="sidebar__item--icon">
+                <span class="icon-sidebar-icon3"></span>
+            </div>
+            <a href="admin-users-list.html">Пользователи</a>
+        </div>
+        <ul>
+            <li><a href="admin-users-list.html">Все пользователи</a></li>
+            <li><span>Внутренние</span></li>
+            <li><span>Внешние</span></li>
+        </ul>
+    </div>
+    <div class="sidebar__item sidebar__item--active">
+        <div class="sidebar__item--header">
+            <div class="sidebar__item--icon">
+                <span class="icon-sidebar-icon2"></span>
+            </div>
+            <a href="admin-groups-list.html">Группы</a>
+        </div>
+    </div>
+    <div class="sidebar__item">
+        <div class="sidebar__item--header">
+            <div class="sidebar__item--icon">
+                <span class="icon-sidebar-icon1"></span>
+            </div>
+            <a href="admin-issuers-list.html">Эмитенты</a>
+        </div>
+    </div>
+</aside>
+    <div class="container">
+<header class="header group-header">
+
+    <ul class="header__menu">
+        <li><a href="admin-groups-cabinet-group-main.html" class="header__menu--active">Группы</a></li>
+        <li><a href="admin-groups-cabinet-registers.html">Реестры</a></li>
+        <li><a href="admin-groups-cabinet-bills.html">Счета</a></li>
+    </ul>
+
+    <div class="action-btn">
+        <a href="admin-groups-cabinet-group-edit.html" class="action-btn--edit">Изменить</a>
+        <span class="action-btn--arrow arrow-down"></span>
+        <ul>
+            <li><a href="admin-groups-cabinet-group-new.html">Создать</a></li>
+            <li><a href="admin-groups-cabinet-group-edit.html">Изменить</a></li>
+            <li><span class="delete">Удалить</span></li>
+        </ul>
+    </div>
+
+    <div class="header__user">
+        <img src="images/icons/user-icon.png" alt="">
+        <a href="#" class="user-icon">Анатолий Полевой<span>Администратор</span></a>
+        <ul class="header__user--menu">
+            <li><a href="admin-user-pass.html">Изменить пароль</a></li>
+            <li><a href="#">Настройки</a></li>
+            <li><a href="#">Выход</a></li>
+        </ul>
+    </div>
+
+</header>
+
+
+
+<main class="content admin-groups-content">
+
+    <section id="group-content" class="content__section">
+
+        <div class="content__group" id="group-cabinet-edit">
+            <div class="content__block">
+
+                <div class="content__block--row">
+                    <div class="content__block--type"><span>Имя:</span></div>
+                    <div class="content__block--value"><input type="text" value="Филиал «Питер»"></div>
+                </div>
+                <div class="content__block--row">
+                    <div class="content__block--type"><span>Описание:</span></div>
+                    <div class="content__block--value"><input type="text" value="Все реестры и счета филиала Питер"></div>
+                </div>
+                <div class="content__block--row">
+                    <div class="content__block--type"><span>Автогруппа:</span></div>
+                    <div class="content__block--value">
+                        <input id="auto-group" type="checkbox">
+                        <label for="auto-group">Автогруппа</label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="content__block">
+
+                <div class="content__block--row">
+                    <div class="content__block--type"><span>Статус:</span></div>
+                    <div class="content__block--value"><span class="status">активна</span></div>
+                </div>
+                <div class="content__block--row">
+                    <div class="content__block--type"><span>Создана:</span></div>
+                    <div class="content__block--value"><span>28.09.2017</span></div>
+                </div>
+                <div class="content__block--row">
+                    <div class="content__block--type"><span>Кто создал:</span></div>
+                    <div class="content__block--value"><span class="someone">admin</span></div>
+                </div>
+
+            </div>
+            <div class="content__block">
+
+                <div class="content__block--row">
+                    <a href="/paritet/admin-groups-cabinet-group-main.html" class="submit">сохранить</a>
+                    <a href="/paritet/admin-groups-cabinet-group-main.html" class="cancel">Отмена</a>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+</main>
+    </div>
+</div>
+
+
+
+<script src='js/jquery-3.2.1.min.js' type="text/javascript"></script>
+<script src="js/script.min.js" type="text/javascript"></script>
+<script src="js/admin.js" type="text/javascript"></script>
+</body>
+</html>

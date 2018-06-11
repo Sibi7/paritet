@@ -1,0 +1,155 @@
+<main class="content">
+
+    <section class="content__section">
+
+        <h2 class="title">Внеочередное повторное общее собрание акционеров</h2>
+
+        <div class="string">
+            <div class="string__key"><span>Статус собрания:</span></div>
+            <div class="string__value-row"><span class="edit-status-meeting">Редактируется регистратором</span></div>
+        </div>
+        <div class="string">
+            <div class="string__key"><span>Эмитент:</span></div>
+            <div class="string__value-row"><span>ОАО «Теплостройтехмаш»</span></div>
+        </div>
+
+        <div class="hr"></div>
+
+        <div class="meeting__info">
+
+            <div class="string">
+                <div class="string__key"><span>Форма проведения:</span></div>
+                <div class="string__value-row">
+                    <div class="select noborder-select">
+                        <select style="width: 300px" id="FormId" name="FormId">
+                            <option value="ABSENT">Заочное голосование</option>
+                            <option selected="selected" value="JOINT">Собрание</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="string">
+                <div class="string__key"><span>Дата проведения:</span></div>
+                <div class="string__value-row">
+                    <input class="noborder" type="date" id="MeetingDate" name="MeetingDate" value="2017-12-11">
+                </div>
+            </div>
+            <div class="string">
+                <div class="string__key"><span>Время начала проведения:</span></div>
+                <div class="string__value-row">
+                    <input class="noborder" type="time" id="MeetingOpenTime" name="MeetingOpenTime" value="14:00">
+                </div>
+            </div>
+            <div class="string">
+                <div class="string__key"><span>Дата начала регистрации:</span></div>
+                <div class="string__value-row">
+                    <input class="noborder" type="date" id="RegistrationStartDate" name="RegistrationStartDate" value="2017-12-11">
+                </div>
+            </div>
+            <div class="string">
+                <div class="string__key"><span>Время начала регистрации:</span></div>
+                <div class="string__value-row">
+                    <input class="noborder" type="time" id="RegistrationStartTime" name="RegistrationStartTime" value="13:00">
+                </div>
+            </div>
+            <div class="string">
+                <div class="string__key"><span>Место проведения:</span></div>
+                <div class="string__value-row">
+                    <input class="noborder" style="width: 100%" type="text" id="MeetingAddress" name="MeetingAddress" value="Россия, 125728, обл Московская ., Раменский р-н, ул.Трудовая, д.10,,">
+                </div>
+            </div>
+            <div class="string">
+                <div class="string__key"><span>Почтовый адрес направления бюллетеней:</span></div>
+                <div class="string__value-row">
+                    <input class="noborder" style="width: 100%" type="text" id="PostAddress" name="PostAddress" value="Россия, 125728, обл Московская ., Раменский р-н, ул.Трудовая, д.10,,офис 145">
+                </div>
+            </div>
+
+            <div class="hr"></div>
+
+            <div class="string">
+                <div class="string__key"><span>Дата фиксации реестра:</span></div>
+                <div class="string__value-row">
+                    <input class="noborder" type="date" id="RegistryFixingDate" name="RegistryFixingDate" value="2017-10-02">
+                </div>
+            </div>
+
+            <div class="hr"></div>
+
+            <div class="string">
+                <div class="string__key"><span>Досрочное голосование:</span></div>
+                <div class="string__value-row">
+                    <div class="checkbox">
+                        <input type="checkbox" id="applies">
+                        <label for="applies">Применяется</label>
+                    </div>
+                </div>
+            </div>
+            <div class="string voting-date">
+                <div class="string__key"><span>Дата начала приема бюллетеней:</span></div>
+                <div class="string__value-row">
+                    <input class="noborder" type="date" id="EarlyVotingStartDate" name="EarlyVotingStartDate" value="">
+                </div>
+            </div>
+            <div class="string voting-date">
+                <div class="string__key"><span>Дата окончания приема бюллетеней:</span></div>
+                <div class="string__value-row">
+                    <input class="noborder" type="date" id="EarlyVotingEndDate" name="EarlyVotingEndDate" value="">
+                </div>
+            </div>
+
+            <div class="hr"></div>
+
+            <div class="string">
+                <form>
+                    <button class="link show-meetings" type="button">Показать ход собрания</button>
+                </form>
+            </div>
+            <div class="meetings meetings-hidden">
+                <div class="string">
+                    <div class="string__key"><span>Время окончания регистрации:</span></div>
+                    <div class="string__value-row">
+                        <input class="noborder" type="time" id="RegistrationEndTime" name="RegistrationEndTime" value="13:00">
+                    </div>
+                </div>
+                <div class="string">
+                    <div class="string__key"><span>Время закрытия собрания:</span></div>
+                    <div class="string__value-row">
+                        <input class="noborder" type="time" id="MeetingCloseTime" name="MeetingCloseTime" value="">
+                    </div>
+                </div>
+                <div class="string">
+                    <div class="string__key"><span>Время начала подсчета голосов:</span></div>
+                    <div class="string__value-row">
+                        <input class="noborder" type="time" id="VotesCountingStartTime" name="VotesCountingStartTime" value="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="hr"></div>
+
+            <div class="string">
+                <div class="string__key">Комментарий эмитента</div>
+            </div>
+            <div class="string">
+                <textarea class="restraint" id="RestrictionsText" name="RestrictionsText">Члены совета директоров: Петров И.В., Максимов А.П.</textarea>
+            </div>
+            <div class="string">
+                <div class="string__key">Примененные ограничения</div>
+            </div>
+            <div class="string">
+                <br>
+                <div class="string__value-row"> Редактирование структурных ограничений невозможно : не загружен реестр к собранию</div>
+            </div>
+
+            <div class="hr"></div>
+
+            <div class="string">
+                <button class="submit">Сохранить</button>
+                <button class="cancel">Отмена</button>
+            </div>
+
+        </div>
+
+    </section>
+</main>

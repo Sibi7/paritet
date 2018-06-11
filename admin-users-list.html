@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head lang="ru">
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="css/libs.min.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.min.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="images/icons/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/icons/favicon.ico" type="image/x-icon">
+    <script src="js/fractions.js"></script>
+</head>
+<body>
+<!-- open .header -->
+<div class="wrap">
+<aside class="sidebar">
+    <div class="sidebar__logo">
+        <span class="logo"></span>
+        <h2>паритет <span>интернет реестр</span></h2>
+    </div>
+    <div class="sidebar__item sidebar__item--active">
+        <div class="sidebar__item--header">
+            <div class="sidebar__item--icon">
+                <span class="icon-sidebar-icon3"></span>
+            </div>
+            <a href="admin-users-list.html">Пользователи</a>
+        </div>
+        <ul>
+            <li><a href="admin-users-list.html">Все пользователи</a></li>
+            <li><span>Внутренние</span></li>
+            <li><span>Внешние</span></li>
+        </ul>
+    </div>
+    <div class="sidebar__item">
+        <div class="sidebar__item--header">
+            <div class="sidebar__item--icon">
+                <span class="icon-sidebar-icon2"></span>
+            </div>
+            <a href="admin-groups-list.html">Группы</a>
+        </div>
+    </div>
+    <div class="sidebar__item">
+        <div class="sidebar__item--header">
+            <div class="sidebar__item--icon">
+                <span class="icon-sidebar-icon1"></span>
+            </div>
+            <a href="admin-issuers-list.html">Эмитенты</a>
+        </div>
+    </div>
+</aside>
+    <div class="container">
+<header class="header">
+
+    <div class="header__filter">
+
+        <div class="header__filter--field">
+            <span class="filter--icon"><img src="images/icons/filter-icon.png" alt=""></span>
+            <input class="filter--input" type="text" placeholder="Примените фильтр или введите слово">
+            <div class="autofilter" data-id="user_inside"><span>Внутренние</span><span class="t-delete"></span></div>
+            <div class="autofilter" data-id="user_outside"><span>Внешние</span><span class="t-delete"></span></div>
+        </div>
+
+        <div class="filter">
+            <div class="filter__header">
+                <h2>Добавление фильтра</h2>
+                <span class="t-delete"></span>
+            </div>
+            <div class="filter__body">
+                <div class="filter__body--item">
+                    <h3>Статус</h3>
+                    <select>
+                        <option>Не выбран</option>
+                        <option>Активен</option>
+                        <option>Неактивен</option>
+                        <option>Автоблок</option>
+                        <option>Блок</option>
+                        <option>Удален</option>
+                    </select>
+                </div>
+                <div class="filter__body--item">
+                    <h3>Группа</h3>
+                    <input type="text" class="t-search" placeholder="Найти группу">
+                    <div class="filter">
+                        <div class="filter__body">
+                            <table>
+                                <tr><td><span>Филиал «Питер»</span></td></tr>
+                                <tr><td><span>Филиал «Южносахалинск»</span></td></tr>
+                                <tr><td><span>Филиал «Москва»</span></td></tr>
+                                <tr><td><span>Филиал «Воронеж»</span></td></tr>
+                                <tr><td><span>Филиал «Иваново»</span></td></tr>
+                                <tr><td><span>Филиал «Питер»</span></td></tr>
+                                <tr><td><span>Филиал «Южносахалинск»</span></td></tr>
+                                <tr><td><span>Филиал «Москва»</span></td></tr>
+                                <tr><td><span>Филиал «Воронеж»</span></td></tr>
+                                <tr><td><span>Филиал «Иваново»</span></td></tr>
+                                <tr><td><span>Филиал «Питер»</span></td></tr>
+                                <tr><td><span>Филиал «Южносахалинск»</span></td></tr>
+                                <tr><td><span>Филиал «Москва»</span></td></tr>
+                                <tr><td><span>Филиал «Воронеж»</span></td></tr>
+                                <tr><td><span>Филиал «Иваново»</span></td></tr>
+                            </table>
+                        </div>
+                        <div class="filter__footer">
+                            <button class="submit">Выбрать</button>
+                            <button class="cancel">Отмена</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter__body--item">
+                    <h3>Категория</h3>
+                    <select>
+                        <option>Не выбрана</option>
+                        <option>Администратор</option>
+                        <option>Менеджер</option>
+                        <option>Эмитент</option>
+                    </select>
+                </div>
+            </div>
+            <div class="filter__footer">
+                <button class="submit">Подобрать</button>
+                <button class="cancel">Отмена</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="action-btn">
+        <a href="#" class="action-btn--edit">Изменить</a>
+        <span class="action-btn--arrow arrow-down"></span>
+        <ul>
+            <li><a href="#">Изменить</a></li>
+            <li><a href="#">Сбросить пароль</a></li>
+            <li><a href="#">Блокировать</a></li>
+            <li><a href="#">Разблокировать</a></li>
+            <li><a href="#">Удалить</a></li>
+        </ul>
+    </div>
+
+    <div class="header__user">
+        <img src="images/icons/user-icon.png" alt="">
+        <a href="#" class="user-icon">Анатолий Полевой<span>Администратор</span></a>
+        <ul class="header__user--menu">
+            <li><a href="admin-user-pass.html">Изменить пароль</a></li>
+            <li><a href="#">Настройки</a></li>
+            <li><a href="#">Выход</a></li>
+        </ul>
+    </div>
+
+</header>
+<main class="content">
+    <div class="content__section">
+        <table class="users-list table">
+
+            <thead>
+            <tr>
+                <th class="u-login"><span>Логин</span></th>
+                <th class="u-rol"><span>Роль</span></th>
+                <th class="u-name"><span>ФИО</span></th>
+                <th class="u-status"><span>Статус</span></th>
+                <th class="u-visited"><span>Вход</span></th>
+                <th class="u-online-status"><span>В сети</span></th>
+                <th class="u-actions"></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td class="someone u-login"><a href="#">admin</a></td>
+                <td class="u-rol"><span>Администратор</span></td>
+                <td class="u-name"><span>Александр Василенко</span></td>
+                <td class="u-status u-status-active"><span>Активен</span></td>
+                <td class="u-visited"><span>12:10</span></td>
+                <td class="u-online-status"><span class="u-online"></span></td>
+                <td class="u-actions">
+                    <span class="u-unblock-user"></span>
+                    <a href="#123"><span class="t-delete"></span></a>
+                </td>
+            </tr>
+            <tr>
+                <td class="someone u-login"><a href="#">maxim</a></td>
+                <td class="u-rol"><span>Администратор</span></td>
+                <td class="u-name"><span>Максим Прохоров</span></td>
+                <td class="u-status u-status-block"><span>Блок</span></td>
+                <td class="u-visited"><span>27.09.2017</span></td>
+                <td class="u-online-status"><span class="u-offline"></span></td>
+                <td class="u-actions"><span class="u-block-user"></span> <span class="t-delete"></span></td>
+            </tr>
+            <tr>
+                <td class="someone u-login"><a href="#">ekaterina.somova</a></td>
+                <td class="u-rol"><span>Менеджер</span></td>
+                <td class="u-name"><span>Екатерина Сомова</span></td>
+                <td class="u-status u-status-not-active"><span>Неактивен</span></td>
+                <td class="u-visited"><span>12:04</span></td>
+                <td class="u-online-status"><span class="u-online"></span></td>
+                <td class="u-actions"><span class="u-unblock-user"></span> <span class="t-delete"></span></td>
+            </tr>
+            <tr>
+                <td class="someone u-login"><a href="#">portos</a></td>
+                <td class="u-rol"><span>Эмитент</span></td>
+                <td class="u-name"><span>Дмитрий Длиннофамильныйчеловекскороткимименем</span></td>
+                <td class="u-status u-status-deleted"><span>Удален</span></td>
+                <td class="u-visited"><span>26.09.2017</span></td>
+                <td class="u-online-status"><span class="u-offline"></span></td>
+                <td class="u-actions"></td>
+            </tr>
+            <tr>
+                <td class="someone u-login"><a href="#">anastasiya.melnikova</a></td>
+                <td class="u-rol"><span>Менеджер</span></td>
+                <td class="u-name"><span>Анастасия Мельникова</span></td>
+                <td class="u-status u-status-auto-block"><span>Автоблок</span></td>
+                <td class="u-visited"><span>26.09.2017</span></td>
+                <td class="u-online-status"><span class="u-offline"></span></td>
+                <td class="u-actions"><span class="u-block-user"></span> <span class="t-delete"></span></td>
+            </tr>
+            <tr>
+                <td class="someone u-login"><a href="#">admin</a></td>
+                <td class="u-rol"><span>Администратор</span></td>
+                <td class="u-name"><span>Александр Василенко</span></td>
+                <td class="u-status u-status-active"><span>Активен</span></td>
+                <td class="u-visited"><span>12:10</span></td>
+                <td class="u-online-status"><span class="u-online"></span></td>
+                <td class="u-actions"><span class="u-unblock-user"></span> <span class="t-delete"></span></td>
+            </tr>
+            <tr>
+                <td class="someone u-login"><a href="#">maxim</a></td>
+                <td class="u-rol"><span>Администратор</span></td>
+                <td class="u-name"><span>Максим Прохоров</span></td>
+                <td class="u-status u-status-block"><span>Блок</span></td>
+                <td class="u-visited"><span>27.09.2017</span></td>
+                <td class="u-online-status"><span class="u-offline"></span></td>
+                <td class="u-actions"><span class="u-block-user"></span> <span class="t-delete"></span></td>
+            </tr>
+            <tr>
+                <td class="someone u-login"><a href="#">ekaterina.somova</a></td>
+                <td class="u-rol"><span>Менеджер</span></td>
+                <td class="u-name"><span>Екатерина Сомова</span></td>
+                <td class="u-status u-status-not-active"><span>Неактивен</span></td>
+                <td class="u-visited"><span>12:04</span></td>
+                <td class="u-online-status"><span class="u-online"></span></td>
+                <td class="u-actions"><span class="u-unblock-user"></span> <span class="t-delete"></span></td>
+            </tr>
+            <tr>
+                <td class="someone u-login"><a href="#">portos</a></td>
+                <td class="u-rol"><span>Эмитент</span></td>
+                <td class="u-name"><span>Дмитрий Длиннофамильныйчеловекскороткимименем</span></td>
+                <td class="u-status u-status-deleted"><span>Удален</span></td>
+                <td class="u-visited"><span>26.09.2017</span></td>
+                <td class="u-online-status"><span class="u-offline"></span></td>
+                <td class="u-actions"></td>
+            </tr>
+            <tr>
+                <td class="someone u-login"><a href="#">anastasiya.melnikova</a></td>
+                <td class="u-rol"><span>Менеджер</span></td>
+                <td class="u-name"><span>Анастасия Мельникова</span></td>
+                <td class="u-status u-status-auto-block"><span>Автоблок</span></td>
+                <td class="u-visited"><span>26.09.2017</span></td>
+                <td class="u-online-status"><span class="u-offline"></span></td>
+                <td class="u-actions"><span class="u-block-user"></span> <span class="t-delete"></span></td>
+            </tr>
+            <tr>
+                <td class="someone u-login"><a href="#">admin</a></td>
+                <td class="u-rol"><span>Администратор</span></td>
+                <td class="u-name"><span>Александр Василенко</span></td>
+                <td class="u-status u-status-active"><span>Активен</span></td>
+                <td class="u-visited"><span>12:10</span></td>
+                <td class="u-online-status"><span class="u-online"></span></td>
+                <td class="u-actions"><span class="u-unblock-user"></span> <span class="t-delete"></span></td>
+            </tr>
+            <tr>
+                <td class="someone u-login"><a href="#">maxim</a></td>
+                <td class="u-rol"><span>Администратор</span></td>
+                <td class="u-name"><span>Максим Прохоров</span></td>
+                <td class="u-status u-status-block"><span>Блок</span></td>
+                <td class="u-visited"><span>27.09.2017</span></td>
+                <td class="u-online-status"><span class="u-offline"></span></td>
+                <td class="u-actions"><span class="u-block-user"></span> <span class="t-delete"></span></td>
+            </tr>
+            <tr>
+                <td class="someone u-login"><a href="#">ekaterina.somova</a></td>
+                <td class="u-rol"><span>Менеджер</span></td>
+                <td class="u-name"><span>Екатерина Сомова</span></td>
+                <td class="u-status u-status-not-active"><span>Неактивен</span></td>
+                <td class="u-visited"><span>12:04</span></td>
+                <td class="u-online-status"><span class="u-online"></span></td>
+                <td class="u-actions"><span class="u-unblock-user"></span> <span class="t-delete"></span></td>
+            </tr>
+            <tr>
+                <td class="someone u-login"><a href="#">portos</a></td>
+                <td class="u-rol"><span>Эмитент</span></td>
+                <td class="u-name"><span>Дмитрий Длиннофамильныйчеловекскороткимименем</span></td>
+                <td class="u-status u-status-deleted"><span>Удален</span></td>
+                <td class="u-visited"><span>26.09.2017</span></td>
+                <td class="u-online-status"><span class="u-offline"></span></td>
+                <td class="u-actions"></td>
+            </tr>
+            <tr>
+                <td class="someone u-login"><a href="#">anastasiya.melnikova</a></td>
+                <td class="u-rol"><span>Менеджер</span></td>
+                <td class="u-name"><span>Анастасия Мельникова</span></td>
+                <td class="u-status u-status-auto-block"><span>Автоблок</span></td>
+                <td class="u-visited"><span>26.09.2017</span></td>
+                <td class="u-online-status"><span class="u-offline"></span></td>
+                <td class="u-actions"><span class="u-block-user"></span> <span class="t-delete"></span></td>
+            </tr>
+            <tr>
+                <td class="someone u-login"><a href="#">admin</a></td>
+                <td class="u-rol"><span>Администратор</span></td>
+                <td class="u-name"><span>Александр Василенко</span></td>
+                <td class="u-status u-status-active"><span>Активен</span></td>
+                <td class="u-visited"><span>12:10</span></td>
+                <td class="u-online-status"><span class="u-online"></span></td>
+                <td class="u-actions"><span class="u-unblock-user"></span> <span class="t-delete"></span></td>
+            </tr>
+            <tr>
+                <td class="someone u-login"><a href="#">maxim</a></td>
+                <td class="u-rol"><span>Администратор</span></td>
+                <td class="u-name"><span>Максим Прохоров</span></td>
+                <td class="u-status u-status-block"><span>Блок</span></td>
+                <td class="u-visited"><span>27.09.2017</span></td>
+                <td class="u-online-status"><span class="u-offline"></span></td>
+                <td class="u-actions"><span class="u-block-user"></span> <span class="t-delete"></span></td>
+            </tr>
+            <tr>
+                <td class="someone u-login"><a href="#">ekaterina.somova</a></td>
+                <td class="u-rol"><span>Менеджер</span></td>
+                <td class="u-name"><span>Екатерина Сомова</span></td>
+                <td class="u-status u-status-not-active"><span>Неактивен</span></td>
+                <td class="u-visited"><span>12:04</span></td>
+                <td class="u-online-status"><span class="u-online"></span></td>
+                <td class="u-actions"><span class="u-unblock-user"></span> <span class="t-delete"></span></td>
+            </tr>
+            <tr>
+                <td class="someone u-login"><a href="#">portos</a></td>
+                <td class="u-rol"><span>Эмитент</span></td>
+                <td class="u-name"><span>Дмитрий Длиннофамильныйчеловекскороткимименем</span></td>
+                <td class="u-status u-status-deleted"><span>Удален</span></td>
+                <td class="u-visited"><span>26.09.2017</span></td>
+                <td class="u-online-status"><span class="u-offline"></span></td>
+                <td class="u-actions"></td>
+            </tr>
+            <tr>
+                <td class="someone u-login"><a href="#">anastasiya.melnikova</a></td>
+                <td class="u-rol"><span>Менеджер</span></td>
+                <td class="u-name"><span>Анастасия Мельникова</span></td>
+                <td class="u-status u-status-auto-block"><span>Автоблок</span></td>
+                <td class="u-visited"><span>26.09.2017</span></td>
+                <td class="u-online-status"><span class="u-offline"></span></td>
+                <td class="u-actions"><span class="u-block-user"></span> <span class="t-delete"></span></td>
+            </tr>
+            </tbody>
+
+        </table>
+
+
+        <div class="modal modal-delete">
+            <div class="modal__header">
+                <h2>Удаление группы</h2>
+                <span class="t-delete"></span>
+            </div>
+            <div class="modal__body">
+                <strong>Внимание!</strong>
+                <p>
+                    Удаление группы безвозвратно. Вы не сможете отменить это действие.
+                    Права на счета и реестры данной группы будут отозваны у всех
+                    пользователей, включенных в эту группу.
+                </p>
+                <strong>Вы действительно хотите удалить группу?</strong>
+            </div>
+            <div class="modal__footer">
+                <a href="" class="delete-btn">Удалить</a>
+                <button class="cancel">Отмена</button>
+            </div>
+        </div>
+        <div class="modal modal-delete">
+            <div class="modal__header">
+                <h2>Удаление группы</h2>
+                <span class="t-delete"></span>
+            </div>
+            <div class="modal__body">
+                <strong>Внимание!</strong>
+                <p>
+                    Удаление группы безвозвратно. Вы не сможете отменить это действие.
+                    Права на счета и реестры данной группы будут отозваны у всех
+                    пользователей, включенных в эту группу.
+                </p>
+                <strong>Вы действительно хотите удалить группу?</strong>
+            </div>
+            <div class="modal__footer">
+                <a href="" class="delete-btn">Удалить</a>
+                <button class="cancel">Отмена</button>
+            </div>
+        </div>
+        <div class="modal test">
+            <div class="modal__header">
+                <h2>Удаление группы</h2>
+                <span class="t-delete"></span>
+            </div>
+            <div class="modal__body">
+                <strong>Внимание!</strong>
+                <p>
+                    Удаление группы безвозвратно. Вы не сможете отменить это действие.
+                    Права на счета и реестры данной группы будут отозваны у всех
+                    пользователей, включенных в эту группу.
+                </p>
+                <strong>Вы действительно хотите удалить группу?</strong>
+            </div>
+            <div class="modal__footer">
+                <a href="" class="delete-btn">Удалить</a>
+                <button class="cancel">Отмена</button>
+            </div>
+        </div>
+
+        <div class="list__footer">
+            <p>Больше нет пользователей для показа</p>
+        </div>
+    </div>
+
+</main>
+    </div>
+</div>
+
+
+
+<script src='js/jquery-3.2.1.min.js' type="text/javascript"></script>
+<script src="js/script.min.js" type="text/javascript"></script>
+<script src="js/admin.js" type="text/javascript"></script>
+</body>
+</html>
