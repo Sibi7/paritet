@@ -3,20 +3,24 @@
     position: relative;
     margin-bottom: 10px;
     display: flex;
-    align-items: center;
-    height: 31px;
+    align-items: baseline;
+
   }
   &__block-name, &__block-voting {
     display: flex;
-    align-items: center;
+    align-items: baseline;
   }
   &__block-name {
-    width: 330px;
+    width: 700px;
+  }
+  .string__key{
+    min-width: 150px;
   }
   &__select-all {
     margin-left: auto;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-end;
     font-size: 13px;
     color: #777;
     &__tag {
