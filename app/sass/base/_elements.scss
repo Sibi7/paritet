@@ -6,6 +6,7 @@ $status: #5ccc3d;
 $someone: #0062b3;
 $someone-hover: #004680;
 $pink: #ef3f56;
+$white: #fff;
 
 .width-80 {
   width: 80px;
@@ -41,15 +42,28 @@ $pink: #ef3f56;
 .padding-bottom-20 {
   padding-bottom: 20px;
 }
-
-
-
 .bullet-numbers {
   margin-left: 20px;
   .bullet-number {
     display: inline-block;
     cursor: pointer;
     color: $blue;
+    font-size: 14px;
+    padding: 5px 8px;
+    box-sizing: border-box;
+    margin: 5px;
+    &:hover {
+      text-decoration: underline;
+    }
+    input[type="radio"] {
+      display: none;
+    }
+  }
+  .bullet-number-all {
+    display: inline-block;
+    cursor: pointer;
+    color: $white;
+    background: $pink;
     font-size: 14px;
     padding: 5px 8px;
     box-sizing: border-box;
@@ -810,6 +824,11 @@ label {
 }
 .bg-blue {
   background-color: #0062b3!important;
+  transition: .3s;
+  &:hover{
+    background: darken(#0062b3, 10%)!important;
+    transition: .3s;
+  }
 }
 .black {
   color: #000!important;
@@ -959,6 +978,7 @@ label {
     }
     .voting-close{
       font-size: 22px;
+      color: #ef4056;
     }
     .voting-divide{
       font-size: 22px;

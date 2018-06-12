@@ -85,7 +85,7 @@
 
 
 <!-- end voting-enter-header.html-->
-<!-- start voting-enter-body.html-->
+<!-- start manager-voting-result.html-->
 <main class="content">
 
     <section class="content__section voting-enter manager-meeting-cabinet hotkeys">
@@ -98,13 +98,14 @@
 
         </div>
         <div class="string">
-          <div class="string__key">Рег номер:</div>
-          <div class="string__value-row">000003</div>
+            <div class="string__key">Рег номер:</div>
+            <div class="string__value-row">000003</div>
         </div>
         <div class="string">
             <div class="string__key">Статус голосования</div>
-            <div class="string__value-row grey">
-                <span class="grey">Не зарегистрирован</span>
+            <div class="string__value-row">
+                <span class="green">Не проголосовал </span>  
+                <span> (зарегистрирован Романов Александр Петрович)</span>
             </div>
         </div>
         <div class="string">
@@ -171,7 +172,7 @@
                                 утверждении регламента общего собрания акционеров</p>
                         </div>
                         <div class="voting-enter__td">
-                            <div class="voting-actions voting-sent">
+                            <div class="voting-actions">
                                 <ul class="voting-actions__choice">
                                     <li class="voting-actions__choice--item voting-true" tabindex="1">
                                         <label><input type="radio" name="questions[2]">За</label>
@@ -198,7 +199,7 @@
                             <p class="voting-enter__td-text">Об утверждении регламента общего собрания акционеров</p>
                         </div>
                         <div class="voting-enter__td">
-                            <div class="voting-actions voting-sent">
+                            <div class="voting-actions">
                                 <ul class="voting-actions__choice">
                                     <li class="voting-actions__choice--item voting-true">
                                         <label><input type="radio" name="questions[2]">За</label>
@@ -234,7 +235,7 @@
                             <p class="voting-enter__td-text">Об утверждении регламента общего собрания акционеров</p>
                         </div>
                         <div class="voting-enter__td">
-                            <div class="voting-actions voting-sent">
+                            <div class="voting-actions">
                                 <ul class="voting-actions__choice">
                                     <li class="voting-actions__choice--item voting-veto">
                                         <label><input type="radio" name="questions[2]">Вето</label>
@@ -272,7 +273,7 @@
                             <p class="voting-enter__td-text">Об утверждении регламента общего собрания акционеров</p>
                         </div>
                         <div class="voting-enter__td">
-                            <div class="voting-actions voting-sent">
+                            <div class="voting-actions">
                                 <ul class="voting-actions__choice">
 
                                     <li class="voting-actions__choice--item voting-veto">
@@ -291,14 +292,16 @@
                 </div>
             </div>
             <div class="voting-enter__tfoot">
-                <input type="submit" class="voting-send bg-blue" value="Зарегистрировать" style="">
+                <input type="submit" class="voting-send bg-blue" value="Сохранить" style="">
+                <input type="submit" class="cancel" value="Очистить" style="">
             </div>
+
         </div>
 
     </section>
 
 </main>
-<!-- end voting-enter-body.html-->
+<!-- end manager-voting-result.html-->
     </div>
 </div>
 <!-- start html_close.html-->
