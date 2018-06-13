@@ -602,4 +602,8 @@ $(function () {
         $('.reg-start-date').val($(this).val());
     });
 
+    $(document).on('click', '.voting-close', function () {
+        $(this).toggleClass('voting-close-active');
+    });
+
 });

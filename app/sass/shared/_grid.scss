@@ -8,6 +8,10 @@
   &__row-center {
     align-items: center;
   }
+  &__wrap{
+    display: flex;
+    flex-direction: row;
+  }
   &__key {
     display: flex;
     align-items: center;

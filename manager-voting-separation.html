@@ -108,56 +108,62 @@
                 <span> (зарегистрирован Романов Александр Петрович)</span>
             </div>
         </div>
-        <div class="string">
-            <div class="string__key">Голосов всего</div>
-            <div class="string__value-row ">200 100</div>
-        </div>
-        <div class="string  align-item-center">
-            <div class="string__key">Владелец:</div>
-            <div class="string__value-row ">
-                Колчев Дмитрий Сергеевич, Романов Александр Петрович
-                <div class="voting-enter__select-all ">
-                    <div class="bulletins-numbers">
-                        <p>Бюллетень №</p>
-                        <div class="bullet-numbers bullet-numbers-hotkey">
-                            <label class="bullet-number activeBullet"><input type="radio">1</label>
-                            <label class="bullet-number"><input type="radio">2</label>
-                            <label class="bullet-number"><input type="radio">3</label>
-                            <label class="bullet-number"><input type="radio">4</label>
-                            <label class="bullet-number"><input type="radio">5</label>
-                            <label class="bullet-number-all"><input type="radio">Все</label>
-                        </div>
-                    </div>
-                    <div class="voting-actions ">
-                        <ul class="voting-actions__choice">
-                            <li class="voting-actions__choice--item voting-true">
-                                <label><input type="radio" name="questions[2]">За</label>
-                            </li>
-                            <li class="voting-actions__choice--item voting-false">
-                                <label><input type="radio" name="questions[2]">Против</label>
-                            </li>
-                            <li class="voting-actions__choice--item voting-abstained">
-                                <label><input type="radio" name="questions[2]">воздерживаюсь</label>
-                            </li>
-                            <li class="voting-actions__choice--item voting-divide">
-                                <label><input type="radio" name="questions[2]"> &#247;</label>
-                            </li>
-                            <li class="voting-actions__choice--item voting-close">
-                                <label><input type="radio" name="questions[2]">&#215;</label>
-                            </li>
-                        </ul>
+
+        <div class="string__wrap">
+            <div>
+                <div class="string">
+                    <div class="string__key">Голосов всего</div>
+                    <div class="string__value-row ">200 100</div>
+                </div>
+                <div class="string">
+                    <div class="string__key">Владелец:</div>
+                    <div class="string__value-row ">
+                        Колчев Дмитрий Сергеевич, Романов Александр Петрович
+
                     </div>
 
                 </div>
+                <div class="string">
+                    <div class="string__key">Документ:</div>
+                    <div class="string__value-row ">паспорт 00 99 876123 выдан 23.09.2003 ОВДК Беояево код 787-009,
+                        паспорт 98 77 333442 выдан ОВД г. Урюпинска
+                    </div>
+                </div>
             </div>
+            <div class="voting-enter__select-all ">
+                <div class="bulletins-numbers">
+                    <p>Бюллетень №</p>
+                    <div class="bullet-numbers bullet-numbers-hotkey">
+                        <label class="bullet-number activeBullet"><input type="radio">1</label>
+                        <label class="bullet-number"><input type="radio">2</label>
+                        <label class="bullet-number"><input type="radio">3</label>
+                        <label class="bullet-number"><input type="radio">4</label>
+                        <label class="bullet-number"><input type="radio">5</label>
+                        <label class="bullet-number-all"><input type="radio">Все</label>
+                    </div>
+                </div>
+                <div class="voting-actions ">
+                    <ul class="voting-actions__choice">
+                        <li class="voting-actions__choice--item voting-true">
+                            <label><input type="radio" name="questions[2]">За</label>
+                        </li>
+                        <li class="voting-actions__choice--item voting-false">
+                            <label><input type="radio" name="questions[2]">Против</label>
+                        </li>
+                        <li class="voting-actions__choice--item voting-abstained">
+                            <label><input type="radio" name="questions[2]">воздерживаюсь</label>
+                        </li>
+                        <li >
+                            <a href="#" class="voting-divide">&#247;</a>
+                        </li>
+                        <li>
+                            <a href="#" class="voting-close">&#215;</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-        </div>
-        <div class="string">
-            <div class="string__key">Документ:</div>
-            <div class="string__value-row ">паспорт 00 99 876123 выдан 23.09.2003 ОВДК Беояево код 787-009,
-                паспорт 98 77 333442 выдан ОВД г. Урюпинска
-            </div>
-        </div>
         <div class="voting-enter__table">
             <div class="voting-enter__tr voting-enter__tr-parent">
                 <div class="voting-enter__td">
@@ -183,11 +189,11 @@
                                     <li class="voting-actions__choice--item voting-abstained" tabindex="3">
                                         <label><input type="radio" name="questions[2]">воздерживаюсь</label>
                                     </li>
-                                    <li class="voting-actions__choice--item voting-divide">
-                                        <label><input type="radio" name="questions[2]"> &#247;</label>
+                                    <li >
+                                        <a href="#" class="voting-divide">&#247;</a>
                                     </li>
-                                    <li class="voting-actions__choice--item voting-close">
-                                        <label><input type="radio" name="questions[2]">&#215;</label>
+                                    <li>
+                                        <a href="#" class="voting-close">&#215;</a>
                                     </li>
                                 </ul>
                             </div>
@@ -210,11 +216,11 @@
                                     <li class="voting-actions__choice--item voting-abstained">
                                         <label><input type="radio" name="questions[2]">воздерживаюсь</label>
                                     </li>
-                                    <li class="voting-actions__choice--item voting-divide">
-                                        <label><input type="radio" name="questions[2]"> &#247;</label>
+                                    <li >
+                                        <a href="#" class="voting-divide">&#247;</a>
                                     </li>
-                                    <li class="voting-actions__choice--item voting-close">
-                                        <label><input type="radio" name="questions[2]">&#215;</label>
+                                    <li>
+                                        <a href="#" class="voting-close">&#215;</a>
                                     </li>
 
                                 </ul>
@@ -249,11 +255,11 @@
                                     <li class="voting-actions__choice--item voting-abstained">
                                         <label><input type="radio" name="questions[2]">воздерживаюсь</label>
                                     </li>
-                                    <li class="voting-actions__choice--item voting-divide">
-                                        <label><input type="radio" name="questions[2]"> &#247;</label>
+                                    <li >
+                                        <a href="#" class="voting-divide">&#247;</a>
                                     </li>
-                                    <li class="voting-actions__choice--item voting-close">
-                                        <label><input type="radio" name="questions[2]">&#215;</label>
+                                    <li>
+                                        <a href="#" class="voting-close">&#215;</a>
                                     </li>
                                 </ul>
                             </div>
@@ -274,36 +280,77 @@
                         </div>
                         <div class="voting-enter__td">
                             <div class="voting-actions">
-                                <ul class="voting-actions__choice">
-                                    <li class="voting-actions__choice--item voting-veto">
-                                        <label><input type="radio" name="questions[2]">Вето</label>
-                                    </li>
-                                    <li class="voting-actions__choice--item voting-divide">
-                                        <label><input type="radio" name="questions[2]"> &#247;</label>
-                                    </li>
-                                    <li class="voting-actions__choice--item voting-close">
-                                        <label><input type="radio" name="questions[2]">&#215;</label>
-                                    </li>
-                                </ul>
-                                <ul class="voting-actions__divide-btn">
+                                <div class="voting-actions__choice-btn">
+                                    <div class="voting-actions__choice-wrap">
+                                        <div class="voting-actions__wrap-btn">
+                                            <div class="voting-votes-all">Голосов всего <span> 200 100</span></div>
+                                            <span class="voting-actions__choice--item voting-true">
+                                             <label>
+                                                <input type="radio" name="questions[2]">
+                                                За
+                                            </label>
+                                        </span>
+                                        </div>
+                                        <div class="voting-actions__wrap-input">
+                                            <label>
+                                                <input type="text" value="0" name="qustions"
+                                                       class="noborder votes-cast votesCastFirst" style="width: 100px"
+                                                       data-val="true">
+                                            </label>
+                                            <span class="bulleting-item--key">голосов</span>
+                                        </div>
 
-                                    <li class="voting-actions__choice--item voting-true voting-selected">
-                                        <label>
-                                            <input type="radio" name="questions[0].Decisions[0].Votes[0].Result" value="Yes" data-save-condition="checkbox" data-save-condition-name="input-checkbox_yes_1_1_23_0_0_0" data-scv="1" checked="checked">За
-                                        </label>
-                                    </li>
-                                    <li class="voting-actions__choice--item voting-false">
-                                        <label>
-                                            <input type="radio" name="questions[0].Decisions[0].Votes[0].Result" value="No" data-save-condition="checkbox" data-save-condition-name="input-checkbox_no_1_1_23_0_0_0" data-scv="0">Против
-                                        </label>
-                                    </li>
-                                    <li class="voting-actions__choice--item voting-abstained">
-                                        <label>
-                                            <input type="radio" name="questions[0].Decisions[0].Votes[0].Result" value="Abstained" data-save-condition="checkbox" data-save-condition-name="input-checkbox_abs_1_1_23_0_0_0" data-scv="0">воздержался
-                                        </label>
-                                    </li>
+                                        <div class="voting-actions__wrap-right-btn">
+                                            <a href="#" class="voting-clear-division"> &#x25EF;</a>
+                                        </div>
 
-                                </ul>
+                                    </div>
+                                    <div class="voting-actions__choice-wrap">
+                                        <div class="voting-actions__wrap-btn">
+                                            <span class="voting-actions__choice--item voting-false">
+                                             <label>
+                                                <input type="radio" name="questions[2]">
+                                                Против
+                                            </label>
+                                        </span>
+                                        </div>
+                                        <div class="voting-actions__wrap-input">
+                                            <label>
+                                                <input type="text" value="0" name="qustions"
+                                                       class="noborder votes-cast votesCastFirst" style="width: 100px"
+                                                       data-val="true">
+                                            </label>
+                                            <span class="bulleting-item--key">голосов</span>
+                                        </div>
+                                        <div class="voting-actions__wrap-right-btn">
+                                            <button type="button" class="link remainingVoicesBtn" style="">Остаток</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="voting-actions__choice-wrap">
+                                        <div class="voting-actions__wrap-btn">
+                                            <div class="voting-actions__wrap-btn">
+                                                 <span class="voting-actions__choice--item voting-false">
+                                             <label>
+                                                <input type="radio" name="questions[2]">
+                                                воздерживаюсь
+                                            </label>
+                                        </span>
+                                            </div>
+                                        </div>
+                                        <div class="voting-actions__wrap-input">
+                                            <label>
+                                                <input type="text" value="0" name="qustions"
+                                                       class="noborder votes-cast votesCastFirst" style="width: 100px"
+                                                       data-val="true">
+                                            </label>
+                                            <span class="bulleting-item--key">голосов</span>
+                                        </div>
+                                        <div class="voting-actions__wrap-right-btn">
+                                            <button type="button" class="link remainingVoicesBtn" style="">Остаток</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -315,7 +362,6 @@
             </div>
 
         </div>
-
     </section>
 
 </main>

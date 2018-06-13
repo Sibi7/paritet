@@ -48,7 +48,10 @@
     margin-top: auto;
     margin-left: auto;
     padding-top: 0;
+    justify-content: flex-end;
+    min-width: 553px;
   }
+
   .voting-actions__choice--item {
     border: 1px solid transparent;
     &:last-of-type {
