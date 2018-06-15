@@ -1,10 +1,19 @@
+//Валидация вводимых символов
+function isAllowedKeyCode(key) {
+    // Разрешенные клавиши для ввода дроби
+    if ((+key >= 0 && +key <= 9) || key === '/' || key === ' ' || key === 'Backspace' || key === 'Delete' || key === 'ArrowRight' || key === 'ArrowLeft') {
+        return true
+    } else {
+        return false
+    }
+}
+
 $(function () {
     var con = new Condition();
     if (con) {
         con.init({
             valAttrName: 'data-scv',
-            cookieName: $('.voiting-name-storage').val(),
-            storage: 'localStorage',
+            cookieName: '___rrr___',
             customLoad: function (item, name, value, type) {
                 if (type === 'block') {
                     if (parseInt(value) === 1) {
@@ -112,15 +121,7 @@ $(function () {
         return this;
     }
 
-    //Валидация вводимых символов
-    function isAllowedKeyCode(key) {
-        // Разрешенные клавиши для ввода дроби
-        if ((+key >= 0 && +key <= 9) || key === '/' || key === ' ' || key === 'Backspace' || key === 'Delete' || key === 'ArrowRight' || key === 'ArrowLeft') {
-            return true
-        } else {
-            return false
-        }
-    }
+
 
     // Возвращает обьект с полем result:"true" если value не больше чем total, иначе false
     function comparingIsLager(total, value) {

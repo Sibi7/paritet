@@ -566,6 +566,9 @@ $(function () {
                 testDiv.html(html);
                 var _row = testDiv.find('.voting_auth[data-votingBtnId=' + _id + ']').parents('.parentRow');
                 parent.html(_row.html());
+            },
+            error: function (err) {
+                alert('Ошибка! Ответ сервера: ' + err.status);
             }
         })
     });
@@ -602,8 +605,8 @@ $(function () {
         $('.reg-start-date').val($(this).val());
     });
 
-    $(document).on('click', '.voting-close', function () {
-        $(this).toggleClass('voting-close-active');
+    $(document).on('keydown', '.vote-limit', function (e) {
+       return isAllowedKeyCode(e.originalEvent.key);
     });
 
 });

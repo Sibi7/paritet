@@ -17,21 +17,21 @@ $(function () {
                 parent.html(data)
             },
             error: function (err) {
-                console.error(err)
+                alert('Ошибка! Ответ сервера: ' + err.status);
             }
         })
-        $.ajax({
-            url:  customUrl,
-            type: 'post',
-            success: function (data) {
-                var block = $('<div>');
-                block.html(data);
-                $('.status-voiting').html(block.find('.status-voiting').html());
-            },
-            error: function (err) {
-                console.error(err)
-            }
-        })
+        // $.ajax({
+        //     url:  customUrl,
+        //     type: 'post',
+        //     success: function (data) {
+        //         var block = $('<div>');
+        //         block.html(data);
+        //         $('.status-voiting').html(block.find('.status-voiting').html());
+        //     },
+        //     error: function (err) { 
+        //         console.error(err)
+        //     }
+        // })
     });
 
     $(document).on('click', '.voting-actions__choice--item', function () {

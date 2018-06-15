@@ -4,7 +4,9 @@ var RegistryLegalRepresentatives = []; //Добавленные прдестав
 
 // проверяем если в реестре счета для данного пользователя
 function FindAccountsForUser() {
-    $.post("/admin/user/FindsAccountsForUser", { Name: $(".user_name").val(), DocNum: $(".user_doc").val() }, function (data) {
+    name = $(".user_name").val();
+    docnum = $(".user_doc").val();
+    $.post("/admin/user/FindsAccountsForUser", { Name: name, DocNum: docnum }, function (data) {
         $(".user_name").removeClass("validate-input__true");
         $(".user_doc").removeClass("validate-input__true");
         $(".user_name").removeClass("validate-input__false");
@@ -19,7 +21,8 @@ function FindAccountsForUser() {
             $(".user_doc").addClass("validate-input__false");
         }
     });
-    FindsProbableRepresentativesForUser();
+    FindsProbableRepresentativesForUser(name, docnum);
+    IsUserRepresentative(name, docnum);
 }
 
 function ChangePassword() {
@@ -34,10 +37,23 @@ function ChangePassword() {
 }
 
 // Ищем возможных представителей для пользователя
-function FindsProbableRepresentativesForUser() {
-    $.post("/admin/user/FindsProbableRepresentativesForUser", { Name: $(".user_name").val(), DocNum: $(".user_doc").val() }, function (data) {
-        $(".filter_wrapper").html(data);
-    });
+function FindsProbableRepresentativesForUser(Name, DocNum) {
+    $.post("/admin/user/FindsProbableRepresentativesForUser", { Name: Name, DocNum: DocNum },
+        function (data) {
+            $(".filter_wrapper").html(data);
+        });
+}
+
+function IsUserRepresentative(Name, DocNum) {
+    $.post("/admin/user/IsUserRepresentative", { Name: Name, DocNum: DocNum },
+        function (IsRepresent) {
+            if (IsRepresent) {
+                $('.admin-represent').text("Показать");
+            }
+            else {
+                $('.admin-represent').text("Нет");
+            }
+        });
 }
 
 // парсим страницу на предмет выбранных представителей
@@ -48,7 +64,7 @@ function GetChoosenRepresentatives() {
     $(".filter_wrapper input:checked[data-isregistry=False]").each(function () { Representatives.push(this.id); });
     $(".filter_wrapper input:checked[data-isregistry=True][data-islegal=True]").each(function () {
         RegistryLegalRepresentatives.push({
-            "lname": $(this).data("lname"), "OGRN": $(this).data("ogrn")
+            "lname": $(this).data("lname"), "INN": $(this).data("INN")
         })
     });
     $(".filter_wrapper input:checked[data-isregistry=True][data-islegal=False]").each(function () {
@@ -61,14 +77,14 @@ function GetChoosenRepresentatives() {
 // добавляем в массив новых представителей
 function AddRegistryRepresentative() {
     var lname = $(".entity-name").val();
-    var OGRN = $(".entity-doc").val();
+    var INN = $(".entity-doc").val();
     var pname = $(".individual-name").val();
     var docnum = $(".individual-doc").val();
     var rowtext;
     var htmlData;
     if ($("label.modal__tab[data-id='entity'] input").prop("checked")) {
-        rowtext = lname + ", " + OGRN;
-        htmlData = "data-islegal=True data-lname=" + lname + " data-ogrn=" + OGRN;
+        rowtext = lname + ", " + INN;
+        htmlData = "data-islegal=True data-lname=" + lname + " data-INN=" + INN;
     }
     if ($("label.modal__tab[data-id='individual'] input").prop("checked")) {
         rowtext = pname + ", " + docnum;
@@ -91,7 +107,7 @@ function AddRegistryRepresentative() {
         </tr>");
 }
 
-// удаляем всех представителй и добавляем новых
+// Обновляем список представителей
 function UpdateRepresentatives() {
     GetChoosenRepresentatives();
     var model = {
@@ -105,7 +121,10 @@ function UpdateRepresentatives() {
         url: "../UpdateRepresentatives",
         type: "POST",
         data: JSON.stringify(model),
-        contentType: "application/json"
+        contentType: "application/json",
+            error: function (err) {
+                alert('Ошибка! Ответ сервера: ' + err.status);
+            }
     }
     );
 }
@@ -116,7 +135,7 @@ function AddUser() {
         GetChoosenRepresentatives();
         var model = {
             UserName: $("#UserName").val(),
-            Password: $("#Password").val(),
+            NewPassword: $("#NewPassword").val(),
             Email: $("#Email").val(),
             Role: $("#Role").val(),
             FullName: $("#FullName").val(),
@@ -198,6 +217,7 @@ $(function () {
     //клик на кнопку "Выбрать" в окне представителей
     $(document).on('click', '.represent-filter .submit', function () {
         var users = [];
+        var IsAnyRep = $(".filter_wrapper input").length > 0;
         $(".filter_wrapper input:checked").each(function () {
             if ($(this).data("lname")) {
                 users.push($(this).data("lname"));
@@ -211,7 +231,13 @@ $(function () {
             $('.admin-represent').text(users.join(", "));
         }
         else {
-            $('.admin-represent').text('Нет');
+            if (IsAnyRep) {
+                $('.admin-represent').text('Показать');
+            }
+            else
+            {
+                $('.admin-represent').text('Нет');
+            }
         }
     });
 
