@@ -86,6 +86,7 @@ function Hotkeys() {
             },
             keys: [18, 54]
         },
+
         {
             // ctrl + 7
             func: function () {
@@ -101,6 +102,14 @@ function Hotkeys() {
                 $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[7].click()
             },
             keys: [18, 56]
+        },
+        {
+            // ctrl + 9
+            func: function () {
+                event.preventDefault();
+                $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[8].click()
+            },
+            keys: [18, 57]
         },
         {
             // ctrl + 9

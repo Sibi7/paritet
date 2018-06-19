@@ -8,6 +8,21 @@ function isAllowedKeyCode(key) {
     }
 }
 
+function statusBuleting(){
+    var regAccId = $('.register-account-id-num').val();
+    $.ajax({
+        url: '/Helper/GetVoteStatus/'+ regAccId,
+        method: 'get',
+        success: function (data) {
+            console.log(data)
+        },
+        error: function (err) {
+            alert('Ошибка! Ответ сервера: ' + err.status);
+        }
+    })
+}
+
+
 $(function () {
     var con = new Condition();
     if (con) {
@@ -199,6 +214,10 @@ $(function () {
     }
     var _changeInterval = null;
     // Простое разделенное голосование
+    $(document).on('click', '.voting-send', function () {
+        statusBuleting();
+
+    });
     $(document).on('keydown', '.votes-cast', function(e) {
         voisesButtonClickEmit($(this));
         var remainingBtn = $(this).closest('.voting__block').find('.remainingVoicesBtn');
