@@ -4,7 +4,6 @@ function Hotkeys() {
         {
             //test
             func:function () {
-                console.log('first function')
             },
             keys: [90, 88]
         },
@@ -21,7 +20,7 @@ function Hotkeys() {
                 event.preventDefault();
                 $('.hotkeys').find('.send-hotkey').click()
             },
-            keys: [17, 83]
+            keys: [18, 83]
         },
         {
             //клик по кнопке "не дейтвительно"
@@ -29,7 +28,7 @@ function Hotkeys() {
                 event.preventDefault();
                 $('.hotkeys').find('.not-valid-hotkey').click()
             },
-            keys: [17, 8]
+            keys: [18, 8]
         },
         {
             //клик по кнопке "отмена"
@@ -45,7 +44,7 @@ function Hotkeys() {
                 event.preventDefault();
                 $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[0].click()
             },
-            keys: [17, 49]
+            keys: [18, 49]
         },
         {
             // ctrl + 2
@@ -53,7 +52,7 @@ function Hotkeys() {
                 event.preventDefault();
                 $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[1].click()
             },
-            keys: [17, 50]
+            keys: [18, 50]
         },
         {
             // ctrl + 3
@@ -61,7 +60,7 @@ function Hotkeys() {
                 event.preventDefault();
                 $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[2].click()
             },
-            keys: [17, 51]
+            keys: [18, 51]
         },
         {
             // ctrl + 4
@@ -69,7 +68,7 @@ function Hotkeys() {
                 event.preventDefault();
                 $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[3].click()
             },
-            keys: [17, 52]
+            keys: [18, 52]
         },
         {
             // ctrl + 5
@@ -77,7 +76,7 @@ function Hotkeys() {
                 event.preventDefault();
                 $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[4].click()
             },
-            keys: [17, 53]
+            keys: [18, 53]
         },
         {
             // ctrl + 6
@@ -85,7 +84,7 @@ function Hotkeys() {
                 event.preventDefault();
                 $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[5].click()
             },
-            keys: [17, 54]
+            keys: [18, 54]
         },
         {
             // ctrl + 7
@@ -93,7 +92,7 @@ function Hotkeys() {
                 event.preventDefault();
                 $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[6].click()
             },
-            keys: [17, 55]
+            keys: [18, 55]
         },
         {
             // ctrl + 8
@@ -101,7 +100,7 @@ function Hotkeys() {
                 event.preventDefault();
                 $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[7].click()
             },
-            keys: [17, 56]
+            keys: [18, 56]
         },
         {
             // ctrl + 9
@@ -109,7 +108,7 @@ function Hotkeys() {
                 event.preventDefault();
                 $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[8].click()
             },
-            keys: [17, 57]
+            keys: [18, 57]
         },
         {
             // space
@@ -201,7 +200,7 @@ $(function () {
         //             event.preventDefault();
         //             $('.hotkeys').find('.send-hotkey').click()
         //         },
-        //         keys: [17, 83]
+        //         keys: [18, 83]
         //     },
         //     {
         //         //клик по кнопке "не дейтвительно"
@@ -209,7 +208,7 @@ $(function () {
         //             event.preventDefault();
         //             $('.hotkeys').find('.not-valid-hotkey').click()
         //         },
-        //         keys: [17, 8]
+        //         keys: [18, 8]
         //     },
         //     {
         //         //клик по кнопке "отмена"
@@ -225,7 +224,7 @@ $(function () {
         //             event.preventDefault();
         //             $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[0].click()
         //         },
-        //         keys: [17, 49]
+        //         keys: [18, 49]
         //     },
         //     {
         //         // ctrl + 2
@@ -233,7 +232,7 @@ $(function () {
         //             event.preventDefault();
         //             $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[1].click()
         //         },
-        //         keys: [17, 50]
+        //         keys: [18, 50]
         //     },
         //     {
         //         // ctrl + 3
@@ -241,7 +240,7 @@ $(function () {
         //             event.preventDefault();
         //             $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[2].click()
         //         },
-        //         keys: [17, 51]
+        //         keys: [18, 51]
         //     },
         //     {
         //         // ctrl + 4
@@ -249,7 +248,7 @@ $(function () {
         //             event.preventDefault();
         //             $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[3].click()
         //         },
-        //         keys: [17, 52]
+        //         keys: [18, 52]
         //     },
         //     {
         //         // ctrl + 5
@@ -257,7 +256,7 @@ $(function () {
         //             event.preventDefault();
         //             $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[4].click()
         //         },
-        //         keys: [17, 53]
+        //         keys: [18, 53]
         //     },
         //     {
         //         // ctrl + 6
@@ -265,7 +264,7 @@ $(function () {
         //             event.preventDefault();
         //             $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[5].click()
         //         },
-        //         keys: [17, 54]
+        //         keys: [18, 54]
         //     },
         //     {
         //         // ctrl + 7
@@ -273,7 +272,7 @@ $(function () {
         //             event.preventDefault();
         //             $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[6].click()
         //         },
-        //         keys: [17, 55]
+        //         keys: [18, 55]
         //     },
         //     {
         //         // ctrl + 8
@@ -281,7 +280,7 @@ $(function () {
         //             event.preventDefault();
         //             $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[7].click()
         //         },
-        //         keys: [17, 56]
+        //         keys: [18, 56]
         //     },
         //     {
         //         // ctrl + 9
@@ -289,7 +288,7 @@ $(function () {
         //             event.preventDefault();
         //             $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[8].click()
         //         },
-        //         keys: [17, 57]
+        //         keys: [18, 57]
         //     },
         //     {
         //         // space
