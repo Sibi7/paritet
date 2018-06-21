@@ -8,20 +8,6 @@ function isAllowedKeyCode(key) {
     }
 }
 
-function statusBuleting(){
-    var regAccId = $('.register-account-id-num').val();
-    $.ajax({
-        url: '/Helper/GetVoteStatus/'+ regAccId,
-        method: 'get',
-        success: function (data) {
-            console.log(data)
-        },
-        error: function (err) {
-            alert('Ошибка! Ответ сервера: ' + err.status);
-        }
-    })
-}
-
 
 $(function () {
     var con = new Condition();
@@ -214,10 +200,9 @@ $(function () {
     }
     var _changeInterval = null;
     // Простое разделенное голосование
-    $(document).on('click', '.voting-send', function () {
-        statusBuleting();
-
-    });
+    // $(document).on('click', '.voting-send', function () {
+    //
+    // });
     $(document).on('keydown', '.votes-cast', function(e) {
         voisesButtonClickEmit($(this));
         var remainingBtn = $(this).closest('.voting__block').find('.remainingVoicesBtn');
@@ -250,8 +235,6 @@ $(function () {
                 // Складываем дроби, и сравниваем с "Голосов всего"
                 console.log(e);
                 var sum = e.result.replace(/\u00a0/g, '');
-                console.log('votingVoicesTotal', votingVoicesTotal);
-                console.log('sum', sum);
                 comparingIsLager(votingVoicesTotal, sum).done(function (data) {
                     if (data.result === 'true') {
                         _this.closest('.question').find('.cumulative-voting-warning').remove()

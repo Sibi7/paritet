@@ -19,6 +19,18 @@ $(function () {
             error: function (err) {
                 alert('Ошибка! Ответ сервера: ' + err.status);
             }
+        }).done(function () {
+            var regAccId = $('.register-account-id-num').val();
+            $.ajax({
+                url: '/Helper/GetVoteStatus/' + regAccId,
+                type: 'get',
+                success: function (data) {
+                    $('.status-voiting').html(data);
+                },
+                error: function (err) {
+                    alert('Ошибка! Ответ сервера: ' + err.status);
+                }
+            })
         })
         // $.ajax({
         //     url:  customUrl,

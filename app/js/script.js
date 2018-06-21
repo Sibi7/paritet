@@ -305,7 +305,7 @@ $(function () {
                 console.log(err)
                 var modal = _this_.siblings('.overlay')
                 modal.find('.modal__header h2').text('Ошибка №' + err.status);
-                modal.find('.modal__body').html('<div style="margin-bottom: 10px">'+ err.statusText + '</div>' + '<div>'+ err.responseText + '</div>');
+                modal.find('.modal__body').html('<div style="margin-bottom: 10px">' + err.statusText + '</div>' + '<div>' + err.responseText + '</div>');
                 modal.show();
                 _this_.attr('data-btn-text', 'Получить список...').removeClass('orange');
             }
@@ -593,12 +593,12 @@ $(function () {
 
     $(document).on('change', '.event-change', function () {
         var parent = $(this).closest('tr');
-       if($(this).val() == 2){
-           parent.find('.ast-voting .noborder').val(0).attr('disabled', 'disabled');
-       }
-       else {
-           parent.find('.ast-voting .noborder').removeAttr('disabled');
-       }
+        if ($(this).val() == 2) {
+            parent.find('.ast-voting .noborder').val(0).attr('disabled', 'disabled');
+        }
+        else {
+            parent.find('.ast-voting .noborder').removeAttr('disabled');
+        }
     });
 
     $(document).on('change', '.input-meeting-date', function () {
@@ -606,7 +606,21 @@ $(function () {
     });
 
     $(document).on('keydown', '.vote-limit', function (e) {
-       return isAllowedKeyCode(e.originalEvent.key);
+        return isAllowedKeyCode(e.originalEvent.key);
     });
+
+//    ридерект формы входа
+    function redirect() {
+        var smSTokenId = $('#SMSToken'),
+            locationForm = window.location;
+        if (smSTokenId.length > 0) {
+            $(document).on('keyup', '.redirect', function () {
+                window.location.href = locationForm;
+            });
+        }
+    }
+    redirect();
+
+
 
 });

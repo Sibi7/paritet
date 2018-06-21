@@ -41,7 +41,9 @@ function FindsProbableRepresentativesForUser(Name, DocNum) {
     $.post("/admin/user/FindsProbableRepresentativesForUser", { Name: Name, DocNum: DocNum },
         function (data) {
             $(".filter_wrapper").html(data);
-        });
+        }).done(function () {
+        $('.filter__body').mCustomScrollbar({theme: "my-theme"});
+    });;
 }
 
 function IsUserRepresentative(Name, DocNum) {
