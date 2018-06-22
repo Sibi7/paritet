@@ -619,8 +619,16 @@ $(function () {
             });
         }
     }
+
     redirect();
 
 
+//    Удаление пробелов
 
+    var inputDeleteSpace = $('.vote-limit');
+    if (inputDeleteSpace.length > 0) {
+        inputDeleteSpace.each(function () {
+            $(this).val($(this).val().trim())
+        });
+    }
 });
