@@ -609,7 +609,7 @@ $(function () {
         return isAllowedKeyCode(e.originalEvent.key);
     });
 
-//    ридерект формы входа
+//    ридерект формы двухфакторного входа
     function redirect() {
         var smSTokenId = $('#SMSToken'),
             locationForm = window.location;
