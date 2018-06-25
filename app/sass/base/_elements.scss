@@ -651,6 +651,11 @@ $orange: #f29c24;
       }
     }
   }
+  .white-space-normal{
+    td{
+      white-space: normal;
+    }
+  }
   .sub-table {
     position: absolute!important;
   }
