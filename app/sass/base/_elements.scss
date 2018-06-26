@@ -1011,6 +1011,22 @@ label {
         border: 1px solid;
       }
     }
+    .voting-close-active{
+      font-size: 22px;
+      color: #eee;
+      display: flex;
+      padding: 0 20px;
+      align-items: center;
+      justify-content: center;
+      text-transform: uppercase;
+      cursor: pointer;
+      height: 30px;
+      background-color: #ef4056;
+      border: 1px solid transparent;
+      &:hover{
+        border: 1px solid;
+      }
+    }
 
     .voting-close-active{
       color: $white;
