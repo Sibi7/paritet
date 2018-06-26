@@ -631,4 +631,16 @@ $(function () {
             $(this).val($(this).val().trim())
         });
     }
-});
+
+//    проверка checked
+    if('.bullet-number-all'.length> 0){
+        $('.bullet-number-all input').on('change', function(){
+            if($('.bullet-number-all input').prop('checked')){
+                $('#allBulletins').val('true');
+            } else{
+                $('#allBulletins').val('false');
+            }
+        });
+    }
+
+   });

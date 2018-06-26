@@ -139,9 +139,10 @@
                         <label class="bullet-number"><input type="radio">3</label>
                         <label class="bullet-number"><input type="radio">4</label>
                         <label class="bullet-number"><input type="radio">5</label>
-                        <label class="bullet-number-all"><input type="radio">Все</label>
+                        <label class="bullet-number-all"><input type="checkbox">Все</label>
                     </div>
                 </div>
+                <input type="hidden" id="allBulletins" name="allBulletins" value="false" />
                 <div class="voting-actions ">
                     <ul class="voting-actions__choice">
                         <li class="voting-actions__choice--item voting-true">
@@ -279,14 +280,16 @@
                             <p class="voting-enter__td-text">Об утверждении регламента общего собрания акционеров</p>
                         </div>
                         <div class="voting-enter__td">
-                            <div class="voting-actions">
+
+
+                            <div class="separation-votes">
                                 <div class="voting-actions__choice-btn">
                                     <div class="voting-actions__choice-wrap">
                                         <div class="voting-actions__wrap-btn">
                                             <div class="voting-votes-all">Голосов всего <span> 200 100</span></div>
                                             <span class="voting-actions__choice--item voting-true">
                                              <label>
-                                                <input type="radio" name="questions[2]">
+                                                <input type="checkbox" name="questions[2]">
                                                 За
                                             </label>
                                         </span>
@@ -309,7 +312,7 @@
                                         <div class="voting-actions__wrap-btn">
                                             <span class="voting-actions__choice--item voting-false">
                                              <label>
-                                                <input type="radio" name="questions[2]">
+                                                <input type="checkbox" name="questions[2]">
                                                 Против
                                             </label>
                                         </span>
@@ -330,9 +333,9 @@
                                     <div class="voting-actions__choice-wrap">
                                         <div class="voting-actions__wrap-btn">
                                             <div class="voting-actions__wrap-btn">
-                                                 <span class="voting-actions__choice--item voting-false">
+                                                 <span class="voting-actions__choice--item voting-abstained">
                                              <label>
-                                                <input type="radio" name="questions[2]">
+                                                <input type="checkbox" name="questions[2]">
                                                 воздерживаюсь
                                             </label>
                                         </span>
@@ -352,6 +355,8 @@
                                     </div>
                                 </div>
                             </div>
+
+
                         </div>
                     </div>
                 </div>
