@@ -139,7 +139,7 @@
                         <label class="bullet-number"><input type="radio">3</label>
                         <label class="bullet-number"><input type="radio">4</label>
                         <label class="bullet-number"><input type="radio">5</label>
-                        <label class="bullet-number-all"><input type="checkbox">Все</label>
+                        <label class="bullet-number-all"><input type="checkbox"><span>Все</span></label>
                     </div>
                 </div>
                 <input type="hidden" id="allBulletins" name="allBulletins" value="false" />
@@ -287,12 +287,10 @@
                                     <div class="voting-actions__choice-wrap">
                                         <div class="voting-actions__wrap-btn">
                                             <div class="voting-votes-all">Голосов всего <span> 200 100</span></div>
-                                            <span class="voting-actions__choice--item voting-true">
-                                             <label>
-                                                <input type="checkbox" name="questions[2]">
-                                                За
+                                             <label class="voting-actions-btn voting-true">
+                                                <input type="checkbox" name="questions[2]" checked>
+                                                <span>За</span>
                                             </label>
-                                        </span>
                                         </div>
                                         <div class="voting-actions__wrap-input">
                                             <label>
@@ -310,12 +308,10 @@
                                     </div>
                                     <div class="voting-actions__choice-wrap">
                                         <div class="voting-actions__wrap-btn">
-                                            <span class="voting-actions__choice--item voting-false">
-                                             <label>
-                                                <input type="checkbox" name="questions[2]">
+                                            <label class="voting-actions-btn voting-false">
+                                                <input type="checkbox" name="questions[2]" checked>
                                                 Против
                                             </label>
-                                        </span>
                                         </div>
                                         <div class="voting-actions__wrap-input">
                                             <label>
@@ -333,12 +329,11 @@
                                     <div class="voting-actions__choice-wrap">
                                         <div class="voting-actions__wrap-btn">
                                             <div class="voting-actions__wrap-btn">
-                                                 <span class="voting-actions__choice--item voting-abstained">
-                                             <label>
-                                                <input type="checkbox" name="questions[2]">
+                                             <label class="voting-actions-btn voting-abstained">
+                                                <input type="checkbox" name="questions[2]" checked>
                                                 воздерживаюсь
                                             </label>
-                                        </span>
+
                                             </div>
                                         </div>
                                         <div class="voting-actions__wrap-input">

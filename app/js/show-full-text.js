@@ -11,8 +11,8 @@ $(function () {
     // }
 
     $(document).on('click', '.need-hide-btn', function () {
-        var smallText = $(this).siblings('.small-size-text').val(),
-            hiddenText = $(this).siblings('.fullsize-text').val();
+        var smallText = $(this).siblings('.small-size-text').html(),
+            hiddenText = $(this).siblings('.fullsize-text').html();
         $(this).prev().toggleClass('resize-text');
 
         if ($(this).prev().hasClass('resize-text')) {
@@ -24,8 +24,8 @@ $(function () {
         }
     })
     $(document).on('click', '.show-full-text-btn', function () {
-        var smallText = $(this).siblings('.small-size-text').val(),
-            hiddenText = $(this).siblings('.fullsize-text').val(),
+        var smallText = $(this).siblings('.small-size-text').html(),
+            hiddenText = $(this).siblings('.fullsize-text').html(),
             showText = $(this).siblings('.meeting-answer.need-hide');
         if ($(this).hasClass('visible-full-text')) {
             showText.html(smallText);
