@@ -643,4 +643,14 @@ $(function () {
         });
     }
 
+
+    $(document).on('click', '.search-select li', function () {
+       $('.t-search').val($(this).text());
+    });
+
+    $(document).on('click', '.search-select li', function () {
+        $('.t-search').val($(this).text());
+    });
+
+
    });

@@ -6,6 +6,9 @@
     align-items: baseline;
 
   }
+  &__s-wrap{
+    position: relative;
+  }
   &__block-name, &__block-voting {
     display: flex;
     align-items: baseline;

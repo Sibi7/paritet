@@ -1538,3 +1538,30 @@ label {
 .white-space {
   white-space: normal !important;
 }
+.search-select{
+  margin: 0;
+  position: absolute;
+  top: 35px;
+  background: #fff;
+  padding: 10px 0;
+  left: 0;
+  border: 1px solid #ccc;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: 0 10px 10px 0 #ddd;
+  box-shadow: 0 10px 10px 0 #ddd;
+  width: 100%;
+  z-index: 4;
+  transition: .4s;
+  li{
+    padding: 5px 20px;
+    cursor: pointer;
+    transition: .4s;
+    font-size: 14px;
+    color: #000;
+    &:hover{
+      background-color: #dce9f5;
+      transition: .4s;
+    }
+  }
+}
