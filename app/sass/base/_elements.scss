@@ -1539,9 +1539,13 @@ label {
   white-space: normal !important;
 }
 .search-select{
+  display: none;
   margin: 0;
   position: absolute;
   top: 35px;
+  max-height: 155px;
+  min-height: 155px;
+  overflow: hidden;
   background: #fff;
   padding: 10px 0;
   left: 0;
@@ -1553,6 +1557,9 @@ label {
   width: 100%;
   z-index: 4;
   transition: .4s;
+  .mCSB_inside>.mCSB_container{
+    margin-right: 0;
+  }
   li{
     padding: 5px 20px;
     cursor: pointer;

@@ -633,11 +633,11 @@ $(function () {
     }
 
 //    проверка checked
-    if('.bullet-number-all'.length> 0){
-        $('.bullet-number-all input').on('change', function(){
-            if($('.bullet-number-all input').prop('checked')){
+    if ('.bullet-number-all'.length > 0) {
+        $('.bullet-number-all input').on('change', function () {
+            if ($('.bullet-number-all input').prop('checked')) {
                 $('#allBulletins').val('true');
-            } else{
+            } else {
                 $('#allBulletins').val('false');
             }
         });
@@ -645,11 +645,22 @@ $(function () {
 
 
     $(document).on('click', '.search-select li', function () {
-       $('.t-search').val($(this).text());
+        $('.t-search').val($(this).text());
+    });
+    $(document).on('click', '.t-search', function () {
+        $('.search-select').show();
     });
 
     $(document).on('click', '.search-select li', function () {
         $('.t-search').val($(this).text());
+        $('.search-select').hide();
     });
 
-   });
+    $(document).mouseup(function (e) {
+        var container = $(".search-select");
+        if (container.has(e.target).length === 0) {
+            container.hide();
+        }
+    });
+
+});
