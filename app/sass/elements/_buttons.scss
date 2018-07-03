@@ -31,6 +31,11 @@
     background-color: #dbdbdb;
     transition: .3s;
   }
+  &:disabled{
+    background-color: #ccc!important;
+    color: #fff;
+    cursor: auto;
+  }
   &:focus {
     outline: none
   }

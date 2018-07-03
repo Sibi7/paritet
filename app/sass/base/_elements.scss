@@ -49,6 +49,13 @@ $orange: #f29c24;
 .bg-blue {
   background-color: #0062b3 !important;
   transition: .3s;
+  &:disabled{
+    background-color: #ccc !important;
+    cursor: auto;
+    &:hover{
+      background-color: #ccc !important;
+    }
+  }
   &:hover {
     background: darken(#0062b3, 10%) !important;
     transition: .3s;
@@ -1570,5 +1577,14 @@ label {
       background-color: #dce9f5;
       transition: .4s;
     }
+    &:focus{
+      background-color: #dce9f5;
+      transition: .4s;
+     outline: none;
+    }
+  }
+}
+.form-save-btn{
+  &:disabled{
   }
 }

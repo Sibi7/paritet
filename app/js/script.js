@@ -653,6 +653,7 @@ $(function () {
 
     $(document).on('click', '.search-select li', function () {
         $('.t-search').val($(this).text());
+        $(this).closest('form').submit();
         $('.search-select').hide();
     });
 
@@ -662,5 +663,20 @@ $(function () {
             container.hide();
         }
     });
+
+    //disabled кнопки сохранить, если в форме бюлетеня не было изменений
+    function disableSaveBTn() {
+        if ($('.form-save-btn').length > 0) {
+            $(document).on("change", '.disabled-form', function () {
+                $('.form-save-btn').removeAttr('disabled');
+            });
+            $(document).on("click", '.voting-actions__choice--item ', function () {
+                $('.form-save-btn').removeAttr('disabled');
+            });
+        }
+    }
+
+    disableSaveBTn();
+
 
 });
