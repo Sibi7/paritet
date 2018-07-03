@@ -652,5 +652,4 @@ $(function () {
         $('.t-search').val($(this).text());
     });
 
-
    });
