@@ -1,7 +1,7 @@
 $(function () {
 
     // ajax для кнопок "Подписать и отправить"
-    $(document).on('click', ' voting-send-ajax', function (e) {
+    $(document).on('click', '.voting-send-ajax', function (e) {
         e.preventDefault();
         var _this = $(this);
         var parent = $(this).closest('.content__block');
