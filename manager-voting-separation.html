@@ -88,7 +88,7 @@
 <!-- start manager-voting-separation.html-->
 <main class="content">
 
-    <form class="content__section voting-enter manager-meeting-cabinet hotkeys disabled-form">
+    <form class="content__section voting-enter manager-meeting-cabinet hotkeys disabled-form voting-input ">
 
         <h2>Внеочередное повторное общее собрание акционеров</h2>
 
@@ -153,15 +153,16 @@
                     </div>
                 </div>
                 <input type="hidden" id="allBulletins" name="allBulletins" value="false" />
+
                 <div class="voting-actions ">
                     <ul class="voting-actions__choice">
-                        <li class="voting-actions__choice--item voting-true">
+                        <li class="voting-actions__choice--item voting-actions-all-btn voting-true">
                             <label><input type="radio" name="questions[2]">За</label>
                         </li>
-                        <li class="voting-actions__choice--item voting-false">
+                        <li class="voting-actions__choice--item  voting-actions-all-btn voting-false">
                             <label><input type="radio" name="questions[2]">Против</label>
                         </li>
-                        <li class="voting-actions__choice--item voting-abstained">
+                        <li class="voting-actions__choice--item voting-actions-all-btn voting-abstained">
                             <label><input type="radio" name="questions[2]">воздерживаюсь</label>
                         </li>
                         <li >
@@ -172,6 +173,7 @@
                         </li>
                     </ul>
                 </div>
+
             </div>
         </div>
 
@@ -191,13 +193,13 @@
                         <div class="voting-enter__td">
                             <div class="voting-actions">
                                 <ul class="voting-actions__choice">
-                                    <li class="voting-actions__choice--item voting-true" tabindex="1">
+                                    <li class="voting-actions__choice--item  voting-true" tabindex="1">
                                         <label><input type="radio" name="questions[2]">За</label>
                                     </li>
-                                    <li class="voting-actions__choice--item voting-false" tabindex="2">
+                                    <li class="voting-actions__choice--item   voting-false" tabindex="2">
                                         <label><input type="radio" name="questions[2]">Против</label>
                                     </li>
-                                    <li class="voting-actions__choice--item voting-abstained" tabindex="3">
+                                    <li class="voting-actions__choice--item  voting-abstained" tabindex="3">
                                         <label><input type="radio" name="questions[2]">воздерживаюсь</label>
                                     </li>
                                     <li >
@@ -218,13 +220,13 @@
                         <div class="voting-enter__td">
                             <div class="voting-actions">
                                 <ul class="voting-actions__choice">
-                                    <li class="voting-actions__choice--item voting-true">
+                                    <li class="voting-actions__choice--item  voting-true">
                                         <label><input type="radio" name="questions[2]">За</label>
                                     </li>
-                                    <li class="voting-actions__choice--item voting-false">
+                                    <li class="voting-actions__choice--item  voting-false">
                                         <label><input type="radio" name="questions[2]">Против</label>
                                     </li>
-                                    <li class="voting-actions__choice--item voting-abstained">
+                                    <li class="voting-actions__choice--item  voting-abstained">
                                         <label><input type="radio" name="questions[2]">воздерживаюсь</label>
                                     </li>
                                     <li >
@@ -254,16 +256,16 @@
                         <div class="voting-enter__td">
                             <div class="voting-actions">
                                 <ul class="voting-actions__choice">
-                                    <li class="voting-actions__choice--item voting-veto">
+                                    <li class="voting-actions__choice--item  voting-veto">
                                         <label><input type="radio" name="questions[2]">Вето</label>
                                     </li>
-                                    <li class="voting-actions__choice--item voting-true">
+                                    <li class="voting-actions__choice--item  voting-true">
                                         <label><input type="radio" name="questions[2]">За</label>
                                     </li>
-                                    <li class="voting-actions__choice--item voting-false">
+                                    <li class="voting-actions__choice--item  voting-false">
                                         <label><input type="radio" name="questions[2]">Против</label>
                                     </li>
-                                    <li class="voting-actions__choice--item voting-abstained">
+                                    <li class="voting-actions__choice--item  voting-abstained">
                                         <label><input type="radio" name="questions[2]">воздерживаюсь</label>
                                     </li>
                                     <li >
@@ -297,7 +299,7 @@
                                     <div class="voting-actions__choice-wrap">
                                         <div class="voting-actions__wrap-btn">
                                             <div class="voting-votes-all">Голосов всего <span> 200 100</span></div>
-                                             <label class="voting-actions-btn voting-true">
+                                             <label class="  voting-true">
                                                 <input type="checkbox" name="questions[2]" checked>
                                                 <span>За</span>
                                             </label>
@@ -318,7 +320,7 @@
                                     </div>
                                     <div class="voting-actions__choice-wrap">
                                         <div class="voting-actions__wrap-btn">
-                                            <label class="voting-actions-btn voting-false">
+                                            <label class="  voting-false">
                                                 <input type="checkbox" name="questions[2]" checked>
                                                 Против
                                             </label>
@@ -339,7 +341,7 @@
                                     <div class="voting-actions__choice-wrap">
                                         <div class="voting-actions__wrap-btn">
                                             <div class="voting-actions__wrap-btn">
-                                             <label class="voting-actions-btn voting-abstained">
+                                             <label class="   voting-abstained">
                                                 <input type="checkbox" name="questions[2]" checked>
                                                 воздерживаюсь
                                             </label>
