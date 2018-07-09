@@ -47,7 +47,7 @@
     align-items: center;
     font-size: 13px;
   }
-  .voting-actions {
+  .voting-inputs{
     margin-top: auto;
     margin-left: auto;
     padding-top: 0;
@@ -56,6 +56,15 @@
   }
 
   .voting-actions__choice--item {
+    border: 1px solid transparent;
+    &:last-of-type {
+      margin-right: 0;
+    }
+    &:hover, &:focus {
+      border: 1px solid;
+    }
+  }
+  .voting-inputs__choice--item {
     border: 1px solid transparent;
     &:last-of-type {
       margin-right: 0;
