@@ -670,7 +670,7 @@ $(function () {
             $(document).on("change", '.disabled-form', function () {
                 $('.form-save-btn').removeAttr('disabled');
             });
-            $(document).on("click", '.voting-actions__choice--item ', function () {
+            $(document).on("click", '.voting-inputs__choice--item ', function () {
                 $('.form-save-btn').removeAttr('disabled');
             });
         }

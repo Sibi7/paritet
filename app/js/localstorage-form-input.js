@@ -3,12 +3,12 @@ $(function () {
     var inputCon = new Condition();
     inputCon.init({
         valAttrName: 'data-scv',
-        cookieName: '___rrr___',
+        cookieName: '___input-result___',
         customLoad: function (item, name, value, type) {
             //console.log(item, name, value, type);
             if (type === 'block') {
                 if (parseInt(value) === 1) {
-                    item.classList.add('block');
+                    item.classList.add('input-selected');
 
                 }
             }
@@ -64,7 +64,8 @@ $(function () {
         }
 
         var val = parseInt($(this).attr('data-scv'));
-        $('.voting-input .voting-actions-all-btn').attr('data-scv', 0);
+
+        $('.voting-inputs .voting-actions-all-btn').attr('data-scv', 0);
         if (val === 0) {
             $(this).attr('data-scv', 1)
         }
@@ -72,7 +73,9 @@ $(function () {
             $(this).attr('data-scv', 0);
         }
         inputCon.runSave();
-        return false
+        return false;
+
+
 
     });
     $(document).on('click', '.voting-actions-sing-btn', function (e) {
@@ -80,6 +83,17 @@ $(function () {
         parent.find('.input-selected').removeClass('input-selected');
         $(this).toggleClass('input-selected');
         $('.voting-actions-all-btn').removeClass('input-selected');
-        return false
+        var val = parseInt($(this).attr('data-scv'));
+
+        $('.voting-actions-sing-btn').attr('data-scv', 0);
+        if (val === 0) {
+            $(this).attr('data-scv', 1)
+        }
+        else {
+            $(this).attr('data-scv', 0);
+        }
+        inputCon.runSave();
+        return false;
+
     });
 });
