@@ -10,11 +10,12 @@ function Condition() {
             valAttrName: 'data-save-condition-val',
             storage: 'cookie',
             customLoad: function (item, name, value, type) {
-            }
+            },
+            afterInit: function () {},
+            afterLoad: function () {}
         };
 
         this.options = setOptions(defaultOptions, options);
-
     };
 
     this.runSave = function () {
@@ -54,6 +55,7 @@ function Condition() {
                 }
             }
         }
+        this.options.afterLoad();
     };
 
     this.getAttr = function (elem, attr) {

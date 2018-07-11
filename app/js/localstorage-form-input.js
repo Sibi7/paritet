@@ -21,32 +21,43 @@ $(function () {
                     item.setAttribute('checked', 'checked');
                 }
             }
+        },
+        afterLoad: function () {
+            var v = new allVoting();
+            v.clickToBtn();
         }
 
     });
 
-
     inputCon.runLoad();
 
-    $(document).on('change', '.bullet-number-all', function () {
-        if ($(".bullet-number-all").attr("checked") == 'checked'){
+    $(document).on('change', '.bullet-number-all', function (e) {
+
+        if (!$(".bullet-number-all").hasClass('checked__')) {
             var v = new allVoting();
-            if($('.voting-actions-all-btn.voting-false').hasClass('voting-selected')){
+            var votingSelected = document.querySelector('.input-selected');
+            console.log(votingSelected);
+            if (votingSelected.classList.contains('voting-false')) {
                 v.addToCookie('voting-false');
+                console.log('voting-false');
             }
-            if($('.voting-actions-all-btn.voting-true').hasClass('voting-selected')){
+            if (votingSelected.classList.contains('voting-true')) {
                 v.addToCookie('voting-true');
+                console.log('voting-true');
             }
-            if($('.voting-actions-all-btn.voting-abstained').hasClass('voting-selected')){
+            if (votingSelected.classList.contains('voting-abstained')) {
                 v.addToCookie('voting-abstained');
+                console.log('voting-abst');
             }
         }
 
+        $(".bullet-number-all").toggleClass('checked__');
     });
 
     $(document).on('click', '.voting-actions-all-btn', function (e) {
 
         var val = parseInt($(this).find('input').attr('data-scv'));
+
 
         if ($(this).hasClass('input-selected')) {
 
@@ -141,7 +152,7 @@ $(function () {
         var search = window.location.search.substr(1),
             keys = {};
 
-        search.split('&').forEach(function(item) {
+        search.split('&').forEach(function (item) {
             item = item.split('=');
             keys[item[0]] = item[1];
         });

@@ -7,8 +7,16 @@ function allVoting() {
     };
     this.clickToBtn = function () {
       var btnType = this.getCookie(),
-          btnObj = document.querySelector('.' + btnType);
-        btnObj.click();
+          btnObj = document.getElementById(btnType);
+
+      if(btnType){
+          if(!btnObj.classList.contains('input-selected')){
+              setTimeout(function () {
+                  btnObj.click();
+              }, 1)
+          }
+      }
+
     };
     function setCookie(name, value, options) {
         options = options || {};
