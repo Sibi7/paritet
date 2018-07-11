@@ -8,6 +8,7 @@ function Condition() {
             typeAttrName: 'data-save-condition',
             nameAttrName: 'data-save-condition-name',
             valAttrName: 'data-save-condition-val',
+            storage: 'cookie',
             customLoad: function (item, name, value, type) {
             }
         };
@@ -34,20 +35,23 @@ function Condition() {
             }
 
         }
-        setCookie(this.options.cookieName, JSON.stringify(this.conditionArray), {expires: this.options.cookieExpires});
+        this.setStorage(this.options.cookieName, JSON.stringify(this.conditionArray));
     };
 
     this.runLoad = function () {
-        var arr = getCookie(this.options.cookieName);
+        var arr = this.getStorage(this.options.cookieName);
         if (arr) {
             arr = JSON.parse(arr);
             for (var i = 0; i < arr.length; i++) {
                 var el = this.getElementByAttr(this.options.nameAttrName, arr[i].name);
-                if(arr[i].type === 'block' || arr[i].type === 'checkbox'){
-                    el.setAttribute(this.options.valAttrName, arr[i].val);
-                }
+                if(el){
+                    if(arr[i].type === 'block' || arr[i].type === 'checkbox'){
+                        console.log(el);
+                        el.setAttribute(this.options.valAttrName, arr[i].val);
+                    }
 
-                this.options.customLoad(el, arr[i].name, arr[i].val, arr[i].type);
+                    this.options.customLoad(el, arr[i].name, arr[i].val, arr[i].type);
+                }
             }
         }
     };
@@ -162,5 +166,32 @@ function Condition() {
 
         return finalParams;
     }
+    function setLocalStorage (key, value) {
+        if(typeof value != "string"){
+            value = JSON.stringify(value);
+        }
+        return localStorage.setItem(key, value);
+    };
+    function getLocalStorage (key) {
+        return localStorage.getItem(key);
+    };
+
+    this.getStorage = function (key) {
+        if(this.options.storage == "cookie"){
+            return getCookie(key);
+        }
+        if (this.options.storage == "localStorage"){
+            return getLocalStorage(key);
+        }
+    };
+    this.setStorage = function (key, value) {
+        if(this.options.storage == "cookie"){
+            return setCookie (key, value, {expires: this.options.cookieExpires});
+        }
+        if (this.options.storage == "localStorage"){
+            return setLocalStorage(key, value);
+        }
+    };
+
 
 }
