@@ -30,48 +30,49 @@ $(function () {
 
     $(document).on('click', '.voting-actions-all-btn', function (e) {
 
+        var val = parseInt($(this).attr('data-scv'));
+
         if ($(this).hasClass('input-selected')) {
 
-            $('li.input-selected').removeClass('input-selected');
+            $('li.input-selected').removeClass('input-selected').attr('data-scv', 0);
             // $('.voting-true').addClass('input-selected');
             return false
         }
         if ($(this).hasClass('voting-true')) {
-            $('.voting-true').addClass('input-selected');
+            $('.voting-true').addClass('input-selected').attr('data-scv', 1);
         }
         else {
-            $('.voting-true').removeClass('input-selected');
+            $('.voting-true').removeClass('input-selected').attr('data-scv', 0);
         }
         //
         if ($(this).hasClass('voting-false')) {
-            $('.voting-false').addClass('input-selected');
+            $('.voting-false').addClass('input-selected').attr('data-scv', 1);
         }
         else {
-            $('.voting-false').removeClass('input-selected');
+            $('.voting-false').removeClass('input-selected').attr('data-scv', 0);
         }
 
         if ($(this).hasClass('voting-abstained')) {
-            $('.voting-abstained').addClass('input-selected');
+            $('.voting-abstained').addClass('input-selected').attr('data-scv', 1);
         }
         else {
-            $('.voting-abstained').removeClass('input-selected');
+            $('.voting-abstained').removeClass('input-selected').attr('data-scv', 0);
         }
         if ($(this).hasClass('voting-veto')) {
-            $('.voting-veto').addClass('input-selected');
+            $('.voting-veto').addClass('input-selected').attr('data-scv', 1);
         }
         else {
-            $('.voting-veto').removeClass('input-selected');
+            $('.voting-veto').removeClass('input-selected').attr('data-scv', 0);
         }
 
-        var val = parseInt($(this).attr('data-scv'));
 
-        $('.voting-inputs .voting-actions-all-btn').attr('data-scv', 0);
-        if (val === 0) {
-            $(this).attr('data-scv', 1)
-        }
-        else {
-            $(this).attr('data-scv', 0);
-        }
+        // $('.voting-inputs .voting-actions-all-btn').attr('data-scv', 0);
+        // if (val === 0) {
+        //     $(this).attr('data-scv', 1)
+        // }
+        // else {
+        //     $(this).attr('data-scv', 0);
+        // }
         inputCon.runSave();
         return false;
 
@@ -80,12 +81,18 @@ $(function () {
     });
     $(document).on('click', '.voting-actions-sing-btn', function (e) {
         var parent = $(this).closest('.voting-inputs__choice');
-        parent.find('.input-selected').removeClass('input-selected');
-        $(this).toggleClass('input-selected');
-        $('.voting-actions-all-btn').removeClass('input-selected');
+        parent.find('.input-selected').attr('data-scv', 0).removeClass('input-selected');
+        $('.voting-actions-all-btn').attr('data-scv', 0).removeClass('input-selected');
         var val = parseInt($(this).attr('data-scv'));
 
-        $('.voting-actions-sing-btn').attr('data-scv', 0);
+        if($(this).hasClass('input-selected')){
+            $(this).removeClass('input-selected')
+        }
+        else {
+            $(this).addClass('input-selected');
+        }
+
+        // $('.voting-actions-sing-btn').attr('data-scv', 0);
         if (val === 0) {
             $(this).attr('data-scv', 1)
         }
