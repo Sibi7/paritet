@@ -125,23 +125,26 @@ $orange: #f29c24;
     display: inline-block;
     cursor: pointer;
     font-size: 14px;
-    padding: 5px 8px;
+
     box-sizing: border-box;
     margin: 5px;
 
     &:hover {
       text-decoration: underline;
     }
-    span {
-      padding: 5px 8px;
-    }
+
     input[type="checkbox"] {
       display: none;
 
-      &:checked + span {
-        background: $pink;
-        color: white;
-      }
+    }
+  }
+  span {
+    padding: 5px 8px;
+  }
+  .checked__{
+    span {
+      background: $pink;
+      color: white;
     }
   }
 

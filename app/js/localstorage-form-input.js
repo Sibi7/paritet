@@ -9,7 +9,8 @@ $(function () {
             //console.log(item, name, value, type);
             if (type === 'block') {
                 if (parseInt(value) === 1) {
-                    item.classList.add('input-selected');
+                    $(item).closest('label').addClass('checked__');
+
                 }
             }
             if (type === 'input') {
@@ -36,24 +37,27 @@ $(function () {
         if (!$(".bullet-number-all").hasClass('checked__')) {
             var v = new allVoting();
             var votingSelected = document.querySelector('.input-selected');
-            console.log(votingSelected);
             if (votingSelected.classList.contains('voting-false')) {
                 v.addToCookie('voting-false');
-                console.log('voting-false');
             }
             if (votingSelected.classList.contains('voting-true')) {
                 v.addToCookie('voting-true');
-                console.log('voting-true');
             }
             if (votingSelected.classList.contains('voting-abstained')) {
                 v.addToCookie('voting-abstained');
-                console.log('voting-abst');
             }
-        }
 
+        }
         $(".bullet-number-all").toggleClass('checked__');
+        $(this).find('input').attr('data-scv', 1);
+        inputCon.runSave();
+        return false;
     });
 
+
+// $(document).on("click", ".bullet-number-all", function () {
+//
+// });
     $(document).on('click', '.voting-actions-all-btn', function (e) {
 
         var val = parseInt($(this).find('input').attr('data-scv'));
@@ -61,51 +65,51 @@ $(function () {
 
         if ($(this).hasClass('input-selected')) {
 
-            $('li.input-selected input').attr('data-scv', 0);
+            $('li.input-selected input').attr('data-scv', 0).removeAttr('checked');
             $('li.input-selected').removeClass('input-selected');
             inputCon.runSave();
             return false
         }
         if ($(this).hasClass('voting-true')) {
             $('.voting-true').addClass('input-selected');
-            $('.voting-true input').attr('data-scv', 1);
+            $('.voting-true input').attr('data-scv', 1).attr('checked', 'checked');
         }
         else {
             $('.voting-true').removeClass('input-selected');
-            $('.voting-true input').attr('data-scv', 0);
+            $('.voting-true input').attr('data-scv', 0).removeAttr('checked');
         }
 
         if ($(this).hasClass('voting-false')) {
             $('.voting-false').addClass('input-selected');
-            $('.voting-false input').attr('data-scv', 1);
+            $('.voting-false input').attr('data-scv', 1).attr('checked', 'checked');
         }
         else {
             $('.voting-false').removeClass('input-selected');
-            $('.voting-false input').attr('data-scv', 0);
+            $('.voting-false input').attr('data-scv', 0).removeAttr('checked');
         }
 
         if ($(this).hasClass('voting-abstained')) {
             $('.voting-abstained').addClass('input-selected');
-            $('.voting-abstained input').attr('data-scv', 1);
+            $('.voting-abstained input').attr('data-scv', 1).attr('checked', 'checked');
         }
         else {
             $('.voting-abstained').removeClass('input-selected');
-            $('.voting-abstained input').attr('data-scv', 0);
+            $('.voting-abstained input').attr('data-scv', 0).removeAttr('checked');
         }
         if ($(this).hasClass('voting-veto')) {
             $('.voting-veto').addClass('input-selected');
-            $('.voting-veto input').attr('data-scv', 1);
+            $('.voting-veto input').attr('data-scv', 1).attr('checked', 'checked');
         }
         else {
             $('.voting-veto').removeClass('input-selected');
-            $('.voting-veto input').attr('data-scv', 0);
+            $('.voting-veto input').attr('data-scv', 0).removeAttr('checked');
         }
 
         if (val === 0) {
-            $(this).find('input').attr('data-scv', 1)
+            $(this).find('input').attr('data-scv', 1).attr('checked', 'checked');
         }
         else {
-            $(this).find('input').attr('data-scv', 0);
+            $(this).find('input').attr('data-scv', 0).removeAttr('checked');
         }
         inputCon.runSave();
         return false;
@@ -115,7 +119,7 @@ $(function () {
     $(document).on('click', '.voting-actions-sing-btn', function (e) {
         var _this = $(this);
         $('.voting-actions-all-btn').removeClass('input-selected');
-        $('.voting-actions-all-btn input').attr('data-scv', 0);
+        $('.voting-actions-all-btn input').attr('data-scv', 0).removeAttr('checked');
 
 
         if ($(this).hasClass('input-selected')) {
@@ -125,7 +129,7 @@ $(function () {
         }
         else {
             $(this).closest('.voting-inputs__choice').find('.input-selected').removeClass('input-selected');
-            $(this).closest('.voting-inputs__choice').find('input').attr('data-scv', 0);
+            $(this).closest('.voting-inputs__choice').find('input').attr('data-scv', 0).removeAttr('checked');
             $(this).addClass('input-selected');
             checkCookie();
 
@@ -135,10 +139,10 @@ $(function () {
         function checkCookie() {
             var val = parseInt(_this.find('input').attr('data-scv'));
             if (val === 0) {
-                _this.find('input').attr('data-scv', 1)
+                _this.find('input').attr('data-scv', 1).attr('checked', 'checked')
             }
             else {
-                _this.find('input').attr('data-scv', 0);
+                _this.find('input').attr('data-scv', 0).removeAttr('checked');
             }
         }
 
@@ -147,6 +151,7 @@ $(function () {
 
 
     });
+
 
     function getUri() {
         var search = window.location.search.substr(1),

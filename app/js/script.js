@@ -462,17 +462,17 @@ $(function () {
         var votingAbstained = $('.voting-enter__table').find('.voting-abstained');
         var votingNotValid = $('.voting-enter__table').find('.voting-not-valid');
         if (e.hasClass('voting-true')) {
-            items.removeClass('voting-selected').find('input').removeAttr('checked')
+            items.removeClass('voting-selected').find('input').removeAttr('checked');
             votingTrue.addClass('voting-selected');
             votingTrue.find('input').attr('checked', 'checked');
         }
         if (e.hasClass('voting-false')) {
-            items.removeClass('voting-selected').find('input').removeAttr('checked')
+            items.removeClass('voting-selected').find('input').removeAttr('checked');
             votingFalse.addClass('voting-selected');
             votingFalse.find('input').attr('checked', 'checked');
         }
         if (e.hasClass('voting-abstained')) {
-            items.removeClass('voting-selected').find('input').removeAttr('checked')
+            items.removeClass('voting-selected').find('input').removeAttr('checked');
             votingAbstained.addClass('voting-selected');
             votingAbstained.find('input').attr('checked', 'checked');
         }
