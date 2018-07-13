@@ -102,8 +102,8 @@ function AddRegistryRepresentative() {
         <label></label>\
         <span class='filter__row-text'>"+ rowtext + "</span>\
         <div class='filter__edit-btn'>\
-        <button class='ast-action-btn'><img src='~/images/icons/edit2.png' alt=''></button>\
-        <button class='ast-action-btn'><img src='~/images/icons/cross.png' alt=''></button>\
+        <button class='ast-action-btn'><img src='/images/icons/edit2.png' alt=''></button>\
+        <button class='ast-action-btn'><img src='/images/icons/cross.png' alt=''></button>\
         </div>\
         </td>\
         </tr>");

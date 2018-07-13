@@ -47,7 +47,6 @@ function Condition() {
                 var el = this.getElementByAttr(this.options.nameAttrName, arr[i].name);
                 if(el){
                     if(arr[i].type === 'block' || arr[i].type === 'checkbox'){
-                        console.log(el);
                         el.setAttribute(this.options.valAttrName, arr[i].val);
                     }
 

@@ -18,8 +18,15 @@ $(function () {
             }
             if (type === 'checkbox') {
                 if (parseInt(value) === 1) {
-                    $(item).closest('.voting-inputs__choice--item').addClass('input-selected');
-                    item.setAttribute('checked', 'checked');
+                    if (!$(item).closest('.voting-inputs__choice').find('.input-selected').length > 0) {
+                        $(item).closest('.voting-inputs__choice--item').addClass('input-selected');
+                        item.setAttribute('checked', 'checked');
+                    }
+                    if($(item).closest('.voting-inputs__choice--item').hasClass('voting-true')){
+
+                        $('.voting-actions-all-btn.voting-true').addClass('voting-selected')
+                    }
+
                 }
             }
         },
@@ -29,7 +36,6 @@ $(function () {
         }
 
     });
-
     inputCon.runLoad();
 
     $(document).on('change', '.bullet-number-all', function (e) {
@@ -53,11 +59,6 @@ $(function () {
         inputCon.runSave();
         return false;
     });
-
-
-// $(document).on("click", ".bullet-number-all", function () {
-//
-// });
     $(document).on('click', '.voting-actions-all-btn', function (e) {
 
         var val = parseInt($(this).find('input').attr('data-scv'));
@@ -152,7 +153,6 @@ $(function () {
 
     });
 
-
     function getUri() {
         var search = window.location.search.substr(1),
             keys = {};
@@ -165,5 +165,7 @@ $(function () {
         return keys;
 
     }
+
+
 
 });
