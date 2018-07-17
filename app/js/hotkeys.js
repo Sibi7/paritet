@@ -39,7 +39,7 @@ function Hotkeys() {
             keys: [27]
         },
         {
-            // ctrl + 1
+            // alt + 1
             func: function () {
                 event.preventDefault();
                 $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[0].click()
@@ -47,7 +47,7 @@ function Hotkeys() {
             keys: [18, 49]
         },
         {
-            // ctrl + 2
+            // alt + 2
             func: function () {
                 event.preventDefault();
                 $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[1].click()
@@ -55,7 +55,7 @@ function Hotkeys() {
             keys: [18, 50]
         },
         {
-            // ctrl + 3
+            // alt + 3
             func: function () {
                 event.preventDefault();
                 $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[2].click()
@@ -63,7 +63,7 @@ function Hotkeys() {
             keys: [18, 51]
         },
         {
-            // ctrl + 4
+            // alt + 4
             func: function () {
                 event.preventDefault();
                 $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[3].click()
@@ -71,7 +71,7 @@ function Hotkeys() {
             keys: [18, 52]
         },
         {
-            // ctrl + 5
+            // alt + 5
             func: function () {
                 event.preventDefault();
                 $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[4].click()
@@ -79,7 +79,7 @@ function Hotkeys() {
             keys: [18, 53]
         },
         {
-            // ctrl + 6
+            // alt + 6
             func: function () {
                 event.preventDefault();
                 $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[5].click()
@@ -88,7 +88,7 @@ function Hotkeys() {
         },
 
         {
-            // ctrl + 7
+            // alt + 7
             func: function () {
                 event.preventDefault();
                 $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[6].click()
@@ -112,12 +112,12 @@ function Hotkeys() {
             keys: [18, 57]
         },
         {
-            // ctrl + 9
+            // alt + 0 выбор всех бюллетеней
             func: function () {
                 event.preventDefault();
-                $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[8].click()
+                $('.bullet-numbers-hotkey').find('.bullet-number-all').trigger('change');
             },
-            keys: [18, 57]
+            keys: [18, 48]
         },
         {
             // space

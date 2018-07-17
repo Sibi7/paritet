@@ -1,8 +1,4 @@
-﻿var Representatives = []; // Выбранные представители
-var RegistryPersonRepresentatives = []; //Добавленные прдеставители по физикам
-var RegistryLegalRepresentatives = []; //Добавленные прдеставители по юрикам
-
-// проверяем если в реестре счета для данного пользователя
+﻿// проверяем если в реестре счета для данного пользователя
 function FindAccountsForUser() {
     name = $(".user_name").val();
     docnum = $(".user_doc").val();
@@ -26,11 +22,28 @@ function FindAccountsForUser() {
 }
 
 function ChangePassword() {
-    $.post("/user/ChangePassword", $("#ChangePasswordForm").serialize(), function (data) {
-        if (data) {
+    if ($("[name=TwoFactorEnabled]").val() == "True" && $("#SmsToken").val() == false) {
+        $.post("/profile/SendSmsForChangePassword")
+        $(".string").has("#SmsToken").slideDown("slow");
+        return;
+    }
+
+    var model = {
+        OldPassword: $("#OldPassword").val(),
+        NewPassword: $("#NewPassword").val(),
+        NewPasswordRepeat: $("#NewPasswordRepeat").val(),
+        SmsToken: $("#SmsToken").val()
+    };
+
+    $.ajax({
+        method: "POST",
+        url: "/profile/ChangePassword",
+        data: JSON.stringify(model),
+        contentType: "application/json",
+        success: function () {
             $(".modal-change-password-success").closest('.overlay').show();
-        }
-        else {
+        },
+        error: function () {
             $(".modal-change-password-fail").closest('.overlay').show();
         }
     });
@@ -42,8 +55,8 @@ function FindsProbableRepresentativesForUser(Name, DocNum) {
         function (data) {
             $(".filter_wrapper").html(data);
         }).done(function () {
-        $('.filter__body').mCustomScrollbar({theme: "my-theme"});
-    });;
+            $('.filter__body').mCustomScrollbar({ theme: "my-theme" });
+        });;
 }
 
 function IsUserRepresentative(Name, DocNum) {
@@ -58,22 +71,45 @@ function IsUserRepresentative(Name, DocNum) {
         });
 }
 
-// парсим страницу на предмет выбранных представителей
+
+// Выбранные представители
 function GetChoosenRepresentatives() {
-    Representatives = [];
-    RegistryPersonRepresentatives = [];
-    RegistryLegalRepresentatives = [];
-    $(".filter_wrapper input:checked[data-isregistry=False]").each(function () { Representatives.push(this.id); });
-    $(".filter_wrapper input:checked[data-isregistry=True][data-islegal=True]").each(function () {
-        RegistryLegalRepresentatives.push({
-            "lname": $(this).data("lname"), "INN": $(this).data("INN")
-        })
-    });
-    $(".filter_wrapper input:checked[data-isregistry=True][data-islegal=False]").each(function () {
-        RegistryPersonRepresentatives.push({
-            "pname": $(this).data("pname"), "docnum": $(this).data("docnum")
-        })
-    });
+    var result = [];
+
+    $(".filter_wrapper input:checked[data-isregistry=False]")
+        .each(function () {
+            result.push(this.id);
+        });
+
+    return result;
+}
+
+//Добавленные прдеставители по физикам
+function GetRegistryPersonRepresentatives() {
+    var result = [];
+
+    $(".filter_wrapper input:checked[data-isregistry=True][data-islegal=False]")
+        .each(function () {
+            result.push({
+                "pname": $(this).data("pname"), "docnum": $(this).data("docnum")
+            });
+        });
+
+    return result;
+}
+
+//Добавленные прдеставители по юрикам
+function GetRegistryLegalRepresentatives() {
+    var result = [];
+
+    $(".filter_wrapper input:checked[data-isregistry=True][data-islegal=True]")
+        .each(function () {
+            result.push({
+                "lname": $(this).data("lname"), "INN": $(this).data("inn")
+            })
+        });
+
+    return result;
 }
 
 // добавляем в массив новых представителей
@@ -84,16 +120,22 @@ function AddRegistryRepresentative() {
     var docnum = $(".individual-doc").val();
     var rowtext;
     var htmlData;
-    if ($("label.modal__tab[data-id='entity'] input").prop("checked")) {
+    var isLegal = $("label.modal__tab[data-id='entity'] input").prop("checked");
+    var isPerson = $("label.modal__tab[data-id='individual'] input").prop("checked");
+    if (isLegal) {
         rowtext = lname + ", " + INN;
         htmlData = "data-islegal=True data-lname=" + lname + " data-INN=" + INN;
     }
-    if ($("label.modal__tab[data-id='individual'] input").prop("checked")) {
+    if (isPerson) {
         rowtext = pname + ", " + docnum;
         htmlData = "data-islegal=False data-pname=" + pname + " data-docnum=" + docnum;
     }
-    // Добавляем нового представителя в список выбора
-    $(".filter__body table tr:last").after("\
+
+    // Если добавляем новго
+    console.log($("#edit-represntative-number").val());
+    if ($("#edit-represntative-number").val().length == 0) {
+        // Добавляем нового представителя в список выбора
+        $(".filter__body table tr:last").after("\
         <tr>\
         <td>\
         <input type='checkbox' \
@@ -102,21 +144,42 @@ function AddRegistryRepresentative() {
         <label></label>\
         <span class='filter__row-text'>"+ rowtext + "</span>\
         <div class='filter__edit-btn'>\
-        <button class='ast-action-btn'><img src='/images/icons/edit2.png' alt=''></button>\
-        <button class='ast-action-btn'><img src='/images/icons/cross.png' alt=''></button>\
+        <button class='ast-action-btn edit-representative'><img src='/images/icons/edit2.png' alt=''></button>\
+        <button class='ast-action-btn delete-representative'><img src='/images/icons/cross.png' alt=''></button>\
         </div>\
         </td>\
         </tr>");
+    }
+    // Иначе редактируем существующего
+    else {
+        console.log($("tr"));
+        console.log($("tr")[$("#edit-represntative-number").val()]);
+        var rowToEdit = $("tr")[$("#edit-represntative-number").val()];
+        var inputToEdit = $(rowToEdit).find("input");
+        var spanToEdit = $(rowToEdit).find("span");
+        if (isLegal) {
+            inputToEdit.data("lname", lname);
+            inputToEdit.data("INN", INN);
+        }
+        if (isPerson) {
+            inputToEdit.data("pname", pname);
+            inputToEdit.data("docnum", docnum);
+        }
+
+        spanToEdit.text(rowtext);
+    }
+
+    $("#edit-represntative-number").val('');
+    $('.represent-modal-filter').hide();
 }
 
 // Обновляем список представителей
 function UpdateRepresentatives() {
-    GetChoosenRepresentatives();
     var model = {
         UserId: $("#UserId").val(),
-        Representatives: Representatives,
-        RegistryLegalRepresentatives: RegistryLegalRepresentatives,
-        RegistryPersonRepresentatives: RegistryPersonRepresentatives
+        Representatives: GetChoosenRepresentatives(),
+        RegistryLegalRepresentatives: GetRegistryLegalRepresentatives(),
+        RegistryPersonRepresentatives: GetRegistryPersonRepresentatives()
     }
 
     $.ajax({
@@ -124,17 +187,16 @@ function UpdateRepresentatives() {
         type: "POST",
         data: JSON.stringify(model),
         contentType: "application/json",
-            error: function (err) {
-                alert('Ошибка! Ответ сервера: ' + err.status);
-            }
-    }
-    );
+        error: function (err) {
+            alert('Ошибка! Ответ сервера: ' + err.status);
+        }
+    });
+    $(".filter.represent-filter").hide();
 }
 
 // вызываем функцию добавления пользователя
 function AddUser() {
     if ($("#validate-form").valid()) {
-        GetChoosenRepresentatives();
         var model = {
             UserName: $("#UserName").val(),
             NewPassword: $("#NewPassword").val(),
@@ -144,9 +206,9 @@ function AddUser() {
             DocumentNumber: $("#DocumentNumber").val(),
             PhoneNumber: $("#PhoneNumber").val(),
             TwoFactorEnabled: $("#identification-new").prop("checked"),
-            Representatives: Representatives,
-            RegistryLegalRepresentatives: RegistryLegalRepresentatives,
-            RegistryPersonRepresentatives: RegistryPersonRepresentatives
+            Representatives: GetChoosenRepresentatives(),
+            RegistryLegalRepresentatives: GetRegistryLegalRepresentatives(),
+            RegistryPersonRepresentatives: GetRegistryPersonRepresentatives()
         }
 
         $.ajax({
@@ -180,6 +242,51 @@ function SelectAccount() {
     $('#selectedAccountId').attr('value', $('.filter__body .activeTr').data('accountid'));
 }
 
+function resestPassword() {
+    var model = {
+        NewPassword: $('input[name="NewPassword"]').val(),
+        NewPasswordRepeat: $('input[name="NewPassword"]').val(),
+        UserId: $('input[name="UserId"]').val()
+    };
+    $.ajax({
+        url: "ResetPassword",
+        type: "POST",
+        data: JSON.stringify(model),
+        success: function () { $('.modal-success').closest('.overlay').show() },
+        error: function () { $('.modal-fail').closest('.overlay').show() },
+        contentType: "application/json"
+    });
+}
+
+function generateLogin(fullName) {
+    fullName = transliterate(fullName);
+    var structName = fullName.trim().split(" ");
+    var login;
+    if (structName.length > 1) {
+        login = structName[0][0] + structName[1][0] + structName[2][0];
+    }
+    else {
+        login = structName[0];
+    }
+    var number = "";
+    var notValid = true;
+    while (notValid) {
+        login = login + number;
+        number = number + 1;
+        $.ajax({
+            url: "CheckUserName",
+            method: "GET",
+            data: "username=" + login,
+            success: function (response) {
+                if (response) {
+                    notValid = false;
+                }
+            },
+            async: false,
+        });
+    }
+    return login;
+}
 
 $(function () {
     //табы для переключения между юр. лицом и физ. лицом во всплывающем окне
@@ -188,6 +295,16 @@ $(function () {
             $(this).hide(0);
         }
     });
+
+    $("#ResetPasswordForm").each(function () {
+        $(this).data("validator").settings.submitHandler = resestPassword;
+    });
+
+    // генерация пароля при создании пользователя
+    $("#user-cabinet-new #NewPassword").each(function () {
+        $(this).val(Math.random().toString(36).substr(2, 8));
+    });
+
     $(document).on('click', '.modal__tab', function () {
         var tabId = $(this).attr('data-id');
         $(this).siblings('.modal__tab').removeClass('modal__tab--active');
@@ -236,15 +353,15 @@ $(function () {
             if (IsAnyRep) {
                 $('.admin-represent').text('Показать');
             }
-            else
-            {
+            else {
                 $('.admin-represent').text('Нет');
             }
         }
     });
 
     // закрываем окошко с представителями
-    $(document).on('click', '.represent-modal-filter button', function () {
+    $(document).on('click', '.represent-modal-filter button.cancel', function () {
+        $("#edit-representative-number").val('');
         $('.represent-modal-filter').hide();
     });
 
@@ -287,5 +404,33 @@ $(function () {
         if ($('.activeTr').length > 0) {
             $('input[name="selectedGroup"]').val($('.activeTr').text());
         }
+    });
+
+    // генерация логина
+    $(document).on('blur', 'input[name="FullName"]', function () {
+        if (!$('#UserName').val()) {
+            $('#UserName').val(generateLogin($('input[name="FullName"]').val()));
+        }
+    });
+
+    $(document).on('click', '.delete-representative', function () {
+        $("tr").has(this).remove();
+    });
+
+    $(document).on('click', '.edit-representative', function () {
+        $("#edit-represntative-number").val($("tr").index($(this).closest("tr")));
+        console.log($("tr").index($(this).closest("tr")));
+
+        if ($(this).closest("input").data("islegal") === "True") {
+            $("input .entity-name").val($(this).closest("input").data("lname"));
+            $("input .entity-doc").val($(this).closest("input").data("inn"));
+        };
+
+        if ($(this).closest("input").data("islegal") === "False") {
+            $("input .individual-doc").val($(this).closest("input").data("pname"));
+            $("input .individual-name").val($(this).closest("input").data("docnum"));
+        };
+
+        $(".filter .represent-modal-filter").show();
     });
 });

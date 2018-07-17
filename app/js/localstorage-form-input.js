@@ -43,6 +43,7 @@ $(function () {
         if (!$(".bullet-number-all").hasClass('checked__')) {
             var v = new allVoting();
             var votingSelected = document.querySelector('.input-selected');
+            var inputAllBtnChecked = document.querySelector('.bullet-number-all');
             if (votingSelected.classList.contains('voting-false')) {
                 v.addToCookie('voting-false');
             }
@@ -51,6 +52,9 @@ $(function () {
             }
             if (votingSelected.classList.contains('voting-abstained')) {
                 v.addToCookie('voting-abstained');
+            }
+            if (inputAllBtnChecked.classList.contains('checked__')) {
+                v.addToCookie('checked__');
             }
 
         }

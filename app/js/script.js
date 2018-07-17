@@ -462,17 +462,17 @@ $(function () {
         var votingAbstained = $('.voting-enter__table').find('.voting-abstained');
         var votingNotValid = $('.voting-enter__table').find('.voting-not-valid');
         if (e.hasClass('voting-true')) {
-            items.removeClass('voting-selected').find('input').removeAttr('checked');
+            items.removeClass('voting-selected').find('input').removeAttr('checked')
             votingTrue.addClass('voting-selected');
             votingTrue.find('input').attr('checked', 'checked');
         }
         if (e.hasClass('voting-false')) {
-            items.removeClass('voting-selected').find('input').removeAttr('checked');
+            items.removeClass('voting-selected').find('input').removeAttr('checked')
             votingFalse.addClass('voting-selected');
             votingFalse.find('input').attr('checked', 'checked');
         }
         if (e.hasClass('voting-abstained')) {
-            items.removeClass('voting-selected').find('input').removeAttr('checked');
+            items.removeClass('voting-selected').find('input').removeAttr('checked')
             votingAbstained.addClass('voting-selected');
             votingAbstained.find('input').attr('checked', 'checked');
         }
@@ -666,17 +666,14 @@ $(function () {
 
     //disabled кнопки сохранить, если в форме бюлетеня не было изменений
     function disableSaveBTn() {
-        if ($('.form-save-btn').length > 0) {
-            $(document).on("change", '.disabled-form', function () {
-                $('.form-save-btn').removeAttr('disabled');
-            });
-            $(document).on("click", '.voting-inputs__choice--item ', function () {
-                $('.form-save-btn').removeAttr('disabled');
-            });
-        }
+      if ($('.form-save-btn').length > 0){
+          $(document).on("change", '.disabled-form', function () {
+              $('.form-save-btn').removeAttr('disabled');
+          });
+          $(document).on("click", '.voting-actions__choice--item ', function () {
+              $('.form-save-btn').removeAttr('disabled');
+          });
+      }
     }
-
     disableSaveBTn();
-
-
 });
