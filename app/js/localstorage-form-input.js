@@ -22,7 +22,7 @@ $(function () {
                         $(item).closest('.voting-inputs__choice--item').addClass('input-selected');
                         item.setAttribute('checked', 'checked');
                     }
-                    if($(item).closest('.voting-inputs__choice--item').hasClass('voting-true')){
+                    if ($(item).closest('.voting-inputs__choice--item').hasClass('voting-true')) {
 
                         $('.voting-actions-all-btn.voting-true').addClass('voting-selected')
                     }
@@ -37,13 +37,15 @@ $(function () {
 
     });
     inputCon.runLoad();
+    var btnAll = new allVoting();
+    btnAll.clickNumberAllBtn();
+
 
     $(document).on('change', '.bullet-number-all', function (e) {
+        var v = new allVoting();
 
         if (!$(".bullet-number-all").hasClass('checked__')) {
-            var v = new allVoting();
             var votingSelected = document.querySelector('.input-selected');
-            var inputAllBtnChecked = document.querySelector('.bullet-number-all');
             if (votingSelected.classList.contains('voting-false')) {
                 v.addToCookie('voting-false');
             }
@@ -53,12 +55,11 @@ $(function () {
             if (votingSelected.classList.contains('voting-abstained')) {
                 v.addToCookie('voting-abstained');
             }
-            if (inputAllBtnChecked.classList.contains('checked__')) {
-                v.addToCookie('checked__');
-            }
-
         }
-        $(".bullet-number-all").toggleClass('checked__');
+        else{
+            v.delFromCookie();
+        }
+        $(this).toggleClass('checked__');
         $(this).find('input').attr('data-scv', 1);
         inputCon.runSave();
         return false;
@@ -169,7 +170,6 @@ $(function () {
         return keys;
 
     }
-
 
 
 });

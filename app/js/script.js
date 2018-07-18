@@ -82,7 +82,7 @@ $(function () {
 
 
     $(document).on('click', '.filter .cancel', function () {
-        $('.filter').hide();
+        $('.filter', this).hide();
     });
     $(document).on('click', '.filter__header .t-delete', function () {
         $('.filter').hide();
