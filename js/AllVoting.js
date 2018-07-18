@@ -23,10 +23,14 @@ function allVoting() {
     };
     this.clickNumberAllBtn = function () {
         var btnType = this.getCookie();
+        var btn = document.querySelector('#bullet-number-all');
         if (btnType){
             console.log(123);
-            var btn = document.querySelector('#bullet-number-all');
+
             btn.classList.add('checked__');
+        }
+        else{
+            btn.classList.remove('checked__');
         }
 
 
