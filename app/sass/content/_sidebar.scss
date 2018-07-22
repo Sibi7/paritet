@@ -138,6 +138,118 @@
       }
     }
   }
+  &__slider{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    &--title{
+      font-size: 15px;
+    }
+    &--wrap{
+      position: relative;
+      width: calc(100% - 50px);
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      margin-bottom: 25px;
+    }
+    &--photo{
+      height: 30px;
+      width: 30px;
+      overflow: hidden;
+      margin-top: 20px;
+      margin-right: 20px;
+      transition: .4s;
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    &--name{
+      width: 123px;
+      margin-bottom: 10px;
+      font-size: 14px;
+
+    }
+    &--phone{
+      color: #fff;
+      font-size: 14px;
+      &:hover{
+        color: #7fc6ff;
+      }
+    }
+    &--mail{
+      height: 16.6px;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 14px;
+      color: #fff;
+      &:hover{
+        color: #7fc6ff;
+      }
+    }
+    &--online{
+      height: 12px;
+      width: 12px;
+      border-radius: 50%;
+      background: #2EF32A;;
+      position: absolute;
+      right: 0;
+      top: 10px;
+    }
+  }
+  .sidebar-dots{
+    display: flex;
+    margin-top: 0;
+    padding: 0;
+    justify-content: center;
+    li{
+      position: relative;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      padding: 0;
+      cursor: pointer;
+      button{
+        font-size: 0;
+        line-height: 0;
+        display: block;
+        width: 20px;
+        height: 20px;
+        padding: 5px;
+        cursor: pointer;
+        color: transparent;
+        border: 0;
+        outline: none;
+        background: transparent;
+        &:before{
+          font-size: 45px;
+          line-height: 20px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 20px;
+          height: 20px;
+          content: '•';
+          text-align: center;
+          color: #DEDEDE;
+        }
+      }
+
+      button:hover:before, li button:focus:before {
+        color: #7FC6FF;
+      }
+    }
+    .slick-active{
+      button:before{
+        color: #7FC6FF;
+      }
+    }
+  }
+
 }
 
 [class^="icon-sidebar"], [class*=" icon-sidebar"] {
