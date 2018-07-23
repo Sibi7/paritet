@@ -200,6 +200,15 @@
       right: 0;
       top: 10px;
     }
+    &--offline{
+      height: 12px;
+      width: 12px;
+      border-radius: 50%;
+      background: #909090;;
+      position: absolute;
+      right: 0;
+      top: 10px;
+    }
   }
   .sidebar-dots{
     display: flex;
