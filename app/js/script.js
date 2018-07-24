@@ -678,7 +678,7 @@ $(function () {
     disableSaveBTn();
 
 //    slick slider для сайдбара
-    $('.sidebar__footer').slick({
+    $('.initialization-slide').slick({
         infinite: true,
         dots: true,
         nextArrow: false,
