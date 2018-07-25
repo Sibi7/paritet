@@ -678,12 +678,12 @@ $(function () {
     disableSaveBTn();
 
 //    slick slider для сайдбара
-    $('.initialization-slide').slick({
-        infinite: true,
-        dots: true,
-        nextArrow: false,
-        prevArrow: false,
-        dotsClass: 'sidebar-dots'
-    });
+//     $('.initialization-slide').slick({
+//         infinite: true,
+//         dots: true,
+//         nextArrow: false,
+//         prevArrow: false,
+//         dotsClass: 'sidebar-dots'
+//     });
 
 });
