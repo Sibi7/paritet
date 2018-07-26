@@ -666,16 +666,28 @@ $(function () {
 
     //disabled кнопки сохранить, если в форме бюлетеня не было изменений
     function disableSaveBTn() {
-      if ($('.form-save-btn').length > 0){
-          $(document).on("change", '.disabled-form', function () {
-              $('.form-save-btn').removeAttr('disabled');
-          });
-          $(document).on("click", '.voting-actions__choice--item ', function () {
-              $('.form-save-btn').removeAttr('disabled');
-          });
-      }
+        if ($('.form-save-btn').length > 0) {
+            $(document).on("change", '.disabled-form', function () {
+                $('.form-save-btn').removeAttr('disabled');
+            });
+            $(document).on("click", '.voting-actions__choice--item ', function () {
+                $('.form-save-btn').removeAttr('disabled');
+            });
+        }
     }
+
     disableSaveBTn();
+
+
+//    Выпадалка радио кнопок по нажатию на иконку view
+    var _flag = false;
+
+    $(document).on('click', '.title-view', function () {
+        $('.title-dropdown').toggleClass('active-title-view');
+        console.log('show');
+        return _flag = true;
+    });
+
 
 //    slick slider для сайдбара
 //     $('.initialization-slide').slick({
