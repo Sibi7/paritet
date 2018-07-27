@@ -680,13 +680,17 @@ $(function () {
 
 
 //    Выпадалка радио кнопок по нажатию на иконку view
-    var _flag = false;
-
-    $(document).on('click', '.title-view', function () {
-        $('.title-dropdown').toggleClass('active-title-view');
-        console.log('show');
-        return _flag = true;
+    $(".title-view").click(function() {
+        $('.title-dropdown').fadeToggle();
     });
+    $(document).on('click', function(e) {
+        if (!$(e.target).closest(".title-dropdown-wrap").length) {
+            $('.title-dropdown').fadeOut();
+        }
+        e.stopPropagation();
+    });
+
+
 
 
 //    slick slider для сайдбара

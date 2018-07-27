@@ -24,7 +24,6 @@
   right: -175px;
   top: 40px;
   width: 350px;
-  height: 150px;
   background: #FAFAFA;
   padding: 15px;
   z-index: 999;
@@ -41,12 +40,12 @@
 }
 .title-dropdown-block{
   width: 50%;
-  display: flex;
-  flex-direction: column;
+  float: left;
   h4{
     font-size: 15px;
     font-weight: 400;
     margin: 0;
+    margin-bottom: 12px;
   }
 }
 .active-title-view{
