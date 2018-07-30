@@ -690,8 +690,16 @@ $(function () {
         e.stopPropagation();
     });
 
-
-
+    //    мульти селект
+    $(".toggle-multi").click(function() {
+        $('#multi-select-list').fadeToggle();
+    });
+    $(document).on('click', function(e) {
+        if (!$(e.target).closest("#multi-select-wrap").length) {
+            $('#multi-select-list').fadeOut();
+        }
+        e.stopPropagation();
+    });
 
 //    slick slider для сайдбара
 //     $('.initialization-slide').slick({

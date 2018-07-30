@@ -214,3 +214,41 @@ input[type="radio"].circleRadioRadiance {
     }
   }
 }
+
+/*=======================================
+мульти селект
+========================================*/
+.multi-select-wrap{
+  border: 1px solid #909090;
+  width: 260px;
+  background: #FAFAFA;
+  .toggle-multi{
+    display: inline-block;
+    padding: 5px 15px;
+    width: 100%;
+    border-bottom: 1px solid #909090;
+    height: 28px;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .checkbox label{
+    left: auto;
+    display: inline-block;
+    width: 100%;
+  }
+  >ul{
+    padding: 0;
+    margin: 0;
+    li{
+      width: 100%;
+      padding: 5px 15px;
+      transition: .4s;
+      &:hover{
+        background: rgba(104, 144, 177, 0.75);
+        transition: .4s;
+      }
+    }
+  }
+}
