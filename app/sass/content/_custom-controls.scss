@@ -222,12 +222,14 @@ input[type="radio"].circleRadioRadiance {
   border: 1px solid #909090;
   width: 260px;
   background: #FAFAFA;
+  display: flex;
+  position: relative;
+  height: 30px;
+  align-items: center;
   .toggle-multi{
     display: inline-block;
-    padding: 5px 15px;
+    padding: 0 15px;
     width: 100%;
-    border-bottom: 1px solid #909090;
-    height: 28px;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -241,14 +243,27 @@ input[type="radio"].circleRadioRadiance {
   >ul{
     padding: 0;
     margin: 0;
+    position: absolute;
+    z-index: 999;
+    border: 1px solid #909090;
+    border-top: none;
+    background: #FAFAFA;
+    width: 101%;
+    left: -1px;
+    top: 30px;
     li{
       width: 100%;
       padding: 5px 15px;
       transition: .4s;
       &:hover{
-        background: rgba(104, 144, 177, 0.75);
+        background: $new-hover;
         transition: .4s;
+        color: #fff;
+        .checkbox label{ 
+          color: #fff;
+        }
       }
+
     }
   }
 }

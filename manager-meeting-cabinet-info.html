@@ -94,55 +94,53 @@
 
 		<div class="title-wrap">
 			<h2 class="title">Внеочередное повторное общее собрание акционеров</h2>
-			<button class="title-view"></button>
-			<div class="title-dropdown">
-				<div class="title-dropdown-block">
-					<h4>Эмитент</h4>
-					<div class="circleRadioWrap">
-						<input type="radio" id="radio1" name="radio" class="circleRadio"/>
-						<label for="radio1" class="circleRadioLabel"></label>
-						<label for="radio1">Видит все</label>
+			<div class="title-dropdown-wrap">
+				<button class="title-view"></button>
+				<div class="title-dropdown">
+					<div class="title-dropdown-block">
+						<h4>Эмитент</h4>
+						<div class="circleRadioWrap">
+							<input type="radio" id="radio1" name="radio" class="circleRadio"/>
+							<label for="radio1" class="circleRadioLabel"></label>
+							<label for="radio1">Видит все</label>
+						</div>
+						<div class="circleRadioWrap">
+							<input type="radio" id="radio2" name="radio" class="circleRadio"/>
+							<label for="radio2" class="circleRadioLabel"></label>
+							<label for="radio2">Верхняя секция</label>
+						</div>
+						<div class="circleRadioWrap">
+							<input type="radio" id="radio3" name="radio" class="circleRadio"/>
+							<label for="radio3" class="circleRadioLabel"></label>
+							<label for="radio3">Не видит вкладку</label>
+						</div>
+						<div class="checkbox">
+							<input type="checkbox" id="num1">
+							<label for="num1">Может редактировать</label>
+						</div>
 					</div>
-					<div class="circleRadioWrap">
-						<input type="radio" id="radio2" name="radio" class="circleRadio"/>
-						<label for="radio2" class="circleRadioLabel"></label>
-						<label for="radio2">Верхняя секция</label>
-					</div>
-					<div class="circleRadioWrap">
-						<input type="radio" id="radio3" name="radio" class="circleRadio"/>
-						<label for="radio3" class="circleRadioLabel"></label>
-						<label for="radio3">Не видит вкладку</label>
-					</div>
-				</div>
-				<div class="title-dropdown-block">
-					<h4>Владелец</h4>
-					<div class="box">
+					<div class="title-dropdown-block">
+						<h4>Владелец</h4>
 						<div class="circleRadioRadianceWrap">
-							<label for="radioRadiance1">choose something</label>
 							<input type="radio" id="radioRadiance1" name="radioRadiance" class="circleRadioRadiance"/>
 							<label for="radioRadiance1" class="circleRadioRadianceLabel"></label>
+							<label for="radioRadiance1" class="input-disable">Видит все</label>
 						</div>
 						<div class="circleRadioRadianceWrap">
-							<label for="radioRadiance2">choose something</label>
 							<input type="radio" id="radioRadiance2" name="radioRadiance" class="circleRadioRadiance"/>
 							<label for="radioRadiance2" class="circleRadioRadianceLabel"></label>
+							<label for="radioRadiance2" class="input-disable">Верхняя секция</label>
 						</div>
 						<div class="circleRadioRadianceWrap">
-							<label for="radioRadiance3">choose something</label>
 							<input type="radio" id="radioRadiance3" name="radioRadiance" class="circleRadioRadiance"/>
 							<label for="radioRadiance3" class="circleRadioRadianceLabel"></label>
+							<label for="radioRadiance3" class="input-disable">Не видит вкладку</label>
 						</div>
-						<div class="circleRadioRadianceWrap">
-							<label for="radioRadiance4">choose something</label>
-							<input type="radio" id="radioRadiance4" name="radioRadiance" class="circleRadioRadiance"/>
-							<label for="radioRadiance4" class="circleRadioRadianceLabel"></label>
-						</div>
+
 					</div>
 				</div>
 			</div>
 		</div>
-
-
 		<div class="string">
 			<div class="string__key"><span>Статус собрания:</span></div>
 			<div class="string__value-row"><span class="edit-status-meeting">Редактируется регистратором</span></div>
@@ -157,8 +155,56 @@
 		<div class="meeting__info">
 
 			<div class="string">
-				<div class="string__key"><span>Форма проведения:</span></div>
-				<div class="string__value-row"><span>Собрание</span></div>
+				<div class="string__key"><span>Мультиселект:</span></div>
+				<div class="string__value-row">
+					<div id="multi-select-wrap" class="multi-select-wrap">
+						<span class="toggle-multi"><label>Выбор один</label></span>
+						<ul id="multi-select-list">
+							<li>
+								<div class="checkbox">
+									<input type="checkbox" id="multi-1">
+									<label for="multi-1">Выбор однм</label>
+								</div>
+							</li>
+							<li>
+								<div class="checkbox">
+									<input type="checkbox" id="multi-2">
+									<label for="multi-2">Выбора два</label>
+								</div>
+							</li>
+							<li>
+								<div class="checkbox">
+									<input type="checkbox" id="multi-3">
+									<label for="multi-3">Выбор три</label>
+								</div>
+							</li>
+							<li>
+								<div class="checkbox">
+									<input type="checkbox" id="multi-4">
+									<label for="multi-4">Выбор четыре</label>
+								</div>
+							</li>
+							<li>
+								<div class="checkbox">
+									<input type="checkbox" id="multi-5">
+									<label for="multi-5">Выбор пять</label>
+								</div>
+							</li>
+							<li>
+								<div class="checkbox">
+									<input type="checkbox" id="multi-6">
+									<label for="multi-6">Выбор шесть</label>
+								</div>
+							</li>
+							<li>
+								<div class="checkbox">
+									<input type="checkbox" id="multi-7">
+									<label for="multi-7">Выбор семь</label>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
 			</div>
 			<div class="string">
 				<div class="string__key"><span>Дата проведения:</span></div>
@@ -367,9 +413,6 @@
     </div>
 </div>
 <!-- start html_close.html-->
-
-
-
 <script src='js/jquery-3.2.1.min.js' type="text/javascript"></script>
 <script src='js/slick.min.js' type="text/javascript"></script>
 <script src='js/Cookie.js' type="text/javascript"></script>
