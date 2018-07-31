@@ -701,13 +701,13 @@ $(function () {
         e.stopPropagation();
     });
 
-//    slick slider для сайдбара
-//     $('.initialization-slide').slick({
-//         infinite: true,
-//         dots: true,
-//         nextArrow: false,
-//         prevArrow: false,
-//         dotsClass: 'sidebar-dots'
-//     });
+  // slick slider для сайдбара
+    $('.initialization-slide').slick({
+        infinite: true,
+        dots: true,
+        nextArrow: false,
+        prevArrow: false,
+        dotsClass: 'sidebar-dots'
+    });
 
 });
