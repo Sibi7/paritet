@@ -1,4 +1,6 @@
 $blue: #00467f;
+$new-hover: rgba(104,144,177,.75);
+//$blue-hover: #73b9f2;
 $blue-hover: #73b9f2;
 $green-btn: #b9bf0a;
 $green-btn-active: #888c07;
@@ -1945,7 +1947,7 @@ label {
     }
   }
 }
-.form-save-btn{
-  &:disabled{
-  }
+.input-fixed-grid{
+  position: relative;
+  top: -20px;
 }

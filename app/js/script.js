@@ -666,14 +666,48 @@ $(function () {
 
     //disabled кнопки сохранить, если в форме бюлетеня не было изменений
     function disableSaveBTn() {
-      if ($('.form-save-btn').length > 0){
-          $(document).on("change", '.disabled-form', function () {
-              $('.form-save-btn').removeAttr('disabled');
-          });
-          $(document).on("click", '.voting-actions__choice--item ', function () {
-              $('.form-save-btn').removeAttr('disabled');
-          });
-      }
+        if ($('.form-save-btn').length > 0) {
+            $(document).on("change", '.disabled-form', function () {
+                $('.form-save-btn').removeAttr('disabled');
+            });
+            $(document).on("click", '.voting-actions__choice--item ', function () {
+                $('.form-save-btn').removeAttr('disabled');
+            });
+        }
     }
+
     disableSaveBTn();
+
+
+//    Выпадалка радио кнопок по нажатию на иконку view
+    $(".title-view").click(function() {
+        $('.title-dropdown').fadeToggle();
+    });
+    $(document).on('click', function(e) {
+        if (!$(e.target).closest(".title-dropdown-wrap").length) {
+            $('.title-dropdown').fadeOut();
+        }
+        e.stopPropagation();
+    });
+
+    //    мульти селект
+    $(".toggle-multi").click(function() {
+        $('#multi-select-list').fadeToggle();
+    });
+    $(document).on('click', function(e) {
+        if (!$(e.target).closest("#multi-select-wrap").length) {
+            $('#multi-select-list').fadeOut();
+        }
+        e.stopPropagation();
+    });
+
+  // slick slider для сайдбара
+    $('.initialization-slide').slick({
+        infinite: true,
+        dots: true,
+        nextArrow: false,
+        prevArrow: false,
+        dotsClass: 'sidebar-dots'
+    });
+
 });

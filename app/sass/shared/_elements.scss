@@ -11,6 +11,50 @@
     color: #777;
   }
 }
+
+.title-wrap {
+  position: relative;
+  display: flex;
+  width: fit-content;
+}
+
+.title-dropdown {
+  position: absolute;
+  display: none;
+  right: -175px;
+  top: 40px;
+  width: 350px;
+  background: #FAFAFA;
+  padding: 15px;
+  z-index: 999;
+  border: 1px solid #909090;
+  .checkbox label{
+    left: auto;
+  }
+}
+
+.title-view {
+  width: 20px;
+  height: 20px;
+  border: none;
+  margin: 10px;
+  background: url("../images/icons/eye.png") no-repeat center center;
+  background-size: contain;
+}
+.title-dropdown-block{
+  width: 50%;
+  float: left;
+  h4{
+    font-size: 15px;
+    font-weight: 400;
+    margin: 0;
+    margin-bottom: 12px;
+  }
+}
+.active-title-view{
+  display: flex;
+}
+
 a.title-desc {
   color: #0062b3;
   &:visited {
@@ -23,6 +67,7 @@ a.title-desc {
     left: -20px;
   }
 }
+
 input[type="checkbox"] {
   &:not(checked) {
     position: absolute;
@@ -59,12 +104,13 @@ input[type="checkbox"] {
       background: url(../images/icons/checked.png) no-repeat center center;
     }
   }
-  &:checked + label{
+  &:checked + label {
     &:after {
       display: block;
     }
   }
 }
+
 input[type="checkbox"][readonly] + label,
 input[type="checkbox"][disabled] + label {
   pointer-events: none;
@@ -89,6 +135,7 @@ input[type="checkbox"][disabled] + label {
   margin-left: 10px;
   cursor: pointer;
 }
+
 .add-files {
   position: fixed;
   top: 50%;
@@ -130,6 +177,7 @@ input[type="checkbox"][disabled] + label {
     margin-bottom: 5px;
   }
 }
+
 .materials-list {
   margin: 0;
   padding: 0;
@@ -140,6 +188,7 @@ input[type="checkbox"][disabled] + label {
     margin-bottom: 5px;
   }
 }
+
 .materials-list__item {
   margin-right: 10px;
   cursor: pointer;
@@ -152,6 +201,7 @@ input[type="checkbox"][disabled] + label {
     padding: 0px 5px;
   }
 }
+
 .delete--item,
 .materials-list__btn {
   height: 100%;
@@ -182,18 +232,20 @@ input[type="checkbox"][disabled] + label {
     border: 1px solid rgba(0, 174, 239, .5);
   }
 }
+
 .noborder {
   padding-left: 6px;
-  height: 25px!important;
-  font-family: monospace,monospace;
+  height: 25px !important;
+  font-family: monospace, monospace;
   font-size: 13px;
-  border: 1px solid transparent!important;
-  border-bottom: 1px solid #ddd!important;
-  min-width: inherit!important;
+  border: 1px solid transparent !important;
+  border-bottom: 1px solid #ddd !important;
+  min-width: inherit !important;
   &:hover, &:focus {
-    border: 1px solid rgba(0, 174, 239, .5)!important;
+    border: 1px solid rgba(0, 174, 239, .5) !important;
   }
 }
+
 .noborder-select {
   height: 25px;
   border: 1px solid transparent;
