@@ -680,10 +680,10 @@ $(function () {
 
 
 //    Выпадалка радио кнопок по нажатию на иконку view
-    $(".title-view").click(function() {
+    $(".title-view").click(function () {
         $('.title-dropdown').fadeToggle();
     });
-    $(document).on('click', function(e) {
+    $(document).on('click', function (e) {
         if (!$(e.target).closest(".title-dropdown-wrap").length) {
             $('.title-dropdown').fadeOut();
         }
@@ -691,17 +691,26 @@ $(function () {
     });
 
     //    мульти селект
-    $(".toggle-multi").click(function() {
+    $(".toggle-multi").click(function () {
+        var multiSelect = $('#multi-select-wrap');
         $('#multi-select-list').fadeToggle();
+        $(multiSelect).toggleClass('no-border');
+        if (!$(multiSelect).hasClass('no-border')){
+         $(multiSelect).css({
+             border: '1px solid #909090',
+             background: '#FAFAFA'
+         })
+        }
     });
-    $(document).on('click', function(e) {
+    $(document).on('click', function (e) {
         if (!$(e.target).closest("#multi-select-wrap").length) {
             $('#multi-select-list').fadeOut();
         }
         e.stopPropagation();
     });
 
-  // slick slider для сайдбара
+
+    // slick slider для сайдбара
     $('.initialization-slide').slick({
         infinite: true,
         dots: true,

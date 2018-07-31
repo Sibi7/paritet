@@ -219,12 +219,13 @@ input[type="radio"].circleRadioRadiance {
 мульти селект
 ========================================*/
 .multi-select-wrap{
-  border: 1px solid #909090;
   width: 260px;
-  background: #FAFAFA;
+  background: #fff;
   display: flex;
+  cursor: pointer;
   position: relative;
   height: 30px;
+  border: 1px solid #909090;
   align-items: center;
   .toggle-multi{
     display: inline-block;
@@ -241,6 +242,7 @@ input[type="radio"].circleRadioRadiance {
     width: 100%;
   }
   >ul{
+    display: none;
     padding: 0;
     margin: 0;
     position: absolute;
@@ -266,4 +268,7 @@ input[type="radio"].circleRadioRadiance {
 
     }
   }
+}
+.no-border{
+  border: none;
 }
