@@ -696,7 +696,7 @@ $(function () {
         $('#multi-select-list').fadeToggle();
         $(multiSelect).toggleClass('no-border');
         if (!$(multiSelect).hasClass('no-border')){
-         $(multiSelect).css({
+                $(multiSelect).css({
              border: '1px solid #909090',
              background: '#FAFAFA'
          })
