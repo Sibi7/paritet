@@ -1,68 +1,113 @@
 <main class="main">
-    <div class="w-container">
+	<div class="w-container">
 
-        <div class="main__left">
-            <div class="main__left--top">
-                <span class="logo"></span>
-                <h2>паритет <span>интернет реестр</span></h2>
-            </div>
-            <div class="main__left--bottom">
-                <p>Телефон<span>+7 495 994-72-75</span></p>
-                <p>Skype<span>paritethelp</span></p>
-                <p>Электронная почта<span>office@paritet.ru</span></p>
-            </div>
-        </div>
+		<div class="main__left">
+			<div class="main__left--top">
+				<span class="logo"></span>
+				<h2>паритет <span>интернет реестр</span></h2>
+			</div>
+			<div class="main__left--bottom">
+				<p>Телефон<span>+7 495 994-72-75</span></p>
+				<p>Skype<span>paritethelp</span></p>
+				<p>Электронная почта<span>office@paritet.ru</span></p>
+			</div>
+		</div>
 
-        <div class="main__form">
+		<div class="main__form">
 
-            <form class="main__form--password">
-                <div class="main__form--buttons">
-                    <a href="#enter" class="active">Вход</a>
-                    <a href="#guest"><em class="fa fa-bookmark-o"></em>Я — гость!</a>
-                </div>
-                <div id="enter" class="main__form--content">
-                 <div class="main__form--wrap">
-                     <h2>Восстановление пароля</h2>
-                     <input type="text" placeholder="Введите адрес Email">
-                     <input type="text" placeholder="Код с картинки">
-                     <div class="captcha"><img src="images/captcha.png" alt=""></div>
-                     <a href="#"><em class="fa fa-refresh" aria-hidden="true"></em>Обновить</a>
-                     <div class="main__form--flex">
-                         <input type="submit" value="Послать письмо">
-                         <button>Отмена</button>
-                     </div>
-                 </div>
+			<form class="main__form--password">
+				<div class="main__form--buttons">
+					<a href="#enter" class="active">Вход</a>
+					<a href="#guest"><em class="fa fa-bookmark-o"></em>Я — гость!</a>
+				</div>
+				<div id="enter" class="main__form--content">
+					<div class="main__form--wrap">
+						<h2>Восстановление пароля</h2>
+						<input type="text" placeholder="Введите адрес Email">
+						<input type="text" placeholder="Код с картинки">
+						<div class="captcha"><img src="images/captcha.png" alt=""></div>
+						<a href="#"><em class="fa fa-refresh" aria-hidden="true"></em>Обновить</a>
+						<div class="main__form--flex">
+							<input type="submit" value="Послать письмо">
+							<button>Отмена</button>
+						</div>
+					</div>
 
-                </div>
-                <div id="guest" class="main__form--content">
+				</div>
+				<div id="guest" class="main__form--content">
 
-                </div>
-                <button class="main__form--btn ">Вход через портал<img src="images/gosuslugi.png" alt=""></button>
-            </form>
+				</div>
+				<button class="main__form--btn ">Вход через портал<img src="images/gosuslugi.png" alt=""></button>
+			</form>
 
-            <button class="main__form--btn"><img src="images/icons/icon_shield.png" alt="shield">Основные правила безопасности Паритет</button>
-        </div>
+			<button class="main__form--btn" onclick="showModal('modal-safety-regulations'); return false;"><img
+							src="images/icons/icon_shield.png" alt="shield">Основные правила безопасности Паритет
+			</button>
+		</div>
 
-        <div class="main__right">
-            <h2>Преимущества Паритет Интернет Реестр:</h2>
-            <ul>
-                <li>
-                    <img src="images/icons/document.png" alt="">
-                    <p><strong>Следить за остатками</strong><span>на своих счетах через интернет</span></p>
-                </li>
-                <li>
-                    <span class="icon icon-sidebar-icon4"></span>
-                    <p><strong>Подготовить собрание</strong><span>без посещения офиса регистратора</span></p>
-                </li>
-                <li>
-                    <span class="icon icon-sidebar-icon6"></span>
-                    <p><strong>Голосовать on-line</strong><span>и получить итоги находясь в любой точке мира</span></p>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer">
-        <p>© Паритет, 2018. Все права защищены</p>
-        <a href="#">Правила электронного сервиса</a>
-    </div>
+		<div class="main__right">
+			<h2>Преимущества Паритет Интернет Реестр:</h2>
+			<ul>
+				<li>
+					<img src="images/icons/document.png" alt="">
+					<p><strong>Следить за остатками</strong><span>на своих счетах через интернет</span></p>
+				</li>
+				<li>
+					<span class="icon icon-sidebar-icon4"></span>
+					<p><strong>Подготовить собрание</strong><span>без посещения офиса регистратора</span></p>
+				</li>
+				<li>
+					<span class="icon icon-sidebar-icon6"></span>
+					<p><strong>Голосовать on-line</strong><span>и получить итоги находясь в любой точке мира</span></p>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="footer">
+		<p>© Паритет, 2018. Все права защищены</p>
+		<a href="#">Правила электронного сервиса</a>
+	</div>
+	<div class="overlay">
+		<div class="modal modal-safety-regulations">
+			<div class="modal__safety-body">
+				<h2>
+					Основные правила безопасности сервиса
+					«Паритет Интернет Реестр» (ПИР):
+				</h2>
+				<div class="modal__safety-wrap">
+					<div class="modal__safety-item">
+						<img src="images/icons/icon_password.svg" alt="password">
+						<p class="modal__safety-text">
+							Не сообщайте никому пароль и код подтверждения,
+							чтобы этим не воспользовались мошенники.
+							Сотрудник ЗАО «РДЦ ПАРИТЕТ» никогда их не спросит.
+						</p>
+					</div>
+					<div class="modal__safety-item">
+						<img src="images/icons/icon_input.svg" alt="input">
+						<p class="modal__safety-text">
+							Проверяйте сайт «Паритет Интернет Реестр»
+							в адресной строке: <a href="pir.edo-paritet.ru">pir.edo-paritet.ru</a>
+						</p>
+					</div>
+					<div class="modal__safety-item">
+						<img src="images/icons/icon_link.svg" alt="input">
+						<p class="modal__safety-text">
+							Не переходите по ссылкам на незнакомые ресурсы:
+							мошенники могут заразить ваш компьютер
+							или телефон вирусом и украсть ваши личные данные.
+						</p>
+					</div>
+					<div class="modal__safety-item">
+						<img src="images/icons/icon_chrome.svg" alt="input">
+						<p class="modal__safety-text">
+							С целью повышения безопасности при работе
+							в личном кабинете рекомендуем воспользоваться
+							последними версиями браузера Google Chrome.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </main>

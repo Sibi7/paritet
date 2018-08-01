@@ -17,6 +17,13 @@ $(function () {
         $(this).closest('.overlay').hide();
     });
 
+    $(document).mouseup(function (e) {
+        var overlayModal = $(".overlay");
+        if (overlayModal.has(e.target).length === 0){
+            overlayModal.fadeOut();
+        }
+    });
+
 
 
 

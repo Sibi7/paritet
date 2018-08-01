@@ -693,20 +693,25 @@ $(function () {
     //    мульти селект
     $(".toggle-multi").click(function () {
         var multiSelect = $('#multi-select-wrap');
-        $('#multi-select-list').fadeToggle();
-        $(multiSelect).toggleClass('no-border');
-        if (!$(multiSelect).hasClass('no-border')){
-                $(multiSelect).css({
-             border: '1px solid #909090',
-             background: '#FAFAFA'
-         })
-        }
+        $('.multi-select-list').fadeToggle();
     });
     $(document).on('click', function (e) {
         if (!$(e.target).closest("#multi-select-wrap").length) {
-            $('#multi-select-list').fadeOut();
+            $('.multi-select-list').fadeOut();
         }
         e.stopPropagation();
+    });
+
+    $(document).on('click', '.multi-select-list .checkbox input', function (e) {
+        var selectedItems = $(this).closest('.multi-select-wrap').find('.toggle-multi');
+        var id = $(this).attr('id');
+        var text = $(this).siblings('label').text();
+        if (!$(this).is(':checked')){
+            $('[data-id="'+ id +'"]').remove();
+        }
+        else {
+            selectedItems.append('<span data-id="' + id + '">'+ text +'</span>')
+        }
     });
 
 
