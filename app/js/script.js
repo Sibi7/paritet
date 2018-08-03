@@ -681,11 +681,23 @@ $(function () {
 
 //    Выпадалка радио кнопок по нажатию на иконку view
     $(".title-view").click(function () {
-        $('.title-dropdown').fadeToggle();
+        $('.title-dropdown').fadeToggle().addClass('title-dropdown-active');
     });
     $(document).on('click', function (e) {
         if (!$(e.target).closest(".title-dropdown-wrap").length) {
-            $('.title-dropdown').fadeOut();
+            if($('.title-dropdown-active').length > 0){
+                $.ajax({
+                    url: '',
+                    type: 'post',
+                    success: function(){
+                        alert('Load was performed.');
+                    },
+                    error: function (err) {
+                        alert('Ошибка! Ответ сервера: ' + err.status);
+                    }
+                })
+            }
+            $('.title-dropdown').fadeOut().removeClass('title-dropdown-active');
         }
         e.stopPropagation();
     });
