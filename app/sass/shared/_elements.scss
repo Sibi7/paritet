@@ -18,6 +18,12 @@
   width: fit-content;
 }
 
+.history-wrap {
+  position: relative;
+  display: flex;
+  width: fit-content;
+}
+
 .title-dropdown {
   position: absolute;
   display: none;
@@ -28,7 +34,22 @@
   padding: 15px;
   z-index: 999;
   border: 1px solid #909090;
-  .checkbox label{
+  .checkbox label {
+    left: auto;
+  }
+}
+
+.history-dropdown {
+  position: absolute;
+  display: none;
+  top: 40px;
+  right: -225px;
+  width: 450px;
+  background: #FAFAFA;
+  padding: 20px;
+  z-index: 999;
+  border: 1px solid #909090;
+  .checkbox label {
     left: auto;
   }
 }
@@ -41,18 +62,61 @@
   background: url("../images/icons/eye.png") no-repeat center center;
   background-size: contain;
 }
-.title-dropdown-block{
+
+.history-view {
+  width: 20px;
+  height: 20px;
+  border: none;
+  margin: 10px;
+  background: url("../images/icons/history-gray.svg") no-repeat center center;
+  background-size: contain;
+  &:hover {
+    background: url("../images/icons/History.svg") no-repeat center center;
+  }
+}
+
+.title-dropdown-block {
   width: 50%;
   float: left;
   padding: 0 10px;
-  h4{
+  h4 {
     font-size: 15px;
     font-weight: 400;
     margin: 0;
     margin-bottom: 12px;
   }
 }
-.active-title-view{
+
+.history-dropdown-block {
+  display: inline-block;
+  width: 133px;
+  padding: 0 10px;
+  h4 {
+    font-size: 14px;
+    font-weight: 400;
+    color: $gray-controls;
+    margin: 0;
+    margin-bottom: 12px;
+  }
+}
+
+.history-content {
+  display: flex;
+  flex-direction: column;
+  span{
+    font-size: 14px;
+    color: #141414;
+    line-height: 19px;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+
+.active-title-view {
   display: flex;
 }
 

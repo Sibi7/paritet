@@ -685,16 +685,22 @@ $(function () {
 
 
 //    Выпадалка радио кнопок по нажатию на иконку view
+
     $(".title-view").click(function () {
         $('.title-dropdown').fadeToggle().addClass('title-dropdown-active');
     });
+    //модальное окно История голосования в форме массового ввода
+    $(".history-view").click(function () {
+        $('.history-dropdown').fadeToggle().addClass('history-dropdown-active');
+    });
     $(document).on('click', function (e) {
+        //    Выпадалка радио кнопок по нажатию на иконку view
         if (!$(e.target).closest(".title-dropdown-wrap").length) {
-            if($('.title-dropdown-active').length > 0){
+            if ($('.title-dropdown-active').length > 0) {
                 $.ajax({
                     url: '',
                     type: 'post',
-                    success: function(){
+                    success: function () {
                         alert('Load was performed.');
                     },
                     error: function (err) {
@@ -704,24 +710,27 @@ $(function () {
             }
             $('.title-dropdown').fadeOut().removeClass('title-dropdown-active');
         }
+        //модальное окно История голосования в форме массового ввода
+        if (!$(e.target).closest(".history-dropdown-wrap").length) {
+            $('.history-dropdown').fadeOut().removeClass('history-dropdown-active');
+        }
         e.stopPropagation();
     });
-
     //    мульти селект
     var multiSelect = $('.multi-select-wrap');
     $(".toggle-multi").click(function () {
         $('.multi-select-list').fadeToggle();
         multiSelect.toggleClass('active');
-        if(multiSelect.hasClass('active')){
+        if (multiSelect.hasClass('active')) {
             multiSelect.css({
-                border:'1px solid #909090',
+                border: '1px solid #909090',
                 backgroundColor: '#FAFAFA',
                 transition: '400ms ease'
             })
         }
-        if(!multiSelect.hasClass('active')){
+        if (!multiSelect.hasClass('active')) {
             multiSelect.css({
-                border:'1px solid transparent',
+                border: '1px solid transparent',
                 backgroundColor: '#fff',
                 transition: '400ms ease'
             })
@@ -731,9 +740,9 @@ $(function () {
         if (!$(e.target).closest(multiSelect).length) {
             $('.multi-select-list').fadeOut();
             $(multiSelect).removeClass('active');
-            if(!$(multiSelect).hasClass('active')){
+            if (!$(multiSelect).hasClass('active')) {
                 $(multiSelect).css({
-                    border:'1px solid transparent',
+                    border: '1px solid transparent',
                     backgroundColor: '#fff',
                     transition: '400ms ease'
                 })
@@ -746,11 +755,11 @@ $(function () {
         var selectedItems = $(this).closest('.multi-select-wrap').find('.toggle-multi');
         var id = $(this).attr('id');
         var text = $(this).siblings('label').text();
-        if (!$(this).is(':checked')){
-            $('[data-id="'+ id +'"]').remove();
+        if (!$(this).is(':checked')) {
+            $('[data-id="' + id + '"]').remove();
         }
         else {
-            selectedItems.append('<span data-id="' + id + '">'+ text +'</span>')
+            selectedItems.append('<span data-id="' + id + '">' + text + '</span>')
         }
     });
 

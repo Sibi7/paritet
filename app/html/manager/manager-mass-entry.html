@@ -2,8 +2,48 @@
 
 	<form class="content__section voting-enter manager-meeting-cabinet hotkeys disabled-form voting-input">
 
-		<h2>Внеочередное повторное общее собрание акционеров</h2>
+		<h2>
 
+
+		</h2>
+		<div class="history-wrap">
+			<h2 class="title">Участник рег. номер 000003</h2>
+			<div class="history-dropdown-wrap">
+				<button type="button" class="history-view"></button>
+				<div class="history-dropdown">
+					<div class="history-dropdown-block ">
+						<h4>Действие</h4>
+						<div class="history-content action-block">
+							<span>Голосовал №2</span>
+							<span>Голосовал №1</span>
+							<span>Регистрация</span>
+							<span>Отмена регистр</span>
+							<span>Регистрация</span>
+						</div>
+					</div>
+					<div class="history-dropdown-block ">
+						<h4>Пользователь</h4>
+						<div class="history-content user-block">
+							<span>Колчев Д.С.</span>
+							<span>Романов А.П.</span>
+							<span>Милютина О.В.</span>
+							<span>Покровская О.В.</span>
+							<span>Покровская О.В.</span>
+						</div>
+					</div>a
+					<div class="history-dropdown-block ">
+						<h4>Дата и время</h4>
+						<div class="history-content date-block">
+							<span>12.07.2018 17:32</span>
+							<span>12.07.2018 16:27</span>
+							<span>12.07.2018 14:56</span>
+							<span>06.07.2018 12:07</span>
+							<span>06.07.2018 12:02</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<div class="string">
 			<div class="string__key">Рег номер:</div>
@@ -32,6 +72,22 @@
 
 				</div>
 				<div class="string">
+					<div class="string__key">Бюллетень:</div>
+					<div class="string__value-row ">
+						<div class="bulletins-numbers">
+							<p>Бюллетень №</p>
+							<div class="bullet-numbers bullet-numbers-hotkey">
+								<label class="bullet-number activeBullet"><input type="radio">1</label>
+								<label class="bullet-number"><input type="radio">2</label>
+								<label class="bullet-number"><input type="radio">3</label>
+								<label class="bullet-number"><input type="radio">4</label>
+								<label class="bullet-number"><input type="radio">5</label>
+							</div>
+						</div>
+						<input type="hidden" id="allBulletins" name="allBulletins" value="false"/>
+					</div>
+				</div>
+				<div class="string">
 					<div class="string__key">Документ:</div>
 					<div class="string__value-row ">паспорт 00 99 876123 выдан 23.09.2003 ОВДК Беояево код 787-009,
 						паспорт 98 77 333442 выдан ОВД г. Урюпинска
@@ -39,18 +95,7 @@
 				</div>
 			</div>
 			<div class="voting-enter__select-all ">
-				<div class="bulletins-numbers">
-					<p>Бюллетень №</p>
-					<div class="bullet-numbers bullet-numbers-hotkey">
-						<label class="bullet-number activeBullet"><input type="radio">1</label>
-						<label class="bullet-number"><input type="radio">2</label>
-						<label class="bullet-number"><input type="radio">3</label>
-						<label class="bullet-number"><input type="radio">4</label>
-						<label class="bullet-number"><input type="radio">5</label>
-						<label class="bullet-number-all"><input type="checkbox"><span>Все</span></label>
-					</div>
-				</div>
-				<input type="hidden" id="allBulletins" name="allBulletins" value="false" />
+
 
 				<div class="voting-inputs ">
 					<ul class="voting-inputs__choice">
@@ -63,7 +108,7 @@
 						<li class="voting-inputs__choice--item voting-actions-all-btn voting-abstained">
 							<label><input type="radio" name="questions[2]">воздерживаюсь</label>
 						</li>
-						<li >
+						<li>
 							<a href="#" class="voting-divide">&#247;</a>
 						</li>
 						<li>
@@ -100,7 +145,7 @@
 									<li class="voting-inputs__choice--item voting-actions-sing-btn voting-abstained" tabindex="3">
 										<label><input type="radio" name="questions[2]">воздерживаюсь</label>
 									</li>
-									<li >
+									<li>
 										<a href="#" class="voting-divide">&#247;</a>
 									</li>
 									<li>
@@ -127,7 +172,7 @@
 									<li class="voting-inputs__choice--item voting-actions-sing-btn voting-abstained">
 										<label><input type="radio" name="questions[2]">воздерживаюсь</label>
 									</li>
-									<li >
+									<li>
 										<a href="#" class="voting-divide">&#247;</a>
 									</li>
 									<li>
@@ -166,7 +211,7 @@
 									<li class="voting-inputs__choice--item voting-actions-sing-btn voting-abstained">
 										<label><input type="radio" name="questions[2]">воздерживаюсь</label>
 									</li>
-									<li >
+									<li>
 										<a href="#" class="voting-divide">&#247;</a>
 									</li>
 									<li>

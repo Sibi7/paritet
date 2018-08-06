@@ -40,7 +40,7 @@
   box-sizing: border-box;
   font-weight: 400;
   background: url(../images/icons/icon_search.svg) 2% 50% no-repeat;
-  transition: 400ms;
+  transition: border 400ms;
   &:hover {
     background: url(../images/icons/icon_search.svg) 2% 50% no-repeat;
   }
@@ -48,9 +48,9 @@
     font-style: italic;
   }
   &:focus {
-    border: 1px solid $border-controls;
+    border: 1px solid $gray-controls;
     background: none;
-    transition: 400ms;
+    transition: border 400ms;
     padding: 0 0 0 20px!important;
     &::placeholder {
       opacity: 0;
