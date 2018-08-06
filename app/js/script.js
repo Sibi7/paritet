@@ -649,6 +649,11 @@ $(function () {
     });
     $(document).on('click', '.t-search', function () {
         $('.search-select').show();
+
+    });
+    $(document).on('keyup', '.t-search', function () {
+        $('.search-select').show();
+
     });
 
     $(document).on('click', '.search-select li', function () {

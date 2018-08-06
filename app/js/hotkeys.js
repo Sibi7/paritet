@@ -15,6 +15,13 @@ function Hotkeys() {
             keys: [113]
         },
         {
+            //фокус на инпутпоиска
+            func:function () {
+                $('.hotkeys').find('.mass-entry-search').focus();
+            },
+            keys: [113]
+        },
+        {
             //клик по сабмит
             func: function () {
                 event.preventDefault();

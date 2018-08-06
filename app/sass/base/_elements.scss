@@ -1,5 +1,7 @@
 $blue: #00467f;
 $new-hover: rgba(104, 144, 177, .75);
+$border-controls: #909090;
+$bg-controls: #FAFAFA;
 //$blue-hover: #73b9f2;
 $blue-hover: #73b9f2;
 $green-btn: #b9bf0a;
@@ -11,6 +13,7 @@ $pink: #ef3f56;
 $white: #fff;
 $red: #e62e2e;
 $orange: #f29c24;
+
 
 .orange {
   color: $orange !important;
@@ -1968,28 +1971,36 @@ label {
 .white-space {
   white-space: normal !important;
 }
-
+.header.manager-header{
+  .voting-enter__row{
+    margin-bottom: 0;
+  }
+}
 .search-select {
   display: none;
   margin: 0;
   position: absolute;
-  top: 35px;
+  top: 30px;
   max-height: 155px;
   min-height: 155px;
   overflow: hidden;
-  background: #fff;
+  background: $bg-controls;
   padding: 10px 0;
   left: 0;
-  border: 1px solid #ccc;
+  border: 1px solid $border-controls;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-box-shadow: 0 10px 10px 0 #ddd;
   box-shadow: 0 10px 10px 0 #ddd;
   width: 100%;
   z-index: 4;
+  border-top: none;
   transition: .4s;
   .mCSB_inside > .mCSB_container {
     margin-right: 0;
+  }
+  .mCS-my-theme.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{
+    background: $new-hover;
   }
   li {
     padding: 5px 20px;
@@ -1998,7 +2009,8 @@ label {
     font-size: 14px;
     color: #000;
     &:hover {
-      background-color: #dce9f5;
+      background-color: $new-hover;
+      color: $white;
       transition: .4s;
     }
     &:focus {

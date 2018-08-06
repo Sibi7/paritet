@@ -1,0 +1,385 @@
+<!-- start html_open.html-->
+<!DOCTYPE html>
+<html>
+<head lang="ru">
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="css/libs.min.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.min.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="images/icons/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/icons/favicon.ico" type="image/x-icon">
+    <script src="js/fractions.js"></script>
+</head>
+<body>
+<!-- open .header -->
+<!-- end html_open.html-->
+<div class="wrap manager-cabinet">
+<!-- start meeting-sidebar.html-->
+<aside class="sidebar">
+    <div class="sidebar__logo">
+        <span class="logo"></span>
+        <h2>паритет <span>интернет реестр</span></h2>
+    </div>
+    <div class="sidebar__item">
+        <div class="sidebar__item--header sidebar__item--active">
+            <div class="sidebar__item--icon">
+                <span class="icon-sidebar-icon4"></span>
+            </div>
+            <a href="manager-meeting-list.html">Корп. Действия</a>
+        </div>
+        <ul>
+            <li><span>Активные сейчас</span></li>
+            <li><span>Собрания</span></li>
+        </ul>
+    </div>
+    <div class="sidebar__item">
+        <div class="sidebar__item--header">
+            <div class="sidebar__item--icon">
+                <span class="icon-sidebar-icon6"></span>
+            </div>
+            <a href="manager-voting-list.html">Голосование</a>
+        </div>
+    </div>
+    <div class="sidebar__item">
+        <div class="sidebar__item--header">
+            <div class="sidebar__item--icon">
+                <span class="icon-sidebar-icon1"></span>
+            </div>
+            <a href="manager-issuer-list.html">Эмитенты</a>
+        </div>
+        <ul>
+            <li><a href="manager-issuer-list.html">Мои эмитенты</a></li>
+        </ul>
+    </div>
+</aside>
+<!-- end meeting-sidebar.html-->
+	<div class="container">
+		<header class="header manager-header">
+
+			<div class="voting-enter__row header__filter">
+				<div class="voting-enter__s-wrap">
+					<input type="text" class="t-search mass-search" placeholder="Для выбора и поиска записей нажмите здесь">
+					<ul class="search-select">
+						<li>Lorem ipsum.</li>
+						<li>Lorem ipsum1.</li>
+						<li>Lorem ipsum2.</li>
+						<li>Lorem ipsum3.</li>
+						<li>Lorem ipsum4.</li>
+						<li>Lorem ipsum4.</li>
+						<li>Lorem ipsum4.</li>
+						<li>Lorem ipsum4.</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="action-btn">
+				<a href="/paritet/manager-meeting-cabinet-agenda-settings.html" class="action-btn--edit">Изменить</a>
+				<span class="action-btn--arrow arrow-down"></span>
+				<ul>
+					<li><a href="#">Создать</a></li>
+					<li><a href="#">Изменить</a></li>
+					<li><span class="delete">Удалить</span></li>
+				</ul>
+			</div>
+
+			<div class="header__user">
+				<img src="images/icons/issuer-icon.png" alt="">
+				<a href="#" class="someone">Анастасия Мельникова<span>Менеджер</span></a>
+			</div>
+
+		</header>
+
+<!-- start manager-mass-entry.html-->
+<main class="content">
+
+	<form class="content__section voting-enter manager-meeting-cabinet hotkeys disabled-form voting-input">
+
+		<h2>Внеочередное повторное общее собрание акционеров</h2>
+
+
+		<div class="string">
+			<div class="string__key">Рег номер:</div>
+			<div class="string__value-row">000003</div>
+		</div>
+		<div class="string">
+			<div class="string__key">Статус голосования</div>
+			<div class="string__value-row">
+				<span class="green">Не проголосовал </span>  
+				<span> (зарегистрирован Романов Александр Петрович)</span>
+			</div>
+		</div>
+
+		<div class="string__wrap">
+			<div>
+				<div class="string">
+					<div class="string__key">Голосов всего</div>
+					<div class="string__value-row ">200 100</div>
+				</div>
+				<div class="string">
+					<div class="string__key">Владелец:</div>
+					<div class="string__value-row ">
+						Колчев Дмитрий Сергеевич, Романов Александр Петрович
+
+					</div>
+
+				</div>
+				<div class="string">
+					<div class="string__key">Документ:</div>
+					<div class="string__value-row ">паспорт 00 99 876123 выдан 23.09.2003 ОВДК Беояево код 787-009,
+						паспорт 98 77 333442 выдан ОВД г. Урюпинска
+					</div>
+				</div>
+			</div>
+			<div class="voting-enter__select-all ">
+				<div class="bulletins-numbers">
+					<p>Бюллетень №</p>
+					<div class="bullet-numbers bullet-numbers-hotkey">
+						<label class="bullet-number activeBullet"><input type="radio">1</label>
+						<label class="bullet-number"><input type="radio">2</label>
+						<label class="bullet-number"><input type="radio">3</label>
+						<label class="bullet-number"><input type="radio">4</label>
+						<label class="bullet-number"><input type="radio">5</label>
+						<label class="bullet-number-all"><input type="checkbox"><span>Все</span></label>
+					</div>
+				</div>
+				<input type="hidden" id="allBulletins" name="allBulletins" value="false" />
+
+				<div class="voting-inputs ">
+					<ul class="voting-inputs__choice">
+						<li class="voting-inputs__choice--item voting-actions-all-btn voting-true">
+							<label><input type="radio" name="questions[2]">За</label>
+						</li>
+						<li class="voting-inputs__choice--item  voting-actions-all-btn voting-false">
+							<label><input type="radio" name="questions[2]">Против</label>
+						</li>
+						<li class="voting-inputs__choice--item voting-actions-all-btn voting-abstained">
+							<label><input type="radio" name="questions[2]">воздерживаюсь</label>
+						</li>
+						<li >
+							<a href="#" class="voting-divide">&#247;</a>
+						</li>
+						<li>
+							<a href="#" class="voting-close">&#215;</a>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="voting-enter__table">
+			<div class="voting-enter__tr voting-enter__tr-parent">
+				<div class="voting-enter__td">
+					<strong class="voting-enter__td-title">Вопрос 1.</strong>
+					<p class="voting-enter__td-text">Об утверждении регламента общего собрания акционеров</p>
+				</div>
+				<div class="voting-enter__td">
+					<div class="voting-enter__tr">
+						<div class="voting-enter__td">
+							<strong class="voting-enter__td-title">Решение</strong>
+							<p class="voting-enter__td-text">Об утверждении регламента общего собрания акционеровОб
+								утверждении регламента общего собрания акционеров</p>
+						</div>
+						<div class="voting-enter__td">
+							<div class="voting-inputs">
+								<ul class="voting-inputs__choice">
+									<li class="voting-inputs__choice--item voting-actions-sing-btn voting-true" tabindex="1">
+										<label><input type="radio" name="questions[2]">За</label>
+									</li>
+									<li class="voting-inputs__choice--item voting-actions-sing-btn  voting-false" tabindex="2">
+										<label><input type="radio" name="questions[2]">Против</label>
+									</li>
+									<li class="voting-inputs__choice--item voting-actions-sing-btn voting-abstained" tabindex="3">
+										<label><input type="radio" name="questions[2]">воздерживаюсь</label>
+									</li>
+									<li >
+										<a href="#" class="voting-divide">&#247;</a>
+									</li>
+									<li>
+										<a href="#" class="voting-close">&#215;</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="voting-enter__tr">
+						<div class="voting-enter__td">
+							<strong class="voting-enter__td-title">Решение</strong>
+							<p class="voting-enter__td-text">Об утверждении регламента общего собрания акционеров</p>
+						</div>
+						<div class="voting-enter__td">
+							<div class="voting-inputs">
+								<ul class="voting-inputs__choice">
+									<li class="voting-inputs__choice--item voting-actions-sing-btn voting-true">
+										<label><input type="radio" name="questions[2]">За</label>
+									</li>
+									<li class="voting-inputs__choice--item voting-actions-sing-btn voting-false">
+										<label><input type="radio" name="questions[2]">Против</label>
+									</li>
+									<li class="voting-inputs__choice--item voting-actions-sing-btn voting-abstained">
+										<label><input type="radio" name="questions[2]">воздерживаюсь</label>
+									</li>
+									<li >
+										<a href="#" class="voting-divide">&#247;</a>
+									</li>
+									<li>
+										<a href="#" class="voting-close">&#215;</a>
+									</li>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="voting-enter__tr voting-enter__tr-parent">
+				<div class="voting-enter__td">
+					<strong class="voting-enter__td-title">Вопрос 1.</strong>
+					<p class="voting-enter__td-text">Об утверждении регламента общего собрания акционеров</p>
+				</div>
+				<div class="voting-enter__td">
+					<div class="voting-enter__tr">
+						<div class="voting-enter__td">
+							<strong class="voting-enter__td-title">Решение</strong>
+							<p class="voting-enter__td-text">Об утверждении регламента общего собрания акционеров</p>
+						</div>
+						<div class="voting-enter__td">
+							<div class="voting-inputs">
+								<ul class="voting-inputs__choice">
+									<li class="voting-inputs__choice--item voting-actions-sing-btn voting-veto">
+										<label><input type="radio" name="questions[2]">Вето</label>
+									</li>
+									<li class="voting-inputs__choice--item voting-actions-sing-btn voting-true">
+										<label><input type="radio" name="questions[2]">За</label>
+									</li>
+									<li class="voting-inputs__choice--item voting-actions-sing-btn voting-false">
+										<label><input type="radio" name="questions[2]">Против</label>
+									</li>
+									<li class="voting-inputs__choice--item voting-actions-sing-btn voting-abstained">
+										<label><input type="radio" name="questions[2]">воздерживаюсь</label>
+									</li>
+									<li >
+										<a href="#" class="voting-divide">&#247;</a>
+									</li>
+									<li>
+										<a href="#" class="voting-close">&#215;</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="voting-enter__tr voting-enter__tr-parent">
+				<div class="voting-enter__td">
+					<strong class="voting-enter__td-title">Вопрос 1.</strong>
+					<p class="voting-enter__td-text">Об утверждении регламента общего собрания акционеров</p>
+				</div>
+				<div class="voting-enter__td">
+					<div class="voting-enter__tr">
+						<div class="voting-enter__td">
+							<strong class="voting-enter__td-title">Решение</strong>
+							<p class="voting-enter__td-text">Об утверждении регламента общего собрания акционеров</p>
+						</div>
+						<div class="voting-enter__td">
+
+
+							<div class="separation-votes">
+								<div class="voting-actions__choice-btn">
+									<div class="voting-actions__choice-wrap">
+										<div class="voting-actions__wrap-btn">
+											<div class="voting-votes-all">Голосов всего <span> 200 100</span></div>
+											<label class="  voting-true">
+												<input type="checkbox" name="questions[2]" checked>
+												<span>За</span>
+											</label>
+										</div>
+										<div class="voting-actions__wrap-input">
+											<label>
+												<input type="text" value="0" name="qustions"
+															 class="noborder votes-cast votesCastFirst" style="width: 100px"
+															 data-val="true">
+											</label>
+											<span class="bulleting-item--key">голосов</span>
+										</div>
+
+										<div class="voting-actions__wrap-right-btn">
+											<a href="#" class="voting-clear-division"> &#x25EF;</a>
+										</div>
+
+									</div>
+									<div class="voting-actions__choice-wrap">
+										<div class="voting-actions__wrap-btn">
+											<label class="  voting-false">
+												<input type="checkbox" name="questions[2]" checked>
+												Против
+											</label>
+										</div>
+										<div class="voting-actions__wrap-input">
+											<label>
+												<input type="text" value="0" name="qustions"
+															 class="noborder votes-cast votesCastFirst" style="width: 100px"
+															 data-val="true">
+											</label>
+											<span class="bulleting-item--key">голосов</span>
+										</div>
+										<div class="voting-actions__wrap-right-btn">
+											<button type="button" class="link remainingVoicesBtn" style="">Остаток</button>
+										</div>
+									</div>
+
+									<div class="voting-actions__choice-wrap">
+										<div class="voting-actions__wrap-btn">
+											<div class="voting-actions__wrap-btn">
+												<label class="   voting-abstained">
+													<input type="checkbox" name="questions[2]" checked>
+													воздерживаюсь
+												</label>
+
+											</div>
+										</div>
+										<div class="voting-actions__wrap-input">
+											<label>
+												<input type="text" value="0" name="qustions"
+															 class="noborder votes-cast votesCastFirst" style="width: 100px"
+															 data-val="true">
+											</label>
+											<span class="bulleting-item--key">голосов</span>
+										</div>
+										<div class="voting-actions__wrap-right-btn">
+											<button type="button" class="link remainingVoicesBtn" style="">Остаток</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="voting-enter__tfoot">
+				<input type="submit" class="voting-send bg-blue form-save-btn" value="Сохранить" style="">
+				<input type="submit" class="cancel" value="Очистить" disabled style="">
+			</div>
+
+		</div>
+	</form>
+
+</main>
+<!-- end manager-mass-entry.html-->
+	</div>
+</div>
+<!-- start html_close.html-->
+<script src='js/jquery-3.2.1.min.js' type="text/javascript"></script>
+<script src='js/slick.min.js' type="text/javascript"></script>
+<script src='js/Cookie.js' type="text/javascript"></script>
+<script src='js/AllVoting.js' type="text/javascript"></script>
+<script src="js/script.min.js" type="text/javascript"></script>
+<script src="js/admin.js" type="text/javascript"></script>
+</body>
+</html>
+<!-- end html_close.html-->
