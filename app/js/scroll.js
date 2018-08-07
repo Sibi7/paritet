@@ -20,6 +20,7 @@ $(function () {
     $('.filter .filter .filter__body').mCustomScrollbar({theme: "my-theme"});
     $('.modal__body').mCustomScrollbar({theme: "my-theme"});
     $('.search-select').mCustomScrollbar({theme: "my-theme"});
+    $('.history-dropdown').mCustomScrollbar({theme: "my-theme"});
 
 
     var window_href = window.location.href;
