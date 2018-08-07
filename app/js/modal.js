@@ -16,6 +16,9 @@ $(function () {
     $(document).on('click', '.questionModal .submit', function () {
         $(this).closest('.overlay').hide();
     });
+    $(document).on('click', '.modal-registration .close', function () {
+        $(this).closest('.overlay').hide();
+    });
 
     $(document).mouseup(function (e) {
         var overlayModal = $(".overlay");

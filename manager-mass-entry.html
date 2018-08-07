@@ -76,7 +76,7 @@
 			</div>
 
 			<div class="action-btn">
-				<a href="/paritet/manager-meeting-cabinet-agenda-settings.html" class="action-btn--edit">Регистрация</a>
+				<a href="#"  onclick="showModal('modal-registration'); return false;" class="action-btn--edit">Регистрация</a>
 				<span class="action-btn--arrow arrow-down"></span>
 				<ul>
 					<li><a href="#">Регистрация</a></li>
@@ -425,6 +425,52 @@
 
 		</div>
 	</form>
+	<div class="overlay">
+		<div class="modal modal-registration">
+			<div class="modal-registration__mass-body">
+				<h2>
+					Регистрация на собрании
+				</h2>
+				<table class="table-modal-registration">
+					<tbody>
+					<tr>
+						<td>Собрание</td>
+						<td>ГОС АО “Рыбзавод Родники”, 12.07.2018</td>
+					</tr>
+					<tr>
+						<td>Голосов</td>
+						<td>
+							<div>
+								<span>200100</span>
+								<input type="number" value="200100" class="input-hide">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Владелец</td>
+						<td>Колчев Д.С.</td>
+					</tr>
+					<tr>
+						<td>Представитель</td>
+						<td>Колчев Д.С.</td>
+					</tr>
+					</tbody>
+					<tfoot>
+					<tr>
+						<td>
+							<button type="submit" class="submit">Сохранить</button>
+						</td>
+						<td>
+							<button type="submit" class="cancel">Отмена</button>
+						</td>
+					</tr>
+					</tfoot>
+				</table>
+
+
+			</div>
+		</div>
+	</div>
 
 </main>
 <!-- end manager-mass-entry.html-->

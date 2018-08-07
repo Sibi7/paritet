@@ -3,6 +3,7 @@ $new-hover: rgba(104, 144, 177, .75);
 $gray-controls: #909090;
 $bg-controls: #FAFAFA;
 $action-btn-hover: #E9EAD6;
+$btn-close: #0070CC;
 //$blue-hover: #73b9f2;
 $blue-hover: #73b9f2;
 $green-btn: #b9bf0a;
@@ -14,7 +15,6 @@ $pink: #ef3f56;
 $white: #fff;
 $red: #e62e2e;
 $orange: #f29c24;
-
 
 .orange {
   color: $orange !important;
@@ -574,7 +574,7 @@ $orange: #f29c24;
   &__safety-item {
     display: flex;
     margin-bottom: 30px;
-    &:last-child{
+    &:last-child {
       margin-bottom: 0;
     }
     img {
@@ -591,26 +591,77 @@ $orange: #f29c24;
       svg:hover {
         fill: red;
       }
-      a{
+      a {
         color: #2983CC;
         transition: .2s ease;
-        &:hover{
+        &:hover {
           transition: .2s ease;
           color: $blue;
         }
       }
     }
   }
-
-
 }
+
+.modal-registration {
+  max-width: 460px;
+
+  &__mass-body {
+    position: relative;
+    padding: 25px;
+    background: $bg-controls;
+    h2 {
+      font-size: 17px !important;
+      color: #141414;
+      margin: 0 !important;
+    }
+  }
+  .cancel {
+    color: $btn-close;
+  }
+}
+
+.table-modal-registration {
+  width: 100%;
+  margin-top: 15px;
+  table-layout: fixed;
+  tbody tr {
+    td {
+      color: $gray-controls;
+      font-size: 14px;
+      width: 120px;
+      padding-bottom: 10px;
+      padding-right: 20px;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      &:last-child {
+        width: calc(100% - 120px);
+        color: #000;
+        padding-right: 0;
+      }
+    }
+  }
+  tfoot{
+  tr{
+    td{
+      padding-top: 5px;
+    }
+  }
+  }
+}
+
 .modal__safety-item p:hover path {
 
   color: red;
 }
-.modal-safety-regulations{
+
+.modal-safety-regulations {
   max-width: 540px;
 }
+
 .questionModal {
   .modal__body {
     font-size: 14px;
@@ -1972,11 +2023,13 @@ label {
 .white-space {
   white-space: normal !important;
 }
-.header.manager-header{
-  .voting-enter__row{
+
+.header.manager-header {
+  .voting-enter__row {
     margin-bottom: 0;
   }
 }
+
 .search-select {
   display: none;
   margin: 0;
@@ -2000,7 +2053,7 @@ label {
   .mCSB_inside > .mCSB_container {
     margin-right: 0;
   }
-  .mCS-my-theme.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{
+  .mCS-my-theme.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
     background: $new-hover;
   }
   li {
