@@ -698,10 +698,11 @@ $(function () {
         if (!$(e.target).closest(".title-dropdown-wrap").length) {
             if ($('.title-dropdown-active').length > 0) {
                 $.ajax({
-                    url: '',
+                    url: 'Helper/UpdatePageParameters',
                     type: 'post',
-                    success: function () {
+                    success: function (data) {
                         alert('Load was performed.');
+                        console.log(data);
                     },
                     error: function (err) {
                         alert('Ошибка! Ответ сервера: ' + err.status);
@@ -773,4 +774,26 @@ $(function () {
         dotsClass: 'sidebar-dots'
     });
 
+//    Модальное окно регистрации
+    var inputRegistration = $('.input-hide');
+    inputRegistration.hide();
+    $(document).on('click', '.change-span', function () {
+        $(this).siblings('.input-hide').show();
+        $(this).hide();
+    });
+
+    $(document).on('change', '.input-hide', function () {
+        $(this).siblings('.change-span').html($(this).val())
+    } )
+    $(document).on('blur', '.input-hide', function () {
+        $(this).siblings('.change-span').show();
+        $(this).hide();
+    } )
+    // $(document).mouseup(function (e) {
+    //     var container = $(".input-hide");
+    //     if (container.has(e.target).length === 0){
+    //         container.hide();
+    //         container.siblings('.change-span').show();
+    //     }
+    // });
 });

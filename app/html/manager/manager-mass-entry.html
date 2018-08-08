@@ -55,38 +55,37 @@
 				</div>
 			</div>
 		</div>
-
-		<div class="string">
-			<div class="string__key">Рег номер:</div>
-			<div class="string__value-row">000003</div>
-		</div>
 		<div class="string">
 			<div class="string__key">Статус голосования</div>
 			<div class="string__value-row">
-				<span class="green">Не проголосовал </span>  
-				<span> (зарегистрирован Романов Александр Петрович)</span>
+				<span class="grey">Не зарегестрирован</span>  
 			</div>
 		</div>
+		<div class="string">
+			<div class="string__key">Владелец</div>
+			<div class="string__value-row">
+				<span>Астахов Андрей Корнеевич  (паспорт 00 99 876123)</span>  
+			</div>
+		</div>
+		<div class="string">
+			<div class="string__key">Голосов всего</div>
+			<div class="string__value-row ">200 100</div>
+		</div>
+		<div class="string">
+			<div class="string__key">Владелец:</div>
+			<div class="string__value-row ">
+				Колчев Дмитрий Сергеевич, Романов Александр Петрович
 
+			</div>
+
+		</div>
 		<div class="string__wrap">
 			<div>
-				<div class="string">
-					<div class="string__key">Голосов всего</div>
-					<div class="string__value-row ">200 100</div>
-				</div>
-				<div class="string">
-					<div class="string__key">Владелец:</div>
-					<div class="string__value-row ">
-						Колчев Дмитрий Сергеевич, Романов Александр Петрович
 
-					</div>
-
-				</div>
 				<div class="string">
 					<div class="string__key">Бюллетень:</div>
 					<div class="string__value-row ">
 						<div class="bulletins-numbers">
-							<p>Бюллетень №</p>
 							<div class="bullet-numbers bullet-numbers-hotkey">
 								<label class="bullet-number activeBullet"><input type="radio">1</label>
 								<label class="bullet-number"><input type="radio">2</label>
@@ -96,12 +95,6 @@
 							</div>
 						</div>
 						<input type="hidden" id="allBulletins" name="allBulletins" value="false"/>
-					</div>
-				</div>
-				<div class="string">
-					<div class="string__key">Документ:</div>
-					<div class="string__value-row ">паспорт 00 99 876123 выдан 23.09.2003 ОВДК Беояево код 787-009,
-						паспорт 98 77 333442 выдан ОВД г. Урюпинска
 					</div>
 				</div>
 			</div>
@@ -344,10 +337,8 @@
 					<tr>
 						<td>Голосов</td>
 						<td>
-							<div>
-								<span>200100</span>
-								<input type="number" value="200100" class="input-hide">
-							</div>
+							<span class="change-span">200100</span>
+							<input type="number" value="200100" class="input-hide">
 						</td>
 					</tr>
 					<tr>
@@ -355,8 +346,13 @@
 						<td>Колчев Д.С.</td>
 					</tr>
 					<tr>
-						<td>Представитель</td>
-						<td>Колчев Д.С.</td>
+						<td>
+							Представитель
+
+						</td>
+						<td>
+							Колчев Д.С.
+						</td>
 					</tr>
 					</tbody>
 					<tfoot>

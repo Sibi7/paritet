@@ -282,3 +282,16 @@ input[type="radio"].circleRadioRadiance {
 .no-border{
   border: none;
 }
+
+.input-hide{
+  position: absolute;
+  top: 0;
+  background: $bg-controls;
+  border: 1px solid $gray-controls;
+  height: 30px;
+  width: 100px;
+  padding: 5px 10px;
+}
+.change-span{
+  cursor: pointer;
+}
