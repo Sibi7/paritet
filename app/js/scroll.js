@@ -22,12 +22,10 @@ $(function () {
     $('.search-select').mCustomScrollbar({theme: "my-theme"});
     $('.history-dropdown').mCustomScrollbar({theme: "my-theme"});
 
-
     var window_href = window.location.href;
     var locationId = window_href.substr(window_href.indexOf('#'));
     if (locationId[0] === '#') {
         $('.content__section').mCustomScrollbar('scrollTo', $(locationId));
     }
-
 
 });

@@ -698,7 +698,7 @@ $(function () {
         if (!$(e.target).closest(".title-dropdown-wrap").length) {
             if ($('.title-dropdown-active').length > 0) {
                 $.ajax({
-                    url: 'Helper/UpdatePageParameters',
+                    url: '/Helper/UpdatePageParameters',
                     type: 'post',
                     success: function (data) {
                         alert('Load was performed.');

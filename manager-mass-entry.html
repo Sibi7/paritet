@@ -202,43 +202,46 @@
 
 		</div>
 		<div class="string__wrap">
-			<div>
-
-				<div class="string">
-					<div class="string__key">Бюллетень:</div>
-					<div class="string__value-row ">
-						<div class="bulletins-numbers">
-							<div class="bullet-numbers bullet-numbers-hotkey">
-								<label class="bullet-number activeBullet"><input type="radio">1</label>
-								<label class="bullet-number"><input type="radio">2</label>
-								<label class="bullet-number"><input type="radio">3</label>
-								<label class="bullet-number"><input type="radio">4</label>
-								<label class="bullet-number"><input type="radio">5</label>
-							</div>
+			<div class="string">
+				<div class="string__key">Бюллетень:</div>
+				<div class="string__value-row ">
+					<div class="bulletins-numbers">
+						<div class="bullet-numbers bullet-numbers-hotkey">
+							<label class="bullet-number activeBullet"><input type="radio">1</label>
+							<label class="bullet-number"><input type="radio">2</label>
+							<label class="bullet-number"><input type="radio">3</label>
+							<label class="bullet-number"><input type="radio">4</label>
+							<label class="bullet-number"><input type="radio">5</label>
 						</div>
-						<input type="hidden" id="allBulletins" name="allBulletins" value="false"/>
 					</div>
+					<input type="hidden" id="allBulletins" name="allBulletins" value="false"/>
 				</div>
 			</div>
 			<div class="voting-enter__select-all ">
 
 
-				<div class="voting-inputs ">
+				<div class="voting-inputs">
 					<ul class="voting-inputs__choice">
-						<li class="voting-inputs__choice--item voting-actions-all-btn voting-true">
-							<label><input type="radio" name="questions[2]">За</label>
+						<li class="voting-inputs__choice--item voting-actions-all-btn voting-true" id="voting-true" name="check">
+							<label>
+								<input type="radio" data-save-condition="checkbox" data-save-condition-name="btn-true_1_1" data-scv="0">За
+							</label>
 						</li>
-						<li class="voting-inputs__choice--item  voting-actions-all-btn voting-false">
-							<label><input type="radio" name="questions[2]">Против</label>
+						<li class="voting-inputs__choice--item voting-actions-all-btn voting-false" id="voting-false" name="check">
+							<label>
+								<input type="radio" data-save-condition="checkbox" data-save-condition-name="btn-false_1_1" data-scv="0">Против
+							</label>
 						</li>
-						<li class="voting-inputs__choice--item voting-actions-all-btn voting-abstained">
-							<label><input type="radio" name="questions[2]">воздерживаюсь</label>
+						<li class="voting-inputs__choice--item voting-actions-all-btn voting-abstained" id="voting-abstained" name="check">
+							<label>
+								<input data-save-condition="checkbox" data-save-condition-name="btn-abstained_1_1" data-scv="0" type="radio">воздерживаюсь
+							</label>
 						</li>
 						<li>
-							<a href="#" class="voting-divide">&#247;</a>
+							<a href="#" class="voting-divide">÷</a>
 						</li>
 						<li>
-							<a href="#" class="voting-close">&#215;</a>
+							<a href="#" class="voting-close">×</a>
 						</li>
 					</ul>
 				</div>
