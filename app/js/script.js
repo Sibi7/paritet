@@ -697,17 +697,19 @@ $(function () {
         //    Выпадалка радио кнопок по нажатию на иконку view
         if (!$(e.target).closest(".title-dropdown-wrap").length) {
             if ($('.title-dropdown-active').length > 0) {
-                $.ajax({
-                    url: '/Helper/UpdatePageParameters',
-                    type: 'post',
-                    success: function (data) {
-                        alert('Load was performed.');
-                        console.log(data);
-                    },
-                    error: function (err) {
-                        alert('Ошибка! Ответ сервера: ' + err.status);
-                    }
-                })
+                $('.title-dropdown-wrap form').submit(
+                    $.ajax({
+                        url: '/Helper/UpdatePageParameters',
+                        type: 'post',
+                        success: function (data) {
+                            console.log(data);
+                            $('.title-wrap').html(data);
+                        },
+                        error: function (err) {
+                            alert('Ошибка! Ответ сервера: ' + err.status);
+                        }
+                    })
+                );
             }
             $('.title-dropdown').fadeOut().removeClass('title-dropdown-active');
         }
