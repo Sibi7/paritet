@@ -697,19 +697,7 @@ $(function () {
         //    Выпадалка радио кнопок по нажатию на иконку view
         if (!$(e.target).closest(".title-dropdown-wrap").length) {
             if ($('.title-dropdown-active').length > 0) {
-                $('.title-dropdown-wrap form').submit(
-                    $.ajax({
-                        url: '/Helper/UpdatePageParameters',
-                        type: 'post',
-                        success: function (data) {
-                            console.log(data);
-                            $('.title-wrap').html(data);
-                        },
-                        error: function (err) {
-                            alert('Ошибка! Ответ сервера: ' + err.status);
-                        }
-                    })
-                );
+                $('.title-dropdown-wrap form').submit();
             }
             $('.title-dropdown').fadeOut().removeClass('title-dropdown-active');
         }
@@ -718,6 +706,22 @@ $(function () {
             $('.history-dropdown').fadeOut().removeClass('history-dropdown-active');
         }
         e.stopPropagation();
+    });
+    $(document).on('submit', '.title-dropdown-wrap form', function (e) {
+        e.preventDefault();
+        var formData = $(this).serializeArray();
+        $.ajax({
+            url: '/Helper/UpdatePageParameters',
+            type: 'post',
+            data: formData,
+            success: function (data) {
+                $('.title-wrap').html($(data).html());
+                console.log(data)
+            },
+            error: function (err) {
+                alert('Ошибка! Ответ сервера: ' + err.status);
+            }
+        })
     });
     //    мульти селект
     var multiSelect = $('.multi-select-wrap');
