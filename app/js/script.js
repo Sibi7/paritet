@@ -686,13 +686,13 @@ $(function () {
 
 //    Выпадалка радио кнопок по нажатию на иконку view
 
-    $(".title-view").click(function () {
+    $(document).on('click' , '.title-view', function () {
         $('.title-dropdown').fadeToggle().addClass('title-dropdown-active');
     });
-    //модальное окно История голосования в форме массового ввода
-    $(".history-view").click(function () {
+    $(document).on('click' , '.history-view', function () {
         $('.history-dropdown').fadeToggle().addClass('history-dropdown-active');
     });
+    //модальное окно История голосования в форме массового ввода
     $(document).on('click', function (e) {
         //    Выпадалка радио кнопок по нажатию на иконку view
         if (!$(e.target).closest(".title-dropdown-wrap").length) {

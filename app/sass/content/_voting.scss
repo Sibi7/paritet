@@ -26,6 +26,12 @@
     align-items: flex-end;
     font-size: 13px;
     color: #777;
+    .voting-close{
+      margin-right: 0;
+    }
+    .voting-inputs{
+      justify-content: flex-start!important;
+    }
     &__tag {
       display: block;
       margin-right: 20px;
@@ -51,7 +57,7 @@
     margin-left: auto;
     padding-top: 0;
     justify-content: flex-end;
-    min-width: 553px;
+    min-width: 418px;
   }
 
   .voting-actions__choice--item {
