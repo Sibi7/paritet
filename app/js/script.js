@@ -686,10 +686,10 @@ $(function () {
 
 //    Выпадалка радио кнопок по нажатию на иконку view
 
-    $(document).on('click' , '.title-view', function () {
+    $(document).on('click', '.title-view', function () {
         $('.title-dropdown').fadeToggle().addClass('title-dropdown-active');
     });
-    $(document).on('click' , '.history-view', function () {
+    $(document).on('click', '.history-view', function () {
         $('.history-dropdown').fadeToggle().addClass('history-dropdown-active');
     });
     //модальное окно История голосования в форме массового ввода
@@ -790,11 +790,11 @@ $(function () {
 
     $(document).on('change', '.input-hide', function () {
         $(this).siblings('.change-span').html($(this).val())
-    } )
+    })
     $(document).on('blur', '.input-hide', function () {
         $(this).siblings('.change-span').show();
         $(this).hide();
-    } )
+    })
     // $(document).mouseup(function (e) {
     //     var container = $(".input-hide");
     //     if (container.has(e.target).length === 0){
@@ -802,4 +802,12 @@ $(function () {
     //         container.siblings('.change-span').show();
     //     }
     // });
+
+
+    /* кнопки разделения голосов формы ввода */
+
+    $(document).on('click', '.separation-votes .voting-actions-btn', function () {
+        $(this).toggleClass('voting-active');
+    });
+
 });

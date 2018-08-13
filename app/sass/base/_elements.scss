@@ -1062,6 +1062,26 @@ label {
   }
 }
 
+.input-sent {
+  .voting-inputs__choice {
+    pointer-events: none;
+  }
+  .voting-inputs__choice--item:not(.voting-selected) {
+    background-color: transparent !important;
+    color: #777 !important;
+  }
+  .voting-divide:not(.voting-selected) {
+    background-color: transparent !important;
+    background-image: url("../images/icons/scissors-grey.svg")!important;
+    color: $gray-controls !important;
+  }
+  .voting-close:not(.voting-selected) {
+    background-color: transparent !important;
+    color: $gray-controls !important;
+    font-weight: 300;
+  }
+}
+
 .voting-impossible {
   .voting-actions__choice {
     pointer-events: none;
@@ -1084,26 +1104,23 @@ label {
   .voting-actions-btn {
     margin-right: 10px;
     font-size: 13px;
-    color: #fff;
+    color: $btn-close;
+    background: $bg-controls;
     display: flex;
     align-items: center;
     padding: 0 20px;
     text-transform: uppercase;
     height: 30px;
-    cursor: auto;
+    cursor: pointer;
+    border: 1px solid transparent;
+    &:hover{
+      border: 1px solid;
+    }
   }
-  .voting-actions-btn.voting-true {
-    background-color: #5ccc3d;
-  }
-  .voting-actions-btn.voting-false {
-    background-color: #e62e2e;
-  }
-  .voting-actions-btn.voting-abstained {
-
-    background-color: #f29c24;
-  }
-  .voting-actions-btn.voting-veto {
-    background-color: #000;
+  .voting-actions-btn.voting-active {
+    background-color: $active-bullet;
+    border: solid 1px transparent;
+    color: $white;
   }
 }
 
