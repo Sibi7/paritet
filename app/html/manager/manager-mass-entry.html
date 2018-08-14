@@ -239,14 +239,23 @@
 							<strong class="voting-enter__td-title">Решение</strong>
 							<p class="voting-enter__td-text">Об утверждении регламента общего собрания акционеров</p>
 						</div>
-						<div class="voting-enter__td">
+						<div class="voting-enter__td margin-left-auto">
 
 
 							<div class="separation-votes">
+
 								<div class="voting-actions__choice-btn">
+
+									<div class="voting-actions__choice-wrap">
+										<div class="voices-given">Голосов  ЗА отдано<span>0</span> максимум <span>400 200</span></div>
+									</div>
+									<div class="voting-actions__choice-wrap">
+										<div class="votes-left">Голосов  осталось <span>10 000</span> из <span>10 000</span></div>
+									</div>
+
 									<div class="voting-actions__choice-wrap">
 										<div class="voting-actions__wrap-btn">
-											<div class="voting-votes-all">Голосов всего <span> 200 100</span></div>
+											<!--<div class="voting-votes-all">Голосов всего <span> 200 100</span></div>-->
 											<label class="voting-actions-btn voting-true">
 												<input type="checkbox" name="questions[2]" checked>
 												<span>За</span>
@@ -262,6 +271,7 @@
 										</div>
 
 									</div>
+
 									<div class="voting-actions__choice-wrap">
 										<div class="voting-actions__wrap-btn">
 											<label class="voting-actions-btn">
@@ -270,15 +280,10 @@
 											</label>
 										</div>
 										<div class="voting-actions__wrap-input">
-											<label>
-												<input type="text" value="0" name="qustions"
-															 class="noborder votes-cast votesCastFirst" style="width: 100px"
-															 data-val="true">
-											</label>
-											<span class="bulleting-item--key">голосов</span>
+											<input type="number" value="0" class="input-hide" style="display: none;">
+											<span class="change-span">0</span>
 										</div>
 										<div class="voting-actions__wrap-right-btn">
-											<button type="button" class="link remainingVoicesBtn" style="">Остаток</button>
 										</div>
 									</div>
 
@@ -293,18 +298,13 @@
 											</div>
 										</div>
 										<div class="voting-actions__wrap-input">
-											<label>
-												<input type="text" value="0" name="qustions"
-															 class="noborder votes-cast votesCastFirst" style="width: 100px"
-															 data-val="true">
-											</label>
-											<span class="bulleting-item--key">голосов</span>
-										</div>
-										<div class="voting-actions__wrap-right-btn">
-											<button type="button" class="link remainingVoicesBtn" style="">Остаток</button>
+											<input type="number" value="0" class="input-hide" style="display: none;">
+											<span class="change-span">0</span>
 										</div>
 									</div>
+
 								</div>
+
 							</div>
 
 
@@ -312,10 +312,10 @@
 					</div>
 				</div>
 			</div>
-			<div class="voting-enter__tfoot">
-				<input type="submit" class="voting-send bg-blue form-save-btn" value="Сохранить" style="">
-				<input type="submit" class="cancel" value="Очистить" disabled style="">
-			</div>
+			<!--<div class="voting-enter__tfoot">-->
+				<!--<input type="submit" class="voting-send bg-blue form-save-btn" value="Сохранить" style="">-->
+				<!--<input type="submit" class="cancel" value="Очистить" disabled style="">-->
+			<!--</div>-->
 
 		</div>
 	</form>
