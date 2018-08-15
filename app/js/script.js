@@ -807,7 +807,15 @@ $(function () {
     /* кнопки разделения голосов формы ввода */
 
     $(document).on('click', '.separation-votes .voting-actions-btn', function () {
-        $(this).toggleClass('voting-active');
+        if($(this).hasClass('voting-active')){
+            $(this).removeClass('voting-active');
+        }
+        else {
+            $(this).addClass('voting-active');
+            $(this).closest('.voting-actions__choice-wrap').find('.change-span').click();
+            $(this).closest('.voting-actions__choice-wrap').find('.input-hide').focus();
+        }
+        return false;
     });
 
 });

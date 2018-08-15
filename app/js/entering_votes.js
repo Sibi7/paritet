@@ -8,6 +8,23 @@ function isAllowedKeyCode(key) {
     }
 }
 
+//Умножение
+function multiplicationFractions(val1, val2) {
+    return $.ajax({
+        url: '/FractionCalculator/Multiplication',
+        type: 'get',
+        data: {
+            value1: val1,
+            value2: val2
+        },
+        dataType: 'json',
+        success: function (html) {},
+        error: function (err) {
+            alert('Ошибка! Ответ сервера: ' + err.status);
+        }
+    })
+}
+
 
 $(function () {
     var con = new Condition();
@@ -75,22 +92,6 @@ $(function () {
         // });
     }
 
-    //Умножение
-    function multiplicationFractions(val1, val2) {
-        return $.ajax({
-            url: '/FractionCalculator/Multiplication',
-            type: 'get',
-            data: {
-                value1: val1,
-                value2: val2
-            },
-            dataType: 'json',
-            success: function (html) {},
-            error: function (err) {
-                alert('Ошибка! Ответ сервера: ' + err.status);
-            }
-        })
-    }
 
     // Автоматическое нажатие кнопок голосования при вводе в инпут
     function voisesButtonClickEmit(_this) {
