@@ -24,8 +24,65 @@ function multiplicationFractions(val1, val2) {
         }
     })
 }
-
-
+function additionFraction(stringOfFractions) {
+    return $.ajax({
+        url: '/FractionCalculator/SumOfFractions',
+        type: 'get',
+        data: {
+            value: stringOfFractions
+        },
+        dataType: 'json',
+        success: function (html) {},
+        error: function (err) {
+            alert('Ошибка! Ответ сервера: ' + err.status);
+        }
+    })
+}
+function fractionMinusArrayFraction(array, total) {
+    var stringForSend = array.join(';');
+    var totalVoices = total.replace(/\u00a0/g, ''); // Количество голосов всего (Вырезаем все спецсимволы пробела);
+    return $.ajax({
+        url: '/FractionCalculator/FractionMinusListOfFraction',
+        type: 'get',
+        data: {
+            value1: totalVoices,
+            listOfFraction: stringForSend
+        },
+        dataType: 'json',
+        success: function (html) {
+            // var request = html.result.replace(/\u00a0/g, '').replace('  ', ' '); // Удаляем спецсимволы пробела, и двойные пробелы заменяем на одинарные
+            // if (request.indexOf('-') !== -1 || request.indexOf('Invalid') !== -1) {  // Если в ответе есть отрицательное значение
+            //     input.val('Ошибка');
+            //     console.log(html);
+            // } else {
+            //     input.val(request);
+            //     cumulativeButtonClickEmit(_this); // Имитируем клик по кнопке ЗА, показываем модалку(если первый клик)
+            //     sumOfEnterFraction(_this).done(function (data) { // Суммируем все значения инпутов, и отображаем в отведенном для этого теге
+            //         // После успешного выполнения считаем, что бы количество голоов всего не превышало количество введенных голосов
+            //         comparingIsLager(totalVoices, data.result.replace(/\u00a0/g, '')).done(function (result) {
+            //             // Если количество введенных голосов превышает количество "Голосов всего" - выводим сообщение об ошибке. Иначе удаляем сообщение
+            //             if (result.result === 'false') {
+            //                 parent.find('.cumulative-voting-warning').remove();
+            //                 parent.find('.voting__block').append('<span class="cumulative-voting-warning">Отдано больше голосов чем имеется. Голосование недействительно</span>')
+            //             } else if (result.result === 'true') {
+            //                 parent.find('.cumulative-voting-warning').remove();
+            //             }
+            //         })
+            //         // Если сумма значений равняется нулю - скрыть "Голосов отдано" иначе - показать
+            //         if (parent.find('.cumulative-voting__sum').text().trim() === '0') {
+            //             parent.find('.cumulative-voting__sum').closest('.bulleting-item').hide();
+            //         } else {
+            //             parent.find('.cumulative-voting__sum').closest('.bulleting-item').show();
+            //         }
+            //     })
+            // }
+            console.log(html);
+        },
+        error: function (err) {
+            alert('Ошибка! Ответ сервера: ' + err.status);
+        }
+    })
+}
 $(function () {
     var con = new Condition();
     if (con) {
@@ -143,20 +200,7 @@ $(function () {
         })
     }
 
-    function additionFraction(stringOfFractions) {
-        return $.ajax({
-            url: '/FractionCalculator/SumOfFractions',
-            type: 'get',
-            data: {
-                value: stringOfFractions
-            },
-            dataType: 'json',
-            success: function (html) {},
-            error: function (err) {
-                alert('Ошибка! Ответ сервера: ' + err.status);
-            }
-        })
-    }
+
 
     function calculateCandidatesYesVotes(_this) {
         var parent = _this.closest('.voting__block');
