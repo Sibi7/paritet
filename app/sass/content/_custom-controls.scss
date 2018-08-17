@@ -285,7 +285,14 @@ input[type="radio"].circleRadioRadiance {
   height: 28px;
   width: 100px;
   padding: 5px 10px;
+  display: none;
+  .voting-parent-active &{
+    display: block;
+  }
 }
 .change-span{
   cursor: pointer;
+  .voting-parent-active &{
+    display: none;
+  }
 }

@@ -790,9 +790,9 @@ $(function () {
 
     $(document).on('change', '.input-hide', function () {
         $(this).siblings('.change-span').html($(this).val());
-        if($(this).hasClass('votes-separation-true')){
-            $(this).closest('.separation-votes').find('.votes-true').html($(this).val());
-        }
+        // if($(this).hasClass('votes-separation-true')){
+        //     $(this).closest('.separation-votes').find('.votes-true').html($(this).val());
+        // }
     })
     $(document).on('blur', '.input-hide', function () {
         $(this).siblings('.change-span').show();
@@ -807,41 +807,14 @@ $(function () {
     // });
 
 
-    /* кнопки разделения голосов формы ввода */
 
-    $(document).on('click', '.separation-votes .voting-actions-btn', function () {
-        if($(this).hasClass('voting-active')){
-            $(this).removeClass('voting-active');
-        }
-        else {
-            $(this).addClass('voting-active');
-            $(this).closest('.voting-actions__choice-wrap').find('.change-span').click();
-            $(this).closest('.voting-actions__choice-wrap').find('.input-hide').focus();
-        }
-        return false;
-    });
 
     $(document).on('click', '.filter__footer .add', function () {
         $('#represent-modal-filter').show().css({
             top: '0',
             left: '9%'
         });
-    })
-    $(document).on('blur', '.input-hide', function () {
-        var parent = $(this).closest('.separation-votes  .voting-actions__choice-btn');
-        var inputMassEntry = parent.find('.input-hide');
-        var massEntryArray = [];
-        var massEntryTotal = parent.find('.total-max').text();
-        var totalLeftMassEntry = parent.find('.total-left');
-        inputMassEntry.each(function () {
-            massEntryArray.push($(this).val());
-        });
-
-        fractionMinusArrayFraction(massEntryArray, massEntryTotal).done(function (result) {
-            if(result['status']==="success"){
-                totalLeftMassEntry.text(result.result)
-            }
-        });
     });
+
 
 });

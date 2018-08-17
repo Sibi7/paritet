@@ -326,29 +326,67 @@
 							<strong class="voting-enter__td-title">Решение</strong>
 							<p class="voting-enter__td-text">Об утверждении регламента общего собрания акционеров</p>
 						</div>
-						<div class="voting-enter__td">
-							<div class="voting-inputs">
-								<ul class="voting-inputs__choice">
-									<li class="voting-inputs__choice--item voting-actions-sing-btn voting-veto">
-										<label><input type="radio" name="questions[2]">Вето</label>
-									</li>
-									<li class="voting-inputs__choice--item voting-actions-sing-btn voting-true">
-										<label><input type="radio" name="questions[2]">За</label>
-									</li>
-									<li class="voting-inputs__choice--item voting-actions-sing-btn voting-false">
-										<label><input type="radio" name="questions[2]">Против</label>
-									</li>
-									<li class="voting-inputs__choice--item voting-actions-sing-btn voting-abstained">
-										<label><input type="radio" name="questions[2]">воздерживаюсь</label>
-									</li>
-									<li>
-										<a href="#" class="voting-close">&#215;</a>
-									</li>
-									<li>
-										<a href="#" class="voting-divide"></a>
-									</li>
-								</ul>
+						<div class="voting-enter__td margin-left-auto">
+
+
+							<div class="separation-votes">
+
+								<div class="voting-actions__choice-btn">
+									<div class="voting-actions__choice-wrap">
+										<div class="votes-left">Голосов осталось <span class="total-left">10 000</span> из <span>10 000</span></div>
+									</div>
+									<div class="voting-actions__choice-wrap">
+										<div class="voting-actions__wrap-btn">
+											<!--<div class="voting-votes-all">Голосов всего <span> 200 100</span></div>-->
+											<label class="voting-actions-btn voting-true">
+												<input type="checkbox" name="questions[2]" checked>
+												<span>За</span>
+											</label>
+										</div>
+										<div class="voting-actions__wrap-input">
+											<input type="number" value="0" class="input-hide">
+											<span class="change-span">0</span>
+
+										</div>
+										<div class="voting-actions__wrap-right-btn">
+											<button class="voting-close">×</button>
+											<button class="voting-clear-division"></button>
+										</div>
+									</div>
+									<div class="voting-actions__choice-wrap">
+										<div class="voting-actions__wrap-btn">
+											<label class="voting-actions-btn">
+												<input type="checkbox" name="questions[2]" checked>
+												Против
+											</label>
+										</div>
+										<div class="voting-actions__wrap-input">
+											<input type="number" value="0" class="input-hide" style="display: none;">
+											<span class="change-span">0</span>
+										</div>
+										<div class="voting-actions__wrap-right-btn">
+										</div>
+									</div>
+									<div class="voting-actions__choice-wrap">
+										<div class="voting-actions__wrap-btn">
+											<div class="voting-actions__wrap-btn">
+												<label class="voting-actions-btn">
+													<input type="checkbox" name="questions[2]" checked>
+													воздерживаюсь
+												</label>
+
+											</div>
+										</div>
+										<div class="voting-actions__wrap-input">
+											<input type="number" value="0" class="input-hide" style="display: none;">
+											<span class="change-span">0</span>
+										</div>
+									</div>
+								</div>
+
 							</div>
+
+
 						</div>
 					</div>
 				</div>
