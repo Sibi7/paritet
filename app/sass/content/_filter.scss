@@ -40,6 +40,8 @@
     td {
       padding: 4px 0!important;
       border:none!important;
+      display: flex;
+      align-items: center;
     }
     tr {
       cursor: pointer;
