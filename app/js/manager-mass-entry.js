@@ -3,7 +3,7 @@ $(function () {
     /* кнопки разделения голосов формы ввода */
 
     $(document).on('click', '.separation-votes .voting-actions-btn', function () {
-        if($(this).hasClass('voting-active')){
+        if ($(this).hasClass('voting-active')) {
             $(this).removeClass('voting-active');
         }
         else {
@@ -16,15 +16,15 @@ $(function () {
     $(document).on('click', '.separation-votes .change-span', function () {
         var parent = $(this).closest('.voting-actions__choice-wrap');
         var btn = parent.find('.voting-actions-btn');
-        if(parent.hasClass('voting-parent-active')){
+        if (parent.hasClass('voting-parent-active')) {
             parent.removeClass('voting-parent-active');
         }
         else {
             parent.addClass('voting-parent-active');
-          if(!btn.hasClass('voting-active')){
-              btn.trigger('click');
-              console.log(111)
-          }
+            if (!btn.hasClass('voting-active')) {
+                btn.trigger('click');
+                console.log(111)
+            }
 
         }
     });
@@ -38,17 +38,16 @@ $(function () {
         inputMassEntry.each(function () {
             massEntryArray.push($(this).val());
         });
-
         fractionMinusArrayFraction(massEntryArray, massEntryTotal).done(function (result) {
-            if(result['status']==="success"){
+            if (result['status'] === "success") {
                 totalLeftMassEntry.text(result.result);
                 $(this).closest('.voting-actions__choice-wrap').removeClass('.voting-parent-active');
-               if(result.result[0] === '-'){
-                   totalLeftMassEntry.css({
-                       color: 'red'
-                   })
-               }
-               else{
+                if (result.result[0] === '-') {
+                    totalLeftMassEntry.css({
+                        color: 'red'
+                    })
+                }
+                else {
                     totalLeftMassEntry.css({
                         color: '#141414'
                     })
@@ -64,4 +63,29 @@ $(function () {
     });
 
 
+    $(document).on('click', '.input-balance', function () {
+        var parent = $(this).closest('.separation-votes');
+        var votesLeft = parent.find('.total-left');
+        var inputHide = $(this).closest('.voting-actions__choice-wrap').find('.input-hide');
+        var changeSpan = $(this).closest('.voting-actions__choice-wrap').find('.change-span');
+        var inputMassEntry = parent.find('.input-hide');
+        var massEntryArray = [];
+        var massEntryTotal = parent.find('.total-max').text();
+
+        inputMassEntry.each(function () {
+            massEntryArray.push($(this).val());
+        });
+        massEntryArray.splice(massEntryArray.indexOf(inputMassEntry.val()), 1);
+        fractionMinusArrayFraction(massEntryArray, massEntryTotal).done(function (data) {
+            if(votesLeft.text()=== '0'){
+               return false;
+            }
+            else{
+                inputHide.val(data.result);
+                changeSpan.text(data.result);
+                votesLeft.text(0);
+            }
+        })
+
+    });
 });

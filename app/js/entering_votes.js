@@ -83,6 +83,36 @@ function fractionMinusArrayFraction(array, total) {
         }
     })
 }
+function fractionMinusFraction(votingVoicesLeft, votesCastInputHide){
+    var value1 = votingVoicesLeft.replace(/\u00a0/g, '');
+    var value2 = votesCastInputHide.replace(/\u00a0/g, '');
+    console.log(value1, 'value1');
+    console.log(value2, 'value2');
+    return $.ajax({
+        url: '/FractionCalculator/Subtract',
+        type: 'get',
+        data: {
+            value1:value1,
+            value2:value2
+        },
+        dataType: 'json',
+        success: function (html) {
+            // var request = html.result.replace(/\u00a0/g, '').replace('  ', ' '); // Удаляем спецсимволы пробела, и двойные пробелы заменяем на одинарные
+            // if (request.indexOf('-') !== -1 || request.indexOf('Invalid') !== -1) {  // Если в ответе есть отрицательное значение
+            //     votesCastSecond.val('Ошибка');
+            //     voisesButtonClickEmit(_this).unclick() // отжимаем нажатую кнопку при ошибке
+            // } else {
+            //     votesCastSecond.val(request);
+            //     voisesButtonClickEmit(_this); // нажимаем кнопку
+            //     calculateCandidatesYesVotes(_this)
+            // }
+        },
+        error: function (err) {
+            alert('Ошибка! Ответ сервера: ' + err.status);
+        }
+    });
+}
+
 $(function () {
     var con = new Condition();
     if (con) {

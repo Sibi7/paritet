@@ -2146,4 +2146,25 @@ label {
   position: relative;
   top: -20px;
 }
-
+.input-hide-wrap{
+ input{
+   position: absolute;
+   left: 0;
+   top: 0;
+   border: 0;
+   height: 100%;
+   width: 98px;
+   padding: 10px;
+   background: transparent;
+ }
+}
+.input-balance{
+  position: absolute;
+  border: none;
+  background: transparent;
+  color: $active-bullet;
+  font-size: 11px;
+  outline: none;
+  bottom: -20px;
+  left: -6px;
+}
