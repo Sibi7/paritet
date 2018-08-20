@@ -98,25 +98,24 @@ $(function () {
         })
 
     });
-    $(document).on('click', '.voting-close', function () {
+    $(document).on('click', '.voting-close', function (e) {
+        e.preventDefault();
         var meetingId = $('.meeting-id').val();
         var url = new URL(window.location.href);
         var registerAccountId = url.searchParams.get('registerAccountId');
         var bulletinId = url.searchParams.get('bulletinId');
-        console.log(registerAccountId, 'register');
-        console.log(bulletinId, 'meeting');
 
-        // $.ajax({
-        //     url: '/Manager/Input/SplitVoicesAjax/' + meetingId,
-        //     type: 'post',
-        //     data: {
-        //         registerAccountId: '',
-        //         bulletinId: '',
-        //     },
-        //     success: function (data) {
-        //         console.log(data)
-        //     }
-        //
-        // });
+        $.ajax({
+            url: '/Manager/Input/SplitVoicesAjax/' + meetingId,
+            type: 'post',
+            data: {
+                registerAccountId: registerAccountId,
+                bulletinId: bulletinId,
+            },
+            success: function (data) {
+                console.log(data)
+            }
+
+        });
     });
 });
