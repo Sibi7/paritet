@@ -31,7 +31,7 @@ $(function () {
     });
     $(document).mouseup(function (e) {
         var container = $(".input-hide-wrap");
-        if (container.has(e.target).length === 0){
+        if (container.has(e.target).length === 0) {
             container.hide();
             $('.change-span').show();
         }
@@ -87,15 +87,36 @@ $(function () {
         massEntryArray.splice(massEntryArray.indexOf($(this).siblings('input').val()), 1);
         console.log(massEntryArray);
         fractionMinusArrayFraction(massEntryArray, massEntryTotal).done(function (data) {
-            if(votesLeft.text()=== '0'){
-               return false;
+            if (votesLeft.text() === '0') {
+                return false;
             }
-            else{
+            else {
                 inputHide.val(data.result);
                 changeSpan.text(data.result);
                 votesLeft.text(0);
             }
         })
 
+    });
+    $(document).on('click', '.voting-close', function () {
+        var meetingId = $('.meeting-id').val();
+        var url = new URL(window.location.href);
+        var registerAccountId = url.searchParams.get('registerAccountId');
+        var bulletinId = url.searchParams.get('bulletinId');
+        console.log(registerAccountId, 'register');
+        console.log(bulletinId, 'meeting');
+
+        // $.ajax({
+        //     url: '/Manager/Input/SplitVoicesAjax/' + meetingId,
+        //     type: 'post',
+        //     data: {
+        //         registerAccountId: '',
+        //         bulletinId: '',
+        //     },
+        //     success: function (data) {
+        //         console.log(data)
+        //     }
+        //
+        // });
     });
 });
