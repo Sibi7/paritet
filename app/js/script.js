@@ -781,22 +781,23 @@ $(function () {
     });
 
 //    Модальное окно регистрации
-    var inputRegistration = $('.input-hide');
-    inputRegistration.hide();
-    $(document).on('click', '.change-span', function () {
-        $(this).siblings('.input-hide').show();
-        $(this).hide();
-    });
+//     var inputRegistration = $('.input-hide');
+//     inputRegistration.hide();
+//     $(document).on('click', '.change-span', function () {
+//
+//     });
+
+
 
     $(document).on('change', '.input-hide', function () {
-        $(this).siblings('.change-span').html($(this).val());
+        $(this).closest('.voting-actions__wrap-input').find('.change-span').html($(this).val());
         // if($(this).hasClass('votes-separation-true')){
         //     $(this).closest('.separation-votes').find('.votes-true').html($(this).val());
         // }
     })
     $(document).on('blur', '.input-hide', function () {
-        $(this).siblings('.change-span').show();
-        $(this).hide();
+        $(this).closest('.voting-actions__wrap-input').find('.change-span').show();
+        $(this).closest('.input-hide-wrap').hide();
     })
     // $(document).mouseup(function (e) {
     //     var container = $(".input-hide");

@@ -9,11 +9,11 @@ $(function () {
         else {
             $(this).addClass('voting-active');
             $(this).closest('.voting-actions__choice-wrap').find('.change-span').click();
-            $(this).closest('.voting-actions__choice-wrap').find('.input-hide').focus();
         }
         return false;
     });
     $(document).on('click', '.separation-votes .change-span', function () {
+
         var parent = $(this).closest('.voting-actions__choice-wrap');
         var btn = parent.find('.voting-actions-btn');
         if (parent.hasClass('voting-parent-active')) {
@@ -23,9 +23,17 @@ $(function () {
             parent.addClass('voting-parent-active');
             if (!btn.hasClass('voting-active')) {
                 btn.trigger('click');
-                console.log(111)
             }
 
+        }
+        $(this).hide();
+        $(this).siblings('.input-hide-wrap').show().addClass('input-hide-visible');
+    });
+    $(document).mouseup(function (e) {
+        var container = $(".input-hide-wrap");
+        if (container.has(e.target).length === 0){
+            container.hide();
+            $('.change-span').show();
         }
     });
     // пересчитывание  разделения голосов формы ввода
@@ -72,10 +80,12 @@ $(function () {
         var massEntryArray = [];
         var massEntryTotal = parent.find('.total-max').text();
 
+
         inputMassEntry.each(function () {
             massEntryArray.push($(this).val());
         });
-        massEntryArray.splice(massEntryArray.indexOf(inputMassEntry.val()), 1);
+        massEntryArray.splice(massEntryArray.indexOf($(this).siblings('input').val()), 1);
+        console.log(massEntryArray);
         fractionMinusArrayFraction(massEntryArray, massEntryTotal).done(function (data) {
             if(votesLeft.text()=== '0'){
                return false;

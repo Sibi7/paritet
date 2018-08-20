@@ -647,15 +647,15 @@ $orange: #f29c24;
         padding-right: 0;
         position: relative;
       }
-      >span{
+      > span {
         padding-left: 10px;
       }
-      .change-span{
+      .change-span {
         padding: 5px 0 5px 10px;
         display: inline-block;
         height: 28px;
       }
-      .input-hide{
+      .input-hide {
         position: relative;
         padding: 5px 9px;
       }
@@ -1084,7 +1084,7 @@ label {
   }
   .voting-divide:not(.voting-selected) {
     background-color: transparent !important;
-    background-image: url("../images/icons/scissors-grey.svg")!important;
+    background-image: url("../images/icons/scissors-grey.svg") !important;
     color: $gray-controls !important;
   }
   .voting-close:not(.voting-selected) {
@@ -1125,7 +1125,7 @@ label {
     height: 30px;
     cursor: pointer;
     border: 1px solid transparent;
-    &:hover{
+    &:hover {
       border: 1px solid;
     }
   }
@@ -1134,39 +1134,40 @@ label {
     border: solid 1px transparent;
     color: $white;
   }
-  .voting-actions__choice-wrap{
-    position: relative!important;
+  .voting-actions__choice-wrap {
+    position: relative !important;
   }
-  .input-hide{
-    right: 119px;
-  }
-  .change-span{
+  .change-span {
     margin-left: 22px;
   }
 }
-.margin-left-auto{
+
+.margin-left-auto {
   margin-left: auto;
-  max-width: 410px;
+  max-width: 418px
 }
-.voices-given{
+
+.voices-given {
   color: $gray-controls;
   font-size: 14px;
-  span{
+  span {
     color: #141414;
     display: inline-block;
     margin: 0 12px;
   }
 }
-.votes-left{
+
+.votes-left {
   color: $gray-controls;
   font-size: 14px;
   margin-top: 15px;
-  span{
+  span {
     color: #141414;
     display: inline-block;
     margin: 0 12px;
   }
 }
+
 .voting-actions {
   padding-top: 20px;
   padding-bottom: 10px;
@@ -1263,27 +1264,7 @@ label {
         border: 1px solid;
       }
     }
-    .voting-close-active {
-      font-size: 22px;
-      color: #eee;
-      display: flex;
-      padding: 0 20px;
-      align-items: center;
-      justify-content: center;
-      text-transform: uppercase;
-      cursor: pointer;
-      height: 30px;
-      background-color: #ef4056;
-      border: 1px solid transparent;
-      &:hover {
-        border: 1px solid;
-      }
-    }
 
-    .voting-close-active {
-      color: $white;
-      background: #ef4056;
-    }
     .voting-divide {
       font-size: 22px;
       display: flex;
@@ -1512,6 +1493,7 @@ label {
     }
   }
 }
+
 .voting-close {
   font-size: 22px;
   color: $btn-close;
@@ -1529,6 +1511,7 @@ label {
     border: 1px solid;
   }
 }
+
 .voting-inputs {
   padding-top: 20px;
   padding-bottom: 10px;
@@ -1566,19 +1549,23 @@ label {
       }
     }
     .voting-veto.input-selected {
-      background-color: #000;
+      background: $active-bullet;
       color: $white;
     }
     .voting-true.input-selected {
-      background-color: #5ccc3d;
+      background: $active-bullet;
       color: $white;
     }
     .voting-false.input-selected {
-      background-color: $red;
+      background: $active-bullet;
       color: $white;
     }
     .voting-abstained.input-selected {
-      background-color: $orange;
+      background: $active-bullet;
+      color: $white;
+    }
+    .voting-close.input-selected {
+      background: $active-bullet;
       color: $white;
     }
     .voting-not-valid.input-selected {
@@ -1857,6 +1844,7 @@ label {
   }
 
 }
+
 .voting-clear-division {
   font-size: 22px;
   display: flex;
@@ -1877,6 +1865,7 @@ label {
     border: 1px solid;
   }
 }
+
 .is-hidden {
   display: none;
 }
@@ -2146,25 +2135,26 @@ label {
   position: relative;
   top: -20px;
 }
-.input-hide-wrap{
- input{
-   position: absolute;
-   left: 0;
-   top: 0;
-   border: 0;
-   height: 100%;
-   width: 98px;
-   padding: 10px;
-   background: transparent;
- }
+
+.input-hide-wrap {
+  position: relative;
+  display: none;
+  input {
+    display: block !important;
+    position: relative !important;
+    width: 98px;
+    padding-left: 10px;
+    margin-left: 10px;
+  }
 }
-.input-balance{
+
+.input-balance {
   position: absolute;
   border: none;
   background: transparent;
   color: $active-bullet;
   font-size: 11px;
   outline: none;
-  bottom: -20px;
-  left: -6px;
+  bottom: -17px;
+  left: 6px;
 }

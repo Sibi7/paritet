@@ -55,6 +55,9 @@ $(function () {
             if (votingSelected.classList.contains('voting-abstained')) {
                 v.addToCookie('voting-abstained');
             }
+            if (votingSelected.classList.contains('voting-close')) {
+                v.addToCookie('voting-close');
+            }
         }
         else{
             v.delFromCookie();
@@ -93,6 +96,14 @@ $(function () {
             $('.voting-false').removeClass('input-selected');
             $('.voting-false input').attr('data-scv', 0).removeAttr('checked');
         }
+        if ($(this).hasClass('voting-close')) {
+            $('.voting-close').addClass('input-selected');
+            $('.voting-close a').attr('data-scv', 1).attr('checked', 'checked');
+        }
+        else {
+            $('.voting-close').removeClass('input-selected');
+            $('.voting-close a').attr('data-scv', 0).removeAttr('checked');
+        }
 
         if ($(this).hasClass('voting-abstained')) {
             $('.voting-abstained').addClass('input-selected');
@@ -110,7 +121,6 @@ $(function () {
             $('.voting-veto').removeClass('input-selected');
             $('.voting-veto input').attr('data-scv', 0).removeAttr('checked');
         }
-
         if (val === 0) {
             $(this).find('input').attr('data-scv', 1).attr('checked', 'checked');
         }
