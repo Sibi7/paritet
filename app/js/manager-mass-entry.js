@@ -28,7 +28,7 @@ $(function () {
             }
 
         }
-        inputHide.focus();
+        inputHide.trigger('focus');
         $(this).hide();
         $(this).siblings('.input-hide-wrap').show().addClass('input-hide-visible');
     });
@@ -75,7 +75,7 @@ $(function () {
 
         });
         if ($(this).val() === '') {
-            $(this).closest('.voting-actions__wrap-input').find('.change-span').text(0)
+            $(this).closest('.voting-actions__wrap-input').find('.change-span').text(0);
             $(this).val(0)
         }
     });
