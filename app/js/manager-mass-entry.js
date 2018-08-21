@@ -16,6 +16,8 @@ $(function () {
 
         var parent = $(this).closest('.voting-actions__choice-wrap');
         var btn = parent.find('.voting-actions-btn');
+        var inputHide = parent.find('.input-hide');
+        console.log(inputHide);
         if (parent.hasClass('voting-parent-active')) {
             parent.removeClass('voting-parent-active');
         }
@@ -26,16 +28,19 @@ $(function () {
             }
 
         }
+        inputHide.focus();
         $(this).hide();
         $(this).siblings('.input-hide-wrap').show().addClass('input-hide-visible');
     });
     $(document).mouseup(function (e) {
         var container = $(".input-hide-wrap");
+        var changleSpan = $(".change-span");
         if (container.has(e.target).length === 0) {
             container.hide();
-            $('.change-span').show();
+            changleSpan.show();
         }
     });
+
     // пересчитывание  разделения голосов формы ввода
     $(document).on('blur', '.input-hide', function () {
         var parent = $(this).closest('.separation-votes  .voting-actions__choice-btn');
@@ -43,6 +48,8 @@ $(function () {
         var massEntryArray = [];
         var massEntryTotal = parent.find('.total-max').text();
         var totalLeftMassEntry = parent.find('.total-left');
+        var btnNotActive = parent.find('.voting-actions-btn');
+        var btnInvalid = parent.find('.voting-close');
         inputMassEntry.each(function () {
             massEntryArray.push($(this).val());
         });
@@ -51,11 +58,15 @@ $(function () {
                 totalLeftMassEntry.text(result.result);
                 $(this).closest('.voting-actions__choice-wrap').removeClass('.voting-parent-active');
                 if (result.result[0] === '-') {
+                    btnNotActive.addClass('voting-not-active');
+                    btnInvalid.addClass('voting-active');
                     totalLeftMassEntry.css({
                         color: 'red'
                     })
                 }
                 else {
+                    btnNotActive.removeClass('voting-not-active');
+                    btnInvalid.removeClass('voting-active');
                     totalLeftMassEntry.css({
                         color: '#141414'
                     })
@@ -63,6 +74,13 @@ $(function () {
             }
 
         });
+        if ($(this).val() === '') {
+            $(this).closest('.voting-actions__wrap-input').find('.change-span').text(0)
+            $(this).val(0)
+        }
+    });
+    $(document).on('keydown', '.input-hide', function (e) {
+        return isAllowedKeyCode(e.originalEvent.key);
     });
     $(document).on('click', '.separation-votes .voting-close', function () {
         var parent = $(this).closest('.voting-actions__choice-btn');
@@ -85,7 +103,6 @@ $(function () {
             massEntryArray.push($(this).val());
         });
         massEntryArray.splice(massEntryArray.indexOf($(this).siblings('input').val()), 1);
-        console.log(massEntryArray);
         fractionMinusArrayFraction(massEntryArray, massEntryTotal).done(function (data) {
             if (votesLeft.text() === '0') {
                 return false;

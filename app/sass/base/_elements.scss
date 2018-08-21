@@ -1129,16 +1129,25 @@ label {
       border: 1px solid;
     }
   }
-  .voting-actions-btn.voting-active {
+  .voting-not-active{
+    background-color: transparent !important;
+    color: $gray-controls !important;
+    font-weight: 300;
+    pointer-events: none;
+    cursor: default;
+    pointer-events: none;
+  }
+  .voting-active {
     background-color: $active-bullet;
     border: solid 1px transparent;
     color: $white;
   }
+
   .voting-actions__choice-wrap {
     position: relative !important;
   }
   .change-span {
-    margin-left: 22px;
+    margin-left: 21px;
   }
 }
 
