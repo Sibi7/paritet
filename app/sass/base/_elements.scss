@@ -5,6 +5,7 @@ $bg-controls: #FAFAFA;
 $action-btn-hover: #E9EAD6;
 $btn-close: #0070CC;
 $active-bullet: #0070CC;
+$voted-bullet: #DDDDDD;
 //$blue-hover: #73b9f2;
 $blue-hover: #73b9f2;
 $green-btn: #b9bf0a;
@@ -130,6 +131,9 @@ $orange: #f29c24;
     input[type="radio"] {
       display: none;
     }
+  }
+  .voted-bulletin{
+    background: $voted-bullet;
   }
   .bullet-number-all {
     display: inline-block;
@@ -1504,7 +1508,7 @@ label {
 }
 
 .voting-close {
-  font-size: 22px;
+  font-size: 22px!important;
   color: $btn-close;
   display: flex;
   align-items: center;
@@ -1512,8 +1516,9 @@ label {
   text-transform: uppercase;
   cursor: pointer;
   margin-right: 10px;
+  padding: 0!important;
   height: 30px;
-  width: 30px;
+  width: 30px!important;
   background-color: $bg-controls;
   border: 1px solid transparent;
   &:hover {

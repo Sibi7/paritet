@@ -17,7 +17,6 @@ $(function () {
         var parent = $(this).closest('.voting-actions__choice-wrap');
         var btn = parent.find('.voting-actions-btn');
         var inputHide = parent.find('.input-hide');
-        console.log(inputHide);
         if (parent.hasClass('voting-parent-active')) {
             parent.removeClass('voting-parent-active');
         }
@@ -115,24 +114,40 @@ $(function () {
         })
 
     });
-    $(document).on('click', '.voting-close', function (e) {
-        e.preventDefault();
+    function test($this){
         var meetingId = $('.meeting-id').val();
+        var decisionIdInput = $this.closest('.voting-enter__td.margin-left-auto').find('.decision-id').val();
         var url = new URL(window.location.href);
         var registerAccountId = url.searchParams.get('registerAccountId');
-        var bulletinId = url.searchParams.get('bulletinId');
-
+        var _this = $this;
+        console.log(decisionIdInput);
         $.ajax({
             url: '/Manager/Input/SplitVoicesAjax/' + meetingId,
             type: 'post',
             data: {
+                decisionID: decisionIdInput,
                 registerAccountId: registerAccountId,
-                bulletinId: bulletinId,
             },
             success: function (data) {
-                console.log(data)
+
+                var content = _this.closest('.voting-enter__tr').find('.voting-enter__td.margin-left-auto');
+                content[0].outerHTML = data;
+                console.log('content');
+            },
+            error: function (err) {
+                alert('Ошибка! Ответ сервера: ' + err.status);
             }
 
         });
+    };
+
+    // ajax запрос для кнопки разделения голосов в форме ввода
+    $(document).on('click', '.voting-divide', function (e) {
+        e.preventDefault();
+        test($(this));
+    });
+    $(document).on('click', '.voting-clear-division', function (e) {
+        e.preventDefault();
+        test($(this));
     });
 });

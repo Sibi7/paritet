@@ -207,7 +207,7 @@
 				<div class="string__value-row ">
 					<div class="bulletins-numbers">
 						<div class="bullet-numbers bullet-numbers-hotkey">
-							<label class="bullet-number activeBullet"><input type="radio">1</label>
+							<label class="bullet-number voted-bulletin activeBullet"><input type="radio">1</label>
 							<label class="bullet-number"><input type="radio">2</label>
 							<label class="bullet-number"><input type="radio">3</label>
 							<label class="bullet-number"><input type="radio">4</label>
@@ -241,7 +241,10 @@
 							</label>
 						</li>
 						<li>
-							<a href="#" class="voting-close">×</a>
+							<label class="voting-actions-btn voting-close">
+								<input type="checkbox" name="questions[2]" checked>
+								<span>×</span>
+							</label>
 						</li>
 					</ul>
 				</div>
@@ -276,7 +279,10 @@
 									</li>
 
 									<li>
-										<a href="#" class="voting-close">&#215;</a>
+										<label class="voting-actions-btn voting-close">
+											<input type="checkbox" name="questions[2]" checked>
+											<span>×</span>
+										</label>
 									</li>
 									<li>
 										<a href="#" class="voting-divide"></a>
@@ -304,7 +310,10 @@
 										<label><input type="radio" name="questions[2]">воздерживаюсь</label>
 									</li>
 									<li>
-										<a href="#" class="voting-close">&#215;</a>
+										<label class="voting-actions-btn voting-close">
+											<input type="checkbox" name="questions[2]" checked>
+											<span>×</span>
+										</label>
 									</li>
 									<li>
 										<a href="#" class="voting-divide"></a>
@@ -346,13 +355,16 @@
 										</div>
 										<div class="voting-actions__wrap-input">
 											<div class="input-hide-wrap ">
-												<input type="number" value="0" class="input-hide">
+												<input type="text" value="0" class="input-hide">
 												<button type="button" class="input-balance">Остаток</button>
 											</div>
 											<span class="change-span">0</span>
 										</div>
 										<div class="voting-actions__wrap-right-btn">
-											<button class="voting-close">×</button>
+											<label class="voting-actions-btn voting-close">
+												<input type="checkbox" name="questions[2]" checked>
+												<span>×</span>
+											</label>
 											<button class="voting-clear-division"></button>
 										</div>
 									</div>
@@ -365,9 +377,10 @@
 										</div>
 										<div class="voting-actions__wrap-input">
 											<div class="input-hide-wrap ">
-												<input type="number" value="0" class="input-hide">
+												<input type="text" value="0" class="input-hide">
 												<button type="button" class="input-balance">Остаток</button>
 											</div>
+											<span class="change-span">0</span>
 										</div>
 										<div class="voting-actions__wrap-right-btn">
 										</div>
@@ -384,9 +397,10 @@
 										</div>
 										<div class="voting-actions__wrap-input">
 											<div class="input-hide-wrap ">
-												<input type="number" value="0" class="input-hide">
+												<input type="text" value="0" class="input-hide">
 												<button type="button" class="input-balance">Остаток</button>
 											</div>
+											<span class="change-span">0</span>
 										</div>
 									</div>
 								</div>
@@ -433,12 +447,16 @@
 										</div>
 										<div class="voting-actions__wrap-input">
 											<div class="input-hide-wrap ">
-												<input type="number" value="0" class="input-hide">
+												<input type="text" value="0" class="input-hide">
 												<button type="button" class="input-balance">Остаток</button>
 											</div>
+											<span class="change-span">0</span>
 										</div>
 										<div class="voting-actions__wrap-right-btn">
-											<button class="voting-close">×</button>
+											<label class="voting-actions-btn voting-close">
+												<input type="checkbox" name="questions[2]" checked>
+												<span>×</span>
+											</label>
 											<button class="voting-clear-division"></button>
 										</div>
 									</div>
@@ -451,9 +469,10 @@
 										</div>
 										<div class="voting-actions__wrap-input">
 											<div class="input-hide-wrap ">
-												<input type="number" value="0" class="input-hide">
+												<input type="text" value="0" class="input-hide">
 												<button type="button" class="input-balance">Остаток</button>
 											</div>
+											<span class="change-span">0</span>
 										</div>
 										<div class="voting-actions__wrap-right-btn">
 										</div>
@@ -470,9 +489,10 @@
 										</div>
 										<div class="voting-actions__wrap-input">
 											<div class="input-hide-wrap ">
-												<input type="number" value="0" class="input-hide">
+												<input type="text" value="0" class="input-hide">
 												<button type="button" class="input-balance">Остаток</button>
 											</div>
+											<span class="change-span">0</span>
 										</div>
 									</div>
 								</div>
@@ -506,8 +526,11 @@
 					<tr>
 						<td>Голосов</td>
 						<td>
-							<span class="change-span">200100</span>
-							<input type="number" value="200100" class="input-hide">
+							<div class="input-hide-wrap ">
+								<input type="text" value="0" class="input-hide">
+								<button type="button" class="input-balance">Остаток</button>
+							</div>
+							<span class="change-span">445</span>
 						</td>
 					</tr>
 					<tr>
