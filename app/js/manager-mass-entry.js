@@ -114,7 +114,9 @@ $(function () {
         })
 
     });
-    function test($this){
+
+    // ajax запрос для кнопки разделения голосов в форме ввода
+    function ajaxForSeparationBtn($this) {
         var meetingId = $('.meeting-id').val();
         var decisionIdInput = $this.closest('.voting-enter__td.margin-left-auto').find('.decision-id').val();
         var url = new URL(window.location.href);
@@ -139,15 +141,19 @@ $(function () {
             }
 
         });
-    };
-
-    // ajax запрос для кнопки разделения голосов в форме ввода
+    }
     $(document).on('click', '.voting-divide', function (e) {
         e.preventDefault();
-        test($(this));
+        ajaxForSeparationBtn($(this));
     });
     $(document).on('click', '.voting-clear-division', function (e) {
         e.preventDefault();
-        test($(this));
+        ajaxForSeparationBtn($(this));
     });
+
+
+
+
+
+
 });

@@ -798,7 +798,7 @@ $(function () {
     $(document).on('blur', '.input-hide', function () {
         $(this).closest('.voting-actions__wrap-input').find('.change-span').show();
         $(this).closest('.input-hide-wrap').hide();
-    })
+    });
     // $(document).mouseup(function (e) {
     //     var container = $(".input-hide");
     //     if (container.has(e.target).length === 0){

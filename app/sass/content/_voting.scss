@@ -56,6 +56,7 @@
     margin-top: auto;
     margin-left: auto;
     padding-top: 0;
+    padding-bottom: 0;
     justify-content: flex-end;
     min-width: 418px;
   }
@@ -111,7 +112,8 @@
   &__td-title {
     margin-bottom: 5px;
     font-size: 13px;
-    font-weight: 700;
+    font-weight: 300;
+    color: $candidate-title;
   }
   &__td-text {
     margin: 0;

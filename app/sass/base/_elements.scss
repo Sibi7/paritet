@@ -1,6 +1,7 @@
 $blue: #00467f;
 $new-hover: rgba(104, 144, 177, .75);
 $gray-controls: #909090;
+$candidate-title: #999999;
 $bg-controls: #FAFAFA;
 $action-btn-hover: #E9EAD6;
 $btn-close: #0070CC;
@@ -132,7 +133,7 @@ $orange: #f29c24;
       display: none;
     }
   }
-  .voted-bulletin{
+  .voted-bulletin {
     background: $voted-bullet;
   }
   .bullet-number-all {
@@ -1117,6 +1118,10 @@ label {
 }
 
 .separation-votes {
+  .voting-actions__choice-btn {
+    max-width: 418px;
+    margin-left: auto;
+  }
   .voting-actions-btn {
     margin-right: 10px;
     font-size: 13px;
@@ -1133,7 +1138,7 @@ label {
       border: 1px solid;
     }
   }
-  .voting-not-active{
+  .voting-not-active {
     background-color: transparent !important;
     color: $gray-controls !important;
     font-weight: 300;
@@ -1157,7 +1162,6 @@ label {
 
 .margin-left-auto {
   margin-left: auto;
-  max-width: 418px
 }
 
 .voices-given {
@@ -1508,7 +1512,7 @@ label {
 }
 
 .voting-close {
-  font-size: 22px!important;
+  font-size: 22px !important;
   color: $btn-close;
   display: flex;
   align-items: center;
@@ -1516,9 +1520,9 @@ label {
   text-transform: uppercase;
   cursor: pointer;
   margin-right: 10px;
-  padding: 0!important;
+  padding: 0 !important;
   height: 30px;
-  width: 30px!important;
+  width: 30px !important;
   background-color: $bg-controls;
   border: 1px solid transparent;
   &:hover {

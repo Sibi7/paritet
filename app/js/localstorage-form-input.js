@@ -87,6 +87,14 @@ $(function () {
             $('.voting-true').removeClass('input-selected');
             $('.voting-true input').attr('data-scv', 0).removeAttr('checked');
         }
+        if ($(this).hasClass('voting-close')) {
+            $('.voting-close').addClass('input-selected');
+            $('.voting-close input').attr('data-scv', 1).attr('checked', 'checked');
+        }
+        else {
+            $('.voting-close').removeClass('input-selected');
+            $('.voting-close input').attr('data-scv', 0).removeAttr('checked');
+        }
 
         if ($(this).hasClass('voting-false')) {
             $('.voting-false').addClass('input-selected');
