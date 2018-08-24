@@ -153,9 +153,6 @@ $orange: #f29c24;
 
     }
   }
-  span {
-    padding: 5px 8px;
-  }
   .checked__ {
     span {
       background: $pink;
@@ -1154,6 +1151,8 @@ label {
 
   .voting-actions__choice-wrap {
     position: relative !important;
+    margin-bottom: 0!important;
+    margin-top: 11px!important;
   }
   .change-span {
     margin-left: 21px;
@@ -1177,7 +1176,8 @@ label {
 .votes-left {
   color: $gray-controls;
   font-size: 14px;
-  margin-top: 15px;
+  position: absolute;
+  top: -6px;
   span {
     color: #141414;
     display: inline-block;
