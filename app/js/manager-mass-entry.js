@@ -12,7 +12,7 @@ $(function () {
         }
         return false;
     });
-    $(document).on('click', '.separation-votes .change-span', function () {
+    $(document).on('click', '.change-span', function () {
 
         var parent = $(this).closest('.voting-actions__choice-wrap');
         var btn = parent.find('.voting-actions-btn');
@@ -41,7 +41,7 @@ $(function () {
     });
 
     // пересчитывание  разделения голосов формы ввода
-    $(document).on('blur', '.input-hide', function () {
+    $(document).on('blur', '.separation-votes .input-hide', function () {
         var parent = $(this).closest('.separation-votes  .voting-actions__choice-btn');
         var inputMassEntry = parent.find('.input-hide');
         var massEntryArray = [];
@@ -150,9 +150,6 @@ $(function () {
         e.preventDefault();
         ajaxForSeparationBtn($(this));
     });
-
-
-
 
 
 

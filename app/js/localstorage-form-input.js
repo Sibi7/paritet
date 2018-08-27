@@ -24,25 +24,25 @@ $(function () {
                     }
                     if ($(item).closest('.voting-inputs__choice--item').hasClass('voting-true')) {
 
-                        $('.voting-actions-all-btn.voting-true').addClass('voting-selected')
+                        $('.voting-actions-all-btn.voting-true').addClass('input-selected')
                     }
 
                 }
             }
         },
-        afterLoad: function () {
-            var v = new allVoting();
-            v.clickToBtn();
-        }
+        // afterLoad: function () {
+        //     // var v = new allVoting();
+        //     v.clickToBtn();
+        // }
 
     });
     inputCon.runLoad();
-    var btnAll = new allVoting();
-    btnAll.clickNumberAllBtn();
+    // var btnAll = new allVoting();
+    // btnAll.clickNumberAllBtn();
 
 
     $(document).on('change', '.bullet-number-all', function (e) {
-        var v = new allVoting();
+        // var v = new allVoting();
 
         if (!$(".bullet-number-all").hasClass('checked__')) {
             var votingSelected = document.querySelector('.input-selected');
@@ -189,5 +189,8 @@ $(function () {
 
     }
 
+    $(document).on('click', '#reset-voting-result-btn', function () {
+        inputCon.resetVote();
+    });
 
 });

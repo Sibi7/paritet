@@ -652,15 +652,15 @@ $orange: #f29c24;
       > span {
         padding-left: 10px;
       }
-      .change-span {
-        padding: 5px 0 5px 10px;
-        display: inline-block;
-        height: 28px;
-      }
-      .input-hide {
-        position: relative;
-        padding: 5px 9px;
-      }
+      //.change-span {
+      //  padding: 5px 0 5px 10px;
+      //  display: inline-block;
+      //  height: 28px;
+      //}
+      //.input-hide {
+      //  position: relative;
+      //  padding: 5px 9px;
+      //}
     }
   }
   tfoot {
@@ -1075,15 +1075,21 @@ label {
     color: #777 !important;
   }
 }
-
+.input-sent-unreg {
+  .voting-inputs__choice--item:not(.voting-selected) {
+    background-color: transparent!important; ;
+    color: #777!important;
+  }
+}
 .input-sent {
   .voting-inputs__choice {
     pointer-events: none;
   }
   .voting-inputs__choice--item:not(.voting-selected) {
-    background-color: transparent !important;
-    color: #777 !important;
+    background-color: transparent ;
+    color: #777;
   }
+
   .voting-divide:not(.voting-selected) {
     background-color: transparent !important;
     background-image: url("../images/icons/scissors-grey.svg") !important;

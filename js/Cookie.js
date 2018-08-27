@@ -66,6 +66,10 @@ function Condition() {
         return false;
     };
 
+    this.resetVote = function () {
+        this.setStorage(this.options.cookieName, '');
+    };
+
     this.getElement = function (el, allEl) {
         allEl = allEl || false;
         var thisElement;

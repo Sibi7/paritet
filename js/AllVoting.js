@@ -24,7 +24,6 @@ function allVoting() {
     this.clickNumberAllBtn = function () {
         var btnType = this.getCookie();
         if (btnType){
-            console.log(123);
             var btn = document.querySelector('#bullet-number-all');
             btn.classList.add('checked__');
         }
