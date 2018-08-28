@@ -39,10 +39,8 @@ $(function () {
             changleSpan.show();
         }
     });
-
-    // пересчитывание  разделения голосов формы ввода
-    $(document).on('blur', '.separation-votes .input-hide', function () {
-        var parent = $(this).closest('.separation-votes  .voting-actions__choice-btn');
+    function calculateTotalVoises(_this) {
+        var parent = _this.closest('.separation-votes  .voting-actions__choice-btn');
         var inputMassEntry = parent.find('.input-hide');
         var massEntryArray = [];
         var massEntryTotal = parent.find('.total-max').text();
@@ -73,10 +71,15 @@ $(function () {
             }
 
         });
-        if ($(this).val() === '') {
-            $(this).closest('.voting-actions__wrap-input').find('.change-span').text(0);
-            $(this).val(0)
+        if (_this.val() === '') {
+            _this.closest('.voting-actions__wrap-input').find('.change-span').text(0);
+            _this.val(0)
         }
+    }
+
+    // пересчитывание  разделения голосов формы ввода
+    $(document).on('blur', '.separation-votes .input-hide', function () {
+        calculateTotalVoises($(this))
     });
     $(document).on('keydown', '.input-hide', function (e) {
         return isAllowedKeyCode(e.originalEvent.key);
@@ -122,7 +125,9 @@ $(function () {
         var url = new URL(window.location.href);
         var registerAccountId = url.searchParams.get('registerAccountId');
         var _this = $this;
-        console.log(decisionIdInput);
+        console.log('meetingId', meetingId)
+        console.log('decisionIdInput', decisionIdInput)
+        console.log('registerAccountId', registerAccountId)
         $.ajax({
             url: '/Manager/Input/SplitVoicesAjax/' + meetingId,
             type: 'post',
@@ -149,6 +154,39 @@ $(function () {
     $(document).on('click', '.voting-clear-division', function (e) {
         e.preventDefault();
         ajaxForSeparationBtn($(this));
+    });
+
+    // Кумулятивное голосование!
+    $(document).on('blur', '.cumulative-voting-input .separation-cumulative-za', function () {
+        var parent = $(this).closest('.cumulative-voting-input');
+        var givenZa = parent.find('.totals-votes');
+        var arrOfInputsYes = parent.find('.separation-cumulative-za');
+        var arrOfInputsYesVal = [];
+        arrOfInputsYes.each(function () {
+            // Заменяем пробелы на 0, что бы с сервера не возвращалась ошибка
+            if ($(this).val().trim() === '') {
+                $(this).val(0)
+            }
+            arrOfInputsYesVal.push($(this).val().replace(/\u00a0/g, '')); // Значение каждого инпута заносим в массив
+        });
+
+        additionFraction(arrOfInputsYesVal.join(';')).done(function (res) {
+            givenZa.text(res.result);
+            givenZa.closest('.separation-cumulative-wrap-input').find('.input-hide').val(res.result);
+            calculateTotalVoises(givenZa)
+        });
+    });
+
+    $(document).on('change', '.cumulative-voting-input .separation-cumulative-za', function () {
+        var parent = $(this).closest('.cumulative-voting-input');
+        var zaBtn = parent.find('.voting-true');
+        if (zaBtn.hasClass('voting-active')) {
+            return false
+        }
+        if (zaBtn.hasClass('input-selected')) {
+            return false
+        }
+        zaBtn.click();
     });
 
 

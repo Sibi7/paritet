@@ -53,12 +53,17 @@
     font-size: 13px;
   }
   .voting-inputs{
+    position: relative;
     margin-top: auto;
     margin-left: auto;
     padding-top: 0;
     padding-bottom: 0;
     justify-content: flex-end;
     min-width: 418px;
+    .votes-left{
+      left: 0;
+      top: -26px;
+    }
   }
 
   .voting-actions__choice--item {

@@ -1075,18 +1075,20 @@ label {
     color: #777 !important;
   }
 }
+
 .input-sent-unreg {
   .voting-inputs__choice--item:not(.voting-selected) {
-    background-color: transparent!important; ;
-    color: #777!important;
+    background-color: transparent !important;;
+    color: #777 !important;
   }
 }
+
 .input-sent {
   .voting-inputs__choice {
     pointer-events: none;
   }
   .voting-inputs__choice--item:not(.voting-selected) {
-    background-color: transparent ;
+    background-color: transparent;
     color: #777;
   }
 
@@ -1157,11 +1159,17 @@ label {
 
   .voting-actions__choice-wrap {
     position: relative !important;
-    margin-bottom: 0!important;
-    margin-top: 11px!important;
+    margin-bottom: 0 !important;
+    margin-top: 11px !important;
   }
   .change-span {
     margin-left: 21px;
+  }
+}
+
+.cumulative-voting-input {
+  .totals-votes {
+    margin-left: 17px;
   }
 }
 
@@ -2172,7 +2180,7 @@ label {
   }
 }
 
-.input-balance {
+.input-balance{
   position: absolute;
   border: none;
   background: transparent;
@@ -2181,4 +2189,15 @@ label {
   outline: none;
   bottom: -17px;
   left: 6px;
+}
+.one-second-vote{
+  position: absolute;
+  border: none;
+  background: transparent;
+  color: $active-bullet;
+  font-size: 11px;
+  outline: none;
+  left: 0;
+  width: auto;
+  display: inline-block;
 }
