@@ -1146,10 +1146,10 @@ label {
   .voting-not-active {
     background-color: transparent !important;
     color: $gray-controls !important;
-    font-weight: 300;
-    pointer-events: none;
-    cursor: default;
-    pointer-events: none;
+    font-weight: 300!important;
+    pointer-events: none!important;
+    cursor: default!important;
+    pointer-events: none!important;
   }
   .voting-active {
     background-color: $active-bullet;
@@ -1599,6 +1599,12 @@ label {
     .voting-close.input-selected {
       background: $active-bullet;
       color: $white;
+    }
+    .voting-true.input-not-selected {
+      background-color: transparent!important;
+      color: #777!important;
+      pointer-events: none;
+      outline: none;
     }
     .voting-not-valid.input-selected {
       background-color: $pink;
@@ -2180,15 +2186,22 @@ label {
   }
 }
 
-.input-balance{
+.wrap-remainder-btn{
+  display: flex;
   position: absolute;
+  bottom: -18px;
+  left: 9px;
+}
+.input-balance, .division-votes{
+  display: inline-flex;
   border: none;
   background: transparent;
   color: $active-bullet;
   font-size: 11px;
   outline: none;
-  bottom: -17px;
-  left: 6px;
+}
+.division-votes{
+  padding: 0;
 }
 .one-second-vote{
   position: absolute;

@@ -90,6 +90,40 @@ $(function () {
         parent.find('.input-hide').val(0);
     });
 
+    $(document).on('click', '.cumulative-voting-input .voting-close', function () {
+        var parent = $(this).closest('.voting-inputs__choice');
+        var btnZa = parent.find('.voting-true');
+
+       if($(this).hasClass('input-selected')){
+           btnZa.addClass('input-not-selected');
+       }
+       else {
+           btnZa.removeClass('input-not-selected');
+       }
+        if($('.voting-false').hasClass('input-selected')){
+            btnZa.removeClass('input-not-selected');
+        }
+        if($('.voting-abstained').hasClass('input-selected')){
+            btnZa.removeClass('input-not-selected');
+        }
+
+    });
+    $(document).on('click', '.cumulative-voting-input .voting-false', function () {
+        var parent = $(this).closest('.voting-inputs__choice');
+        var btnZa = parent.find('.voting-true');
+        if($(this).hasClass('input-selected')){
+            btnZa.removeClass('input-not-selected');
+        }
+
+    });
+    $(document).on('click', '.cumulative-voting-input .voting-abstain', function () {
+        var parent = $(this).closest('.voting-inputs__choice');
+        var btnZa = parent.find('.voting-true');
+        if($(this).hasClass('input-selected')){
+            btnZa.removeClass('input-not-selected');
+        }
+    });
+
 
     $(document).on('click', '.input-balance', function () {
         var parent = $(this).closest('.separation-votes');
@@ -188,6 +222,9 @@ $(function () {
         }
         zaBtn.click();
     });
+
+
+
 
 
 
