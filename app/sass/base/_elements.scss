@@ -1171,6 +1171,9 @@ label {
   .totals-votes {
     margin-left: 17px;
   }
+  .votes-left-toggle{
+    display: none;
+  }
 }
 
 .margin-left-auto {
@@ -1187,7 +1190,7 @@ label {
   }
 }
 
-.votes-left {
+.votes-left, .votes {
   color: $gray-controls;
   font-size: 14px;
   position: absolute;
@@ -2192,7 +2195,7 @@ label {
   bottom: -18px;
   left: 9px;
 }
-.input-balance, .division-votes{
+.input-balance, .division-votes, .input-cum-balance{
   display: inline-flex;
   border: none;
   background: transparent;

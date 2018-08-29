@@ -39,6 +39,7 @@ $(function () {
             changleSpan.show();
         }
     });
+
     function calculateTotalVoises(_this) {
         var parent = _this.closest('.separation-votes  .voting-actions__choice-btn');
         var inputMassEntry = parent.find('.input-hide');
@@ -94,16 +95,17 @@ $(function () {
         var parent = $(this).closest('.voting-inputs__choice');
         var btnZa = parent.find('.voting-true');
 
-       if($(this).hasClass('input-selected')){
-           btnZa.addClass('input-not-selected');
-       }
-       else {
-           btnZa.removeClass('input-not-selected');
-       }
-        if($('.voting-false').hasClass('input-selected')){
+
+        if ($(this).hasClass('input-selected')) {
+            btnZa.addClass('input-not-selected');
+        }
+        else {
             btnZa.removeClass('input-not-selected');
         }
-        if($('.voting-abstained').hasClass('input-selected')){
+        if ($('.voting-false').hasClass('input-selected')) {
+            btnZa.removeClass('input-not-selected');
+        }
+        if ($('.voting-abstained').hasClass('input-selected')) {
             btnZa.removeClass('input-not-selected');
         }
 
@@ -111,17 +113,53 @@ $(function () {
     $(document).on('click', '.cumulative-voting-input .voting-false', function () {
         var parent = $(this).closest('.voting-inputs__choice');
         var btnZa = parent.find('.voting-true');
-        if($(this).hasClass('input-selected')){
+        if ($(this).hasClass('input-selected')) {
             btnZa.removeClass('input-not-selected');
         }
 
     });
-    $(document).on('click', '.cumulative-voting-input .voting-abstain', function () {
+    $(document).on('click', '.cumulative-voting-input  .voting-abstain', function () {
         var parent = $(this).closest('.voting-inputs__choice');
         var btnZa = parent.find('.voting-true');
-        if($(this).hasClass('input-selected')){
+        if ($(this).hasClass('input-selected')) {
             btnZa.removeClass('input-not-selected');
         }
+    });
+    $(document).on('click', '.cumulative-voting-input .not-separation .voting-true', function () {
+
+        var parent = $(this).closest('.voting-enter__td.margin-left-auto');
+        var votes = parent.find('.votes');
+        var votesLeft = parent.find('.votes-left');
+        if ($(this).hasClass('input-selected')) {
+            votesLeft.show();
+            votes.hide();
+        }
+        else {
+            votesLeft.hide();
+            votes.show();
+        }
+    });
+    $(document).on('click', '.cumulative-voting-input .not-separation .voting-false', function () {
+        var parent = $(this).closest('.voting-enter__td.margin-left-auto');
+        var votes = parent.find('.votes');
+        var votesLeft = parent.find('.votes-left');
+        votesLeft.hide();
+        votes.show();
+        clearInputs(parent.find('.separation-cumulative-za'), parent.find('.voting-actions__wrap-input .change-span'))
+    });
+    $(document).on('click', '.cumulative-voting-input .not-separation .voting-abstained', function () {
+        var parent = $(this).closest('.voting-enter__td.margin-left-auto');
+        var votes = parent.find('.votes');
+        var votesLeft = parent.find('.votes-left');
+        votesLeft.hide();
+        votes.show();
+    });
+    $(document).on('click', '.cumulative-voting-input .not-separation .voting-close', function () {
+        var parent = $(this).closest('.voting-enter__td.margin-left-auto');
+        var votes = parent.find('.votes');
+        var votesLeft = parent.find('.votes-left');
+        votesLeft.hide();
+        votes.show();
     });
 
 
@@ -159,9 +197,6 @@ $(function () {
         var url = new URL(window.location.href);
         var registerAccountId = url.searchParams.get('registerAccountId');
         var _this = $this;
-        console.log('meetingId', meetingId)
-        console.log('decisionIdInput', decisionIdInput)
-        console.log('registerAccountId', registerAccountId)
         $.ajax({
             url: '/Manager/Input/SplitVoicesAjax/' + meetingId,
             type: 'post',
@@ -181,6 +216,7 @@ $(function () {
 
         });
     }
+
     $(document).on('click', '.voting-divide', function (e) {
         e.preventDefault();
         ajaxForSeparationBtn($(this));
@@ -223,9 +259,57 @@ $(function () {
         zaBtn.click();
     });
 
+    $(document).on('click', '.input-cum-balance', function () {
+        var parent = $(this).closest('.cumulative-voting-input');
+        var inputMassEntry = parent.find('.separation-cumulative-za');
+        var massEntryArray = [];
+        var massEntryTotal = parent.find('.total-max').text();
+        var totalLeft = parent.find('.total-left');
+        var _this = $(this)
 
+        inputMassEntry.each(function () {
+            massEntryArray.push($(this).val());
+        });
+        massEntryArray.splice(massEntryArray.indexOf($(this).closest('.input-hide-wrap').find('.separation-cumulative-za').val()), 1);
+        fractionMinusArrayFraction(massEntryArray, massEntryTotal).done(function (res) {
+            totalLeft.text(0);
+            _this.closest('.input-hide-wrap').find('.separation-cumulative-za').val(res.result);
+            _this.closest('.voting-actions__wrap-input').find('.change-span').text(res.result);
+        })
+    });
 
+    // не разделенное кумулятивное голосование
+    $(document).on('blur', '.separation-cumulative-za', function () {
+        var parent = $(this).closest('.cumulative-voting-input');
+        var isDividing = parent.find('.cum-not-dividing').length > 0;
+        var inputMassEntry = parent.find('.separation-cumulative-za');
+        var massEntryArray = [];
+        var massEntryTotal = parent.find('.total-max').text();
+        var totalLeft = parent.find('.votes-left .total-left');
 
+        if (isDividing) {
+            if (!parent.find('.voting-true').hasClass('input-selected')) {
+                parent.find('.voting-true').click();
+            }
+            inputMassEntry.each(function () {
+                massEntryArray.push($(this).val());
+            });
+            fractionMinusArrayFraction(massEntryArray, massEntryTotal).done(function (res) {
+                totalLeft.text(res.result);
+                console.log(res)
+            })
+        }
+
+    })
+
+    function clearInputs(inputs, spans) {
+        inputs.each(function () {
+            $(this).val(0);
+        });
+        spans.each(function () {
+            $(this).text(0)
+        })
+    }
 
 
 });
