@@ -2217,3 +2217,9 @@ label {
   width: auto;
   display: inline-block;
 }
+.disable-votin-btn {
+  background-color: #fff!important;
+  color: #999!important;
+  pointer-events: none;
+}
+

@@ -85,31 +85,31 @@ $(function () {
     $(document).on('keydown', '.input-hide', function (e) {
         return isAllowedKeyCode(e.originalEvent.key);
     });
-    $(document).on('click', '.separation-votes .voting-close', function () {
-        var parent = $(this).closest('.voting-actions__choice-btn');
-        parent.find('.change-span').text('0');
-        parent.find('.input-hide').val(0);
-    });
+    // $(document).on('click', '.separation-votes .voting-close', function () {
+    //     var parent = $(this).closest('.voting-actions__choice-btn');
+    //     parent.find('.change-span').text('0');
+    //     parent.find('.input-hide').val(0);
+    // });
 
-    $(document).on('click', '.cumulative-voting-input .voting-close', function () {
-        var parent = $(this).closest('.voting-inputs__choice');
-        var btnZa = parent.find('.voting-true');
-
-
-        if ($(this).hasClass('input-selected')) {
-            btnZa.addClass('input-not-selected');
-        }
-        else {
-            btnZa.removeClass('input-not-selected');
-        }
-        if ($('.voting-false').hasClass('input-selected')) {
-            btnZa.removeClass('input-not-selected');
-        }
-        if ($('.voting-abstained').hasClass('input-selected')) {
-            btnZa.removeClass('input-not-selected');
-        }
-
-    });
+    // $(document).on('click', '.cumulative-voting-input .voting-close', function () {
+    //     var parent = $(this).closest('.voting-inputs__choice');
+    //     var btnZa = parent.find('.voting-true');
+    //
+    //
+    //     if ($(this).hasClass('input-selected')) {
+    //         btnZa.addClass('input-not-selected');
+    //     }
+    //     else {
+    //         btnZa.removeClass('input-not-selected');
+    //     }
+    //     if ($('.voting-false').hasClass('input-selected')) {
+    //         btnZa.removeClass('input-not-selected');
+    //     }
+    //     if ($('.voting-abstained').hasClass('input-selected')) {
+    //         btnZa.removeClass('input-not-selected');
+    //     }
+    //
+    // });
     $(document).on('click', '.cumulative-voting-input .voting-false', function () {
         var parent = $(this).closest('.voting-inputs__choice');
         var btnZa = parent.find('.voting-true');
@@ -139,27 +139,26 @@ $(function () {
             votes.show();
         }
     });
-    $(document).on('click', '.cumulative-voting-input .not-separation .voting-false', function () {
-        var parent = $(this).closest('.voting-enter__td.margin-left-auto');
+    // Очистка инпутов и спанов в кумулятивном не разделенном голосовании
+    function cumNotSeparVotingClearInput(_this) {
+        var parent = _this.closest('.voting-enter__td.margin-left-auto');
         var votes = parent.find('.votes');
         var votesLeft = parent.find('.votes-left');
+        parent.find('.total-left').css('color', '#141414');
+        parent.find('.voting-true').removeClass('disable-votin-btn');
         votesLeft.hide();
         votes.show();
         clearInputs(parent.find('.separation-cumulative-za'), parent.find('.voting-actions__wrap-input .change-span'))
+    }
+    $(document).on('click', '.cumulative-voting-input .not-separation .voting-false', function () {
+        cumNotSeparVotingClearInput($(this))
     });
     $(document).on('click', '.cumulative-voting-input .not-separation .voting-abstained', function () {
-        var parent = $(this).closest('.voting-enter__td.margin-left-auto');
-        var votes = parent.find('.votes');
-        var votesLeft = parent.find('.votes-left');
-        votesLeft.hide();
-        votes.show();
+        cumNotSeparVotingClearInput($(this))
     });
     $(document).on('click', '.cumulative-voting-input .not-separation .voting-close', function () {
-        var parent = $(this).closest('.voting-enter__td.margin-left-auto');
-        var votes = parent.find('.votes');
-        var votesLeft = parent.find('.votes-left');
-        votesLeft.hide();
-        votes.show();
+
+        cumNotSeparVotingClearInput($(this));
     });
 
 
@@ -273,13 +272,33 @@ $(function () {
         massEntryArray.splice(massEntryArray.indexOf($(this).closest('.input-hide-wrap').find('.separation-cumulative-za').val()), 1);
         fractionMinusArrayFraction(massEntryArray, massEntryTotal).done(function (res) {
             totalLeft.text(0);
+            if (!parent.find('.voting-true').hasClass('input-selected')) {
+                parent.find('.voting-true').click();
+            }
             _this.closest('.input-hide-wrap').find('.separation-cumulative-za').val(res.result);
             _this.closest('.voting-actions__wrap-input').find('.change-span').text(res.result);
+            var zaBtn = parent.find('.voting-true');
+            if (res['status'] === "success") {
+                if (res.result[0] === '-') {
+                    zaBtn.addClass('disable-votin-btn');
+                    parent.find('.voting-close').addClass('input-selected');
+                    totalLeft.css({
+                        color: 'red'
+                    })
+                }
+                else {
+                    zaBtn.removeClass('disable-votin-btn');
+                    parent.find('.voting-close').removeClass('input-selected');
+                    totalLeft.css({
+                        color: '#141414'
+                    })
+                }
+            }
         })
     });
 
     // не разделенное кумулятивное голосование
-    $(document).on('blur', '.separation-cumulative-za', function () {
+    $(document).on('change', '.separation-cumulative-za', function () {
         var parent = $(this).closest('.cumulative-voting-input');
         var isDividing = parent.find('.cum-not-dividing').length > 0;
         var inputMassEntry = parent.find('.separation-cumulative-za');
@@ -294,14 +313,51 @@ $(function () {
             inputMassEntry.each(function () {
                 massEntryArray.push($(this).val());
             });
-            fractionMinusArrayFraction(massEntryArray, massEntryTotal).done(function (res) {
-                totalLeft.text(res.result);
-                console.log(res)
+            fractionMinusArrayFraction(massEntryArray, massEntryTotal).done(function (result) {
+                totalLeft.text(result.result);
+                var zaBtn = parent.find('.voting-true');
+                if (result['status'] === "success") {
+                    totalLeft.text(result.result);
+                    if (result.result[0] === '-') {
+                        zaBtn.addClass('disable-votin-btn');
+                        parent.find('.voting-close').addClass('input-selected');
+                        totalLeft.css({
+                            color: 'red'
+                        })
+                    }
+                    else {
+                        zaBtn.removeClass('disable-votin-btn');
+                        parent.find('.voting-close').removeClass('input-selected');
+                        totalLeft.css({
+                            color: '#141414'
+                        })
+                    }
+                }
             })
         }
 
-    })
+    });
+    // очистка инпутов в кумулятивном не разделенном голосовании
+    $(document).on('click', '.cum-not-dividing .voting-false', function () {
+        var parent = $(this).closest('.cumulative-voting-input');
+        var inputsForClear = parent.find('.separation-cumulative-za');
+        var spansForClear = parent.find('.change-span');
+        var totalMax = parent.find('.total-max:first');
+        var totalLeft = parent.find('.total-left');
+        totalLeft.text(totalMax.text());
+        clearInputs(inputsForClear, spansForClear);
+    });
+    $(document).on('click', '.cum-not-dividing .voting-abstained', function () {
+        var parent = $(this).closest('.cumulative-voting-input');
+        var inputsForClear = parent.find('.separation-cumulative-za');
+        var spansForClear = parent.find('.change-span');
+        var totalMax = parent.find('.total-max:first');
+        var totalLeft = parent.find('.total-left');
+        totalLeft.text(totalMax.text());
+        clearInputs(inputsForClear, spansForClear);
+    });
 
+    // функция очистки инпута и спана
     function clearInputs(inputs, spans) {
         inputs.each(function () {
             $(this).val(0);
@@ -310,6 +366,67 @@ $(function () {
             $(this).text(0)
         })
     }
+
+    // Клики по кнопке 1/* голосов
+    $(document).on('click', '.cumulative-voting-input .division-votes', function () {
+        var parent = $(this).closest('.cumulative-voting-input');
+        var amountCandidates = parent.find('.candidateQuota').val().trim();
+        var totalVoices = parent.find('.total-max').text().replace(/\u00a0/g, ''); // Удаляем спецсимвол пробела
+        var totalLeft = parent.find('.total-left')
+        var input = $(this).closest('.voting-actions__wrap-input').find('.separation-cumulative-za');
+        var span = $(this).closest('.voting-actions__wrap-input').find('.change-span');
+        var _this = $(this);
+        $.ajax({
+            url: '/FractionCalculator/Divide',
+            type: 'get',
+            data: {
+                value1: totalVoices,
+                value2: amountCandidates
+            },
+            dataType: 'json',
+            success: function (html) {
+                if (!parent.find('.voting-true').hasClass('input-selected')) {
+                    parent.find('.voting-true').click();
+                }
+                var request = html.result.replace(/\u00a0/g, '').replace('  ', ' '); // Удаляем спецсимволы пробела, и двойные пробелы заменяем на одинарные
+                if (request.indexOf('-') !== -1 || request.indexOf('Invalid') !== -1) {  // Если в ответе есть отрицательное значение
+                    input.val('Ошибка');
+                } else {
+                    input.val(request);
+                    span.text(request);
+                    var arrOfInputs = parent.find('.separation-cumulative-za');
+                    var arrOfInputsVal = [];
+                    arrOfInputs.each(function () {
+                        // Заменяем пробелы на 0, что бы с сервера не возвращалась ошибка
+                        if ($(this).val().trim() === '') {
+                            $(this).val(0)
+                        }
+                        arrOfInputsVal.push($(this).val()); // Значение каждого инпута заносим в массив
+                    });
+                    additionFraction(arrOfInputsVal.join(';')).done(function () {
+                        fractionMinusArrayFraction(arrOfInputsVal, totalVoices).done(function (result) {
+                            var zaBtn = parent.find('.voting-true');
+                            if (result['status'] === "success") {
+                                totalLeft.text(result.result);
+                                if (result.result[0] === '-') {
+                                    zaBtn.addClass('disable-votin-btn');
+                                    parent.find('.voting-close').addClass('input-selected');
+                                    totalLeft.css({
+                                        color: 'red'
+                                    })
+                                }
+                            }
+                        })
+                    });
+                }
+            },
+            error: function (err) {
+                alert('Ошибка! Ответ сервера: ' + err.status);
+            }
+        })
+    });
+
+
 
 
 });
