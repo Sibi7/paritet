@@ -1103,6 +1103,24 @@ label {
     font-weight: 300;
   }
 }
+.input-sent-candidate {
+  .voting-true:not(.voting-selected) {
+    background-color: transparent;
+    color: #777;
+    pointer-events: none;
+  }
+  .voting-false:not(.voting-selected) {
+    background-color: transparent;
+    color: #777;
+    pointer-events: none;
+  }
+  .voting-abstained:not(.voting-selected) {
+    background-color: transparent;
+    color: #777;
+    pointer-events: none;
+  }
+}
+
 
 .voting-impossible {
   .voting-actions__choice {
@@ -1148,8 +1166,6 @@ label {
     color: $gray-controls !important;
     font-weight: 300!important;
     pointer-events: none!important;
-    cursor: default!important;
-    pointer-events: none!important;
   }
   .voting-active {
     background-color: $active-bullet;
@@ -1167,6 +1183,19 @@ label {
   }
 }
 
+.separation-votes-not-active {
+
+  .change-span, .cum-change-span, .voting-actions-sing-btn, .voting-actions-btn, .voting-clear-division{
+    background-color: transparent !important;
+    color: $gray-controls !important;
+    font-weight: 300!important;
+    pointer-events: none!important;
+  }
+  .voting-clear-division{
+    background-image: url("../images/icons/return-disabled.svg")!important;
+  }
+
+}
 .cumulative-voting-input {
   .totals-votes {
     margin-left: 17px;
@@ -2223,3 +2252,6 @@ label {
   pointer-events: none;
 }
 
+.voting-actions-all-btn{
+
+}

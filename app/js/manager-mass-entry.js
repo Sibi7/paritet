@@ -79,7 +79,10 @@ $(function () {
     }
 
     // пересчитывание  разделения голосов формы ввода
-    $(document).on('blur', '.separation-votes .input-hide', function () {
+    // $(document).on('blur', '.separation-votes .input-hide', function () {
+    //     calculateTotalVoises($(this))
+    // });
+    $(document).on('keyup', '.separation-votes .input-hide', function () {
         calculateTotalVoises($(this))
     });
     $(document).on('keydown', '.input-hide', function (e) {
@@ -139,6 +142,7 @@ $(function () {
             votes.show();
         }
     });
+
     // Очистка инпутов и спанов в кумулятивном не разделенном голосовании
     function cumNotSeparVotingClearInput(_this) {
         var parent = _this.closest('.voting-enter__td.margin-left-auto');
@@ -150,6 +154,7 @@ $(function () {
         votes.show();
         clearInputs(parent.find('.separation-cumulative-za'), parent.find('.voting-actions__wrap-input .change-span'))
     }
+
     $(document).on('click', '.cumulative-voting-input .not-separation .voting-false', function () {
         cumNotSeparVotingClearInput($(this))
     });
@@ -425,8 +430,13 @@ $(function () {
             }
         })
     });
-
-
-
+// Если есть количество кандидатов в голосовании, то кнопки: за, против, воздержался не активные
+    function disabledAllBtn() {
+        var candidates = $('.candidateQuota').val();
+        if (candidates > 0) {
+            $('.voting-enter__select-all .voting-inputs').addClass('input-sent-candidate');
+        }
+    }
+    disabledAllBtn();
 
 });
