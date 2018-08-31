@@ -6,7 +6,7 @@ $(function () {
         for (var i = 0; i < items.length; i++) {
             var item = items[i];
 
-            if (item.innerHTML.toUpperCase().indexOf(input.value.toUpperCase()) > -1) {
+            if (item.innerHTML.toUpperCase().indexOf(input.value.trim().toUpperCase()) > -1) {
                 item.style.display = "";
             } else {
                 item.style.display = "none";

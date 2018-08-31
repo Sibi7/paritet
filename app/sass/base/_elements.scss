@@ -1632,12 +1632,7 @@ label {
       background: $active-bullet;
       color: $white;
     }
-    .voting-true.input-not-selected {
-      background-color: transparent!important;
-      color: #777!important;
-      pointer-events: none;
-      outline: none;
-    }
+
     .voting-not-valid.input-selected {
       background-color: $pink;
       color: $white;

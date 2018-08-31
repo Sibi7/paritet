@@ -74,7 +74,7 @@ $(function () {
         });
         if (_this.val() === '') {
             _this.closest('.voting-actions__wrap-input').find('.change-span').text(0);
-            _this.val(0)
+
         }
     }
 
@@ -84,6 +84,11 @@ $(function () {
     // });
     $(document).on('keyup', '.separation-votes .input-hide', function () {
         calculateTotalVoises($(this))
+    });
+    $(document).on('blur', '.separation-votes .input-hide', function () {
+        if($(this).val().trim() === ""){
+            $(this).val(0);
+        }
     });
     $(document).on('keydown', '.input-hide', function (e) {
         return isAllowedKeyCode(e.originalEvent.key);
