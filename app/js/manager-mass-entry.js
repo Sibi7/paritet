@@ -85,6 +85,7 @@ $(function () {
     $(document).on('keyup', '.separation-votes .input-hide', function () {
         calculateTotalVoises($(this))
     });
+
     $(document).on('blur', '.separation-votes .input-hide', function () {
         if($(this).val().trim() === ""){
             $(this).val(0);
@@ -146,6 +147,10 @@ $(function () {
             votesLeft.hide();
             votes.show();
         }
+    });
+    $(document).on('click', '.change-span-candidate', function () {
+        $('.cum-not-dividing .votes').hide();
+        $('.cum-not-dividing .votes-left').show();
     });
 
     // Очистка инпутов и спанов в кумулятивном не разделенном голосовании
@@ -308,7 +313,7 @@ $(function () {
     });
 
     // не разделенное кумулятивное голосование
-    $(document).on('change', '.separation-cumulative-za', function () {
+    $(document).on('keyup', '.separation-cumulative-za', function () {
         var parent = $(this).closest('.cumulative-voting-input');
         var isDividing = parent.find('.cum-not-dividing').length > 0;
         var inputMassEntry = parent.find('.separation-cumulative-za');

@@ -1081,6 +1081,13 @@ label {
     background-color: transparent !important;;
     color: #777 !important;
   }
+
+}
+.voting-enter__select-all .input-sent{
+  .input-selected{
+    background-color: transparent !important;;
+    color: #777 !important;
+  }
 }
 
 .input-sent {
@@ -1142,7 +1149,7 @@ label {
 
 .separation-votes {
   .voting-actions__choice-btn {
-    max-width: 418px;
+    max-width: 410px;
     margin-left: auto;
   }
   .voting-actions-btn {
@@ -2247,6 +2254,9 @@ label {
   pointer-events: none;
 }
 
-.voting-actions-all-btn{
-
+.not-separation{
+  .input-selected{
+    background: #0070cc!important;
+    color: #fff!important;
+  }
 }
