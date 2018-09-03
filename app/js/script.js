@@ -817,5 +817,17 @@ $(function () {
         });
     });
 
+    // тултип для подсказки с иконкой вопроса  иконкой восклицательного знаком
+    $(document).on('click', '.question-tooltip', function () {
+        var parent = $(this).closest('.question-tooltip');
+        var questionModal = parent.find('.question-tooltip__modal');
+        questionModal.fadeToggle();
+    });
+    $(document).on('click', '.attention-tooltip', function () {
+        var parent = $(this).closest('.attention-tooltip');
+        var questionModal = parent.find('.attention-tooltip__modal');
+
+        questionModal.fadeToggle();
+    });
 
 });

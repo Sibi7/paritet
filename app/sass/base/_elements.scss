@@ -1072,21 +1072,22 @@ label {
   }
   .voting-actions__choice--item:not(.voting-selected) {
     background-color: transparent !important;
-    color: #777 !important;
+    color: #999 !important;
   }
 }
 
 .input-sent-unreg {
   .voting-inputs__choice--item:not(.voting-selected) {
     background-color: transparent !important;;
-    color: #777 !important;
+    color: #999 !important;
   }
 
 }
-.voting-enter__select-all .input-sent{
-  .input-selected{
+
+.voting-enter__select-all .input-sent {
+  .input-selected {
     background-color: transparent !important;;
-    color: #777 !important;
+    color: #999999 !important;
   }
 }
 
@@ -1096,7 +1097,7 @@ label {
   }
   .voting-inputs__choice--item:not(.voting-selected) {
     background-color: transparent;
-    color: #777;
+    color: #999999;
   }
 
   .voting-divide:not(.voting-selected) {
@@ -1104,30 +1105,30 @@ label {
     background-image: url("../images/icons/scissors-grey.svg") !important;
     color: $gray-controls !important;
   }
-  .voting-close:not(.voting-selected) {
-    background-color: transparent !important;
-    color: $gray-controls !important;
-    font-weight: 300;
-  }
+  //.voting-close:not(.voting-selected) {
+  //  background-color: transparent !important;
+  //  color: $gray-controls !important;
+  //  font-weight: 300;
+  //}
 }
+
 .input-sent-candidate {
   .voting-true:not(.voting-selected) {
     background-color: transparent;
-    color: #777;
+    color: #999;
     pointer-events: none;
   }
   .voting-false:not(.voting-selected) {
     background-color: transparent;
-    color: #777;
+    color: #999;
     pointer-events: none;
   }
   .voting-abstained:not(.voting-selected) {
     background-color: transparent;
-    color: #777;
+    color: #999;
     pointer-events: none;
   }
 }
-
 
 .voting-impossible {
   .voting-actions__choice {
@@ -1170,9 +1171,8 @@ label {
   }
   .voting-not-active {
     background-color: transparent !important;
-    color: $gray-controls !important;
-    font-weight: 300!important;
-    pointer-events: none!important;
+    font-weight: 400 !important;
+    pointer-events: none !important;
   }
   .voting-active {
     background-color: $active-bullet;
@@ -1192,22 +1192,27 @@ label {
 
 .separation-votes-not-active {
 
-  .change-span, .cum-change-span, .voting-actions-sing-btn, .voting-actions-btn, .voting-clear-division{
+  .change-span, .cum-change-span, .voting-actions-sing-btn, .voting-actions-btn, .voting-clear-division {
     background-color: transparent !important;
     color: $gray-controls !important;
-    font-weight: 300!important;
-    pointer-events: none!important;
+    font-weight: 300 !important;
+    pointer-events: none !important;
   }
-  .voting-clear-division{
-    background-image: url("../images/icons/return-disabled.svg")!important;
+  .cum-change-span{
+    color: #141414!important;
+    font-weight: 400!important;
+  }
+  .voting-clear-division {
+    background-image: url("../images/icons/return-disabled.svg") !important;
   }
 
 }
+
 .cumulative-voting-input {
   .totals-votes {
     margin-left: 17px;
   }
-  .votes-left-toggle{
+  .votes-left-toggle {
     display: none;
   }
 }
@@ -2220,13 +2225,32 @@ label {
   }
 }
 
-.wrap-remainder-btn{
+
+.wrap-remainder-btn {
   display: flex;
   position: absolute;
   bottom: -18px;
   left: 9px;
 }
-.input-balance, .division-votes, .input-cum-balance{
+.separation-cumulative{
+  .separation-cumulative-za{
+    position: absolute!important;
+    left: 0!important;
+    padding-left: 16px!important;
+    margin-left: 0;
+    width: 113px;
+  }
+  .wrap-remainder-btn {
+    top: 30px!important;
+    bottom: auto!important;
+    left: 0!important;
+  }
+  .change-span{
+    margin-left: 17px!important;
+    margin-top: 5px;
+  }
+}
+.input-balance, .division-votes, .input-cum-balance {
   display: inline-flex;
   border: none;
   background: transparent;
@@ -2234,10 +2258,12 @@ label {
   font-size: 11px;
   outline: none;
 }
-.division-votes{
+
+.division-votes {
   padding: 0;
 }
-.one-second-vote{
+
+.one-second-vote {
   position: absolute;
   border: none;
   background: transparent;
@@ -2248,15 +2274,90 @@ label {
   width: auto;
   display: inline-block;
 }
+
 .disable-votin-btn {
-  background-color: #fff!important;
-  color: #999!important;
+  background-color: #fff !important;
+  color: #999 !important;
   pointer-events: none;
 }
 
-.not-separation{
-  .input-selected{
-    background: #0070cc!important;
-    color: #fff!important;
+.not-separation {
+  .input-selected {
+    background: #0070cc !important;
+    color: #fff !important;
+  }
+}
+
+.question-tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid #0070CC;
+  background: url("../images/icons/question.svg") center center no-repeat;
+  background-size: 7px;
+  &__modal{
+    display: none;
+    position: absolute;
+    border: 1px solid #999999;
+    min-width: 425px;
+    background: #FAFAFA;
+    padding: 25px;
+    z-index: 55;
+    max-height: 150px;
+    top: -160px;
+    left: -10%;
+    overflow: hidden;
+  }
+  &__title{
+    font-size: 17px;
+    font-weight: 400;
+    margin: 0;
+    color: #141414;
+  }
+  &__text{
+    font-weight: 400;
+    font-size: 14px;
+    margin: 10px 0;
+    color: #141414;
+  }
+}
+
+.attention-tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid #E62E2E;
+  background: url("../images/icons/attention.svg") center center no-repeat;
+  background-size: 4px;
+  &__modal{
+    display: none;
+    position: absolute;
+    border: 1px solid #999999;
+    min-width: 295px;
+    background: #FAFAFA;
+    padding: 25px;
+    z-index: 55;
+    max-height: 180px;
+    top: -190px;
+    left: 0px;
+    overflow: hidden;
+  }
+  &__title{
+    font-size: 17px;
+    font-weight: 400;
+    margin: 0;
+    color: #141414;
+  }
+  &__text{
+    font-weight: 400;
+    font-size: 14px;
+    margin: 10px 0;
+    color: #141414;
   }
 }
