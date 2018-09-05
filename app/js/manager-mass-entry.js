@@ -87,7 +87,7 @@ $(function () {
     });
 
     $(document).on('blur', '.separation-votes .input-hide', function () {
-        if($(this).val().trim() === ""){
+        if ($(this).val().trim() === "") {
             $(this).val(0);
         }
     });
@@ -440,6 +440,7 @@ $(function () {
             }
         })
     });
+
 // Если есть количество кандидатов в голосовании, то кнопки: за, против, воздержался не активные
     function disabledAllBtn() {
         var candidates = $('.candidateQuota').val();
@@ -447,7 +448,78 @@ $(function () {
             $('.voting-enter__select-all .voting-inputs').addClass('input-sent-candidate');
         }
     }
+
     disabledAllBtn();
 
+// функция проверки  если выбран один ряд кнопок за/против/воздержался, тогда кнопка в верхнем ряду становится активной.
+
+    function autoButtonPressAbstained() {
+
+        var parentAllBtn = $('.voting-enter__select-all .voting-inputs__choice'),
+            btnAbstained = parentAllBtn.find('.voting-abstained'),
+
+            parentSingBtn = $('.disabled-form'),
+            singBtnAbstained = parentSingBtn.find('.voting-abstained').length,
+            inputSelected = parentSingBtn.find('.voting-abstained.input-selected').length;
+
+        if (singBtnAbstained === inputSelected) {
+            btnAbstained.addClass('input-selected');
+        }
+
+    }
+    function autoButtonPressFalse() {
+
+        var parentAllBtn = $('.voting-enter__select-all .voting-inputs__choice'),
+            btnFalse = parentAllBtn.find('.voting-false'),
+
+
+            parentSingBtn = $('.disabled-form'),
+            singBtnFalse = parentSingBtn.find('.voting-false').length,
+            inputSelected = parentSingBtn.find('.voting-false.input-selected').length;
+
+        if (singBtnFalse === inputSelected) {
+            btnFalse.addClass('input-selected');
+        }
+    }
+    function autoButtonPressTrue() {
+
+        var parentAllBtn = $('.voting-enter__select-all .voting-inputs__choice'),
+            btnTrue = parentAllBtn.find('.voting-true'),
+
+            parentSingBtn = $('.disabled-form'),
+            singBtnTrue = parentSingBtn.find('.voting-true').length,
+            inputSelected = parentSingBtn.find('.voting-true.input-selected').length;
+
+        if (singBtnTrue === inputSelected) {
+            btnTrue.addClass('input-selected');
+        }
+    }
+    function autoBtnPressClose() {
+
+        var parentAllBtn = $('.voting-enter__select-all .voting-inputs__choice'),
+            btnClose = parentAllBtn.find('.voting-close'),
+
+            parentSingBtn = $('.disabled-form'),
+            singBtnClose = parentSingBtn.find('.voting-close').length,
+            inputSelected = parentSingBtn.find('.voting-close.input-selected').length;
+
+        if (singBtnClose === inputSelected) {
+            btnClose.addClass('input-selected');
+        }
+    }
+    autoBtnPressClose();
+
+    $(document).on('click', '.disabled-form .voting-abstained', function () {
+        autoButtonPressAbstained();
+    });
+    $(document).on('click', '.disabled-form .voting-false', function () {
+        autoButtonPressFalse();
+    });
+    $(document).on('click', '.disabled-form .voting-close', function () {
+        autoBtnPressClose();
+    });
+    $(document).on('click', '.disabled-form .voting-true', function () {
+        autoButtonPressTrue();
+    });
 
 });
