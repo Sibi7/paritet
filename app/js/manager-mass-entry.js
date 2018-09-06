@@ -92,6 +92,9 @@ $(function () {
         }
     });
     $(document).on('keydown', '.input-hide', function (e) {
+        if (e.key === 'Enter'){
+            $(this).trigger('blur');
+        }
         return isAllowedKeyCode(e.originalEvent.key);
     });
     // $(document).on('click', '.separation-votes .voting-close', function () {
@@ -222,7 +225,6 @@ $(function () {
 
                 var content = _this.closest('.voting-enter__tr').find('.voting-enter__td.margin-left-auto');
                 content[0].outerHTML = data;
-                console.log('content');
             },
             error: function (err) {
                 alert('Ошибка! Ответ сервера: ' + err.status);
@@ -457,6 +459,7 @@ $(function () {
 
         var parentAllBtn = $('.voting-enter__select-all .voting-inputs__choice'),
             btnAbstained = parentAllBtn.find('.voting-abstained'),
+            candidates = $('.candidateQuota').val(),
 
             parentSingBtn = $('.disabled-form'),
             singBtnAbstained = parentSingBtn.find('.voting-abstained').length,
@@ -464,6 +467,9 @@ $(function () {
 
         if (singBtnAbstained === inputSelected) {
             btnAbstained.addClass('input-selected');
+            if (candidates > 0) {
+                btnAbstained.removeClass('input-selected');
+            }
         }
 
     }
@@ -471,7 +477,7 @@ $(function () {
 
         var parentAllBtn = $('.voting-enter__select-all .voting-inputs__choice'),
             btnFalse = parentAllBtn.find('.voting-false'),
-
+            candidates = $('.candidateQuota').val(),
 
             parentSingBtn = $('.disabled-form'),
             singBtnFalse = parentSingBtn.find('.voting-false').length,
@@ -479,12 +485,16 @@ $(function () {
 
         if (singBtnFalse === inputSelected) {
             btnFalse.addClass('input-selected');
+            if (candidates > 0) {
+                btnFalse.removeClass('input-selected');
+            }
         }
     }
     function autoButtonPressTrue() {
 
         var parentAllBtn = $('.voting-enter__select-all .voting-inputs__choice'),
             btnTrue = parentAllBtn.find('.voting-true'),
+            candidates = $('.candidateQuota').val(),
 
             parentSingBtn = $('.disabled-form'),
             singBtnTrue = parentSingBtn.find('.voting-true').length,
@@ -492,7 +502,11 @@ $(function () {
 
         if (singBtnTrue === inputSelected) {
             btnTrue.addClass('input-selected');
+            if (candidates > 0) {
+                btnTrue.removeClass('input-selected');
+            }
         }
+        disabledAllBtn();
     }
     function autoBtnPressClose() {
 
@@ -506,6 +520,7 @@ $(function () {
         if (singBtnClose === inputSelected) {
             btnClose.addClass('input-selected');
         }
+        disabledAllBtn();
     }
     autoBtnPressClose();
 
