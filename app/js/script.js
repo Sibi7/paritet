@@ -644,9 +644,7 @@ $(function () {
     }
 
 
-    $(document).on('click', '.search-select li', function () {
-        $('.t-search').val($(this).text());
-    });
+
     $(document).on('click', '.t-search', function () {
         $('.search-select').show();
 

@@ -22,13 +22,23 @@ $(function () {
             itemSelector: '.search-select li',
             inputSelector: '.t-search'
         });
-        if (e.key === 'Enter' &&  $(this).siblings('.search-select')[0].querySelector('.active-search-item')) {
+        console.log( $(this).siblings('.search-select')[0].querySelector('.active-search-item'));
+        if (e.key === 'Enter' &&  $(this).siblings('.search-select')[0].querySelector('.active-search-item') !== null) {
             $(this).siblings('.search-select')[0].querySelector('.active-search-item').click();
         }
     });
-    $(document).on('submit', '.t-search-submit', function (e) {
-        if (!$(this)[0].querySelector('.active-search-item')) {
-          e.preventDefault();
+    $(document).on('keyup', '.t-search-submit', function (e) {
+        if (e.keyCode === 13) {
+            e.preventDefault();
         }
-    })
+    });
+
+    $(document).on('click', '.search-select li', function () {
+        $('.mass-search').val($(this).text());
+
+        setTimeout(function () {
+            $(this).closest('form').submit();
+        },500);
+
+    });
 });
