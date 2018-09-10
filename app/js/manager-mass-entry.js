@@ -225,6 +225,7 @@ $(function () {
 
                 var content = _this.closest('.voting-enter__tr').find('.voting-enter__td.margin-left-auto');
                 content[0].outerHTML = data;
+                disabledAllBtnSeparation();
             },
             error: function (err) {
                 alert('Ошибка! Ответ сервера: ' + err.status);
@@ -232,7 +233,16 @@ $(function () {
 
         });
     }
-
+    // Если в простом голосование разделены голоса, то верхний ряд кнопок disabled
+    function disabledAllBtnSeparation() {
+        if ($('.separation-votes').length > 0) {
+            $('.voting-enter__select-all .voting-inputs').addClass('input-sent-candidate');
+        }
+        else {
+            $('.voting-enter__select-all .voting-inputs').removeClass('input-sent-candidate');
+        }
+    }
+    disabledAllBtnSeparation();
     $(document).on('click', '.voting-divide', function (e) {
         e.preventDefault();
         ajaxForSeparationBtn($(this));
@@ -450,6 +460,13 @@ $(function () {
             $('.voting-enter__select-all .voting-inputs').addClass('input-sent-candidate');
         }
     }
+
+
+
+    $(document).on('click', '.voting-divide', function () {
+        disabledAllBtnSeparation();
+        console.log(111);
+    });
 
     disabledAllBtn();
 

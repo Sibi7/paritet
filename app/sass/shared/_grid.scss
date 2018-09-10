@@ -12,6 +12,9 @@
     margin-top: 40px;
     display: flex;
     flex-direction: row;
+    .voting-enter__tr{
+      border-bottom: none!important;
+    }
   }
   &__key {
     display: flex;

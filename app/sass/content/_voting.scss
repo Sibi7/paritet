@@ -59,7 +59,7 @@
     padding-top: 0;
     padding-bottom: 0;
     justify-content: flex-end;
-    min-width: 418px;
+    width: 418px;
     .votes-left, .votes{
       left: 0;
       top: -26px;
@@ -92,6 +92,9 @@
     display: flex;
     width: 100%;
     border-top: 1px solid #ccc;
+    &:last-child{
+      border-bottom: 1px solid #ccc;
+    }
     .voting-enter__tr {
       padding-top: 0;
       border: 0;

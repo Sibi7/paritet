@@ -1461,7 +1461,7 @@ label {
     justify-content: center;
   }
   &__wrap-btn {
-    width: 180px;
+    width: 187px;
     display: flex;
     position: relative;
     .voting-votes-all {
@@ -1600,6 +1600,7 @@ label {
     align-items: center;
     padding: 0;
     margin: 0;
+    margin-right: auto;
     &--item {
       display: flex;
       align-items: center;
