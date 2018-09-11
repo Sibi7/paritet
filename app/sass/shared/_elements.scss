@@ -138,7 +138,7 @@ input[type="checkbox"] {
     position: absolute;
     visibility: hidden;
   }
-  &:not(checked) + label {
+  &:not(checked) ~ label {
     position: relative;
     padding: 0 0 0 20px;
     &:hover {
@@ -169,15 +169,15 @@ input[type="checkbox"] {
       background: url(../images/icons/checked.png) no-repeat center center;
     }
   }
-  &:checked + label {
+  &:checked ~ label {
     &:after {
       display: block;
     }
   }
 }
 
-input[type="checkbox"][readonly] + label,
-input[type="checkbox"][disabled] + label {
+input[type="checkbox"][readonly] ~ label,
+input[type="checkbox"][disabled] ~ label {
   pointer-events: none;
   &:hover {
     &:before {

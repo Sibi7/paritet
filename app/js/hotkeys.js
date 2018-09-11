@@ -143,7 +143,7 @@ function Hotkeys() {
         }
     ];
 
-    this.run = function () {
+    this.run = (function () {
         var pressed = [];
 
         document.onkeydown = function (e) {
@@ -174,7 +174,7 @@ function Hotkeys() {
                 pressed = []
             }
         };
-    }
+    })()
 
 }
 

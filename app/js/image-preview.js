@@ -43,6 +43,7 @@ function removeAvatar() {
         data: { userName: $('#UserName').val() },
         success: function (result) {
             $('.content__block--photo img')[0].src = "/images/icons/add-photo.png";
+            $('#delete-photo').hide();
             if ($('.content__block--photo').data("forself")) {
                 $('.header__user img')[0].src = "/images/icons/add-photo.png";
             }
