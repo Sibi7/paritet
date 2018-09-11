@@ -1192,15 +1192,16 @@ label {
 
 .separation-votes-not-active {
 
-  .change-span, .cum-change-span, .voting-actions-sing-btn, .voting-actions-btn, .voting-clear-division {
+  .cum-change-span, .voting-actions-sing-btn, .voting-actions-btn, .voting-clear-division {
     background-color: transparent !important;
     color: $gray-controls !important;
     font-weight: 300 !important;
     pointer-events: none !important;
   }
-  .cum-change-span{
+  .cum-change-span, .change-span{
     color: #141414!important;
     font-weight: 400!important;
+    pointer-events: none !important;
   }
   .voting-clear-division {
     background-image: url("../images/icons/return-disabled.svg") !important;
