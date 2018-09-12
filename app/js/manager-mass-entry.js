@@ -578,11 +578,9 @@ $(function () {
         console.log(btnDisabled, 'btnDisabled');
 
         if ($(this).text().trim() === '0') {
-            console.log(111);
             btnDisabled.addClass('input-sent');
         }
         if ($(this).text().trim().length > 2){
-            console.log(1111);
             btnDisabled.removeClass('input-sent');
         }
 
