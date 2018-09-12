@@ -93,7 +93,7 @@ $(function () {
         clearInputs(inputsForClear, spansForClear);
     });
     $(document).on('keydown', '.input-hide', function (e) {
-        if (e.key === 'Enter'){
+        if (e.key === 'Enter') {
             $(this).trigger('blur');
         }
         return isAllowedKeyCode(e.originalEvent.key);
@@ -234,6 +234,7 @@ $(function () {
 
         });
     }
+
     $(document).on('click', '.voting-divide', function () {
         disabledAllBtnSeparation();
     });
@@ -247,6 +248,7 @@ $(function () {
             $('.voting-enter__select-all .voting-inputs').removeClass('input-sent-candidate');
         }
     }
+
     disabledAllBtnSeparation();
 
     $(document).on('click', '.voting-divide', function (e) {
@@ -390,20 +392,21 @@ $(function () {
         clearInputs(inputsForClear, spansForClear);
     });
 
-    // функция очистки инпута и спана
+//  Проверка change-span, если пустой, то добавляем 0 по умолчаниюа
     function clearInputs(inputs, spans) {
         inputs.each(function () {
-            if($(this).val().trim() === ''){
+            if ($(this).val().trim() === '') {
                 $(this).val(0);
             }
         });
         spans.each(function () {
-            if($(this).text().trim() === ''){
+            if ($(this).text().trim() === '') {
                 $(this).text(0)
             }
 
         })
     }
+
     var inputHideValid = $('.input-hide');
     var changeSpanValid = $('.change-span');
     clearInputs(inputHideValid, changeSpanValid);
@@ -496,6 +499,7 @@ $(function () {
         }
 
     }
+
     function autoButtonPressFalse() {
 
         var parentAllBtn = $('.voting-enter__select-all .voting-inputs__choice'),
@@ -513,6 +517,7 @@ $(function () {
             }
         }
     }
+
     function autoButtonPressTrue() {
 
         var parentAllBtn = $('.voting-enter__select-all .voting-inputs__choice'),
@@ -531,6 +536,7 @@ $(function () {
         }
         disabledAllBtn();
     }
+
     function autoBtnPressClose() {
 
         var parentAllBtn = $('.voting-enter__select-all .voting-inputs__choice'),
@@ -545,6 +551,7 @@ $(function () {
         }
         disabledAllBtn();
     }
+
     autoBtnPressClose();
 
     $(document).on('click', '.disabled-form .voting-abstained', function () {
@@ -560,7 +567,27 @@ $(function () {
         autoButtonPressTrue();
     });
 
-//  Проверка change-span, если пустой, то добавляем 0 по умолчанию
 
+    function numberCheckVotes() {
+        var parent = $(this).closest('.voting-enter__td.margin-left-auto'),
+            btnDisabled = parent.find('.votes').parents('.voting-inputs'),
+            total = parent.find('.total-left');
+
+        console.log(total, 'total');
+        console.log(parent, 'parent');
+        console.log(btnDisabled, 'btnDisabled');
+
+        if ($(this).text().trim() === '0') {
+            console.log(111);
+            btnDisabled.addClass('input-sent');
+        }
+        if ($(this).text().trim().length > 2){
+            console.log(1111);
+            btnDisabled.removeClass('input-sent');
+        }
+
+    }
+
+    numberCheckVotes()
 
 });
