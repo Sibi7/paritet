@@ -1173,11 +1173,12 @@ label {
     background-color: transparent !important;
     font-weight: 400 !important;
     pointer-events: none !important;
+    color: #999!important;
   }
   .voting-active {
-    background-color: $active-bullet;
-    border: solid 1px transparent;
-    color: $white;
+    background-color: $active-bullet!important;
+    border: solid 1px transparent!important;
+    color: $white!important;
   }
 
   .voting-actions__choice-wrap {
@@ -1206,7 +1207,11 @@ label {
   .voting-clear-division {
     background-image: url("../images/icons/return-disabled.svg") !important;
   }
-
+  .voting-active{
+    background-color: $active-bullet!important;
+    border: solid 1px transparent!important;
+    color: $white!important;
+  }
 }
 
 .cumulative-voting-input {

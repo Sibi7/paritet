@@ -227,6 +227,7 @@ $(function () {
                 var content = _this.closest('.voting-enter__tr').find('.voting-enter__td.margin-left-auto');
                 content[0].outerHTML = data;
                 disabledAllBtnSeparation();
+                vetoCheckBtn();
             },
             error: function (err) {
                 alert('Ошибка! Ответ сервера: ' + err.status);
@@ -567,25 +568,38 @@ $(function () {
         autoButtonPressTrue();
     });
 
-
+    // Функция проверки количества голосов, если голосов ноль, то кнопки disabled
     function numberCheckVotes() {
-        var parent = $(this).closest('.voting-enter__td.margin-left-auto'),
-            btnDisabled = parent.find('.votes').parents('.voting-inputs'),
-            total = parent.find('.total-left');
-
-        console.log(total, 'total');
-        console.log(parent, 'parent');
-        console.log(btnDisabled, 'btnDisabled');
-
-        if ($(this).text().trim() === '0') {
-            btnDisabled.addClass('input-sent');
-        }
-        if ($(this).text().trim().length > 2){
-            btnDisabled.removeClass('input-sent');
-        }
+        var parents = $('.voting-enter__td.margin-left-auto');
+        parents.each(function () {
+            var btnDisabled = $(this).find('.voting-inputs'),
+                total = $(this).find('.total-left');
+            if (total.text().trim() === '0') {
+                btnDisabled.addClass('input-sent');
+            }
+        });
 
     }
 
-    numberCheckVotes()
+    numberCheckVotes();
 
+    // функция проверки кнопки ВЕТО в блоке с кнопками ЗА ПРОТИВ ВОЗДЕРЖАЛСЯ, если есть ВЕТО расширяем блок, чтобы все кнопки помещались
+    function vetoCheckBtn() {
+        var votingInputs = $('.voting-inputs');
+        votingInputs.each(function () {
+            if ($(this).find('.voting-veto').length) {
+                $(this).css({
+                    width: '504px'
+                })
+
+            }
+            else {
+                $(this).css({
+                    width: '418px'
+                })
+            }
+        });
+    }
+
+    vetoCheckBtn();
 });
