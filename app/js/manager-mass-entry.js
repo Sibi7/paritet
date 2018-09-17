@@ -27,10 +27,11 @@ $(function () {
             }
 
         }
-        inputHide.trigger('focus');
         $(this).hide();
         $(this).siblings('.input-hide-wrap').show().addClass('input-hide-visible');
+        inputHide.select();
     });
+
     $(document).mouseup(function (e) {
         var container = $(".input-hide-wrap");
         var changleSpan = $(".change-span");
@@ -78,10 +79,6 @@ $(function () {
         }
     }
 
-    // пересчитывание  разделения голосов формы ввода
-    // $(document).on('blur', '.separation-votes .input-hide', function () {
-    //     calculateTotalVoises($(this))
-    // });
     $(document).on('keyup', '.separation-votes .input-hide', function () {
 
         calculateTotalVoises($(this))
@@ -93,10 +90,13 @@ $(function () {
         var spansForClear = parent.find('.change-span');
         clearInputs(inputsForClear, spansForClear);
     });
-    $(document).on('keydown', '.input-hide', function (e) {
+    $(document).on('keyup', '.input-hide', function (e) {
         if (e.key === 'Enter') {
             $(this).trigger('blur');
         }
+        //    Разделение на разряды введенных голосов в контролл ввода
+        $(this).val(String($(this).val().replace(/[^0-9.]/g,'')).replace(/\B(?=(\d{3})+(?!\d))/g, " "));
+
         return isAllowedKeyCode(e.originalEvent.key);
     });
     // $(document).on('click', '.separation-votes .voting-close', function () {
@@ -612,8 +612,6 @@ $(function () {
     }
 
     vetoCheckBtn();
-    $(document).on('change', '.input-hide', function () {
-       $(this).toLocaleString('ru');
-    });
+
 
 });

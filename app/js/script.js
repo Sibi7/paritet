@@ -789,24 +789,7 @@ $(function () {
 
     $(document).on('change', '.input-hide', function () {
         $(this).closest('.voting-actions__wrap-input').find('.change-span').html($(this).val());
-        // if($(this).hasClass('votes-separation-true')){
-        //     $(this).closest('.separation-votes').find('.votes-true').html($(this).val());
-        // }
-    })
-    $(document).on('blur', '.input-hide', function () {
-        $(this).closest('.voting-actions__wrap-input').find('.change-span').show();
-        $(this).closest('.input-hide-wrap').hide();
     });
-    // $(document).mouseup(function (e) {
-    //     var container = $(".input-hide");
-    //     if (container.has(e.target).length === 0){
-    //         container.hide();
-    //         container.siblings('.change-span').show();
-    //     }
-    // });
-
-
-
 
     $(document).on('click', '.filter__footer .add', function () {
         $('#represent-modal-filter').show().css({
