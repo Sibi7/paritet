@@ -83,6 +83,7 @@ $(function () {
     //     calculateTotalVoises($(this))
     // });
     $(document).on('keyup', '.separation-votes .input-hide', function () {
+
         calculateTotalVoises($(this))
     });
 
@@ -573,14 +574,23 @@ $(function () {
         var parents = $('.voting-enter__td.margin-left-auto');
         parents.each(function () {
             var btnDisabled = $(this).find('.voting-inputs'),
-                total = $(this).find('.total-left');
+                total = $(this).find('.total-left'),
+                btn = $(this).find('.voting-actions-sing-btn');
+
             if (total.text().trim() === '0') {
                 btnDisabled.addClass('input-sent');
+                if (btn.hasClass('input-selected')) {
+                    btn.removeClass('input-selected');
+                }
             }
+
         });
 
     }
 
+    $(document).on('click', '.voting-actions-all-btn', function () {
+        numberCheckVotes();
+    });
     numberCheckVotes();
 
     // функция проверки кнопки ВЕТО в блоке с кнопками ЗА ПРОТИВ ВОЗДЕРЖАЛСЯ, если есть ВЕТО расширяем блок, чтобы все кнопки помещались
@@ -602,4 +612,8 @@ $(function () {
     }
 
     vetoCheckBtn();
+    $(document).on('change', '.input-hide', function () {
+       $(this).toLocaleString('ru');
+    });
+
 });
