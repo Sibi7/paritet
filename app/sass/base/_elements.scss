@@ -1169,15 +1169,20 @@ label {
       border: 1px solid;
     }
   }
-  .voting-not-active {
-    background-color: transparent !important;
-    font-weight: 400 !important;
-    pointer-events: none !important;
-  }
+
   .voting-active {
     background-color: $active-bullet!important;
     border: solid 1px transparent!important;
     color: $white!important;
+  }
+  .voting-not-active {
+    background-color: transparent !important;
+    font-weight: 400 !important;
+    color: #999!important;
+    pointer-events: none !important;
+  }
+  .votes-za{
+
   }
 
   .voting-actions__choice-wrap {
@@ -1466,7 +1471,7 @@ label {
     justify-content: center;
   }
   &__wrap-btn {
-    width: 187px;
+    width: 180px;
     display: flex;
     position: relative;
     .voting-votes-all {
