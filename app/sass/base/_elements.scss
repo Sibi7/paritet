@@ -2292,10 +2292,38 @@ label {
   pointer-events: none;
 }
 
+
 .not-separation {
   .input-selected {
     background: #0070cc !important;
     color: #fff !important;
+  }
+  .disable-votin-btn {
+    background-color: #fff !important;
+    color: #999 !important;
+    pointer-events: none;
+  }
+}
+.veto-disabled-list-btn{
+  .voting-true, .voting-abstained, .voting-false, .voting-divide{
+    background-color: #fff !important;
+    color: #999 !important;
+    pointer-events: none;
+  }
+  .voting-divide{
+    background-image: url("../images/icons/scissors-grey.svg") !important;
+  }
+}
+.veto-disabled-voting{
+  .voting-close{
+    pointer-events: none!important;
+  }
+  .voting-veto{
+    pointer-events: none!important;
+  }
+  .voting-inputs__choice--item:not(.input-selected) {
+    background-color: transparent!important;
+    color: #999999!important;
   }
 }
 

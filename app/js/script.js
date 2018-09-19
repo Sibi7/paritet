@@ -787,10 +787,6 @@ $(function () {
 
 
 
-    $(document).on('change', '.input-hide', function () {
-        $(this).closest('.voting-actions__wrap-input').find('.change-span').html($(this).val());
-    });
-
     $(document).on('click', '.filter__footer .add', function () {
         $('#represent-modal-filter').show().css({
             top: '0',

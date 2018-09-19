@@ -12,6 +12,23 @@ $(function () {
         }
         return false;
     });
+    // перезаписываем значение в change-span, если в инпут были введены цифры. + обрабатываем введенные цифры и добавляем разряды числам.
+    $(document).on('change', '.input-hide', function () {
+        var number = $(this).val();
+        var format = String(number).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+        $(this).closest('.voting-actions__wrap-input').find('.change-span').html(format);
+
+    });
+    // если во время ввода в контроле ввода был нажат Enter, сохраняем значения в change-span
+    $(document).on('keyup', '.input-hide', function (e) {
+        var container = $(".input-hide-wrap");
+        var changleSpan = $(".change-span");
+        if (e.key === 'Enter') {
+            container.hide();
+            changleSpan.show();
+        }
+    });
+
     $(document).on('click', '.change-span', function () {
 
         var parent = $(this).closest('.voting-actions__choice-wrap');
@@ -40,6 +57,7 @@ $(function () {
             container.hide();
             changleSpan.show();
         }
+
     });
 
     function calculateTotalVoises(_this) {
@@ -94,13 +112,7 @@ $(function () {
     $(document).on('keydown', '.input-hide', function (e) {
         return isAllowedKeyCode(e.originalEvent.key);
     })
-    $(document).on('keyup', '.input-hide', function (e) {
-        if (e.key === 'Enter') {
-            $(this).trigger('blur');
-        }
-        //    Разделение на разряды введенных голосов в контролл ввода
-        $(this).val(String($(this).val().replace(/[^0-9.]/g, '')).replace(/\B(?=(\d{3})+(?!\d))/g, " "));
-    });
+
     // $(document).on('click', '.separation-votes .voting-close', function () {
     //     var parent = $(this).closest('.voting-actions__choice-btn');
     //     parent.find('.change-span').text('0');
@@ -154,6 +166,18 @@ $(function () {
             votesLeft.hide();
             votes.show();
         }
+    });
+    $(document).on('click', '.cumulative-voting-input .not-separation .voting-false', function () {
+        $('.separation-cumulative .input-hide').val(0);
+        $('.separation-cumulative .change-span').text('0');
+    });
+    $(document).on('click', '.cumulative-voting-input .not-separation .voting-abstained', function () {
+        $('.separation-cumulative .input-hide').val(0);
+        $('.separation-cumulative .change-span').text('0');
+    });
+    $(document).on('click', '.cumulative-voting-input .not-separation .voting-close', function () {
+        $('.separation-cumulative .input-hide').val(0);
+        $('.separation-cumulative .change-span').text('0');
     });
     $(document).on('click', '.change-span-candidate', function () {
         $('.cum-not-dividing .votes').hide();
@@ -261,6 +285,8 @@ $(function () {
         e.preventDefault();
         ajaxForSeparationBtn($(this));
     });
+
+    // сворачиваем разделение голосов
     $(document).on('click', '.voting-clear-division', function (e) {
         e.preventDefault();
         ajaxForSeparationBtn($(this));
@@ -623,9 +649,9 @@ $(function () {
         var votesPerCandidate = parent.find('.votes-per-candidate').val();
         var votesSum = parent.find('.voices-sum');
         var total = parent.find('.max-sum-votes').text();
+        var votesMax = parent.find('.votes-max');
         var arrForSend = [];
         var totalZa = $('.votes-za');
-        var votesSum = $('.voices-sum');
         var votingClose = $('.voting-actions-sing-btn.voting-close');
 
         activeZa.each(function () {
@@ -641,13 +667,15 @@ $(function () {
                         votesSum.css({
                             color: '#e73b3b'
                         });
+                        votesMax.hide();
                         totalZa.show();
                         activeZa.removeClass('input-selected').css({outline: 'none'});
                         votingClose.addClass('input-selected')
 
                     } else {
                         // если тотал больше, чем мы отдаем (значит все норм, скрываем строку с голосами, и убираем красный цвет у текста)
-                        totalZa.hide()
+                        totalZa.hide();
+                        votesMax.show();
                     }
                 })
             })
@@ -656,6 +684,23 @@ $(function () {
         }
 
     });
+    // функция проверки всего бюлетеня, если голосов === 0, тогда кнопки disabled
+    function disabledBtnTotal() {
+        var parent = $('.voting-inputs');
+        var totalVotesInput = $('.input-total-votes');
+        console.log(parent);
+        if (totalVotesInput.text().trim() === '0') {
+            parent.each(function () {
+                if (!$(this).find('.voting-veto').length) {
+                    $(this).addClass('input-sent');
+                }
+                if ($(this).find('.voting-veto').length) {
+                    $(this).removeClass('input-sent').addClass('veto-disabled-list-btn');
+                }
 
+            });
+        }
+    }
+    disabledBtnTotal();
 
 });
