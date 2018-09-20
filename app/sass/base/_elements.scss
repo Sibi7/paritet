@@ -1181,9 +1181,7 @@ label {
     color: #999!important;
     pointer-events: none !important;
   }
-  .votes-za{
 
-  }
 
   .voting-actions__choice-wrap {
     position: relative !important;
@@ -2259,6 +2257,9 @@ label {
   .change-span{
     margin-left: 25px!important;
     margin-top: 5px;
+  }
+  .voting-not-active{
+    color: #141414!important;
   }
 }
 .input-balance, .division-votes, .input-cum-balance {

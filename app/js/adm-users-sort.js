@@ -2,6 +2,7 @@ $(function() {
 
     var userList = document.querySelector(".users-list");
     var groupsList = document.querySelector(".group-users-table");
+    var table = document.querySelector(".table");
     var registersList = document.querySelector(".group-registers-table");
     var billsList = document.querySelector(".group-bills-table");
 
@@ -95,8 +96,21 @@ $(function() {
     /*------------!groupsList--------------*/
 
 
+    /*------------table--------------*/
+    $(document).on('click', '.table .t-sort', function () {
+        sortTable(table, 0);
+    });
+    /*------------!table--------------*/
+
 
     /*------------registersList--------------*/
+    $(document).on('click', '.group-registers-table .th-number', function () {
+        sortTable(registersList, 0);
+    });
+    $(document).on('click', '.group-registers-table .th-name', function () {
+        sortTable(registersList, 1);
+    });
+
     $(document).on('click', '.group-registers-table .th-number', function () {
         sortTable(registersList, 0);
     });

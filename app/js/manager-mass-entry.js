@@ -182,6 +182,13 @@ $(function () {
     $(document).on('click', '.change-span-candidate', function () {
         $('.cum-not-dividing .votes').hide();
         $('.cum-not-dividing .votes-left').show();
+        var inputHideWrap = $(this).siblings('.input-hide-wrap');
+        var parent = $(this).closest('.cumulative-voting-input');
+        if (inputHideWrap.css('display', 'block')) {
+            if (!parent.find('.voting-true').hasClass('input-selected')) {
+                parent.find('.voting-true').click();
+            }
+        }
     });
 
     // Очистка инпутов и спанов в кумулятивном не разделенном голосовании
@@ -374,9 +381,6 @@ $(function () {
         var totalLeft = parent.find('.votes-left .total-left');
 
         if (isDividing) {
-            if (!parent.find('.voting-true').hasClass('input-selected')) {
-                parent.find('.voting-true').click();
-            }
             inputMassEntry.each(function () {
                 massEntryArray.push($(this).val());
             });
@@ -684,12 +688,14 @@ $(function () {
         }
 
     });
+
     // функция проверки всего бюлетеня, если голосов === 0, тогда кнопки disabled
     function disabledBtnTotal() {
         var parent = $('.voting-inputs');
         var totalVotesInput = $('.input-total-votes');
-        console.log(parent);
+        var cumulativeChange = $('.separation-cumulative .change-span');
         if (totalVotesInput.text().trim() === '0') {
+            cumulativeChange.addClass('voting-not-active');
             parent.each(function () {
                 if (!$(this).find('.voting-veto').length) {
                     $(this).addClass('input-sent');
@@ -701,6 +707,7 @@ $(function () {
             });
         }
     }
+
     disabledBtnTotal();
 
 });
