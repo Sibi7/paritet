@@ -13,5 +13,12 @@ $(function () {
         var elTable = $('.cancel-clear-table');
         elTable.html('<tr></tr>')
     });
-
+    
+    function clearDisabledAddBtn() {
+        var checkBox = $('.cancel-clear-table input');
+        if(checkBox.attr('checked') === 'checked'){
+            $('.filter__footer .submit').removeAttr('disabled');
+        }
+    }
+    clearDisabledAddBtn();
 });

@@ -7,7 +7,7 @@
   background-color: #0070cc;
   margin-right: 10px;
   transition: .3s;
-  border:none;
+  border: none;
   cursor: pointer;
   &:hover {
     background-color: #005499;
@@ -16,7 +16,12 @@
   &:focus {
     outline: none
   }
+  &:disabled {
+    pointer-events: none;
+    background: #005499;
+  }
 }
+
 .cancel {
   display: inline-block;
   font-size: 13px;
@@ -25,14 +30,14 @@
   color: #000;
   background-color: #f5f5f5;
   transition: .3s;
-  border:none;
+  border: none;
   cursor: pointer;
   &:hover {
     background-color: #dbdbdb;
     transition: .3s;
   }
-  &:disabled{
-    background-color: #ccc!important;
+  &:disabled {
+    background-color: #ccc !important;
     color: #fff;
     cursor: auto;
   }
@@ -40,6 +45,7 @@
     outline: none
   }
 }
+
 .insert {
   text-transform: uppercase;
   padding: 8px 20px 7px 20px;
@@ -56,6 +62,7 @@
     pointer-events: auto;
   }
 }
+
 .delete-btn {
   display: inline-block;
   font-size: 13px;
@@ -64,11 +71,12 @@
   padding: 8px 20px 7px;
   background-color: #e62e2e;
   margin-right: 10px;
-  border:none;
+  border: none;
   &:focus {
     outline: none
   }
 }
+
 .not-valid-btn {
   display: inline-block;
   font-size: 13px;
@@ -77,7 +85,7 @@
   color: $pink;
   background-color: #f5f5f5;
   transition: .3s;
-  border:none;
+  border: none;
   cursor: pointer;
   &:hover {
     background-color: #dbdbdb;
@@ -87,6 +95,7 @@
     outline: none
   }
 }
+
 .voting-btn {
   display: inline-block;
   font-size: 13px;
@@ -95,7 +104,7 @@
   color: #fff;
   background-color: #00aeef;
   transition: .3s;
-  border:none;
+  border: none;
   cursor: pointer;
   &:hover {
     background-color: #02cdbf;
