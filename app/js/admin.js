@@ -14,11 +14,12 @@ $(function () {
         elTable.html('<tr></tr>')
     });
     
-    function clearDisabledAddBtn() {
-        var checkBox = $('.cancel-clear-table input');
+    function clearDisabledAddBtn(modal) {
+        var checkBox = modal.find('.cancel-clear-table input');
         if(checkBox.attr('checked') === 'checked'){
-            $('.filter__footer .submit').removeAttr('disabled');
+            modal.find('.filter__footer .submit').removeAttr('disabled');
         }
     }
-    clearDisabledAddBtn();
+    clearDisabledAddBtn($('.represent-filter'));
+    clearDisabledAddBtn($('.represent-filter'));
 });
