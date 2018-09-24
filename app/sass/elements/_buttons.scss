@@ -16,10 +16,10 @@
   &:focus {
     outline: none
   }
-  &:disabled {
-    pointer-events: none;
-    background: #005499;
-  }
+}
+.disabled{
+  pointer-events: none;
+  background: #005499;
 }
 
 .cancel {

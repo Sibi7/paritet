@@ -13,13 +13,5 @@ $(function () {
         var elTable = $('.cancel-clear-table');
         elTable.html('<tr></tr>')
     });
-    
-    function clearDisabledAddBtn(modal) {
-        var checkBox = modal.find('.cancel-clear-table input');
-        if(checkBox.attr('checked') === 'checked'){
-            modal.find('.filter__footer .submit').removeAttr('disabled');
-        }
-    }
-    clearDisabledAddBtn($('.represent-filter'));
-    clearDisabledAddBtn($('.represent-filter'));
+
 });

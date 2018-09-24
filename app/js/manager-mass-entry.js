@@ -264,8 +264,9 @@ $(function () {
             success: function (data) {
                 var content = _this.closest('.voting-enter__tr').find('.voting-enter__td.margin-left-auto');
                 content[0].outerHTML = data;
-                disabledAllBtnSeparation();
-                vetoCheckBtn();
+                console.log(content);
+                // disabledAllBtnSeparation();
+                // vetoCheckBtn();
             },
             error: function (err) {
                 alert('Ошибка! Ответ сервера: ' + err.status);
@@ -288,8 +289,8 @@ $(function () {
     disabledAllBtnSeparation();
 
     $(document).on('click', '.voting-divide', function (e) {
-        disabledAllBtnSeparation();
         e.preventDefault();
+        disabledAllBtnSeparation();
         ajaxForSeparationBtn($(this));
     });
 
@@ -692,9 +693,9 @@ $(function () {
     // функция проверки всего бюлетеня, если голосов === 0, тогда кнопки disabled
     function disabledBtnTotal() {
         var parent = $('.voting-inputs');
-        var totalVotesInput = $('.input-total-votes');
+        var totalVotesInput = $('.can-veto');
         var cumulativeChange = $('.separation-cumulative .change-span');
-        if (totalVotesInput.text().trim() === '0') {
+        if (totalVotesInput.text().trim() === 'Владелец имеет право вето') {
             cumulativeChange.addClass('voting-not-active');
             parent.each(function () {
                 if (!$(this).find('.voting-veto').length) {
