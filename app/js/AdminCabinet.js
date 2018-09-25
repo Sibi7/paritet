@@ -1,8 +1,9 @@
 ﻿// проверяем если в реестре счета для данного пользователя
 function FindAccountsForUser() {
+    $("#validate-form").valid();
     name = $(".user_name").val();
     docnum = $(".user_doc").val();
-    $.post("/admin/user/FindsAccountsForUser", { Name: name, DocNum: docnum }, function (data) {
+    $.post("/admin/user/FindsAccountsForUser", {Name: name, DocNum: docnum}, function (data) {
         $(".user_name").removeClass("validate-input__true");
         $(".user_doc").removeClass("validate-input__true");
         $(".user_name").removeClass("validate-input__false");
@@ -51,16 +52,16 @@ function ChangePassword() {
 
 // Ищем возможных представителей для пользователя
 function FindsProbableRepresentativesForUser(Name, DocNum) {
-    $.post("/admin/user/FindsProbableRepresentativesForUser", { Name: Name, DocNum: DocNum },
+    $.post("/admin/user/FindsProbableRepresentativesForUser", {Name: Name, DocNum: DocNum},
         function (data) {
             $(".filter_wrapper").html(data);
         }).done(function () {
-            $('.filter__body').mCustomScrollbar({ theme: "my-theme" });
-        });;
+        $('.filter__body').mCustomScrollbar({theme: "my-theme"});
+    });
 }
 
 function IsUserRepresentative(Name, DocNum) {
-    $.post("/admin/user/IsUserRepresentative", { Name: Name, DocNum: DocNum },
+    $.post("/admin/user/IsUserRepresentative", {Name: Name, DocNum: DocNum},
         function (IsRepresent) {
             if (IsRepresent) {
                 $('.admin-represent').text("Показать");
@@ -123,10 +124,16 @@ function AddRegistryRepresentative() {
     var isLegal = $("label.modal__tab[data-id='entity'] input").prop("checked");
     var isPerson = $("label.modal__tab[data-id='individual'] input").prop("checked");
     if (isLegal) {
+        if (lname === "" && INN === "") {
+            return;
+        }
         rowtext = lname + ", " + INN;
         htmlData = "data-is-legal=True data-lname=" + lname + " data-inn=" + INN;
     }
     if (isPerson) {
+        if (pname === "" && docnum === "") {
+            return;
+        }
         rowtext = pname + ", " + docnum;
         htmlData = "data-is-legal=False data-pname=" + pname + " data-docnum=" + docnum;
     }
@@ -137,12 +144,12 @@ function AddRegistryRepresentative() {
         // Добавляем нового представителя в список выбора
         $(".filter__body table tr:last").after("\
         <tr>\
-        <td>\
+        <td>\<div class='input-check-wrap'>\
         <input type='checkbox' \
-        data-is-registry=True "+ htmlData + " \
+        data-is-registry=True " + htmlData + " \
         'checked'>\
         <label></label>\
-        <span class='filter__row-text'>"+ rowtext + "</span>\
+        <span class='filter__row-text'>" + rowtext + "</span></div>\
         <div class='filter__edit-btn'>\
         <button class='ast-action-btn edit-representative'><img src='/images/icons/edit2.png' alt=''></button>\
         <button class='ast-action-btn delete-representative'><img src='/images/icons/cross.png' alt=''></button>\
@@ -150,6 +157,8 @@ function AddRegistryRepresentative() {
         </td>\
         </tr>");
     }
+
+
     // Иначе редактируем существующего
     else {
         console.log($("tr"));
@@ -209,13 +218,15 @@ function AddUser() {
             Representatives: GetChoosenRepresentatives(),
             RegistryLegalRepresentatives: GetRegistryLegalRepresentatives(),
             RegistryPersonRepresentatives: GetRegistryPersonRepresentatives()
-        }
+        };
 
         $.ajax({
             url: "AddUser",
             type: "POST",
             data: JSON.stringify(model),
-            success: function (linkToNewUser) { window.location.replace(linkToNewUser) },
+            success: function (linkToNewUser) {
+                window.location.replace(linkToNewUser)
+            },
             error: ShowModalResultFail,
             contentType: "application/json"
         });
@@ -252,8 +263,12 @@ function resestPassword() {
         url: "ResetPassword",
         type: "POST",
         data: JSON.stringify(model),
-        success: function () { $('.modal-success').closest('.overlay').show() },
-        error: function () { $('.modal-fail').closest('.overlay').show() },
+        success: function () {
+            $('.modal-success').closest('.overlay').show()
+        },
+        error: function () {
+            $('.modal-fail').closest('.overlay').show()
+        },
         contentType: "application/json"
     });
 }
@@ -335,16 +350,18 @@ $(function () {
 
     //клик на кнопку "Выбрать" в окне представителей
     $(document).on('click', '.represent-filter .submit', function () {
-        
+
         var users = [];
         var IsAnyRep = $(".filter_wrapper input").length > 0;
         $(".filter_wrapper input:checked").each(function () {
             if ($(this).data("lname")) {
                 users.push($(this).data("lname"));
-            };
+            }
+            ;
             if ($(this).data("pname")) {
                 users.push($(this).data("pname"))
-            };
+            }
+            ;
         });
 
         if (users.length > 0) {
@@ -425,19 +442,21 @@ $(function () {
         $("#edit-represntative-number").val($("tr").index($(this).closest("tr")));
         console.log($("tr").index($(this).closest("tr")));
         console.log(this);
-        
+
         console.log(input);
         console.log(input.data("is-legal") === "True");
         console.log($("input.entity-name"));
         if (input.data("is-legal") === "True") {
             $("input.entity-name").val(input.data("lname"));
             $("input.entity-doc").val(input.data("inn"));
-        };
+        }
+        ;
 
         if (input.data("is-legal") === "False") {
             $("input.individual-doc").val(input.data("docnum"));
             $("input.individual-name").val(input.data("pname"));
-        };
+        }
+        ;
 
         $(".filter.represent-modal-filter").show();
     });
@@ -445,11 +464,11 @@ $(function () {
     $(document).on("change", "#select-personal-manager-for-issuer", function () {
         var manager = $("#select-personal-manager-for-issuer").val();
         var emitent = $("#emitent-id").val();
-        var model = { manager: manager, issuerId: emitent }
+        var model = {manager: manager, issuerId: emitent}
         $.ajax({
             url: "/admin/issuer/AssignManagerToIssuer",
             type: "POST",
-            data:  model,
+            data: model,
         });
     });
 });

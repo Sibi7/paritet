@@ -12,6 +12,19 @@ $(function () {
     $(document).on('click', '.clear-popup', function () {
         var elTable = $('.cancel-clear-table');
         elTable.html('<tr></tr>')
+        console.log(111);
     });
+
+
+    $(document).on('click', '.input-check-wrap', function () {
+        var submitNotDisabled = $('.submit-checked');
+        if($(this).find('input').is(':checked')){
+            submitNotDisabled.removeClass('disabled');
+        }
+        else {
+            submitNotDisabled.addClass('disabled');
+        }
+    });
+
 
 });
