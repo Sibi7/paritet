@@ -29,21 +29,6 @@ $(function () {
         }
     });
 
-    function testintg() {
-        var parent = $(this).closest('.voting-actions__choice-wrap');
-        var btn = parent.find('.voting-actions-btn');
-        var inputHide = parent.find('.input-hide');
-        if (parent.hasClass('voting-parent-active')) {
-            parent.removeClass('voting-parent-active');
-        }
-        else {
-            parent.addClass('voting-parent-active');
-            if (!btn.hasClass('voting-active')) {
-                btn.trigger('click');
-            }
-
-        }
-    }
 
     $(document).on('click', '.change-span', function () {
 
@@ -69,21 +54,9 @@ $(function () {
     $(document).mouseup(function (e) {
         var container = $(".input-hide-wrap");
         var changleSpan = $(".change-span");
-        // var lineParent = $(this).closest('.voting-actions__choice-wrap');
-        // var btn = lineParent.find('.voting-actions-btn');
-        // var inputHide = lineParent.find('.input-hide');
         if (container.has(e.target).length === 0) {
             container.hide();
             changleSpan.show();
-            // console.log(inputHide);
-            // if (inputHide.val() === 0) {
-            //     console.log(111);
-            //     if (btn.hasClass('voting-active')) {
-            //         btn.trigger('click');
-            //     }
-            // }
-
-
         }
 
     });
@@ -139,7 +112,8 @@ $(function () {
         clearInputs(inputsForClear, spansForClear);
 
         if ($(this).val().trim() === '0') {
-            $(this).closest('.voting-actions__choice-wrap').find('.voting-actions-btn').removeClass('voting-active')
+            $(this).closest('.voting-actions__choice-wrap').find('.voting-actions-btn').removeClass('voting-active');
+            $('.voting-inputs__choice .voting-true').removeClass('input-selected');
         }
 
     });
@@ -321,6 +295,7 @@ $(function () {
             if ($(this).val().trim() === '') {
                 $(this).val(0)
             }
+
             arrOfInputsYesVal.push($(this).val().replace(/\u00a0/g, '')); // Значение каждого инпута заносим в массив
         });
 
