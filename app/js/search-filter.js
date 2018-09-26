@@ -22,7 +22,6 @@ $(function () {
             itemSelector: '.search-select li',
             inputSelector: '.t-search'
         });
-        console.log( $(this).siblings('.search-select')[0].querySelector('.active-search-item'));
         if (e.key === 'Enter' &&  $(this).siblings('.search-select')[0].querySelector('.active-search-item') !== null) {
             $(this).siblings('.search-select')[0].querySelector('.active-search-item').click();
         }

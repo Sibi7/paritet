@@ -11,8 +11,7 @@ $(function () {
     // Очистка модального окна по клику на кнопку отмена, при создании пользователя в роли Админа. "Представляет"
     $(document).on('click', '.clear-popup', function () {
         var elTable = $('.cancel-clear-table');
-        elTable.html('<tr></tr>')
-        console.log(111);
+        elTable.html('<tr></tr>');
     });
 
 
