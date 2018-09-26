@@ -29,6 +29,22 @@ $(function () {
         }
     });
 
+    function testintg() {
+        var parent = $(this).closest('.voting-actions__choice-wrap');
+        var btn = parent.find('.voting-actions-btn');
+        var inputHide = parent.find('.input-hide');
+        if (parent.hasClass('voting-parent-active')) {
+            parent.removeClass('voting-parent-active');
+        }
+        else {
+            parent.addClass('voting-parent-active');
+            if (!btn.hasClass('voting-active')) {
+                btn.trigger('click');
+            }
+
+        }
+    }
+
     $(document).on('click', '.change-span', function () {
 
         var parent = $(this).closest('.voting-actions__choice-wrap');
@@ -53,12 +69,25 @@ $(function () {
     $(document).mouseup(function (e) {
         var container = $(".input-hide-wrap");
         var changleSpan = $(".change-span");
+        // var lineParent = $(this).closest('.voting-actions__choice-wrap');
+        // var btn = lineParent.find('.voting-actions-btn');
+        // var inputHide = lineParent.find('.input-hide');
         if (container.has(e.target).length === 0) {
             container.hide();
             changleSpan.show();
+            // console.log(inputHide);
+            // if (inputHide.val() === 0) {
+            //     console.log(111);
+            //     if (btn.hasClass('voting-active')) {
+            //         btn.trigger('click');
+            //     }
+            // }
+
+
         }
 
     });
+
 
     function calculateTotalVoises(_this) {
         var parent = _this.closest('.separation-votes  .voting-actions__choice-btn');
@@ -108,36 +137,17 @@ $(function () {
         var inputsForClear = parent.find('.input-hide');
         var spansForClear = parent.find('.change-span');
         clearInputs(inputsForClear, spansForClear);
+
+        if ($(this).val().trim() === '0') {
+            $(this).closest('.voting-actions__choice-wrap').find('.voting-actions-btn').removeClass('voting-active')
+        }
+
     });
     $(document).on('keydown', '.input-hide', function (e) {
         return isAllowedKeyCode(e.originalEvent.key);
-    })
+    });
 
-    // $(document).on('click', '.separation-votes .voting-close', function () {
-    //     var parent = $(this).closest('.voting-actions__choice-btn');
-    //     parent.find('.change-span').text('0');
-    //     parent.find('.input-hide').val(0);
-    // });
-
-    // $(document).on('click', '.cumulative-voting-input .voting-close', function () {
-    //     var parent = $(this).closest('.voting-inputs__choice');
-    //     var btnZa = parent.find('.voting-true');
-    //
-    //
-    //     if ($(this).hasClass('input-selected')) {
-    //         btnZa.addClass('input-not-selected');
-    //     }
-    //     else {
-    //         btnZa.removeClass('input-not-selected');
-    //     }
-    //     if ($('.voting-false').hasClass('input-selected')) {
-    //         btnZa.removeClass('input-not-selected');
-    //     }
-    //     if ($('.voting-abstained').hasClass('input-selected')) {
-    //         btnZa.removeClass('input-not-selected');
-    //     }
-    //
-    // });
+    // функция проверки если кнопка ЗА
     $(document).on('click', '.cumulative-voting-input .voting-false', function () {
         var parent = $(this).closest('.voting-inputs__choice');
         var btnZa = parent.find('.voting-true');
