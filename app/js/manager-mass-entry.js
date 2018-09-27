@@ -148,10 +148,10 @@ $(function () {
         var parent = $(this).closest('.voting-enter__td.margin-left-auto');
         var votes = parent.find('.votes');
         var votesLeft = parent.find('.votes-left');
-        var inputHide = $('.input-hide');
-        var changeSpan = $('.change-span');
-        changeSpan.text('0');
-        inputHide.val('0');
+        var inputHide = $('.cumulative-voting-input .input-hide');
+        var changeSpan = $('.cumulative-voting-input  .change-span');
+        var totalLeft = parent.find('.total-left');
+        var totalMax = parent.find('.total-max').text();
         if ($(this).hasClass('input-selected')) {
             votesLeft.show();
             votes.hide();
@@ -160,6 +160,12 @@ $(function () {
             votesLeft.hide();
             votes.show();
         }
+        if (!$(this).hasClass('input-selected')) {
+            changeSpan.text('0');
+            inputHide.val('0');
+            totalLeft.text(totalMax);
+        }
+
     });
     $(document).on('click', '.cumulative-voting-input .not-separation .voting-false', function () {
         $('.separation-cumulative .input-hide').val(0);
