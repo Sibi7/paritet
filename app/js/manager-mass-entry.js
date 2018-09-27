@@ -10,6 +10,12 @@ $(function () {
             $(this).addClass('voting-active');
             $(this).closest('.voting-actions__choice-wrap').find('.change-span').click();
         }
+        var parent = $(this).closest('.voting-actions__choice-wrap');
+        var changeSpan = parent.find('.change-span');
+        var inputHide = parent.find('.input-hide');
+        changeSpan.text('0');
+        inputHide.val('0');
+
         return false;
     });
     // перезаписываем значение в change-span, если в инпут были введены цифры. + обрабатываем введенные цифры и добавляем разряды числам.
@@ -142,6 +148,10 @@ $(function () {
         var parent = $(this).closest('.voting-enter__td.margin-left-auto');
         var votes = parent.find('.votes');
         var votesLeft = parent.find('.votes-left');
+        var inputHide = $('.input-hide');
+        var changeSpan = $('.change-span');
+        changeSpan.text('0');
+        inputHide.val('0');
         if ($(this).hasClass('input-selected')) {
             votesLeft.show();
             votes.hide();
