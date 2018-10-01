@@ -1239,7 +1239,7 @@ label {
   }
 }
 
-.votes-left, .votes {
+.votes-left, .votes, .votes-za-candidate {
   color: $gray-controls;
   font-size: 14px;
   position: absolute;
@@ -1250,7 +1250,9 @@ label {
     margin: 0 12px;
   }
 }
-
+.votes-za-candidate{
+  display: none;
+}
 .voting-actions {
   padding-top: 20px;
   padding-bottom: 10px;

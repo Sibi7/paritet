@@ -116,7 +116,10 @@ $(function () {
         var inputsForClear = parent.find('.input-hide');
         var spansForClear = parent.find('.change-span');
         clearInputs(inputsForClear, spansForClear);
-
+        var number = $(this).val();
+        var format = String(number).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+        $(this).trigger('focus');
+        $(this).closest('.voting-actions__wrap-input').find('.change-span').html(format);
         if ($(this).val().trim() === '0') {
             $(this).closest('.voting-actions__choice-wrap').find('.voting-actions-btn').removeClass('voting-active');
             $('.voting-inputs__choice .voting-true').removeClass('input-selected');
@@ -246,7 +249,10 @@ $(function () {
         })
 
     });
-
+function votesZaOunter() {
+    var counter = $('.votes-za-candidate');
+}
+    votesZaOunter();
     // ajax запрос для кнопки разделения голосов в форме ввода
     function ajaxForSeparationBtn($this) {
         var meetingId = $('.meeting-id').val();
@@ -265,8 +271,9 @@ $(function () {
                 var content = _this.closest('.voting-enter__tr').find('.voting-enter__td.margin-left-auto');
                 content[0].outerHTML = data;
                 console.log(content);
-                // disabledAllBtnSeparation();
-                // vetoCheckBtn();
+                disabledAllBtnSeparation();
+                vetoCheckBtn();
+                votesZaOunter();
             },
             error: function (err) {
                 alert('Ошибка! Ответ сервера: ' + err.status);
@@ -289,17 +296,70 @@ $(function () {
     disabledAllBtnSeparation();
 
     $(document).on('click', '.voting-divide', function (e) {
+        var _this = $(this);
+        var parent = _this.closest('.voting-multiple-candidates');
         e.preventDefault();
         disabledAllBtnSeparation();
-        ajaxForSeparationBtn($(this));
+        ajaxForSeparationBtn($(this)).done(function () {
+            toggleVotesZaCandidate(parent);
+        });
     });
+
+
 
     // сворачиваем разделение голосов
     $(document).on('click', '.voting-clear-division', function (e) {
+        var _this = $(this);
+        var parent = _this.closest('.voting-multiple-candidates');
         e.preventDefault();
-        ajaxForSeparationBtn($(this));
+        ajaxForSeparationBtn($(this)).done(function () {
+            if (parent.length) {
+                toggleVotesZaCandidate(parent);
+                votesZaSimpleMultiplySum(parent.find('.voting-clear-division'))
+            }
+        });
     });
+    function toggleVotesZaCandidateInit() {
+        var parents = $('.voting-multiple-candidates');
+        parents.each(function () {
+            toggleVotesZaCandidate($(this));
+        });
 
+    }
+    toggleVotesZaCandidateInit();
+
+    function toggleVotesZaCandidate(parent){
+        if(parent.length){
+            if(parent.find('.separation-votes').length){
+                parent.find('.votes-za-candidate').show();
+            }
+            else {
+                parent.find('.votes-za-candidate').hide();
+            }
+        }
+    }
+    function votesZaSimpleMultiplySum(_this) {
+        console.log(_this, 'this')
+        var parent = _this.closest('.voting-multiple-candidates');
+        var blocks = parent.find('.separation-votes');
+        var arrForSnd = [];
+        blocks.each(function() {
+            arrForSnd.push($(this).find('.input-hide:first').val());
+        });
+        additionFraction(arrForSnd.join(';')).done(function(data) {
+            if (blocks.length) {
+                parent.find('.votes-za-candidate .total-left').text(data.result);
+            } else {
+                parent.find('.votes-za-candidate .total-left:first').text(0)
+            }
+        })
+    }
+
+    $(document).on('keyup', '.voting-multiple-candidates .separation-votes .input-hide', function () {
+        if($(this).closest('.voting-actions__choice-wrap').find('.voting-true').length) {
+            votesZaSimpleMultiplySum($(this));
+        }
+    });
     // Кумулятивное голосование!
     $(document).on('blur', '.cumulative-voting-input .separation-cumulative-za', function () {
         var parent = $(this).closest('.cumulative-voting-input');
@@ -457,6 +517,7 @@ $(function () {
         var input = $(this).closest('.voting-actions__wrap-input').find('.separation-cumulative-za');
         var span = $(this).closest('.voting-actions__wrap-input').find('.change-span');
         var _this = $(this);
+
         $.ajax({
             url: '/FractionCalculator/Divide',
             type: 'get',
@@ -711,5 +772,6 @@ $(function () {
     }
 
     disabledBtnTotal();
+
 
 });
