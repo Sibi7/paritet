@@ -232,7 +232,6 @@ $(function () {
         var massEntryArray = [];
         var massEntryTotal = parent.find('.total-max').text();
 
-
         inputMassEntry.each(function () {
             massEntryArray.push($(this).val());
         });
@@ -249,10 +248,7 @@ $(function () {
         })
 
     });
-function votesZaOunter() {
-    var counter = $('.votes-za-candidate');
-}
-    votesZaOunter();
+
     // ajax запрос для кнопки разделения голосов в форме ввода
     function ajaxForSeparationBtn($this) {
         var meetingId = $('.meeting-id').val();
@@ -270,10 +266,8 @@ function votesZaOunter() {
             success: function (data) {
                 var content = _this.closest('.voting-enter__tr').find('.voting-enter__td.margin-left-auto');
                 content[0].outerHTML = data;
-                console.log(content);
                 disabledAllBtnSeparation();
                 vetoCheckBtn();
-                votesZaOunter();
             },
             error: function (err) {
                 alert('Ошибка! Ответ сервера: ' + err.status);
@@ -296,13 +290,13 @@ function votesZaOunter() {
     disabledAllBtnSeparation();
 
     $(document).on('click', '.voting-divide', function (e) {
+        e.preventDefault();
         var _this = $(this);
         var parent = _this.closest('.voting-multiple-candidates');
-        e.preventDefault();
-        disabledAllBtnSeparation();
-        ajaxForSeparationBtn($(this)).done(function () {
+        ajaxForSeparationBtn(_this).done(function () {
             toggleVotesZaCandidate(parent);
         });
+        disabledAllBtnSeparation();
     });
 
 
@@ -334,12 +328,11 @@ function votesZaOunter() {
                 parent.find('.votes-za-candidate').show();
             }
             else {
-                parent.find('.votes-za-candidate').hide();
+                parent.find('.votes-za-candidate').hide().find('.total-left').text('0');
             }
         }
     }
     function votesZaSimpleMultiplySum(_this) {
-        console.log(_this, 'this')
         var parent = _this.closest('.voting-multiple-candidates');
         var blocks = parent.find('.separation-votes');
         var arrForSnd = [];
@@ -400,7 +393,7 @@ function votesZaOunter() {
         var massEntryArray = [];
         var massEntryTotal = parent.find('.total-max').text();
         var totalLeft = parent.find('.total-left');
-        var _this = $(this)
+        var _this = $(this);
 
         inputMassEntry.each(function () {
             massEntryArray.push($(this).val());
@@ -772,6 +765,35 @@ function votesZaOunter() {
     }
 
     disabledBtnTotal();
+
+
+//    Инкремент дикремен для контролла ввода
+
+    $(document).on('click', '.input-hide-plus', function () {
+        event.preventDefault();
+        var count = $('.product__content--counter').find('.input-hide'),
+            val = parseInt($('.product__content--counter').find('.input-hide').val());
+        if (val == 999) {
+            return false;
+        } else {
+            count.val(val + 1);
+            $('.js-single-addtocart').attr('data-quantity', count.val());
+            $('.js-single-favorites').attr('data-quantity', count.val());
+        }
+        return false;
+    });
+
+    $(document).on('click', '.input-hide-minus', function () {
+        event.preventDefault();
+        var count = $('.product__content--counter').find('.input-hide');
+        var counter = parseInt(count.val()) - 1;
+        counter = counter < 1 ? 1 : counter;
+        count.val(counter);
+        count.change();
+        $('.js-single-addtocart').attr('data-quantity', counter);
+        $('.js-single-favorites').attr('data-quantity', counter);
+        return false;
+    });
 
 
 });

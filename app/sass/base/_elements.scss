@@ -2234,6 +2234,18 @@ label {
     padding-left: 10px;
     margin-left: 10px;
   }
+  .plus-minus{
+    position: absolute;
+    display: flex;
+    right: 9px;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    top: -4px;
+    .input-hide-plus{
+      height: 10px;
+    }
+  }
 }
 
 
