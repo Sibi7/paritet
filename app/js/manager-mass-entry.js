@@ -767,12 +767,13 @@ $(function () {
     disabledBtnTotal();
 
 
-//    Инкремент дикремен для контролла ввода
+//    Инкремент Декремент для контролла ввода/ стелочки вверх/низ
 
     $(document).on('click', '.input-hide-plus', function () {
         event.preventDefault();
-        var count = $('.product__content--counter').find('.input-hide'),
-            val = parseInt($('.product__content--counter').find('.input-hide').val());
+        var parent = $(this).closest('.input-hide-wrap');
+        var count = parent.find('.input-hide'),
+            val = parseInt(parent.find('.input-hide').val());
         if (val == 999) {
             return false;
         } else {
@@ -785,15 +786,14 @@ $(function () {
 
     $(document).on('click', '.input-hide-minus', function () {
         event.preventDefault();
-        var count = $('.product__content--counter').find('.input-hide');
+        var parent = $(this).closest('.input-hide-wrap');
+        var count = parent.find('.input-hide');
         var counter = parseInt(count.val()) - 1;
-        counter = counter < 1 ? 1 : counter;
+        counter = counter < 0 ? 0 : counter;
         count.val(counter);
         count.change();
         $('.js-single-addtocart').attr('data-quantity', counter);
         $('.js-single-favorites').attr('data-quantity', counter);
         return false;
     });
-
-
 });
