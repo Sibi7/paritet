@@ -64,9 +64,18 @@ $(function () {
             container.hide();
             changleSpan.show();
         }
-
+        if ($(this).val() === '0') {
+            $(this).closest('.voting-actions__choice-wrap').find('.voting-actions-btn').removeClass('voting-active');
+            $('.voting-inputs__choice .voting-true').removeClass('input-selected');
+        }
     });
 
+function inputHideBtn() {
+    var parent = $('.separation-votes');
+    console.log(parent);
+
+}
+    inputHideBtn();
 
     function calculateTotalVoises(_this) {
         var parent = _this.closest('.separation-votes  .voting-actions__choice-btn');
@@ -120,9 +129,12 @@ $(function () {
         var format = String(number).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
         $(this).trigger('focus');
         $(this).closest('.voting-actions__wrap-input').find('.change-span').html(format);
-        if ($(this).val().trim() === '0') {
+        if ($(this).val() === '0') {
             $(this).closest('.voting-actions__choice-wrap').find('.voting-actions-btn').removeClass('voting-active');
             $('.voting-inputs__choice .voting-true').removeClass('input-selected');
+        }
+        else{
+            $(this).closest('.voting-actions__choice-wrap').find('.voting-actions-btn').addClass('voting-active');
         }
 
     });
@@ -472,6 +484,7 @@ $(function () {
         var totalLeft = parent.find('.total-left');
         totalLeft.text(totalMax.text());
         clearInputs(inputsForClear, spansForClear);
+
     });
     $(document).on('click', '.cum-not-dividing .voting-abstained', function () {
         var parent = $(this).closest('.cumulative-voting-input');
@@ -774,13 +787,14 @@ $(function () {
         var parent = $(this).closest('.input-hide-wrap');
         var count = parent.find('.input-hide'),
             val = parseInt(parent.find('.input-hide').val());
-        if (val == 999) {
+        if (val == 999999) {
             return false;
         } else {
             count.val(val + 1);
             $('.js-single-addtocart').attr('data-quantity', count.val());
             $('.js-single-favorites').attr('data-quantity', count.val());
         }
+        calculateTotalVoises(parent.find('.input-hide'));
         return false;
     });
 
@@ -794,6 +808,7 @@ $(function () {
         count.change();
         $('.js-single-addtocart').attr('data-quantity', counter);
         $('.js-single-favorites').attr('data-quantity', counter);
+        calculateTotalVoises(parent.find('.input-hide'));
         return false;
     });
 });
