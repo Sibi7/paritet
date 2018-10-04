@@ -1153,7 +1153,7 @@ label {
     width: 418px;
     margin-left: auto;
   }
-  .voting-actions-btn {
+  .voting-actions-btn, .voting-btn-cumulative {
     margin-right: 10px;
     font-size: 13px;
     color: $btn-close;
@@ -1195,7 +1195,7 @@ label {
 
 .separation-votes-not-active {
 
-  .cum-change-span, .voting-actions-sing-btn, .voting-actions-btn, .voting-clear-division {
+  .cum-change-span, .voting-actions-sing-btn, .voting-actions-btn, .voting-btn-cumulative, .voting-clear-division {
     background-color: transparent !important;
     color: $gray-controls !important;
     font-weight: 300 !important;
