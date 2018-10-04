@@ -390,7 +390,7 @@
                                     <div class="voting-actions__choice-wrap">
                                         <div class="voting-actions__wrap-input">
                                             <div class="input-hide-wrap ">
-                                                <input type="text" value="0" class="input-hide">
+                                                <input type="text" value="0" class="input-hide" data-type="single" maxlength="999" pattern="[0-9]{3}">
                                                 <div class="plus-minus">
                                                     <a href="#" class="input-hide-plus"><img src="images/icons/up.svg"
                                                                                              alt=""></a>
@@ -451,17 +451,15 @@
                         <div class="voting-enter__td margin-left-auto">
 
                             <div class="separation-votes">
-
+     <p>плюс минус</p>
                                 <div class="voting-actions__choice-btn">
                                     <div class="voting-actions__choice-wrap">
                                         <div class="voting-actions__wrap-input">
-                                            <div class="input-hide-wrap ">
+                                            <div class="input-hide-wrap">
                                                 <input type="text" value="0" class="input-hide">
                                                 <div class="plus-minus">
-                                                    <a href="#" class="input-hide-plus"><img src="images/icons/up.svg"
-                                                                                             alt=""></a>
-                                                    <a href="#" class="input-hide-minus"><img
-                                                            src="images/icons/down.svg" alt=""></a>
+                                                    <a class="input-hide-plus"><img src="images/icons/up.svg" alt=""></a>
+                                                    <a class="input-hide-minus"><img src="images/icons/down.svg" alt=""></a>
                                                 </div>
                                                 <button type="button" class="input-balance">Остаток</button>
                                             </div>
@@ -509,6 +507,7 @@
                                         <div class="voting-actions__wrap-input">
                                             <div class="input-hide-wrap" style="display: none;">
                                                 <input type="text" value="0 " class="input-hide"
+                                                       data-type="single" maxlength="999" pattern="[0-9]{3}"
                                                        name="Questions[0].Decisions[0].Votes[0].VoicesTotal"
                                                        autocomplete="off">
                                                 <div class="plus-minus">
@@ -542,7 +541,7 @@
                                         <div class="voting-actions__wrap-input">
                                             <div class="input-hide-wrap" style="display: none;">
                                                 <input type="text" value="0 " class="input-hide"
-                                                       name="Questions[0].Decisions[0].Votes[1].VoicesTotal"
+                                                       data-type="single" maxlength="999" pattern="[0-9]{3}"
                                                        autocomplete="off">
                                                 <div class="plus-minus">
                                                     <a href="#" class="input-hide-plus"><img src="images/icons/up.svg"
@@ -569,9 +568,7 @@
                                         </div>
                                         <div class="voting-actions__wrap-input">
                                             <div class="input-hide-wrap " style="display: none;">
-                                                <input type="text" value="0 " class="input-hide"
-                                                       name="Questions[0].Decisions[0].Votes[2].VoicesTotal"
-                                                       autocomplete="off">
+                                                <input type="text" value="0 " class="input-hide" autocomplete="off" data-type="single" maxlength="999" pattern="[0-9]{3}">
                                                 <div class="plus-minus">
                                                     <a href="#" class="input-hide-plus"><img src="images/icons/up.svg"
                                                                                              alt=""></a>
@@ -602,7 +599,7 @@
                                     <div class="voting-actions__choice-wrap">
                                         <div class="voting-actions__wrap-input">
                                             <div class="input-hide-wrap ">
-                                                <input type="text" value="0" class="input-hide">
+                                                <input type="text" value="0" class="input-hide" data-type="single" maxlength="999" pattern="[0-9]{3}">
                                                 <div class="plus-minus">
                                                     <a href="#" class="input-hide-plus"><img src="images/icons/up.svg"
                                                                                              alt=""></a>
@@ -668,7 +665,7 @@
                                     <div class="voting-actions__choice-wrap">
                                         <div class="voting-actions__wrap-input">
                                             <div class="input-hide-wrap ">
-                                                <input type="text" value="0" class="input-hide">
+                                                <input type="text" value="0" class="input-hide" data-type="single" maxlength="999" pattern="[0-9]{3}">
                                                 <div class="plus-minus">
                                                     <a href="#" class="input-hide-plus"><img src="images/icons/up.svg"
                                                                                              alt=""></a>
@@ -857,7 +854,7 @@
                         <td>Голосов</td>
                         <td>
                             <div class="input-hide-wrap ">
-                                <input type="text" value="0" class="input-hide">
+                                <input type="text" value="0" class="input-hide" data-type="single" maxlength="999" pattern="[0-9]{3}">
                                 <div class="plus-minus">
                                     <a href="#" class="input-hide-plus"><img src="images/icons/up.svg"
                                                                              alt=""></a>
