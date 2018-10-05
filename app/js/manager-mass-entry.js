@@ -55,13 +55,39 @@ $(function () {
 
     });
     // если во время ввода в контроле ввода был нажат Enter, сохраняем значения в change-span
-    $(document).on('keyup', '.input-hide', function (e) {
+    $(document).on('keydown', '.input-hide', function (e) {
         var container = $(".input-hide-wrap");
         var changleSpan = $(".change-span");
         if (e.key === 'Enter') {
+
             container.hide();
             changleSpan.show();
             inputCheckValForBtnActive();
+        }
+        if (e.keyCode === 38) {
+            var parent = $(this).closest('.input-hide-wrap');
+            var count = parent.find('.input-hide'),
+                val = parseInt(parent.find('.input-hide').val());
+            if (val == 999999) {
+                return false;
+            } else {
+                count.val(val + 1);
+                $('.js-single-addtocart').attr('data-quantity', count.val());
+                $('.js-single-favorites').attr('data-quantity', count.val());
+            }
+            calculateTotalVoises(parent.find('.input-hide'));
+        }
+        if (e.keyCode === 40) {
+            var parent = $(this).closest('.input-hide-wrap');
+            var count = parent.find('.input-hide');
+            var counter = parseInt(count.val()) - 1;
+            counter = counter < 0 ? 0 : counter;
+            count.val(counter);
+            count.change();
+            $('.js-single-addtocart').attr('data-quantity', counter);
+            $('.js-single-favorites').attr('data-quantity', counter);
+            calculateTotalVoises(parent.find('.input-hide'));
+            return false;
         }
     });
 
@@ -255,7 +281,7 @@ $(function () {
         var parent = $(this).closest('.cumulative-voting-input');
         if (inputHideWrap.css('display', 'block')) {
             if (!parent.find('.voting-actions-sing-btn.voting-true').hasClass('input-selected')) {
-                parent.find('.voting-actions-sing-btn.voting-true').addClass('input-selected');
+                parent.find('.voting-actions-sing-btn.voting-true').click();
             }
             if (!parent.find('.voting-btn-cumulative.voting-true').hasClass('input-selected')) {
                 parent.find('.voting-btn-cumulative.voting-true').addClass('voting-active').removeClass('voting-not-active');
@@ -362,9 +388,14 @@ $(function () {
         e.preventDefault();
         var _this = $(this);
         var parent = _this.closest('.voting-multiple-candidates');
+        var parentSepar = _this.closest('.cumulative-voting-input');
         ajaxForSeparationBtn(_this).done(function () {
             toggleVotesZaCandidate(parent);
             separationVotesBtnSubstitution();
+            var changeSpanCandidate = parentSepar.find('.change-span-candidate');
+            var inputHideCumulative = parentSepar.find('.separation-cumulative-za');
+            changeSpanCandidate.text('0');
+            inputHideCumulative.val('0');
         });
         disabledAllBtnSeparation();
     });
@@ -379,10 +410,16 @@ $(function () {
     separationVotesBtnSubstitution();
     // сворачиваем разделение голосов
     $(document).on('click', '.voting-clear-division', function (e) {
+        e.preventDefault();
         var _this = $(this);
         var parent = _this.closest('.voting-multiple-candidates');
-        e.preventDefault();
+        var parentSepar = _this.closest('.cumulative-voting-input');
+
         ajaxForSeparationBtn($(this)).done(function () {
+            var changeSpanCandidate = parentSepar.find('.change-span-candidate');
+            var inputHideCumulative = parentSepar.find('.separation-cumulative-za');
+            changeSpanCandidate.text('0');
+            inputHideCumulative.val('0');
             if (parent.length) {
                 toggleVotesZaCandidate(parent);
                 votesZaSimpleMultiplySum(parent.find('.voting-clear-division'))
@@ -433,13 +470,14 @@ $(function () {
         }
     });
     // Кумулятивное голосование!
-    $(document).on('blur keyup', '.cumulative-voting-input .separation-cumulative-za', function () {
+
+    $(document).on('blur', '.cumulative-voting-input .separation-cumulative-za', function () {
         var parent = $(this).closest('.cumulative-voting-input');
         var givenZa = parent.find('.totals-votes');
         var arrOfInputsYes = parent.find('.separation-cumulative-za');
         var arrOfInputsYesVal = [];
         arrOfInputsYes.each(function () {
-            // Заменяем пробелы на 0, что бы с сервера не возвращалась ошибка
+            //Заменяем пробелы на 0, что бы с сервера не возвращалась ошибка
             if ($(this).val().trim() === '') {
                 $(this).val(0)
             }
@@ -452,8 +490,25 @@ $(function () {
             givenZa.closest('.separation-cumulative-wrap-input').find('.input-hide').val(res.result);
             calculateTotalVoises(givenZa)
         });
-    });
 
+    });
+    $(document).on('keyup', '.cumulative-voting-input .separation-cumulative-za', function () {
+        var parent = $(this).closest('.cumulative-voting-input');
+        var givenZa = parent.find('.totals-votes');
+        var arrOfInputsYes = parent.find('.separation-cumulative-za');
+        var arrOfInputsYesVal = [];
+        arrOfInputsYes.each(function () {
+            //Заменяем пробелы на 0, что бы с сервера не возвращалась ошибка
+
+            arrOfInputsYesVal.push($(this).val().replace(/\u00a0/g, '')); // Значение каждого инпута заносим в массив
+        });
+        additionFraction(arrOfInputsYesVal.join(';')).done(function (res) {
+            givenZa.text(res.result);
+            givenZa.closest('.separation-cumulative-wrap-input').find('.input-hide').val(res.result);
+            calculateTotalVoises(givenZa)
+        });
+
+    });
     $(document).on('change', '.cumulative-voting-input .separation-cumulative-za', function () {
         var parent = $(this).closest('.cumulative-voting-input');
         var zaBtn = parent.find('.voting-true');
@@ -865,7 +920,6 @@ $(function () {
     });
 
     $(document).on('click', '.input-hide-minus', function () {
-
         var parent = $(this).closest('.input-hide-wrap');
         var count = parent.find('.input-hide');
         var counter = parseInt(count.val()) - 1;
