@@ -850,7 +850,6 @@ $(function () {
 //    Инкремент Декремент для контролла ввода/ стелочки вверх/низ
 
     $(document).on('click', '.input-hide-plus', function () {
-        event.preventDefault();
         var parent = $(this).closest('.input-hide-wrap');
         var count = parent.find('.input-hide'),
             val = parseInt(parent.find('.input-hide').val());
@@ -866,7 +865,7 @@ $(function () {
     });
 
     $(document).on('click', '.input-hide-minus', function () {
-        event.preventDefault();
+
         var parent = $(this).closest('.input-hide-wrap');
         var count = parent.find('.input-hide');
         var counter = parseInt(count.val()) - 1;
