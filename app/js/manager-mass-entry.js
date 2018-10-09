@@ -59,7 +59,7 @@ $(function () {
         var container = $(".input-hide-wrap");
         var changleSpan = $(".change-span");
         if (e.key === 'Enter') {
-
+            $(this).trigger('blur');
             container.hide();
             changleSpan.show();
             inputCheckValForBtnActive();
@@ -670,6 +670,8 @@ $(function () {
                         // Заменяем пробелы на 0, что бы с сервера не возвращалась ошибка
                         if ($(this).val().trim() === '') {
                             $(this).val(0)
+
+
                         }
                         arrOfInputsVal.push($(this).val()); // Значение каждого инпута заносим в массив
                     });
@@ -905,13 +907,14 @@ $(function () {
 //    Инкремент Декремент для контролла ввода/ стелочки вверх/низ
 
     $(document).on('click', '.input-hide-plus', function () {
+
         var parent = $(this).closest('.input-hide-wrap');
         var count = parent.find('.input-hide'),
             val = parseInt(parent.find('.input-hide').val());
         if (val == 999999) {
             return false;
         } else {
-            count.val(val + 1);
+            count.val(val + 1).trigger('keyup').change().focus();
             $('.js-single-addtocart').attr('data-quantity', count.val());
             $('.js-single-favorites').attr('data-quantity', count.val());
         }
@@ -920,12 +923,13 @@ $(function () {
     });
 
     $(document).on('click', '.input-hide-minus', function () {
+
         var parent = $(this).closest('.input-hide-wrap');
         var count = parent.find('.input-hide');
         var counter = parseInt(count.val()) - 1;
         counter = counter < 0 ? 0 : counter;
-        count.val(counter);
-        count.change();
+        count.val(counter).trigger('keyup');
+        count.change().focus();
         $('.js-single-addtocart').attr('data-quantity', counter);
         $('.js-single-favorites').attr('data-quantity', counter);
         calculateTotalVoises(parent.find('.input-hide'));
