@@ -9,6 +9,7 @@ $(function () {
             if (item.innerHTML.toUpperCase().indexOf(input.value.trim().toUpperCase()) > -1) {
                 item.style.display = "";
                 item.classList.add('active-search-item');
+
             } else {
                 item.style.display = "none";
                 item.classList.remove('active-search-item');
@@ -25,6 +26,10 @@ $(function () {
         if (e.key === 'Enter' &&  $(this).siblings('.search-select')[0].querySelector('.active-search-item') !== null) {
             $(this).siblings('.search-select')[0].querySelector('.active-search-item').click();
         }
+
+        if ($(this).val() === "#") {
+        }
+
     });
     $(document).on('keyup', '.t-search-submit', function (e) {
         if (e.keyCode === 13) {
