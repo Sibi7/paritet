@@ -1,33 +1,53 @@
 $(function () {
 
+    /**
+     *
+     * @param {Object} obj
+     * @param {string} obj.selectorForFilter - Селектор по которому будет производится фильрация
+     * @param {string} obj.inputSelector - Селектор инпута, в котором производится фильтрация
+     * @param {string} obj.selectorForHide - Селектор в который обернуты элементы по которым производится фильтрация. Этот селектор будет скрываться, если не совпадает с введенным значением
+     */
     function searchFilter(obj) {
-        var items = document.querySelectorAll(obj.itemSelector),
+        var items = document.querySelectorAll(obj.selectorForFilter),
             input = document.querySelector(obj.inputSelector);
+
         for (var i = 0; i < items.length; i++) {
             var item = items[i];
 
-            if (item.innerHTML.toUpperCase().indexOf(input.value.trim().toUpperCase()) > -1) {
-                item.style.display = "";
-                item.classList.add('active-search-item');
+            if (item.innerHTML.toUpperCase().indexOf(input.value.trim().replace(/[#№]/g, '').toUpperCase()) > -1) {
+                item.closest(obj.selectorForHide).style.display = "";
+                item.closest(obj.selectorForHide).classList.add('active-search-item');
 
             } else {
-                item.style.display = "none";
-                item.classList.remove('active-search-item');
+                item.closest(obj.selectorForHide).style.display = "none";
+                item.closest(obj.selectorForHide).classList.remove('active-search-item');
             }
         }
     }
 
     $(document).on('keyup', '.t-search', function (e) {
         e.preventDefault();
-        searchFilter({
-            itemSelector: '.search-select li',
-            inputSelector: '.t-search'
-        });
+        if ($(this).val()[0] === "#" || $(this).val()[0] === "№") {
+            searchFilter({
+                selectorForFilter: '.search-select li .account-register',
+                inputSelector: '.t-search',
+                selectorForHide: 'li'
+            });
+        } else if ($.isNumeric($(this).val()[0])) {
+            searchFilter({
+                selectorForFilter: '.search-select li .account-number',
+                inputSelector: '.t-search',
+                selectorForHide: 'li'
+            });
+        } else {
+            searchFilter({
+                selectorForFilter: '.search-select li .account-owner',
+                inputSelector: '.t-search',
+                selectorForHide: 'li'
+            });
+        }
         if (e.key === 'Enter' &&  $(this).siblings('.search-select')[0].querySelector('.active-search-item') !== null) {
             $(this).siblings('.search-select')[0].querySelector('.active-search-item').click();
-        }
-
-        if ($(this).val() === "#") {
         }
 
     });
