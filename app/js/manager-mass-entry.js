@@ -464,11 +464,13 @@ $(function () {
         })
     }
 
-    $(document).on('keyup', '.voting-multiple-candidates .separation-votes .input-hide', function () {
+    $(document).on('keyup blur change', '.voting-multiple-candidates .separation-votes .input-hide', function () {
         if ($(this).closest('.voting-actions__choice-wrap').find('.voting-true').length) {
             votesZaSimpleMultiplySum($(this));
+
         }
     });
+
     // Кумулятивное голосование!
 
     $(document).on('blur', '.cumulative-voting-input .separation-cumulative-za', function () {
