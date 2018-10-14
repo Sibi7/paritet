@@ -941,30 +941,3 @@ $(function () {
         return false;
     });
 });
-
-function toggleVotesZaCandidates(parent) {
-    if (parent.length) {
-        if (parent.find('.separation-votes').length) {
-            parent.find('.votes-za-candidate').show();
-        }
-        else {
-            parent.find('.votes-za-candidate').hide().find('.total-left').text('0');
-        }
-    }
-}
-
-function votesZaSimpleMultiplySuma(_this) {
-    var parent = _this.closest('.voting-multiple-candidates');
-    var blocks = parent.find('.separation-votes');
-    var arrForSnd = [];
-    blocks.each(function () {
-        arrForSnd.push($(this).find('.input-hide:first').val());
-    });
-    additionFraction(arrForSnd.join(';')).done(function (data) {
-        if (blocks.length) {
-            parent.find('.votes-za-candidate .total-left').text(data.result);
-        } else {
-            parent.find('.votes-za-candidate .total-left:first').text(0)
-        }
-    })
-}

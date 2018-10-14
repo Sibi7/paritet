@@ -1,5 +1,6 @@
 ﻿function submitNearestForm() {
-    var ajaxForm = $(".ajax-form");
+  var ajaxForm = $(".ajax-form");
+
     if (ajaxForm) {
         var url = ajaxForm.attr("action");
 
@@ -7,8 +8,8 @@
             type: "POST",
             url: url,
             data: ajaxForm.serialize(), // serializes the form's elements.
-            success: function (data) {
-                ajaxForm[0].outerHTML = data;
+          success: function (data) {
+              ajaxForm[0].outerHTML = data;
             },
             error: function (data) {
                 alert("error");
@@ -17,13 +18,15 @@
     }
 }
 
-function returnControlInEditMode() {
-    var issuerId = $("#IssuerID").val();
-    var propertyName = $("#PropertyName").val();
-    var control = $(".swap-control-info");
+function returnControlInEditMode(clickedElement, inEditMode) {
+    var issuerId = $("#EntityID").val();
+    var pageId = $("#PageID").val();
+    var control = $(clickedElement);
+    var propertyName = control.children("#PropertyName").val();
+
     $.ajax({
         type: "GET",
-        url: "/Manager/Issuer/GetManagementEditor/"+issuerId+"?propertyName="+propertyName,
+        url: "/Helper/GetSwapEditor/" + issuerId + "?pageID=" + pageId + "&propertyName=" + propertyName + "&inEditMode=" + inEditMode,
         success: function (data) {
             control[0].outerHTML = data;
         },
@@ -33,9 +36,17 @@ function returnControlInEditMode() {
     });
 }
 
-$(document).on("focusout", ".swap-control-edit", function () {
+$(document).on("change", ".swap-control-edit", function () {
     submitNearestForm();
 });
-$(document).on("click", ".swap-control-info", function () {
-    returnControlInEditMode();
+$(document).on("click", ".swap-control-info", function (e) {
+    e.preventDefault();
+    returnControlInEditMode(e.target, true);
+});
+$(document).on("click", ".ajax-form", function (e) {
+    if (!$(e.target).parent().hasClass("swap-control-edit")) {
+        $(".swap-control-edit").each(function () {
+            returnControlInEditMode(this, false);
+        });
+    }
 });
