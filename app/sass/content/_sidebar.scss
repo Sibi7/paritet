@@ -299,5 +299,36 @@
 .icon-sidebar-icon7:before {
   content: "\e900";
 }
+.icon-sidebar-icon8{
+  background-image: url("../images/icons/sidebar-icon8.svg");
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+.icon-sidebar-icon9{
+  background-image: url("../images/icons/sidebar-icon9.svg");
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+.sidebar__item--header:hover{
+  .icon-sidebar-icon8{
+    background-image: url("../images/icons/sidebar-icon8-blue.svg");
+  }
+  .icon-sidebar-icon9{
+    background-image: url("../images/icons/sidebar-icon9-blue.svg");
+  }
+}
+.sidebar__item--active{
+  .icon-sidebar-icon8{
+    background-image: url("../images/icons/sidebar-icon8-blue.svg");
+  }
+  .icon-sidebar-icon9{
+    background-image: url("../images/icons/sidebar-icon9-blue.svg");
+  }
+}
+
 
 
