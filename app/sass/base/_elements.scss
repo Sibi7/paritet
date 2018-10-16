@@ -1038,7 +1038,11 @@ label {
   width: 100% !important;
   min-width: 40px !important;
 }
-
+.ast-voting{
+  .big-input{
+    text-align: right;
+  }
+}
 .table-select {
   min-width: 100% !important;
   width: 100% !important;
@@ -2090,6 +2094,9 @@ label {
 .content__section > .mCSB_inside > .mCSB_container {
   margin-right: 40px !important;
   min-height: 500px;
+  .select2-container--default .select2-results>.select2-results__options{
+    max-height: 95px;
+  }
 }
 
 /*---!Custom scroll---*/
