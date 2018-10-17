@@ -3,92 +3,92 @@ function Hotkeys() {
     var keysObj = [
         {
             //test
-            func:function () {
+            func: function () {
             },
             keys: [90, 88]
         },
         {
             //фокус на инпутпоиска
-            func:function () {
+            func: function () {
                 $('.hotkeys').find('.t-search').focus();
             },
             keys: [113]
         },
         {
             //фокус на инпутпоиска
-            func:function () {
+            func: function () {
                 $('.hotkeys').find('.mass-entry-search').focus();
             },
             keys: [113]
         },
         {
             //клик по сабмит
-            func: function () {
-                event.preventDefault();
+            func: function (e) {
+                e.preventDefault();
                 $('.hotkeys').find('.send-hotkey').click()
             },
             keys: [18, 83]
         },
         {
             //клик по кнопке "не дейтвительно"
-            func: function () {
-                event.preventDefault();
+            func: function (e) {
+                e.preventDefault();
                 $('.hotkeys').find('.not-valid-hotkey').click()
             },
             keys: [18, 8]
         },
         {
             //клик по кнопке "отмена"
-            func: function () {
-                event.preventDefault();
+            func: function (e) {
+                e.preventDefault();
                 $('.hotkeys').find('.cancel-hotkey').click()
             },
             keys: [27]
         },
         {
             // alt + 1
-            func: function () {
-                event.preventDefault();
+            func: function (e) {
+                e.preventDefault();
                 $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[0].click()
             },
             keys: [18, 49]
         },
         {
             // alt + 2
-            func: function () {
-                event.preventDefault();
+            func: function (e) {
+                e.preventDefault();
                 $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[1].click()
             },
             keys: [18, 50]
         },
         {
             // alt + 3
-            func: function () {
-                event.preventDefault();
+            func: function (e) {
+                e.preventDefault();
                 $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[2].click()
             },
             keys: [18, 51]
         },
         {
             // alt + 4
-            func: function () {
-                event.preventDefault();
+            func: function (e) {
+                e.preventDefault();
                 $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[3].click()
             },
             keys: [18, 52]
         },
         {
             // alt + 5
-            func: function () {
-                event.preventDefault();
+            func: function (e) {
+                e.preventDefault();
                 $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[4].click()
             },
             keys: [18, 53]
         },
         {
             // alt + 6
-            func: function () {
-                event.preventDefault();
+            func: function (e) {
+                e.preventDefault();
                 $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[5].click()
             },
             keys: [18, 54]
@@ -96,35 +96,50 @@ function Hotkeys() {
 
         {
             // alt + 7
-            func: function () {
-                event.preventDefault();
+            func: function (e) {
+                e.preventDefault();
                 $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[6].click()
             },
             keys: [18, 55]
         },
         {
             // ctrl + 8
-            func: function () {
-                event.preventDefault();
+            func: function (e) {
+                e.preventDefault();
                 $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[7].click()
             },
             keys: [18, 56]
         },
         {
             // ctrl + 9
-            func: function () {
-                event.preventDefault();
+            func: function (e) {
+                e.preventDefault();
                 $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[8].click()
             },
             keys: [18, 57]
         },
         {
             // alt + 0 выбор всех бюллетеней
-            func: function () {
-                event.preventDefault();
+            func: function (e) {
+                e.preventDefault();
                 $('.bullet-numbers-hotkey').find('.bullet-number-all').trigger('change');
             },
             keys: [18, 48]
+        },
+        {
+            func: function (e) {
+                e.preventDefault();
+                findNextInput($(e.target), $(e.target).closest('.voting-actions__choice-btn'));
+            },
+            keys: [9]
+        },
+        {
+            func: function (e) {
+                e.preventDefault();
+                findPrevInput($(e.target), $(e.target).closest('.voting-actions__choice-btn'));
+                findPrevInputAcumulative($(e.target), $(e.target).closest('.cumulative-voting-input'))
+            },
+            keys: [16, 9]
         },
         {
             // space
@@ -146,34 +161,33 @@ function Hotkeys() {
     this.run = function () {
         var pressed = [];
 
-        document.onkeydown = function (e) {
+        $(document).on('keydown', function (e) {
             e = e || window.event;
             pressed.push(e.keyCode);
-            for (var j=0; j< keysObj.length; j++) {
-                if(pressed.length !== keysObj[j]["keys"].length) continue;
+            for (var j = 0; j < keysObj.length; j++) {
+                if (pressed.length !== keysObj[j]["keys"].length) continue;
                 var on = 0;
-                for( var i = 0; i < keysObj[j]["keys"].length; i++ ) {
-                    for( var k = 0; k < pressed.length; k++ ) {
-                        if(pressed[k] === keysObj[j]["keys"][i]) {
+                for (var i = 0; i < keysObj[j]["keys"].length; i++) {
+                    for (var k = 0; k < pressed.length; k++) {
+                        if (pressed[k] === keysObj[j]["keys"][i]) {
                             on++;
                             break
                         }
                     }
                     if (on === pressed.length) {
-                        keysObj[j].func()
+                        keysObj[j].func(e)
                     }
                 }
             }
-        };
-
-        document.onkeyup = function () {
+        })
+        $(document).on('keyup', function () {
             if (pressed.length === 2) {
                 pressed.splice(1, 1);
             }
             else {
                 pressed = []
             }
-        };
+        })
     }
 
 }
@@ -181,10 +195,8 @@ function Hotkeys() {
 var hotheys = new Hotkeys();
 
 
-
 $(function () {
     if ($('.hotkeys').length > 0) {
-
         if ($('.voting-enter__table').length > 0) {
             var i = 1;
             $('.voting-enter__table .voting-actions__choice--item').each(function () {

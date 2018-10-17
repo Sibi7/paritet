@@ -25,8 +25,6 @@ $(function () {
         var totaLeft = parent.find('.votes-left .total-left');
         var totalMax = parent.find('.votes-left .total-max').text();
         var totalVotes = parent.find('.voting-actions__wrap-input .totals-votes');
-        console.log('totalMax', totalMax);
-        console.log('totalVotes', totaLeft);
         if ($(this).hasClass('voting-active')) {
             $(this).removeClass('voting-active');
         }
@@ -89,31 +87,13 @@ $(function () {
             calculateTotalVoises(parent.find('.input-hide'));
             return false;
         }
-        if(e.keyCode === 27){
+        if (e.keyCode === 27) {
             $(this).val('0');
             container.hide();
             changleSpan.show();
             calculateTotalVoises($(this));
         }
-        if(e.keyCode === 9){
-            e.preventDefault();
-            findNextInput($(this), $(this).closest('.voting-actions__choice-btn'));
-        }
     });
-
-    function findNextInput(_this, parent) {
-        var currentInputNumber = _this.attr('data-inp-num');
-        var nextSpan = parent.find('[data-span-num="'+ ++currentInputNumber + '"]');
-        if (nextSpan.length) {
-            nextSpan.click();
-            _this.closest('.input-hide-wrap').hide();
-        } else {
-            parent.find(['data-span-num="1"']).click();
-        }
-    }
-
-
-
 
     $(document).on('click', '.change-span', function () {
 
@@ -964,3 +944,73 @@ $(function () {
         return false;
     });
 });
+/*
+* функция горячей клавиши TAB в разделенном голосование для переключения к следующему контролу
+* */
+function findNextInput(_this, parent) {
+    var currentInputNumber = _this.attr('data-inp-num');
+    var nextSpan = parent.find('[data-span-num="' + ++currentInputNumber + '"]');
+    var wrapInputHide = _this.closest('.wrap-input-hotkey');
+    var changeSpan = wrapInputHide.siblings('.separation-hot-btn');
+    if (nextSpan.length) {
+        wrapInputHide.hide();
+        changeSpan.show();
+        nextSpan.click().select();
+    } else {
+        wrapInputHide.hide();
+        changeSpan.show();
+        parent.find('[data-span-num="1"]').click().select();
+    }
+}
+
+/*
+* функция горячей клавиши TAB в разделенном голосование для переключения к предыдущему контролу
+* */
+function findPrevInput(_this, parent) {
+    var currentInputNumber = _this.attr('data-inp-num');
+    var nextSpan = parent.find('[data-span-num="' + --currentInputNumber + '"]');
+    var wrapInputHide = _this.closest('.wrap-input-hotkey');
+    var changeSpan = wrapInputHide.siblings('.separation-hot-btn');
+    if (nextSpan.length) {
+        wrapInputHide.hide();
+        changeSpan.show();
+        nextSpan.click().select();
+    } else {
+        wrapInputHide.hide();
+        changeSpan.show();
+        parent.find('[data-span-num="3"]').click().select();
+    }
+}
+//Функция добавляет data-атрибуты для change-span-candidate  и  input-hide в кумулятивном голосовании
+function changeSpanCandidateAddAttr() {
+    var parent = $('.cumulative-voting-input');
+    var changeSpan = parent.find('.change-span-candidate');
+    var separationCumulativeZa = parent.find('.separation-cumulative-za');
+    var i = 1;
+    var j = 1;
+    changeSpan.each(function() {
+        $(this).attr('data-span-num', i);
+        i++;
+    });
+    separationCumulativeZa.each(function() {
+        $(this).attr('data-inp-num', j);
+        i++;
+    });
+}
+changeSpanCandidateAddAttr();
+
+function findPrevInputAcumulative(_this, parent) {
+    var currentInputNumber = _this.attr('data-inp-num');
+    var nextSpan = parent.find('[data-span-num="' + --currentInputNumber + '"]');
+    var wrapInputHide = _this.closest('.separation-cumulative-za'); // заметка на завтра - переменные не верны
+    var changeSpan = wrapInputHide.siblings('.change-span-candidate'); // заметка на завтра - переменные не верны
+    if (nextSpan.length) {
+        wrapInputHide.hide();
+        changeSpan.show();
+        nextSpan.click().select();
+    } else {
+        wrapInputHide.hide();
+        changeSpan.show();
+        parent.find('[data-span-num="3"]').click().select();
+    }
+}

@@ -1,7 +1,7 @@
 //Валидация вводимых символов
 function isAllowedKeyCode(key) {
     // Разрешенные клавиши для ввода дроби
-    if ((+key >= 0 && +key <= 9) || key === '/' || key === ' ' || key === 'Backspace' || key === 'Delete' || key === 'ArrowRight' || key === 'ArrowLeft') {
+    if ((+key >= 0 && +key <= 9) || key === '/' || key === ' ' || key === 'Backspace' || key === 'Delete' || key === 'ArrowRight' || key === 'ArrowLeft' || key === 'Shift' || key === 'Tab') {
         return true
     } else {
         return false
@@ -58,8 +58,6 @@ function fractionMinusArrayFraction(array, total) {
 function fractionMinusFraction(votingVoicesLeft, votesCastInputHide){
     var value1 = votingVoicesLeft.replace(/\u00a0/g, '');
     var value2 = votesCastInputHide.replace(/\u00a0/g, '');
-    console.log(value1, 'value1');
-    console.log(value2, 'value2');
     return $.ajax({
         url: '/FractionCalculator/Subtract',
         type: 'get',
@@ -281,7 +279,6 @@ $(function () {
 
             additionFraction(arrOfInputsVal.join(';')).done(function (e) {
                 // Складываем дроби, и сравниваем с "Голосов всего"
-                console.log(e);
                 var sum = e.result.replace(/\u00a0/g, '');
                 comparingIsLager(votingVoicesTotal, sum).done(function (data) {
                     if (data.result === 'true') {
@@ -403,7 +400,6 @@ $(function () {
                 var request = html.result.replace(/\u00a0/g, '').replace('  ', ' '); // Удаляем спецсимволы пробела, и двойные пробелы заменяем на одинарные
                 if (request.indexOf('-') !== -1 || request.indexOf('Invalid') !== -1) {  // Если в ответе есть отрицательное значение
                     input.val('Ошибка');
-                    console.log(html);
                 } else {
                     input.val(request);
                     cumulativeButtonClickEmit(_this); // Имитируем клик по кнопке ЗА, показываем модалку(если первый клик)
