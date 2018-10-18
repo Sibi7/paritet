@@ -130,6 +130,7 @@ function Hotkeys() {
             func: function (e) {
                 e.preventDefault();
                 findNextInput($(e.target), $(e.target).closest('.voting-actions__choice-btn'));
+                findNextInputAcumulative($(e.target), $(e.target).closest('.cumulative-voting-input'));
             },
             keys: [9]
         },
@@ -137,7 +138,7 @@ function Hotkeys() {
             func: function (e) {
                 e.preventDefault();
                 findPrevInput($(e.target), $(e.target).closest('.voting-actions__choice-btn'));
-                findPrevInputAcumulative($(e.target), $(e.target).closest('.cumulative-voting-input'))
+                findPrevInputAcumulative($(e.target), $(e.target).closest('.cumulative-voting-input'));
             },
             keys: [16, 9]
         },

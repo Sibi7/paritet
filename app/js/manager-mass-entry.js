@@ -994,7 +994,7 @@ function changeSpanCandidateAddAttr() {
     });
     separationCumulativeZa.each(function() {
         $(this).attr('data-inp-num', j);
-        i++;
+        j++;
     });
 }
 changeSpanCandidateAddAttr();
@@ -1002,8 +1002,8 @@ changeSpanCandidateAddAttr();
 function findPrevInputAcumulative(_this, parent) {
     var currentInputNumber = _this.attr('data-inp-num');
     var nextSpan = parent.find('[data-span-num="' + --currentInputNumber + '"]');
-    var wrapInputHide = _this.closest('.separation-cumulative-za'); // заметка на завтра - переменные не верны
-    var changeSpan = wrapInputHide.siblings('.change-span-candidate'); // заметка на завтра - переменные не верны
+    var wrapInputHide = _this.closest('.cumulative-hotkey');
+    var changeSpan = wrapInputHide.siblings('.change-span-candidate');
     if (nextSpan.length) {
         wrapInputHide.hide();
         changeSpan.show();
@@ -1012,5 +1012,20 @@ function findPrevInputAcumulative(_this, parent) {
         wrapInputHide.hide();
         changeSpan.show();
         parent.find('[data-span-num="3"]').click().select();
+    }
+}
+function findNextInputAcumulative(_this, parent) {
+    var currentInputNumber = _this.attr('data-inp-num');
+    var nextSpan = parent.find('[data-span-num="' + ++currentInputNumber + '"]');
+    var wrapInputHide = _this.closest('.cumulative-hotkey');
+    var changeSpan = wrapInputHide.siblings('.change-span-candidate');
+    if (nextSpan.length) {
+        wrapInputHide.hide();
+        changeSpan.show();
+        nextSpan.click().select();
+    } else {
+        wrapInputHide.hide();
+        changeSpan.show();
+        parent.find('[data-span-num="1"]').click().select();
     }
 }
