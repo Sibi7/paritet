@@ -274,7 +274,7 @@ function resestPassword() {
 }
 
 function generateLogin(fullName) {
-    fullName = transliterate(fullName);
+    // fullName = transliterate(fullName);
     var structName = fullName.trim().split(" ");
     var login;
     if (structName.length > 1) {
@@ -287,7 +287,7 @@ function generateLogin(fullName) {
     var notValid = true;
     while (notValid) {
         login = login + number;
-        number = number + 1;
+        // number = number + 1;
         $.ajax({
             url: "CheckUserName",
             method: "GET",
@@ -427,7 +427,7 @@ $(function () {
     });
 
     // генерация логина
-    $(document).on('blur', 'input[name="FullName"]', function () {
+    $(document).on('blur', '.user-cabinet-new input[name=FullName]', function () {
         if (!$('#UserName').val()) {
             $('#UserName').val(generateLogin($('input[name="FullName"]').val()));
         }

@@ -3,12 +3,15 @@
 
     if (ajaxForm) {
         var url = ajaxForm.attr("action");
+        console.log('ajaxForm', ajaxForm)
+        console.log('ajaxForm.serialize()', ajaxForm.serialize())
+        console.log('url', url)
 
         $.ajax({
             type: "POST",
-            url: url,
-            data: ajaxForm.serialize(), // serializes the form's elements.
-          success: function (data) {
+            url: '/Admin/Settings/SettingsRegistrar/1',
+            data: 111, // serializes the form's elements.
+            success: function (data) {
               ajaxForm[0].outerHTML = data;
             },
             error: function (data) {
@@ -36,7 +39,7 @@ function returnControlInEditMode(clickedElement, inEditMode) {
     });
 }
 
-$(document).on("change", ".swap-control-edit", function () {
+$(document).on("change", ".swap-control-edit input", function () {
     submitNearestForm();
 });
 $(document).on("click", ".swap-control-info", function (e) {

@@ -610,7 +610,7 @@ $orange: #f29c24;
 }
 
 .modal-registration {
-  max-width: 460px;
+  max-width: 530px;
 
   &__mass-body {
     position: relative;
@@ -640,18 +640,17 @@ $orange: #f29c24;
       padding-right: 20px;
       -webkit-line-clamp: 1;
       -webkit-box-orient: vertical;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      //overflow: hidden;
+      //text-overflow: ellipsis;
       &:last-child {
         width: calc(100% - 120px);
         color: #000;
         padding-right: 0;
         position: relative;
       }
-      > span {
-        padding-left: 10px;
-      }
+      //> span {
+      //  padding-left: 10px;
+      //}
       //.change-span {
       //  padding: 5px 0 5px 10px;
       //  display: inline-block;
