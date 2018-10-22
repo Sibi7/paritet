@@ -456,6 +456,10 @@ $(function () {
         var blocks = parent.find('.separation-votes');
         var arrForSnd = [];
         blocks.each(function () {
+            if ($(this).find('.input-hide').val() === '') {
+                arrForSnd.push(0);
+                return true;
+            }
             arrForSnd.push($(this).find('.input-hide:first').val());
         });
         additionFraction(arrForSnd.join(';')).done(function (data) {
@@ -465,12 +469,19 @@ $(function () {
                 parent.find('.votes-za-candidate .total-left:first').text(0)
             }
         })
+
     }
 
-    $(document).on('keyup blur change', '.voting-multiple-candidates .separation-votes .input-hide', function () {
-        if ($(this).closest('.voting-actions__choice-wrap').find('.voting-true').length) {
-            votesZaSimpleMultiplySum($(this));
+    $(document).on('keyup', '.voting-multiple-candidates .separation-votes .input-hide', function () {
 
+    });
+
+
+    $(document).on('keyup blur change', '.voting-multiple-candidates .separation-votes .input-hide', function (e) {
+
+        if ($(this).closest('.voting-actions__choice-wrap').find('.voting-true').length) {
+            // if ($(this).val() === '' && e.type === 'keyup') return false;
+            votesZaSimpleMultiplySum($(this));
         }
     });
 
@@ -944,6 +955,7 @@ $(function () {
         return false;
     });
 });
+
 /*
 * функция горячей клавиши TAB в разделенном голосование для переключения к следующему контролу
 * */
@@ -981,6 +993,7 @@ function findPrevInput(_this, parent) {
         parent.find('[data-span-num="3"]').click().select();
     }
 }
+
 //Функция добавляет data-атрибуты для change-span-candidate  и  input-hide в кумулятивном голосовании
 function changeSpanCandidateAddAttr() {
     var parent = $('.cumulative-voting-input');
@@ -988,15 +1001,16 @@ function changeSpanCandidateAddAttr() {
     var separationCumulativeZa = parent.find('.separation-cumulative-za');
     var i = 1;
     var j = 1;
-    changeSpan.each(function() {
+    changeSpan.each(function () {
         $(this).attr('data-span-num', i);
         i++;
     });
-    separationCumulativeZa.each(function() {
+    separationCumulativeZa.each(function () {
         $(this).attr('data-inp-num', j);
         j++;
     });
 }
+
 changeSpanCandidateAddAttr();
 
 function findPrevInputAcumulative(_this, parent) {
@@ -1004,6 +1018,14 @@ function findPrevInputAcumulative(_this, parent) {
     var nextSpan = parent.find('[data-span-num="' + --currentInputNumber + '"]');
     var wrapInputHide = _this.closest('.cumulative-hotkey');
     var changeSpan = wrapInputHide.siblings('.change-span-candidate');
+    var btnParent = _this.closest('.separation-votes .voting-actions__choice-wrap');
+    btnParent.each(function () {
+        var btn = $(this).find('.voting-actions-btn');
+        var inputHide = $(this).find('.input-hide');
+        if (inputHide.val() === '0') {
+            btn.removeClass('voting-active');
+        }
+    });
     if (nextSpan.length) {
         wrapInputHide.hide();
         changeSpan.show();
@@ -1013,16 +1035,28 @@ function findPrevInputAcumulative(_this, parent) {
         changeSpan.show();
         parent.find('[data-span-num="3"]').click().select();
     }
+
+
 }
+
 function findNextInputAcumulative(_this, parent) {
     var currentInputNumber = _this.attr('data-inp-num');
     var nextSpan = parent.find('[data-span-num="' + ++currentInputNumber + '"]');
     var wrapInputHide = _this.closest('.cumulative-hotkey');
     var changeSpan = wrapInputHide.siblings('.change-span-candidate');
+    var btnParent = _this.closest('.separation-votes .voting-actions__choice-wrap');
+    btnParent.each(function () {
+        var btn = $(this).find('.voting-actions-btn');
+        var inputHide = $(this).find('.input-hide');
+        if (inputHide.val() === '0') {
+            btn.removeClass('voting-active');
+        }
+    });
     if (nextSpan.length) {
         wrapInputHide.hide();
         changeSpan.show();
         nextSpan.click().select();
+
     } else {
         wrapInputHide.hide();
         changeSpan.show();

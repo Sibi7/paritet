@@ -192,7 +192,7 @@ function UpdateRepresentatives() {
     }
 
     $.ajax({
-        url: "../UpdateRepresentatives",
+        url: "/admin/user/UpdateRepresentatives",
         type: "POST",
         data: JSON.stringify(model),
         contentType: "application/json",
