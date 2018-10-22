@@ -393,6 +393,7 @@ $(function () {
         var parent = _this.closest('.voting-multiple-candidates');
         var parentSepar = _this.closest('.cumulative-voting-input');
         ajaxForSeparationBtn(_this).done(function () {
+            disabledAllBtnSeparation();
             toggleVotesZaCandidate(parent);
             separationVotesBtnSubstitution();
             var changeSpanCandidate = parentSepar.find('.change-span-candidate');
@@ -400,7 +401,7 @@ $(function () {
             changeSpanCandidate.text('0');
             inputHideCumulative.val('0');
         });
-        disabledAllBtnSeparation();
+
     });
 
     function separationVotesBtnSubstitution() {
@@ -417,17 +418,18 @@ $(function () {
         var _this = $(this);
         var parent = _this.closest('.voting-multiple-candidates');
         var parentSepar = _this.closest('.cumulative-voting-input');
-
         ajaxForSeparationBtn($(this)).done(function () {
             var changeSpanCandidate = parentSepar.find('.change-span-candidate');
             var inputHideCumulative = parentSepar.find('.separation-cumulative-za');
             changeSpanCandidate.text('0');
             inputHideCumulative.val('0');
             if (parent.length) {
+                disabledAllBtn();
                 toggleVotesZaCandidate(parent);
                 votesZaSimpleMultiplySum(parent.find('.voting-clear-division'))
             }
         });
+
     });
 
     function toggleVotesZaCandidateInit() {
@@ -869,7 +871,9 @@ $(function () {
         var arrForSend = [];
         var totalZa = $('.votes-za');
         var votingClose = $('.voting-actions-sing-btn.voting-close');
-
+        console.log('activeZa', activeZa);
+        console.log('votesPerCandidate', votesPerCandidate);
+        console.log('total', total);
         activeZa.each(function () {
             arrForSend.push(votesPerCandidate);
         });
