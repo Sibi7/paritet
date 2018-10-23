@@ -871,12 +871,10 @@ $(function () {
         var arrForSend = [];
         var totalZa = $('.votes-za');
         var votingClose = $('.voting-actions-sing-btn.voting-close');
-        console.log('activeZa', activeZa);
-        console.log('votesPerCandidate', votesPerCandidate);
-        console.log('total', total);
         activeZa.each(function () {
             arrForSend.push(votesPerCandidate);
         });
+        console.log('this', this);
 
         if (arrForSend.length) {
             additionFraction(arrForSend.join(';')).done(function (data) {
