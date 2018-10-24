@@ -166,28 +166,12 @@ $(function () {
                     btnNotActive.addClass('voting-not-active');
                     btnNotZa.addClass('voting-not-active');
                     btnInvalid.addClass('voting-active');
-                    totalLeftMassEntry.css({
-                        color: 'red'
-                    });
-                    // changeSpan.css({
-                    //     pointerEvents: 'none'
-                    // });
-                    // votingClose.css({
-                    //     pointerEvents: 'none'
-                    // });
+                    checkMinusColor();
                 }
                 else {
-                    // changeSpan.css({
-                    //     pointerEvents: 'auto'
-                    // });
-                    // votingClose.css({
-                    //     pointerEvents: 'auto'
-                    // });
                     btnNotActive.removeClass('voting-not-active');
                     btnInvalid.removeClass('voting-active');
-                    totalLeftMassEntry.css({
-                        color: '#141414'
-                    });
+                    checkMinusColor();
                 }
             }
 
@@ -197,6 +181,22 @@ $(function () {
 
         }
     }
+    // Функция которая проверяет после голосования "Total-left/Голосов осталось" на первый знак минус, если он есть тогда данные красного цвета
+    function checkMinusColor() {
+        var totalLeft = $('.separation-votes .votes-left .total-left');
+        if (totalLeft.text().trim()[0] === '-') {
+           totalLeft.css({
+               color: 'red'
+           })
+        }
+        else {
+            totalLeft.css({
+                color: '#141414'
+            })
+        }
+    }
+
+    checkMinusColor();
 
     $(document).on('keyup', '.separation-votes .input-hide', function () {
 
@@ -313,6 +313,7 @@ $(function () {
     $(document).on('click', '.cumulative-voting-input .not-separation .voting-close', function () {
         cumNotSeparVotingClearInput($(this));
     });
+
     $(document).on('click', '.separation-votes .voting-close', function () {
         var parent = $(this).closest('.voting-enter__tr');
         ajaxForSeparationBtn($(this)).done(function () {
@@ -418,6 +419,7 @@ $(function () {
         var _this = $(this);
         var parent = _this.closest('.voting-multiple-candidates');
         var parentSepar = _this.closest('.cumulative-voting-input');
+        var btnAllVotingClose = $('.voting-actions-all-btn.voting-close');
         ajaxForSeparationBtn($(this)).done(function () {
             var changeSpanCandidate = parentSepar.find('.change-span-candidate');
             var inputHideCumulative = parentSepar.find('.separation-cumulative-za');
@@ -427,6 +429,10 @@ $(function () {
                 disabledAllBtn();
                 toggleVotesZaCandidate(parent);
                 votesZaSimpleMultiplySum(parent.find('.voting-clear-division'))
+            }
+            // после сворачивания голосов делаем проверку на кнопку "Х" всего бюллетеня. если есть ненажатые кнопки "Х" по вопросу, тогда отжимаем кнопку у всего бюллетеня
+            if (btnAllVotingClose.hasClass('input-selected')) {
+                btnAllVotingClose.removeClass('input-selected');
             }
         });
 
@@ -874,7 +880,6 @@ $(function () {
         activeZa.each(function () {
             arrForSend.push(votesPerCandidate);
         });
-        console.log('this', this);
 
         if (arrForSend.length) {
             additionFraction(arrForSend.join(';')).done(function (data) {
@@ -956,6 +961,16 @@ $(function () {
         calculateTotalVoises(parent.find('.input-hide'));
         return false;
     });
+
+    //Событие на кнопку "X" для всего бюллетеня
+    $(document).on('click', '.voting-actions-all-btn.voting-close', function () {
+        if ($(this).hasClass('input-selected')) { //  Делаем проверку, если бала нажата кнопка "Х" для всего бюллетеня - идем далее.. Если нет, ничего не делаем
+            var parent = $('.disabled-form'), // Находим родительский класс для всего бюллетеня
+                allSeparationBtnClose = parent.find('.separation-votes .voting-close'); // Находим все кнопки "X" в раделенном голосовании
+            allSeparationBtnClose.click(); // делаем по ним клик тем самым вызывая ajax запрос на сворачивание разделенного голосования
+        }
+    });
+
 });
 
 /*

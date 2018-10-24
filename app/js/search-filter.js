@@ -29,7 +29,7 @@ $(function () {
         e.preventDefault();
         if ($(this).val()[0] === "#" || $(this).val()[0] === "№") {
             searchFilter({
-                selectorForFilter: '.search-select li .account-register',
+                selectorForFilter: '.search-select li .account-passport',
                 inputSelector: '.t-search',
                 selectorForHide: 'li'
             });
