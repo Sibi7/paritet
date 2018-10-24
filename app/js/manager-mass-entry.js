@@ -697,8 +697,6 @@ $(function () {
                         // Заменяем пробелы на 0, что бы с сервера не возвращалась ошибка
                         if ($(this).val().trim() === '') {
                             $(this).val(0)
-
-
                         }
                         arrOfInputsVal.push($(this).val()); // Значение каждого инпута заносим в массив
                     });
@@ -892,7 +890,7 @@ $(function () {
                         });
                         votesMax.hide();
                         totalZa.show();
-                        activeZa.removeClass('input-selected').css({outline: 'none'});
+                        activeZa.removeClass('input-selected');
                         votingClose.addClass('input-selected')
 
                     } else {
