@@ -156,6 +156,20 @@ function Hotkeys() {
                 nextBtn.focus();
             },
             keys: [32]
+        },
+        {
+            //фокус на инпутпоиска  при нажатиеf2 в форме массового ввода
+            func: function () {
+                $('.hotkeys').find('.t-search').focus();
+            },
+            keys: [113]
+        },
+        {
+           //убираем фокус с инпута
+            func: function () {
+                $('.hotkeys').find('.t-search').blur();
+            },
+            keys: [113]
         }
     ];
 

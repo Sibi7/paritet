@@ -355,6 +355,11 @@ $(function () {
         var url = new URL(window.location.href);
         var registerAccountId = url.searchParams.get('registerAccountId');
         var _this = $this;
+        var parent = _this.closest('.voting-multiple-candidates');
+        if (_this.closest('.voting-multiple-candidates').length) {
+            console.log(_this.closest('.voting-inputs__choice').find('.voting-actions-sing-btn.voting-true.input-selected'))
+            _this.closest('.voting-inputs__choice').find('.voting-actions-sing-btn.voting-true.input-selected').click();
+        }
         return $.ajax({
             url: '/Manager/Input/SplitVoicesAjax/' + meetingId,
             type: 'post',
@@ -364,7 +369,10 @@ $(function () {
             },
             success: function (data) {
                 var content = _this.closest('.voting-enter__tr').find('.voting-enter__td.margin-left-auto');
-                content[0].outerHTML = data;
+                setTimeout(function () {
+                    content[0].outerHTML = data;
+                    toggleVotesZaCandidate(parent)
+                }, 0);
                 disabledAllBtnSeparation();
                 vetoCheckBtn();
             },
@@ -373,6 +381,8 @@ $(function () {
             }
 
         });
+
+
     }
 
 
@@ -463,6 +473,7 @@ $(function () {
         var parent = _this.closest('.voting-multiple-candidates');
         var blocks = parent.find('.separation-votes');
         var arrForSnd = [];
+        var clickedNotSeparatedBtn = parent.find('.voting-actions-sing-btn.voting-true.input-selected');
         blocks.each(function () {
             if ($(this).find('.input-hide').val() === '') {
                 arrForSnd.push(0);
@@ -470,6 +481,11 @@ $(function () {
             }
             arrForSnd.push($(this).find('.input-hide:first').val());
         });
+        clickedNotSeparatedBtn.each(function () {
+            arrForSnd.push($(this).closest('.voting-inputs').find('.votes-per-candidate').val().replace(/\u00a0/g, ''));
+        });
+        console.log('votesZaSimpleMultiplySum() arrForSnd', arrForSnd)
+
         additionFraction(arrForSnd.join(';')).done(function (data) {
             if (blocks.length) {
                 parent.find('.votes-za-candidate .total-left').text(data.result);
@@ -492,6 +508,15 @@ $(function () {
             votesZaSimpleMultiplySum($(this));
         }
     });
+    $(document).on('click', '.voting-multiple-candidates .voting-clear-division', function (e) {
+        if ($(this).closest('.voting-actions__choice-wrap').find('.voting-true').length) {
+            // if ($(this).val() === '' && e.type === 'keyup') return false;
+            votesZaSimpleMultiplySum($(this));
+        }
+    });
+    // $(document).on('click', '.voting-multiple-candidates .voting-divide', function (e) {
+    //     $(this).closest('.voting-actions__choice-wrap').find('.voting-true').click();
+    // });
 
     $(document).on('click', '.voting-multiple-candidates .separation-votes .input-balance', function () {
         $(this).trigger('blur');
@@ -875,13 +900,21 @@ $(function () {
         var arrForSend = [];
         var totalZa = $('.votes-za');
         var votingClose = $('.voting-actions-sing-btn.voting-close');
+        var separetionValZa = parent.find('.separation-votes');
+
         activeZa.each(function () {
             arrForSend.push(votesPerCandidate);
         });
+        separetionValZa.each(function () {
+            arrForSend.push($(this).find('.voting-actions__choice-wrap:first .input-hide').val());
+        });
+
+        console.log('arrForSend', arrForSend)
 
         if (arrForSend.length) {
             additionFraction(arrForSend.join(';')).done(function (data) {
                 votesSum.text(data.result);
+                parent.find('.votes-za-candidate .total-left').text(data.result);
                 comparingIsLager(total, data.result).done(function (res) {
                     if (res.result === 'false') {
                         // если тотал меньше, чем мы отдаем (значит показываем строку с голосами, добавляем тексту красный цвет, и делаем голосование недейтвительным)

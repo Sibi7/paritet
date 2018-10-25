@@ -18,7 +18,8 @@ $(function () {
                 item.closest(obj.selectorForHide).style.display = "";
                 item.closest(obj.selectorForHide).classList.add('active-search-item');
 
-            } else {
+            }
+            else {
                 item.closest(obj.selectorForHide).style.display = "none";
                 item.closest(obj.selectorForHide).classList.remove('active-search-item');
             }
