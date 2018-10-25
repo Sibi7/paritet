@@ -23,7 +23,8 @@ $(function () {
                 item.closest(obj.selectorForHide).style.display = "none";
                 item.closest(obj.selectorForHide).classList.remove('active-search-item');
             }
-        }
+
+
     }
 
     $(document).on('keyup', '.t-search', function (e) {
