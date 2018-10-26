@@ -165,12 +165,21 @@ function Hotkeys() {
             keys: [113]
         },
         {
-           //убираем фокус с инпута
+            //фокус на инпутпоиска  при нажатиеf2 в форме массового ввода
             func: function () {
-                $('.hotkeys').find('.t-search').blur();
+                var hotkeys = $('.hotkeys');
+                hotkeys.find('.t-search').blur();
+                hotkeys.find('.search-select').hide();
             },
-            keys: [113]
+            keys: [27]
         }
+        // {
+        //    //убираем фокус с инпута
+        //     func: function () {
+        //         $('.hotkeys').find('.t-search').blur();
+        //     },
+        //     keys: [113]
+        // }
     ];
 
     this.run = function () {
