@@ -330,17 +330,17 @@ $(function () {
         var inputMassEntry = parent.find('.input-hide');
         var massEntryArray = [];
         var massEntryTotal = parent.find('.total-max').text();
-
         inputMassEntry.each(function () {
             massEntryArray.push($(this).val());
         });
+        console.log(massEntryArray);
         massEntryArray.splice(massEntryArray.indexOf($(this).siblings('input').val()), 1);
         fractionMinusArrayFraction(massEntryArray, massEntryTotal).done(function (data) {
             if (votesLeft.text() === '0') {
                 return false;
             }
             else {
-                inputHide.val(data.result);
+                inputHide.val(data.result.replace(/\u00a0/g, ''));
                 changeSpan.text(data.result);
                 votesLeft.text(0);
             }
@@ -589,7 +589,7 @@ $(function () {
             if (!parent.find('.voting-true').hasClass('input-selected')) {
                 parent.find('.voting-true').click();
             }
-            _this.closest('.input-hide-wrap').find('.separation-cumulative-za').val(res.result);
+            _this.closest('.input-hide-wrap').find('.separation-cumulative-za').val(res.result.replace(/\u00a0/g, ''));
             _this.closest('.voting-actions__wrap-input').find('.change-span').text(res.result);
             var zaBtn = parent.find('.voting-true');
             if (res['status'] === "success") {

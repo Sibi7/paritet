@@ -14,7 +14,12 @@ $(function () {
         for (var i = 0; i < items.length; i++) {
             var item = items[i];
 
-            if (item.innerHTML.toUpperCase().indexOf(input.value.trim().replace(/[#№]/g, '').toUpperCase()) > -1) {
+            if (item.innerHTML.toUpperCase().indexOf(input.value.trim().replace(/[#№]/g, ' ').toUpperCase()) > -1) {
+                item.closest(obj.selectorForHide).style.display = "";
+                item.closest(obj.selectorForHide).classList.add('active-search-item');
+
+            }
+            else if (item.innerHTML.toUpperCase().replace(/\s+/g, '').indexOf(input.value.trim().replace(/[#№]/g, ' ').replace(/\s+/g, '').toUpperCase()) > -1) {
                 item.closest(obj.selectorForHide).style.display = "";
                 item.closest(obj.selectorForHide).classList.add('active-search-item');
 
@@ -23,12 +28,13 @@ $(function () {
                 item.closest(obj.selectorForHide).style.display = "none";
                 item.closest(obj.selectorForHide).classList.remove('active-search-item');
             }
-
-
+        }
     }
 
     $(document).on('keyup', '.t-search', function (e) {
         e.preventDefault();
+
+
         if ($(this).val()[0] === "#" || $(this).val()[0] === "№") {
             searchFilter({
                 selectorForFilter: '.search-select li .account-passport',
