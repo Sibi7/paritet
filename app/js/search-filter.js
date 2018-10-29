@@ -37,13 +37,13 @@ $(function () {
 
         if ($(this).val()[0] === "#" || $(this).val()[0] === "№") {
             searchFilter({
-                selectorForFilter: '.search-select li .account-passport',
+                selectorForFilter: '.search-select li .account-register',
                 inputSelector: '.t-search',
                 selectorForHide: 'li'
             });
         } else if ($.isNumeric($(this).val()[0])) {
             searchFilter({
-                selectorForFilter: '.search-select li .account-number',
+                selectorForFilter: '.search-select li .account-passport',
                 inputSelector: '.t-search',
                 selectorForHide: 'li'
             });
@@ -66,11 +66,11 @@ $(function () {
     });
 
     $(document).on('click', '.search-select li', function () {
-        $('.mass-search').val($(this).text());
+        $('.mass-search').val($(this).text().replace(/\s{2,}/g, " ").replace(/([.!?]+)(?=\S)/g, "$1 "));
 
         setTimeout(function () {
             $(this).closest('form').submit();
-        },500);
+        },100);
 
     });
 });
