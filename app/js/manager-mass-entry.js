@@ -372,9 +372,9 @@ $(function () {
                 setTimeout(function () {
                     content[0].outerHTML = data;
                     toggleVotesZaCandidate(parent)
+                    disabledAllBtnSeparation();
+                    vetoCheckBtn();
                 }, 0);
-                disabledAllBtnSeparation();
-                vetoCheckBtn();
             },
             error: function (err) {
                 alert('Ошибка! Ответ сервера: ' + err.status);
@@ -404,14 +404,15 @@ $(function () {
         var parent = _this.closest('.voting-multiple-candidates');
         var parentSepar = _this.closest('.cumulative-voting-input');
         ajaxForSeparationBtn(_this).done(function () {
-            disabledAllBtnSeparation();
             toggleVotesZaCandidate(parent);
             separationVotesBtnSubstitution();
+
             var changeSpanCandidate = parentSepar.find('.change-span-candidate');
             var inputHideCumulative = parentSepar.find('.separation-cumulative-za');
             changeSpanCandidate.text('0');
             inputHideCumulative.val('0');
-        });
+        })
+
 
     });
 
