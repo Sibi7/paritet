@@ -66,7 +66,7 @@ $(function () {
             var parent = $(this).closest('.input-hide-wrap');
             var count = parent.find('.input-hide'),
                 val = parseInt(parent.find('.input-hide').val());
-            if (val == 999999) {
+            if (val === 999999) {
                 return false;
             } else {
                 count.val(val + 1);
@@ -371,8 +371,9 @@ $(function () {
                 var content = _this.closest('.voting-enter__tr').find('.voting-enter__td.margin-left-auto');
                 setTimeout(function () {
                     content[0].outerHTML = data;
-                    toggleVotesZaCandidate(parent)
+                    toggleVotesZaCandidate(parent);
                     disabledAllBtnSeparation();
+                    separationVotesBtnSubstitution();
                     vetoCheckBtn();
                 }, 0);
             },
@@ -405,7 +406,6 @@ $(function () {
         var parentSepar = _this.closest('.cumulative-voting-input');
         ajaxForSeparationBtn(_this).done(function () {
             toggleVotesZaCandidate(parent);
-            separationVotesBtnSubstitution();
 
             var changeSpanCandidate = parentSepar.find('.change-span-candidate');
             var inputHideCumulative = parentSepar.find('.separation-cumulative-za');
@@ -558,7 +558,12 @@ $(function () {
         additionFraction(arrOfInputsYesVal.join(';')).done(function (res) {
             givenZa.text(res.result);
             givenZa.closest('.separation-cumulative-wrap-input').find('.input-hide').val(res.result);
-            calculateTotalVoises(givenZa)
+            calculateTotalVoises(givenZa);
+            var votingTrue = parent.find('.voting-true.voting-btn-cumulative');
+            if(givenZa.text() === "0"){
+                votingTrue.addClass('voting-not-active');
+            }
+
         });
 
     });

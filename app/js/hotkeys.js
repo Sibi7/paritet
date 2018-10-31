@@ -66,8 +66,10 @@ function Hotkeys() {
             func: function (e) {
                 e.preventDefault();
                 $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[2].click()
+                console.log()
             },
             keys: [18, 51]
+
         },
         {
             // alt + 4
@@ -103,7 +105,7 @@ function Hotkeys() {
             keys: [18, 55]
         },
         {
-            // ctrl + 8
+            // alt + 8
             func: function (e) {
                 e.preventDefault();
                 $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[7].click()
@@ -111,20 +113,12 @@ function Hotkeys() {
             keys: [18, 56]
         },
         {
-            // ctrl + 9
+            // alt + 9
             func: function (e) {
                 e.preventDefault();
                 $('.hotkeys').find('.bullet-numbers-hotkey .bullet-number')[8].click()
             },
             keys: [18, 57]
-        },
-        {
-            // alt + 0 выбор всех бюллетеней
-            func: function (e) {
-                e.preventDefault();
-                $('.bullet-numbers-hotkey').find('.bullet-number-all').trigger('change');
-            },
-            keys: [18, 48]
         },
         {
             func: function (e) {
