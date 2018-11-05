@@ -48,8 +48,9 @@ $(function () {
     // перезаписываем значение в change-span, если в инпут были введены цифры. + обрабатываем введенные цифры и добавляем разряды числам.
     $(document).on('change', '.input-hide', function () {
         var number = $(this).val();
-        var format = String(number).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
-        $(this).closest('.voting-actions__wrap-input').find('.change-span').html(format);
+        var convert = convertFraction(number);
+        console.log(convert);
+        $(this).closest('.voting-actions__wrap-input').find('.change-span').text(convert);
 
     });
     // если во время ввода в контроле ввода был нажат Enter, сохраняем значения в change-span
@@ -181,13 +182,14 @@ $(function () {
 
         }
     }
+
     // Функция которая проверяет после голосования "Total-left/Голосов осталось" на первый знак минус, если он есть тогда данные красного цвета
     function checkMinusColor() {
         var totalLeft = $('.separation-votes .votes-left .total-left');
         if (totalLeft.text().trim()[0] === '-') {
-           totalLeft.css({
-               color: 'red'
-           })
+            totalLeft.css({
+                color: 'red'
+            })
         }
         else {
             totalLeft.css({
@@ -198,9 +200,66 @@ $(function () {
 
     checkMinusColor();
 
-    $(document).on('keyup', '.separation-votes .input-hide', function () {
 
-        calculateTotalVoises($(this))
+    function convertFraction(_number) {
+        var fractionArray = [
+            {originalFrac: '1/2', convertedFrac: '&frac12;'},
+            {originalFrac: '1/3', convertedFrac: '&frac13;'},
+            {originalFrac: '2/3', convertedFrac: '&frac23;'},
+            {originalFrac: '1/4', convertedFrac: '&frac14;'},
+            {originalFrac: '3/4', convertedFrac: '&frac34;'},
+            {originalFrac: '1/5', convertedFrac: '&frac15;'},
+            {originalFrac: '2/5', convertedFrac: '&frac25;'},
+            {originalFrac: '3/5', convertedFrac: '&frac35;'},
+            {originalFrac: '4/5', convertedFrac: '&frac45;'},
+            {originalFrac: '1/6', convertedFrac: '&frac16;'},
+            {originalFrac: '5/6', convertedFrac: '&frac56;'},
+            {originalFrac: '1/7', convertedFrac: '&frac17;'},
+            {originalFrac: '1/8', convertedFrac: '&frac18;'},
+            {originalFrac: '3/8', convertedFrac: '&frac38;'},
+            {originalFrac: '5/8', convertedFrac: '&frac58;'},
+            {originalFrac: '7/8', convertedFrac: '&frac78;'}
+        ];
+        var number = _number.trim();
+        var convertedFrac;
+        if (!isNaN(number)) {
+            return number;
+        }
+
+        function findFraction(number_) {
+            for (var i = 0; i < fractionArray.length; i++) {
+                if (fractionArray[i].originalFrac === number_) {
+                    return fractionArray[i].convertedFrac;
+                }
+            }
+            return number_;
+        }
+
+        if (number.indexOf(' ') === -1) {
+            convertedFrac = findFraction(number);
+            return convertedFrac
+        }
+        else {
+            var fraction = number.slice(number.indexOf(' ') + 1);
+            var integer = number.slice(0, number.indexOf(' ')).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+            convertedFrac = findFraction(fraction);
+            return integer + ' ' + convertedFrac
+        }
+    }
+
+
+    // var flagInputHIde = true;
+    $(document).on('keyup', '.separation-votes .input-hide', function () {
+        calculateTotalVoises($(this));
+        // var parent =  $('.voting-input');
+        // var arrayBtn = parent.find('.separation-votes .input-hide');
+        // var inFocus = parent.find('.voting-inputs__choice--item:focus');
+        //
+        // arrayBtn.each(function () {
+        //     // if(isNaN($(this).text()) && flag){
+        //     //     flag = false;
+        //     // }
+        // });
     });
 
     // Событие на кнопки с разделенным голосованием, если в поле инпут было введено значение, а потом отжали кнопку ЗА ПРОТИВ или ВОЗДЕРЖАЛСЯ, то значение в инпуте сбрасывается и пересчитывается счетчик "Голосов осталось"
@@ -560,7 +619,7 @@ $(function () {
             givenZa.closest('.separation-cumulative-wrap-input').find('.input-hide').val(res.result);
             calculateTotalVoises(givenZa);
             var votingTrue = parent.find('.voting-true.voting-btn-cumulative');
-            if(givenZa.text() === "0"){
+            if (givenZa.text() === "0") {
                 votingTrue.addClass('voting-not-active');
             }
 
@@ -1007,6 +1066,25 @@ $(function () {
             allSeparationBtnClose.click(); // делаем по ним клик тем самым вызывая ajax запрос на сворачивание разделенного голосования
         }
     });
+    // var flag = true;
+    // function controlBtnHotkey() {
+    //     var parent =  $('.voting-input');
+    //     var arrayBtn = parent.find('.voting-inputs__choice');
+    //     var inFocus = parent.find('.voting-inputs__choice--item:focus');
+    //     console.log(inFocus);
+    //     arrayBtn.each(function () {
+    //         if(isNaN($(this).text()) && flag){
+    //             flag = false;
+    //         }
+    //     })
+    //
+    // }
+
+
+    // $(document).on('keyup', function () {
+    //     controlBtnHotkey()
+    // });
+
 
 });
 
@@ -1116,4 +1194,5 @@ function findNextInputAcumulative(_this, parent) {
         changeSpan.show();
         parent.find('[data-span-num="1"]').click().select();
     }
+
 }
