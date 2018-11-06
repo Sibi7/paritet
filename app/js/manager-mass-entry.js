@@ -51,7 +51,7 @@ $(function () {
         var changeSpan = $(this).closest('.voting-actions__wrap-input').find('.change-span');
         var convert = convertFraction(number);
         changeSpan.html(convert);
-         HtmlEncode(convert, changeSpan);
+        HtmlEncode(convert, changeSpan);
     });
 
     $(document).on('keydown', '.input-hide', function (e) {
@@ -211,18 +211,17 @@ $(function () {
         var fractionArray = [
             {originalFrac: '1/2', convertedFrac: '&frac12;'},
             {originalFrac: '1/3', convertedFrac: '&frac13;'},
-            {originalFrac: '2/3', convertedFrac: '&frac23;'},
             {originalFrac: '1/4', convertedFrac: '&frac14;'},
-            {originalFrac: '3/4', convertedFrac: '&frac34;'},
             {originalFrac: '1/5', convertedFrac: '&frac15;'},
-            {originalFrac: '2/5', convertedFrac: '&frac25;'},
-            {originalFrac: '3/5', convertedFrac: '&frac35;'},
-            {originalFrac: '4/5', convertedFrac: '&frac45;'},
             {originalFrac: '1/6', convertedFrac: '&frac16;'},
-            {originalFrac: '5/6', convertedFrac: '&frac56;'},
-            {originalFrac: '1/7', convertedFrac: '&frac17;'},
             {originalFrac: '1/8', convertedFrac: '&frac18;'},
+            {originalFrac: '2/3', convertedFrac: '&frac23;'},
+            {originalFrac: '2/5', convertedFrac: '&frac25;'},
+            {originalFrac: '3/4', convertedFrac: '&frac34;'},
+            {originalFrac: '3/5', convertedFrac: '&frac35;'},
             {originalFrac: '3/8', convertedFrac: '&frac38;'},
+            {originalFrac: '4/5', convertedFrac: '&frac45;'},
+            {originalFrac: '5/6', convertedFrac: '&frac56;'},
             {originalFrac: '5/8', convertedFrac: '&frac58;'},
             {originalFrac: '7/8', convertedFrac: '&frac78;'}
         ];
@@ -257,18 +256,9 @@ $(function () {
         return selector.html(s);
     }
 
-    // var flagInputHIde = true;
+
     $(document).on('keyup', '.separation-votes .input-hide', function () {
         calculateTotalVoises($(this));
-        // var parent =  $('.voting-input');
-        // var arrayBtn = parent.find('.separation-votes .input-hide');
-        // var inFocus = parent.find('.voting-inputs__choice--item:focus');
-        //
-        // arrayBtn.each(function () {
-        //     // if(isNaN($(this).text()) && flag){
-        //     //     flag = false;
-        //     // }
-        // });
     });
 
     // Событие на кнопки с разделенным голосованием, если в поле инпут было введено значение, а потом отжали кнопку ЗА ПРОТИВ или ВОЗДЕРЖАЛСЯ, то значение в инпуте сбрасывается и пересчитывается счетчик "Голосов осталось"
@@ -628,6 +618,8 @@ $(function () {
     $(document).on('change', '.cumulative-voting-input .separation-cumulative-za', function () {
         var parent = $(this).closest('.cumulative-voting-input');
         var zaBtn = parent.find('.voting-true');
+
+
         if (zaBtn.hasClass('voting-active')) {
             return false
         }
@@ -684,6 +676,25 @@ $(function () {
         var massEntryArray = [];
         var massEntryTotal = parent.find('.total-max').text();
         var totalLeft = parent.find('.votes-left .total-left');
+        var flag = 0;
+        var arrayInput = parent.find('.input-hide');
+        var validError = parent.find('.input-hide-wrap .validation-fraction');
+        console.log('validError',validError);
+        arrayInput.each(function () {
+            if (isNaN($(this).val().trim())) {
+                flag++
+            }
+        });
+        if(flag > 1){
+            // add error
+            console.log('error');
+            validError.show();
+        }
+        else{
+            //remove error
+            validError.hide();
+        }
+
 
         if (isDividing) {
             inputMassEntry.each(function () {

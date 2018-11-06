@@ -2438,3 +2438,14 @@ label {
 .swap-control-info{
   cursor: pointer;
 }
+.validation-fraction{
+  width: 320px;
+  position: absolute;
+  color: #b22424;
+  font-size: 12px;
+  top: -17px;
+  display: none;
+}
+.error-fraction{
+  border: 1px solid #b22424!important;
+}
