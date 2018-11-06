@@ -46,23 +46,25 @@ $(function () {
         return false;
     });
     // перезаписываем значение в change-span, если в инпут были введены цифры. + обрабатываем введенные цифры и добавляем разряды числам.
-    $(document).on('change', '.input-hide', function () {
+    $(document).on(' change ', '.input-hide', function () {
         var number = $(this).val();
+        var changeSpan = $(this).closest('.voting-actions__wrap-input').find('.change-span');
         var convert = convertFraction(number);
-        console.log(convert);
-        $(this).closest('.voting-actions__wrap-input').find('.change-span').text(convert);
-
+        changeSpan.html(convert);
+         HtmlEncode(convert, changeSpan);
     });
-    // если во время ввода в контроле ввода был нажат Enter, сохраняем значения в change-span
+
     $(document).on('keydown', '.input-hide', function (e) {
         var container = $(".input-hide-wrap");
         var changleSpan = $(".change-span");
+        // если во время ввода в контроле ввода был нажат Enter, сохраняем значения в change-span
         if (e.key === 'Enter') {
             $(this).trigger('blur');
             container.hide();
             changleSpan.show();
             inputCheckValForBtnActive();
         }
+        // Инкремент/декремент при нажатии стрелки вверх в контролле ввода
         if (e.keyCode === 38) {
             var parent = $(this).closest('.input-hide-wrap');
             var count = parent.find('.input-hide'),
@@ -76,6 +78,7 @@ $(function () {
             }
             calculateTotalVoises(parent.find('.input-hide'));
         }
+        // Инкремент/декремент при нажатии стрелки вниз в контролле ввода
         if (e.keyCode === 40) {
             var parent = $(this).closest('.input-hide-wrap');
             var count = parent.find('.input-hide');
@@ -88,12 +91,15 @@ $(function () {
             calculateTotalVoises(parent.find('.input-hide'));
             return false;
         }
+        // если во время ввода в контроле ввода был нажат ESC закрываем контрол вввода и обнуляем значение
         if (e.keyCode === 27) {
             $(this).val('0');
             container.hide();
             changleSpan.show();
             calculateTotalVoises($(this));
         }
+        // делаем запрет ввода символов и разрешаем ввод только чисел и дроби
+        return isAllowedKeyCode(e.originalEvent.key);
     });
 
     $(document).on('click', '.change-span', function () {
@@ -247,6 +253,9 @@ $(function () {
         }
     }
 
+    function HtmlEncode(s, selector) {
+        return selector.html(s);
+    }
 
     // var flagInputHIde = true;
     $(document).on('keyup', '.separation-votes .input-hide', function () {
@@ -275,14 +284,9 @@ $(function () {
         var inputsForClear = parent.find('.input-hide');
         var spansForClear = parent.find('.change-span');
         clearInputs(inputsForClear, spansForClear);
-        var number = $(this).val();
-        var format = String(number).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
         $(this).trigger('focus');
-        $(this).closest('.voting-actions__wrap-input').find('.change-span').html(format);
     });
-    $(document).on('keydown', '.input-hide', function (e) {
-        return isAllowedKeyCode(e.originalEvent.key);
-    });
+
 
     // функция проверки если кнопка ЗА
     $(document).on('click', '.cumulative-voting-input .voting-false', function () {
@@ -555,11 +559,6 @@ $(function () {
         })
 
     }
-
-    $(document).on('keyup', '.voting-multiple-candidates .separation-votes .input-hide', function () {
-
-    });
-
 
     $(document).on('keyup blur change', '.voting-multiple-candidates .separation-votes .input-hide', function (e) {
 
