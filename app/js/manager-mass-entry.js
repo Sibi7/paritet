@@ -55,11 +55,13 @@ $(function () {
     });
 
     $(document).on('keydown', '.input-hide', function (e) {
-        var container = $(".input-hide-wrap");
+        var container = $(this).closest('.input-hide-wrap');
         var changleSpan = $(".change-span");
+        var activeControlSubstrate = $('.active-control-substrate');
         // если во время ввода в контроле ввода был нажат Enter, сохраняем значения в change-span
         if (e.key === 'Enter') {
             $(this).trigger('blur');
+            activeControlSubstrate.click();
             container.hide();
             changleSpan.show();
             inputCheckValForBtnActive();
@@ -93,9 +95,10 @@ $(function () {
         }
         // если во время ввода в контроле ввода был нажат ESC закрываем контрол вввода и обнуляем значение
         if (e.keyCode === 27) {
+            activeControlSubstrate.click().css('pointerEvents', 'auto');
             $(this).val('0');
+            container.siblings('.change-span').show().text('0');
             container.hide();
-            changleSpan.show();
             calculateTotalVoises($(this));
         }
         // делаем запрет ввода символов и разрешаем ввод только чисел и дроби
@@ -104,6 +107,7 @@ $(function () {
 
     $(document).on('click', '.change-span', function () {
 
+        var activeControlSubstrate = $(this).closest('.wrap');
         var parent = $(this).closest('.voting-actions__choice-wrap');
         var btn = parent.find('.voting-actions-btn');
         var btnVotesZa = parent.find('.voting-btn-cumulative');
@@ -122,18 +126,36 @@ $(function () {
 
         }
         $(this).hide();
+
         $(this).siblings('.input-hide-wrap').show().addClass('input-hide-visible');
+
         inputHide.val(inputHide.val().trim());
         inputHide.select();
-    });
+        if($(this).siblings('.input-hide-wrap').css('display', 'block')){
+            activeControlSubstrate.addClass('active-control-substrate');
+        }
+      else {
+            removeActiveSubstrate()
+        }
 
-    $(document).mouseup(function (e) {
+    });
+    function removeActiveSubstrate(){
+        var wrapClass = $('.wrap');
+        var inputHideWrap =$('.input-hide-wrap')
+        if(inputHideWrap.css('display', 'none')){
+            wrapClass.removeClass('active-control-substrate');
+        }
+
+    }
+
+    $(document).on('click', '.active-control-substrate', function (e) {
         var container = $(".input-hide-wrap");
         var changleSpan = $(".change-span");
         if (container.has(e.target).length === 0) {
             container.hide();
             changleSpan.show();
             inputCheckValForBtnActive();
+            removeActiveSubstrate()
         }
 
     });
@@ -252,6 +274,7 @@ $(function () {
         }
     }
 
+    //функция обработки спец символа дроби принимает параметыр s-символ и selector - селектор по которому нужно обрабатывать
     function HtmlEncode(s, selector) {
         return selector.html(s);
     }
@@ -386,7 +409,6 @@ $(function () {
         inputMassEntry.each(function () {
             massEntryArray.push($(this).val());
         });
-        console.log(massEntryArray);
         massEntryArray.splice(massEntryArray.indexOf($(this).siblings('input').val()), 1);
         fractionMinusArrayFraction(massEntryArray, massEntryTotal).done(function (data) {
             if (votesLeft.text() === '0') {
@@ -410,7 +432,6 @@ $(function () {
         var _this = $this;
         var parent = _this.closest('.voting-multiple-candidates');
         if (_this.closest('.voting-multiple-candidates').length) {
-            console.log(_this.closest('.voting-inputs__choice').find('.voting-actions-sing-btn.voting-true.input-selected'))
             _this.closest('.voting-inputs__choice').find('.voting-actions-sing-btn.voting-true.input-selected').click();
         }
         return $.ajax({
@@ -538,7 +559,6 @@ $(function () {
         clickedNotSeparatedBtn.each(function () {
             arrForSnd.push($(this).closest('.voting-inputs').find('.votes-per-candidate').val().replace(/\u00a0/g, ''));
         });
-        console.log('votesZaSimpleMultiplySum() arrForSnd', arrForSnd)
 
         additionFraction(arrForSnd.join(';')).done(function (data) {
             if (blocks.length) {
@@ -668,7 +688,7 @@ $(function () {
 
     });
 
-    // не разделенное кумулятивное голосование
+    // Кумулятивное голосование, кандидаты
     $(document).on('keyup', '.separation-cumulative-za', function () {
         var parent = $(this).closest('.cumulative-voting-input');
         var isDividing = parent.find('.cum-not-dividing').length > 0;
@@ -676,26 +696,6 @@ $(function () {
         var massEntryArray = [];
         var massEntryTotal = parent.find('.total-max').text();
         var totalLeft = parent.find('.votes-left .total-left');
-        var flag = 0;
-        var arrayInput = parent.find('.input-hide');
-        var validError = parent.find('.input-hide-wrap .validation-fraction');
-        console.log('validError',validError);
-        arrayInput.each(function () {
-            if (isNaN($(this).val().trim())) {
-                flag++
-            }
-        });
-        if(flag > 1){
-            // add error
-            console.log('error');
-            validError.show();
-        }
-        else{
-            //remove error
-            validError.hide();
-        }
-
-
         if (isDividing) {
             inputMassEntry.each(function () {
                 massEntryArray.push($(this).val());
@@ -724,6 +724,38 @@ $(function () {
         }
 
     });
+
+    $(document).on('keydown keyup', '.separation-cumulative-za', function (e) {
+        var parent = $(this).closest('.cumulative-voting-input');
+        var flag = 0;
+        var arrayInput = parent.find('.input-hide');
+        var validError = parent.find('.input-hide-wrap .validation-fraction');
+        var activeControlSubstrate = $('.active-control-substrate');
+        arrayInput.each(function () {
+            if (isNaN($(this).val().trim())) {
+                flag++
+            }
+        });
+        if (flag > 1) {
+            // add error
+            validError.show();
+            arrayInput.addClass('error-fraction');
+            activeControlSubstrate.css({
+                pointerEvents: 'none'
+            })
+            return validationFraction(e.originalEvent.key);
+        }
+        if (flag <= 1) {
+            //remove error
+            validError.hide();
+            arrayInput.removeClass('error-fraction');
+            activeControlSubstrate.css({
+                pointerEvents: 'auto'
+            })
+        }
+
+    });
+
     // очистка инпутов в кумулятивном не разделенном голосовании
     $(document).on('click', '.cum-not-dividing .voting-false', function () {
         var parent = $(this).closest('.cumulative-voting-input');
@@ -984,7 +1016,6 @@ $(function () {
             arrForSend.push($(this).find('.voting-actions__choice-wrap:first .input-hide').val());
         });
 
-        console.log('arrForSend', arrForSend)
 
         if (arrForSend.length) {
             additionFraction(arrForSend.join(';')).done(function (data) {
@@ -1076,25 +1107,6 @@ $(function () {
             allSeparationBtnClose.click(); // делаем по ним клик тем самым вызывая ajax запрос на сворачивание разделенного голосования
         }
     });
-    // var flag = true;
-    // function controlBtnHotkey() {
-    //     var parent =  $('.voting-input');
-    //     var arrayBtn = parent.find('.voting-inputs__choice');
-    //     var inFocus = parent.find('.voting-inputs__choice--item:focus');
-    //     console.log(inFocus);
-    //     arrayBtn.each(function () {
-    //         if(isNaN($(this).text()) && flag){
-    //             flag = false;
-    //         }
-    //     })
-    //
-    // }
-
-
-    // $(document).on('keyup', function () {
-    //     controlBtnHotkey()
-    // });
-
 
 });
 

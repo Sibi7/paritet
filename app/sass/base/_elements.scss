@@ -2262,8 +2262,15 @@ label {
       padding: 6px;
     }
   }
-}
 
+}
+.active-control-substrate{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
 
 .wrap-remainder-btn {
   display: flex;

@@ -8,6 +8,15 @@ function isAllowedKeyCode(key) {
     }
 }
 
+function validationFraction(key) {
+    // Разрешенные клавиши для ввода дроби
+    if (key === 'Backspace' || key === 'Delete' || key === 'ArrowRight' || key === 'ArrowLeft' || key === 'Shift'  || key === 'Esc' || key === 'Tab') {
+        return true
+    } else {
+        return false
+    }
+}
+
 //Умножение
 function multiplicationFractions(val1, val2) {
     return $.ajax({
