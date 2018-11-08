@@ -54,17 +54,22 @@ $(function () {
         HtmlEncode(convert, changeSpan);
     });
 
+
     $(document).on('keydown', '.input-hide', function (e) {
+        if($(this).val().indexOf(' ')  !== -1 && e.keyCode === 32) return false;
         var container = $(this).closest('.input-hide-wrap');
         var changleSpan = $(".change-span");
-        var activeControlSubstrate = $('.active-control-substrate');
+        var validFraction = $('.validation-fraction');
         // если во время ввода в контроле ввода был нажат Enter, сохраняем значения в change-span
         if (e.key === 'Enter') {
-            $(this).trigger('blur');
-            activeControlSubstrate.click();
-            container.hide();
-            changleSpan.show();
-            inputCheckValForBtnActive();
+            if (validFraction.is(':visible')) {
+            }
+            else {
+                $(this).trigger('blur');
+                container.hide();
+                changleSpan.show();
+                inputCheckValForBtnActive();
+            }
         }
         // Инкремент/декремент при нажатии стрелки вверх в контролле ввода
         if (e.keyCode === 38) {
@@ -95,7 +100,6 @@ $(function () {
         }
         // если во время ввода в контроле ввода был нажат ESC закрываем контрол вввода и обнуляем значение
         if (e.keyCode === 27) {
-            activeControlSubstrate.click().css('pointerEvents', 'auto');
             $(this).val('0');
             container.siblings('.change-span').show().text('0');
             container.hide();
@@ -107,7 +111,6 @@ $(function () {
 
     $(document).on('click', '.change-span', function () {
 
-        var activeControlSubstrate = $(this).closest('.wrap');
         var parent = $(this).closest('.voting-actions__choice-wrap');
         var btn = parent.find('.voting-actions-btn');
         var btnVotesZa = parent.find('.voting-btn-cumulative');
@@ -131,31 +134,29 @@ $(function () {
 
         inputHide.val(inputHide.val().trim());
         inputHide.select();
-        if($(this).siblings('.input-hide-wrap').css('display', 'block')){
-            activeControlSubstrate.addClass('active-control-substrate');
-        }
-      else {
-            removeActiveSubstrate()
-        }
 
     });
-    function removeActiveSubstrate(){
-        var wrapClass = $('.wrap');
-        var inputHideWrap =$('.input-hide-wrap')
-        if(inputHideWrap.css('display', 'none')){
-            wrapClass.removeClass('active-control-substrate');
-        }
 
-    }
-
-    $(document).on('click', '.active-control-substrate', function (e) {
+    $(document).mouseup(function (e) {
         var container = $(".input-hide-wrap");
         var changleSpan = $(".change-span");
-        if (container.has(e.target).length === 0) {
-            container.hide();
-            changleSpan.show();
-            inputCheckValForBtnActive();
-            removeActiveSubstrate()
+        var validFraction = $('.validation-fraction');
+        var wrap = $('.wrap');
+        if (validFraction.is(':visible')) {
+            wrap.css({
+                pointerEvents: 'none'
+            })
+
+        }
+        else {
+            if (container.has(e.target).length === 0) {
+                container.hide();
+                changleSpan.show();
+                inputCheckValForBtnActive();
+                wrap.css({
+                    pointerEvents: 'auto'
+                })
+            }
         }
 
     });
@@ -730,7 +731,6 @@ $(function () {
         var flag = 0;
         var arrayInput = parent.find('.input-hide');
         var validError = parent.find('.input-hide-wrap .validation-fraction');
-        var activeControlSubstrate = $('.active-control-substrate');
         arrayInput.each(function () {
             if (isNaN($(this).val().trim())) {
                 flag++
@@ -740,18 +740,12 @@ $(function () {
             // add error
             validError.show();
             arrayInput.addClass('error-fraction');
-            activeControlSubstrate.css({
-                pointerEvents: 'none'
-            })
             return validationFraction(e.originalEvent.key);
         }
         if (flag <= 1) {
             //remove error
             validError.hide();
             arrayInput.removeClass('error-fraction');
-            activeControlSubstrate.css({
-                pointerEvents: 'auto'
-            })
         }
 
     });

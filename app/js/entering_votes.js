@@ -1,7 +1,7 @@
 //Валидация вводимых символов
 function isAllowedKeyCode(key) {
     // Разрешенные клавиши для ввода дроби
-    if ((+key >= 0 && +key <= 9) || key === '/' || key === ' ' || key === 'Backspace' || key === 'Delete' || key === 'ArrowRight' || key === 'ArrowLeft' || key === 'Shift' || key === 'Tab') {
+    if ((+key >= 0 && +key <= 9) || key === '/' || key === 'Backspace' || key === 'Delete' || key === 'ArrowRight' || key === 'ArrowLeft' || key === 'Shift' ) {
         return true
     } else {
         return false
