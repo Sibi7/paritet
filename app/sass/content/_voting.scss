@@ -129,6 +129,8 @@
     &--hidden {
       position: relative;
       height: 30px;
+      min-height: 30px;
+      line-height: 15px;
       overflow: hidden;
       cursor: pointer;
       &:before {

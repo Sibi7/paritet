@@ -56,7 +56,7 @@ $(function () {
 
 
     $(document).on('keydown', '.input-hide', function (e) {
-        if($(this).val().indexOf(' ')  !== -1 && e.keyCode === 32) return false;
+        if ($(this).val().indexOf(' ') !== -1 && e.keyCode === 32) return false;
         var container = $(this).closest('.input-hide-wrap');
         var changleSpan = $(".change-span");
         var validFraction = $('.validation-fraction');
@@ -75,26 +75,24 @@ $(function () {
         if (e.keyCode === 38) {
             var parent = $(this).closest('.input-hide-wrap');
             var count = parent.find('.input-hide'),
-                val = parseInt(parent.find('.input-hide').val());
-            if (val === 999999) {
-                return false;
-            } else {
-                count.val(val + 1);
-                $('.js-single-addtocart').attr('data-quantity', count.val());
-                $('.js-single-favorites').attr('data-quantity', count.val());
-            }
+                replaceVal = parseInt(count.val().slice(0, count.val().indexOf(' '))),
+                saveFraction = count.val().slice(count.val().indexOf(' '));
+            count.val(replaceVal + 1 + saveFraction).trigger('keyup').change().focus();
+            $('.js-single-addtocart').attr('data-quantity', count.val());
+            $('.js-single-favorites').attr('data-quantity', count.val());
             calculateTotalVoises(parent.find('.input-hide'));
+            return false;
         }
         // Инкремент/декремент при нажатии стрелки вниз в контролле ввода
         if (e.keyCode === 40) {
             var parent = $(this).closest('.input-hide-wrap');
-            var count = parent.find('.input-hide');
-            var counter = parseInt(count.val()) - 1;
-            counter = counter < 0 ? 0 : counter;
-            count.val(counter);
-            count.change();
-            $('.js-single-addtocart').attr('data-quantity', counter);
-            $('.js-single-favorites').attr('data-quantity', counter);
+            var count = parent.find('.input-hide'),
+                replaceVal = parseInt(count.val().slice(0, count.val().indexOf(' '))),
+                saveFraction = count.val().slice(count.val().indexOf(' '));
+            replaceVal = replaceVal[0] == 0 ? 0 + saveFraction : replaceVal - 1 + saveFraction;
+            count.val(replaceVal).trigger('keyup').change().focus();
+            $('.js-single-addtocart').attr('data-quantity', replaceVal);
+            $('.js-single-favorites').attr('data-quantity', replaceVal);
             calculateTotalVoises(parent.find('.input-hide'));
             return false;
         }
@@ -146,7 +144,6 @@ $(function () {
             wrap.css({
                 pointerEvents: 'none'
             })
-
         }
         else {
             if (container.has(e.target).length === 0) {
@@ -248,10 +245,23 @@ $(function () {
             {originalFrac: '5/8', convertedFrac: '&frac58;'},
             {originalFrac: '7/8', convertedFrac: '&frac78;'}
         ];
-        var number = _number.trim();
+        var number = _number.replace(' ', '');
         var convertedFrac;
+        // Если _number - это число без дроби
         if (!isNaN(number)) {
-            return number;
+            return number.replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+        }
+        // Если _number - это дробь без целой части
+        if (_number.indexOf(' ') === -1) {
+            convertedFrac = findFraction(number);
+            return convertedFrac
+        }
+        // Если _number - это дробь с целой частью
+        else {
+            var fraction = _number.slice(_number.indexOf(' ') + 1);
+            var integer = _number.slice(0, _number.indexOf(' ')).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+            convertedFrac = findFraction(fraction);
+            return integer + ' ' + convertedFrac
         }
 
         function findFraction(number_) {
@@ -261,17 +271,6 @@ $(function () {
                 }
             }
             return number_;
-        }
-
-        if (number.indexOf(' ') === -1) {
-            convertedFrac = findFraction(number);
-            return convertedFrac
-        }
-        else {
-            var fraction = number.slice(number.indexOf(' ') + 1);
-            var integer = number.slice(0, number.indexOf(' ')).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
-            convertedFrac = findFraction(fraction);
-            return integer + ' ' + convertedFrac
         }
     }
 
@@ -1064,17 +1063,13 @@ $(function () {
 //    Инкремент Декремент для контролла ввода/ стелочки вверх/низ
 
     $(document).on('click', '.input-hide-plus', function () {
-
         var parent = $(this).closest('.input-hide-wrap');
         var count = parent.find('.input-hide'),
-            val = parseInt(parent.find('.input-hide').val());
-        if (val == 999999) {
-            return false;
-        } else {
-            count.val(val + 1).trigger('keyup').change().focus();
-            $('.js-single-addtocart').attr('data-quantity', count.val());
-            $('.js-single-favorites').attr('data-quantity', count.val());
-        }
+            replaceVal = parseInt(count.val().slice(0, count.val().indexOf(' '))),
+            saveFraction = count.val().slice(count.val().indexOf(' '));
+        count.val(replaceVal + 1 + saveFraction).trigger('keyup').change().focus();
+        $('.js-single-addtocart').attr('data-quantity', count.val());
+        $('.js-single-favorites').attr('data-quantity', count.val());
         calculateTotalVoises(parent.find('.input-hide'));
         return false;
     });
@@ -1082,13 +1077,13 @@ $(function () {
     $(document).on('click', '.input-hide-minus', function () {
 
         var parent = $(this).closest('.input-hide-wrap');
-        var count = parent.find('.input-hide');
-        var counter = parseInt(count.val()) - 1;
-        counter = counter < 0 ? 0 : counter;
-        count.val(counter).trigger('keyup');
-        count.change().focus();
-        $('.js-single-addtocart').attr('data-quantity', counter);
-        $('.js-single-favorites').attr('data-quantity', counter);
+        var count = parent.find('.input-hide'),
+            replaceVal = parseInt(count.val().slice(0, count.val().indexOf(' '))),
+            saveFraction = count.val().slice(count.val().indexOf(' '));
+        replaceVal = replaceVal[0] == 0 ? 0 + saveFraction : replaceVal - 1 + saveFraction;
+        count.val(replaceVal).trigger('keyup').change().focus();
+        $('.js-single-addtocart').attr('data-quantity', replaceVal);
+        $('.js-single-favorites').attr('data-quantity', replaceVal);
         calculateTotalVoises(parent.find('.input-hide'));
         return false;
     });
