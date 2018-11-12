@@ -568,7 +568,12 @@ $(function () {
                 parent.html(_row.html());
             },
             error: function (err) {
-                alert('Ошибка! Ответ сервера: ' + err.status);
+                if (err.status === 401) {
+                    location.href='/User/SignIn';
+                }
+                else {
+                    alert('Ошибка! Ответ сервера: ' + err.status);
+                }
             }
         })
     });
@@ -593,7 +598,7 @@ $(function () {
 
     $(document).on('change', '.event-change', function () {
         var parent = $(this).closest('tr');
-        if ($(this).val() == 2) {
+        if ($(this).val() === 2) {
             parent.find('.ast-voting .noborder').val(0).attr('disabled', 'disabled');
         }
         else {
@@ -717,7 +722,12 @@ $(function () {
                 console.log(data)
             },
             error: function (err) {
-                alert('Ошибка! Ответ сервера: ' + err.status);
+                if (err.status === 401) {
+                    location.href='/User/SignIn';
+                }
+                else {
+                    alert('Ошибка! Ответ сервера: ' + err.status);
+                }
             }
         })
     });
@@ -794,19 +804,19 @@ $(function () {
         });
     });
 
-    // тултип для подсказки с иконкой вопроса  иконкой восклицательного знаком
+    // тултип для подсказки с иконкой вопроса 
     $(document).on('click', '.question-tooltip', function () {
         var parent = $(this).closest('.question-tooltip');
         var questionModal = parent.find('.question-tooltip__modal');
         questionModal.fadeToggle();
     });
+    // тултип для подсказки с иконкой восклицательного знака
     $(document).on('click', '.attention-tooltip', function () {
         var parent = $(this).closest('.attention-tooltip');
         var questionModal = parent.find('.attention-tooltip__modal');
 
         questionModal.fadeToggle();
     });
-
 
 
 

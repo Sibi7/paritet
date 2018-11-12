@@ -17,7 +17,12 @@ $(function () {
                 parent.html(data)
             },
             error: function (err) {
-                alert('Ошибка! Ответ сервера: ' + err.status);
+                if (err.status === 401) {
+                    location.href='/User/SignIn';
+                }
+                else {
+                    alert('Ошибка! Ответ сервера: ' + err.status);
+                }
             }
         }).done(function () {
             var regAccId = $('.register-account-id-num').val();
@@ -28,7 +33,12 @@ $(function () {
                     $('.status-voiting').html(data);
                 },
                 error: function (err) {
-                    alert('Ошибка! Ответ сервера: ' + err.status);
+                    if (err.status === 401) {
+                        location.href='/User/SignIn';
+                    }
+                    else {
+                        alert('Ошибка! Ответ сервера: ' + err.status);
+                    }
                 }
             })
         })

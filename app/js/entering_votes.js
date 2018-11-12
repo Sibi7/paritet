@@ -1,7 +1,7 @@
 //Валидация вводимых символов
 function isAllowedKeyCode(key) {
     // Разрешенные клавиши для ввода дроби
-    if ((+key >= 0 && +key <= 9) || key === '/' || key === 'Backspace' || key === 'Delete' || key === 'ArrowRight' || key === 'ArrowLeft' || key === 'Shift' ) {
+    if ((+key >= 0 && +key <= 9) || key === '/' || key === ' ' || key === 'Backspace' || key === 'Delete' || key === 'ArrowRight' || key === 'ArrowLeft' || key === 'Shift' || key === 'Tab') {
         return true
     } else {
         return false
@@ -87,7 +87,12 @@ function fractionMinusFraction(votingVoicesLeft, votesCastInputHide){
             // }
         },
         error: function (err) {
-            alert('Ошибка! Ответ сервера: ' + err.status);
+            if (err.status === 401) {
+                location.href='/User/SignIn';
+            }
+            else {
+                alert('Ошибка! Ответ сервера: ' + err.status);
+            }
         }
     });
 }
@@ -104,7 +109,12 @@ function comparingIsLager(total, value) {
         success: function (html) {
         },
         error: function (err) {
-            alert('Ошибка! Ответ сервера: ' + err.status);
+            if (err.status === 401) {
+                location.href='/User/SignIn';
+            }
+            else {
+                alert('Ошибка! Ответ сервера: ' + err.status);
+            }
         }
     })
 }
@@ -332,7 +342,12 @@ $(function () {
                 }
             },
             error: function (err) {
-                alert('Ошибка! Ответ сервера: ' + err.status);
+                if (err.status === 401) {
+                    location.href='/User/SignIn';
+                }
+                else {
+                    alert('Ошибка! Ответ сервера: ' + err.status);
+                }
             }
         })
         con.runSave();
@@ -433,7 +448,12 @@ $(function () {
                 }
             },
             error: function (err) {
-                alert('Ошибка! Ответ сервера: ' + err.status);
+                if (err.status === 401) {
+                    location.href='/User/SignIn';
+                }
+                else {
+                    alert('Ошибка! Ответ сервера: ' + err.status);
+                }
             }
         })
     }
@@ -464,7 +484,12 @@ $(function () {
                 cumulativeVotingSum.html(request);
             },
             error: function (err) {
-                alert('Ошибка! Ответ сервера: ' + err.status);
+                if (err.status === 401) {
+                    location.href='/User/SignIn';
+                }
+                else {
+                    alert('Ошибка! Ответ сервера: ' + err.status);
+                }
             }
         })
     }
@@ -515,7 +540,12 @@ $(function () {
                 }
             },
             error: function (err) {
-                alert('Ошибка! Ответ сервера: ' + err.status);
+                if (err.status === 401) {
+                    location.href='/User/SignIn';
+                }
+                else {
+                    alert('Ошибка! Ответ сервера: ' + err.status);
+                }
             }
         })
     });

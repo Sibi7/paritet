@@ -14,7 +14,12 @@ $(function () {
                 callback(html)
             },
             error: function (err) {
-                alert('Ошибка! Ответ сервера: ' + err.status);
+                if (err.status === 401) {
+                    location.href='/User/SignIn';
+                }
+                else {
+                    alert('Ошибка! Ответ сервера: ' + err.status);
+                }
             }
         })
     }

@@ -2,20 +2,32 @@
   var ajaxForm = $(".ajax-form");
 
     if (ajaxForm) {
-        var url = ajaxForm.attr("action");
-        console.log('ajaxForm', ajaxForm)
-        console.log('ajaxForm.serialize()', ajaxForm.serialize())
-        console.log('url', url)
+      var url = ajaxForm.attr("action");
+      var info_controls = $('#load-wrapper').find('.swap-control-info');
+
+      $('#loader').attr('style', 'display: block');
+      $('#load-wrapper').attr('style', 'opacity: 0.5; z-index: 998;');
+
+      info_controls.attr('style', 'cursor: none; z-index: 995;');
 
         $.ajax({
             type: "POST",
-            url: '/Admin/Settings/SettingsRegistrar/1',
-            data: 111, // serializes the form's elements.
+            url: url,
+            data: ajaxForm.serialize(), // serializes the form's elements.
             success: function (data) {
-              ajaxForm[0].outerHTML = data;
+                info_controls.attr('style', "cursor: pointer; z-index: 998;");
+
+                $('#loader').attr('style', 'display: none');
+                $('#load-wrapper').attr('style', 'opacity: 1; z-index: 995;');
+                ajaxForm[0].outerHTML = data;
             },
-            error: function (data) {
-                alert("error");
+            error: function (err) {
+                if (err.status === 401) {
+                    location.href='/User/SignIn';
+                }
+                else {
+                    alert('Ошибка! Ответ сервера: ' + err.status);
+                }
             }
         });
     }
@@ -41,6 +53,9 @@ function returnControlInEditMode(clickedElement, inEditMode) {
 
 $(document).on("change", ".swap-control-edit input", function () {
     submitNearestForm();
+});
+$(document).on("change", ".swap-control-edit select", function () {
+  submitNearestForm();
 });
 $(document).on("click", ".swap-control-info", function (e) {
     e.preventDefault();

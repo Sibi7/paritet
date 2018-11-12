@@ -452,7 +452,12 @@ $(function () {
                 }, 0);
             },
             error: function (err) {
-                alert('Ошибка! Ответ сервера: ' + err.status);
+                if (err.status === 401) {
+                    location.href='/User/SignIn';
+                }
+              else {
+                    alert('Ошибка! Ответ сервера: ' + err.status);
+                }
             }
 
         });
@@ -843,7 +848,12 @@ $(function () {
                 }
             },
             error: function (err) {
-                alert('Ошибка! Ответ сервера: ' + err.status);
+                if (err.status === 401) {
+                    location.href='/User/SignIn';
+                }
+                else {
+                    alert('Ошибка! Ответ сервера: ' + err.status);
+                }
             }
         })
     });
@@ -1080,7 +1090,7 @@ $(function () {
         var count = parent.find('.input-hide'),
             replaceVal = parseInt(count.val().slice(0, count.val().indexOf(' '))),
             saveFraction = count.val().slice(count.val().indexOf(' '));
-        replaceVal = replaceVal[0] == 0 ? 0 + saveFraction : replaceVal - 1 + saveFraction;
+        replaceVal = replaceVal[0] === 0 ? 0 + saveFraction : replaceVal - 1 + saveFraction;
         count.val(replaceVal).trigger('keyup').change().focus();
         $('.js-single-addtocart').attr('data-quantity', replaceVal);
         $('.js-single-favorites').attr('data-quantity', replaceVal);
@@ -1096,6 +1106,7 @@ $(function () {
             allSeparationBtnClose.click(); // делаем по ним клик тем самым вызывая ajax запрос на сворачивание разделенного голосования
         }
     });
+
 
 });
 
