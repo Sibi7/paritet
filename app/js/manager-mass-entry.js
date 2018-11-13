@@ -73,23 +73,33 @@ $(function () {
         }
         // Инкремент/декремент при нажатии стрелки вверх в контролле ввода
         if (e.keyCode === 38) {
-            var parent = $(this).closest('.input-hide-wrap');
-            var count = parent.find('.input-hide'),
-                replaceVal = parseInt(count.val().slice(0, count.val().indexOf(' '))),
-                saveFraction = count.val().slice(count.val().indexOf(' '));
-            count.val(replaceVal + 1 + saveFraction).trigger('keyup').change().focus();
-            $('.js-single-addtocart').attr('data-quantity', count.val());
-            $('.js-single-favorites').attr('data-quantity', count.val());
-            calculateTotalVoises(parent.find('.input-hide'));
+            event.preventDefault();
+            var parent = $(this).closest('.input-hide-wrap'),
+                count = parent.find('.input-hide'),
+                saveFraction = count.val().slice(count.val().indexOf(' ')),
+                replaceVal = count.val();
+
+            if (isNaN(saveFraction)) {
+                replaceVal = count.val().slice(0, count.val().indexOf(' '));
+                count.val(+replaceVal + 1 + saveFraction).change().trigger('keyup').change().focus();
+            }
+            else {
+                count.val(+replaceVal + 1).change().trigger('keyup').change().focus();
+            }
             return false;
         }
         // Инкремент/декремент при нажатии стрелки вниз в контролле ввода
         if (e.keyCode === 40) {
+            event.preventDefault();
             var parent = $(this).closest('.input-hide-wrap');
             var count = parent.find('.input-hide'),
-                replaceVal = parseInt(count.val().slice(0, count.val().indexOf(' '))),
+                replaceVal = parseInt(count.val().slice(0, count.val().indexOf(' '))) || parseInt(count.val()),
                 saveFraction = count.val().slice(count.val().indexOf(' '));
-            replaceVal = replaceVal[0] == 0 ? 0 + saveFraction : replaceVal - 1 + saveFraction;
+            if (isNaN(Number(saveFraction))) {
+                replaceVal = replaceVal === 0 ? 0 + saveFraction : replaceVal - 1 + saveFraction;
+            } else {
+                replaceVal = replaceVal === 0 ? 0 : replaceVal - 1;
+            }
             count.val(replaceVal).trigger('keyup').change().focus();
             $('.js-single-addtocart').attr('data-quantity', replaceVal);
             $('.js-single-favorites').attr('data-quantity', replaceVal);
@@ -327,7 +337,7 @@ $(function () {
         var totalLeft = parent.find('.total-left');
         var totalMax = parent.find('.total-max').text();
         if ($(this).hasClass('input-selected')) {
-            votesLeft.show();
+            votesLeft.css('display', 'flex');
             votes.hide();
         }
         else {
@@ -453,9 +463,9 @@ $(function () {
             },
             error: function (err) {
                 if (err.status === 401) {
-                    location.href='/User/SignIn';
+                    location.href = '/User/SignIn';
                 }
-              else {
+                else {
                     alert('Ошибка! Ответ сервера: ' + err.status);
                 }
             }
@@ -849,7 +859,7 @@ $(function () {
             },
             error: function (err) {
                 if (err.status === 401) {
-                    location.href='/User/SignIn';
+                    location.href = '/User/SignIn';
                 }
                 else {
                     alert('Ошибка! Ответ сервера: ' + err.status);
@@ -1073,24 +1083,35 @@ $(function () {
 //    Инкремент Декремент для контролла ввода/ стелочки вверх/низ
 
     $(document).on('click', '.input-hide-plus', function () {
-        var parent = $(this).closest('.input-hide-wrap');
-        var count = parent.find('.input-hide'),
-            replaceVal = parseInt(count.val().slice(0, count.val().indexOf(' '))),
-            saveFraction = count.val().slice(count.val().indexOf(' '));
-        count.val(replaceVal + 1 + saveFraction).trigger('keyup').change().focus();
-        $('.js-single-addtocart').attr('data-quantity', count.val());
-        $('.js-single-favorites').attr('data-quantity', count.val());
-        calculateTotalVoises(parent.find('.input-hide'));
+        event.preventDefault();
+        var parent = $(this).closest('.input-hide-wrap'),
+            count = parent.find('.input-hide'),
+            saveFraction = count.val().slice(count.val().indexOf(' ')),
+            replaceVal = count.val();
+
+        if (isNaN(saveFraction)) {
+            replaceVal = count.val().slice(0, count.val().indexOf(' '));
+            count.val(+replaceVal + 1 + saveFraction).change().trigger('keyup').change().focus();
+        }
+        else {
+            count.val(+replaceVal + 1).change().trigger('keyup').change().focus();
+        }
         return false;
     });
 
-    $(document).on('click', '.input-hide-minus', function () {
 
+
+    $(document).on('click', '.input-hide-minus', function () {
+        event.preventDefault();
         var parent = $(this).closest('.input-hide-wrap');
         var count = parent.find('.input-hide'),
-            replaceVal = parseInt(count.val().slice(0, count.val().indexOf(' '))),
+            replaceVal = parseInt(count.val().slice(0, count.val().indexOf(' '))) || parseInt(count.val()),
             saveFraction = count.val().slice(count.val().indexOf(' '));
-        replaceVal = replaceVal[0] === 0 ? 0 + saveFraction : replaceVal - 1 + saveFraction;
+        if (isNaN(Number(saveFraction))) {
+            replaceVal = replaceVal === 0 ? 0 + saveFraction : replaceVal - 1 + saveFraction;
+        } else {
+            replaceVal = replaceVal === 0 ? 0 : replaceVal - 1;
+        }
         count.val(replaceVal).trigger('keyup').change().focus();
         $('.js-single-addtocart').attr('data-quantity', replaceVal);
         $('.js-single-favorites').attr('data-quantity', replaceVal);

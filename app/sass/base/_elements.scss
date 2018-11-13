@@ -1193,6 +1193,9 @@ label {
   }
   .change-span {
     margin-left: 21px;
+    white-space: nowrap;
+    max-width: 133px;
+    overflow: hidden;
   }
 }
 
@@ -1246,10 +1249,15 @@ label {
   font-size: 14px;
   position: absolute;
   top: -6px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
   span {
     color: #141414;
     display: inline-block;
     margin: 0 12px;
+    max-width: 176px;
+    overflow: hidden;
   }
 }
 .votes-za-candidate{
