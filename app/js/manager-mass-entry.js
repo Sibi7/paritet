@@ -73,7 +73,6 @@ $(function () {
         }
         // Инкремент/декремент при нажатии стрелки вверх в контролле ввода
         if (e.keyCode === 38) {
-            event.preventDefault();
             var parent = $(this).closest('.input-hide-wrap'),
                 count = parent.find('.input-hide'),
                 saveFraction = count.val().slice(count.val().indexOf(' ')),
@@ -90,7 +89,6 @@ $(function () {
         }
         // Инкремент/декремент при нажатии стрелки вниз в контролле ввода
         if (e.keyCode === 40) {
-            event.preventDefault();
             var parent = $(this).closest('.input-hide-wrap');
             var count = parent.find('.input-hide'),
                 replaceVal = parseInt(count.val().slice(0, count.val().indexOf(' '))) || parseInt(count.val()),
@@ -1083,7 +1081,6 @@ $(function () {
 //    Инкремент Декремент для контролла ввода/ стелочки вверх/низ
 
     $(document).on('click', '.input-hide-plus', function () {
-        event.preventDefault();
         var parent = $(this).closest('.input-hide-wrap'),
             count = parent.find('.input-hide'),
             saveFraction = count.val().slice(count.val().indexOf(' ')),
@@ -1100,9 +1097,7 @@ $(function () {
     });
 
 
-
     $(document).on('click', '.input-hide-minus', function () {
-        event.preventDefault();
         var parent = $(this).closest('.input-hide-wrap');
         var count = parent.find('.input-hide'),
             replaceVal = parseInt(count.val().slice(0, count.val().indexOf(' '))) || parseInt(count.val()),
