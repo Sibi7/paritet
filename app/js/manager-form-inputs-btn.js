@@ -4,7 +4,7 @@ $(function () {
 
         if ($(this).hasClass('input-selected')) {
 
-            $('li.input-selected input').removeAttr('checked');
+            $('li.input-selected input').removeAttr('checked', 'checked');
             $('li.input-selected').removeClass('input-selected');
             return false
         }
@@ -14,7 +14,7 @@ $(function () {
         }
         else {
             $('.voting-true').removeClass('input-selected');
-            $('.voting-true input').removeAttr('checked');
+            $('.voting-true input').removeAttr('checked', 'checked');
         }
         if ($(this).hasClass('voting-close')) {
             $('.voting-close').addClass('input-selected');
@@ -22,7 +22,7 @@ $(function () {
         }
         else {
             $('.voting-close').removeClass('input-selected');
-            $('.voting-close input').removeAttr('checked');
+            $('.voting-close input').removeAttr('checked', 'checked');
         }
 
         if ($(this).hasClass('voting-false')) {
@@ -31,7 +31,7 @@ $(function () {
         }
         else {
             $('.voting-false').removeClass('input-selected');
-            $('.voting-false input').removeAttr('checked');
+            $('.voting-false input').removeAttr('checked', 'checked');
         }
         if ($(this).hasClass('voting-close')) {
             $('.voting-close').addClass('input-selected');
@@ -39,7 +39,7 @@ $(function () {
         }
         else {
             $('.voting-close').removeClass('input-selected');
-            $('.voting-close a').removeAttr('checked');
+            $('.voting-close a').removeAttr('checked', 'checked');
         }
 
         if ($(this).hasClass('voting-abstained')) {
@@ -48,7 +48,7 @@ $(function () {
         }
         else {
             $('.voting-abstained').removeClass('input-selected');
-            $('.voting-abstained input').removeAttr('checked');
+            $('.voting-abstained input').removeAttr('checked', 'checked');
         }
         if ($(this).hasClass('voting-veto')) {
             $('.voting-veto').addClass('input-selected');
@@ -56,7 +56,7 @@ $(function () {
         }
         else {
             $('.voting-veto').removeClass('input-selected');
-            $('.voting-veto input').removeAttr('checked');
+            $('.voting-veto input').removeAttr('checked', 'checked');
         }
         return false;
 
@@ -64,17 +64,17 @@ $(function () {
     });
     $(document).on('click', '.voting-actions-sing-btn', function (e) {
         $('.voting-actions-all-btn').removeClass('input-selected');
-        $('.voting-actions-all-btn input').attr('data-scv', 0).removeAttr('checked');
+        $('.voting-actions-all-btn input').removeAttr('checked', 'checked');
         if ($(this).hasClass('input-selected')) {
-            $(this).removeClass('input-selected');
+            console.log(111);
+            $(this).removeClass('input-selected').find('input').removeAttr('checked', 'checked');
         }
         else {
             $(this).closest('.voting-inputs__choice').find('.input-selected').removeClass('input-selected');
-            $(this).closest('.voting-inputs__choice').find('input').attr('data-scv', 0).removeAttr('checked');
-            $(this).addClass('input-selected');
+            $(this).closest('.voting-inputs__choice').find('input').removeAttr('checked', 'checked');
+            $(this).addClass('input-selected').find('input').attr('checked', 'checked');
         }
 
-        // $('.voting-actions-sing-btn').attr('data-scv', 0);
 
         return false;
 

@@ -549,7 +549,7 @@ $(function () {
     function toggleVotesZaCandidate(parent) {
         if (parent.length) {
             if (parent.find('.separation-votes').length) {
-                parent.find('.votes-za-candidate').show();
+                parent.find('.votes-za-candidate').css('display', 'flex');
             }
             else {
                 parent.find('.votes-za-candidate').hide().find('.total-left').text('0');
