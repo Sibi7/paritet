@@ -508,6 +508,7 @@ $(function () {
         var separationBlockCumulative = parentCum.find('.separation-votes.voting-sent');
         var btnZaCumSeparationZa = separationBlockCumulative.find('.voting-true');
         btnZaCumSeparationZa.removeClass('voting-actions-btn').addClass('voting-btn-cumulative voting-not-active');
+
     }
 
     separationVotesBtnSubstitution();
@@ -596,9 +597,9 @@ $(function () {
             votesZaSimpleMultiplySum($(this));
         }
     });
-    // $(document).on('click', '.voting-multiple-candidates .voting-divide', function (e) {
-    //     $(this).closest('.voting-actions__choice-wrap').find('.voting-true').click();
-    // });
+    $(document).on('click', '.voting-multiple-candidates .voting-divide', function (e) {
+        $(this).closest('.voting-actions__choice-wrap').find('.voting-true').click();
+    });
 
     $(document).on('click', '.voting-multiple-candidates .separation-votes .input-balance', function () {
         $(this).trigger('blur');
@@ -660,6 +661,7 @@ $(function () {
             return false
         }
         zaBtn.click();
+        checkSeparationInputHideFocus();
     });
 
     $(document).on('click', '.input-cum-balance', function () {
@@ -1076,7 +1078,15 @@ $(function () {
     }
 
     disabledBtnTotal();
+    function checkSeparationInputHideFocus(){
 
+        var separationCumulative = $('.cumulative-voting-input');
+        var btnZaCumSeparationZa = separationCumulative.find('.separation-votes .voting-true');
+        if(separationCumulative.find('.separation-cumulative-za').is( ":focus" )){
+            btnZaCumSeparationZa.removeClass('voting-not-active').addClass('voting-active');
+        }
+    }
+    checkSeparationInputHideFocus();
 
 //    Инкремент Декремент для контролла ввода/ стелочки вверх/низ
 
@@ -1093,7 +1103,12 @@ $(function () {
         else {
             count.val(+replaceVal + 1).change().trigger('keyup').change().focus();
         }
+        checkSeparationInputHideFocus();
+
         return false;
+
+
+
     });
 
 
@@ -1111,6 +1126,8 @@ $(function () {
         $('.js-single-addtocart').attr('data-quantity', replaceVal);
         $('.js-single-favorites').attr('data-quantity', replaceVal);
         calculateTotalVoises(parent.find('.input-hide'));
+        checkSeparationInputHideFocus();
+
         return false;
     });
 

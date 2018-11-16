@@ -14,12 +14,12 @@ $(function () {
         for (var i = 0; i < items.length; i++) {
             var item = items[i];
 
-            if (item.innerHTML.toUpperCase().indexOf(input.value.trim().replace(/[#№0]/g, ' ').toUpperCase()) > -1) {
+            if (item.innerHTML.toUpperCase().indexOf(input.value.trim().replace(/[#№0' ']/g, ' ').toUpperCase()) > -1) {
                 item.closest(obj.selectorForHide).style.display = "";
                 item.closest(obj.selectorForHide).classList.add('active-search-item');
 
             }
-            else if (item.innerHTML.toUpperCase().replace(/\s+/g, '').indexOf(input.value.trim().replace(/[#№0]/g, ' ').replace(/\s+/g, '').toUpperCase()) > -1) {
+            else if (item.innerHTML.toUpperCase().replace(/\s+/g, '').indexOf(input.value.trim().replace(/[#№0' ']/g, ' ').replace(/\s+/g, '').toUpperCase()) > -1) {
                 item.closest(obj.selectorForHide).style.display = "";
                 item.closest(obj.selectorForHide).classList.add('active-search-item');
 
@@ -34,28 +34,31 @@ $(function () {
     $(document).on('keyup', '.t-search', function (e) {
         e.preventDefault();
 
-
-        if ($(this).val()[0] === "#" || $(this).val()[0] === "№" || $(this).val()[0] === 0)  {
+        if ($(this).val()[0] === "#" || $(this).val()[0] === "№" || $(this).val()[0] === 0 || $(this).val()[0] === ' ' ) {
             searchFilter({
                 selectorForFilter: '.search-select li .account-register',
                 inputSelector: '.t-search',
                 selectorForHide: 'li'
+
             });
         } else if ($.isNumeric($(this).val()[0])) {
             searchFilter({
-                selectorForFilter: '.search-select li .account-passport',
+                selectorForFilter: '.search-select li .account-owner .account-passport',
                 inputSelector: '.t-search',
                 selectorForHide: 'li'
             });
+            console.log(222);
         } else {
             searchFilter({
                 selectorForFilter: '.search-select li .account-owner',
                 inputSelector: '.t-search',
                 selectorForHide: 'li'
             });
+            console.log(333);
         }
         if (e.key === 'Enter' &&  $(this).siblings('.search-select')[0].querySelector('.active-search-item') !== null) {
             $(this).siblings('.search-select')[0].querySelector('.active-search-item').click();
+            console.log(444);
         }
 
     });
