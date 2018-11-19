@@ -45,12 +45,14 @@ $(function () {
 
         return false;
     });
+
     // перезаписываем значение в change-span, если в инпут были введены цифры. + обрабатываем введенные цифры и добавляем разряды числам.
     $(document).on(' change ', '.input-hide', function () {
-        var number = $(this).val();
+        var number = $(this).val().replace(/^0+/, '');
+        $(this).val(number);
         var changeSpan = $(this).closest('.voting-actions__wrap-input').find('.change-span');
         var convert = convertFraction(number);
-        changeSpan.html(convert);
+        changeSpan.html(convert.replace('0',''));
         HtmlEncode(convert, changeSpan);
     });
 
@@ -137,7 +139,6 @@ $(function () {
         $(this).hide();
 
         $(this).siblings('.input-hide-wrap').show().addClass('input-hide-visible');
-
         inputHide.val(inputHide.val().trim());
         inputHide.select();
 
