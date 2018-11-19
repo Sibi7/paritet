@@ -14,21 +14,17 @@ $(function () {
         for (var i = 0; i < items.length; i++) {
             var item = items[i];
 
-            if (item.innerHTML.toUpperCase().indexOf(input.value.toUpperCase()) > -1) {
+            if (item.innerHTML.toUpperCase().replace(/\s+/g, '').indexOf(input.value.trim().replace(/[#№0']/g, '').replace(/\s+/g, '').toUpperCase()) > -1) {
                 item.closest(obj.selectorForHide).style.display = "";
                 item.closest(obj.selectorForHide).classList.add('active-search-item');
-                console.log('if-1')
-
             }
-            else if (item.innerHTML.toUpperCase().replace(/\s+/g, '').indexOf(input.value.trim().replace(/[#№0']/g, ' ').replace(/\s+/g, '').toUpperCase()) > -1) {
+            else if (item.innerHTML.toUpperCase().replace(/\s+/g, '').indexOf(input.value.replace(/\s+/g, '').toUpperCase()) > -1) {
                 item.closest(obj.selectorForHide).style.display = "";
                 item.closest(obj.selectorForHide).classList.add('active-search-item');
-                console.log('if-2')
             }
             else {
                 item.closest(obj.selectorForHide).style.display = "none";
                 item.closest(obj.selectorForHide).classList.remove('active-search-item');
-                console.log('if-3')
             }
         }
     }
@@ -48,7 +44,6 @@ $(function () {
                 inputSelector: '.t-search',
                 selectorForHide: 'li'
             });
-            console.log('if-2')
         } else {
             searchFilter({
                 selectorForFilter: '.search-select li .account-owner',
