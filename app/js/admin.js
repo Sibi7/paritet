@@ -24,6 +24,4 @@ $(function () {
             submitNotDisabled.addClass('disabled');
         }
     });
-
-
 });
