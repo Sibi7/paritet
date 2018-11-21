@@ -34,14 +34,17 @@ function multiplicationFractions(val1, val2) {
     })
 }
 function additionFraction(stringOfFractions) {
+    var stringOfFraction = stringOfFractions.replace(/\s+/g, '');
+
     return $.ajax({
         url: '/FractionCalculator/SumOfFractions',
         type: 'get',
         data: {
-            value: stringOfFractions
+            value: stringOfFraction
         },
         dataType: 'json',
-        success: function (html) {},
+        success: function (data) {
+        },
         error: function (err) {
             alert('Ошибка! Ответ сервера: ' + err.status);
         }
@@ -98,6 +101,8 @@ function fractionMinusFraction(votingVoicesLeft, votesCastInputHide){
 }
 // Возвращает обьект с полем result:"true" если value не больше чем total, иначе false
 function comparingIsLager(total, value) {
+    var total = total.replace(/\s+/g, '');
+    var value = value.replace(/\s+/g, '');
     return $.ajax({
         url: '/FractionCalculator/ComparingIsLager',
         type: 'get',
@@ -106,7 +111,7 @@ function comparingIsLager(total, value) {
             value2: value
         },
         dataType: 'json',
-        success: function (html) {
+        success: function (data) {
         },
         error: function (err) {
             if (err.status === 401) {

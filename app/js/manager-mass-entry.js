@@ -1030,11 +1030,11 @@ $(function () {
             arrForSend.push($(this).find('.voting-actions__choice-wrap:first .input-hide').val());
         });
 
-
         if (arrForSend.length) {
             additionFraction(arrForSend.join(';')).done(function (data) {
                 votesSum.text(data.result);
                 parent.find('.votes-za-candidate .total-left').text(data.result);
+
                 comparingIsLager(total, data.result).done(function (res) {
                     if (res.result === 'false') {
                         // если тотал меньше, чем мы отдаем (значит показываем строку с голосами, добавляем тексту красный цвет, и делаем голосование недейтвительным)
