@@ -32,7 +32,14 @@ $(function () {
     $(document).on('keyup', '.t-search', function (e) {
         e.preventDefault();
 
-        if ($(this).val()[0] === "#" || $(this).val()[0] === "№" || $(this).val()[0] === '0' || $(this).val()[0] === ' ' ) {
+        if ($(this).val()[0] === "#" || $(this).val()[0] === "№" ) {
+            if( $(this).val()[0] === '0' || $(this).val()[0] === ' ' ){
+                searchFilter({
+                    selectorForFilter: '.search-select li .account-register',
+                    inputSelector: '.t-search',
+                    selectorForHide: 'li'
+                });
+            }
             searchFilter({
                 selectorForFilter: '.search-select li .account-register',
                 inputSelector: '.t-search',

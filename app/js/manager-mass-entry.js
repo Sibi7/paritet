@@ -1043,7 +1043,7 @@ $(function () {
                         });
                         votesMax.hide();
                         totalZa.show();
-                        activeZa.removeClass('input-selected');
+                        activeZa.removeClass('input-selected').find('input').removeAttr('checked');
                         votingClose.addClass('input-selected')
 
                     } else {
