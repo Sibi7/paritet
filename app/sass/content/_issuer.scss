@@ -9,7 +9,40 @@
   //Временные стили
 
   .string__key {
-    min-width: 210px;
+    min-width: 210px!important;
+    margin-right: 0;
+    padding-right: 0;
+  }
+  .string{
+    span{
+      font-size: 15px;
+      b{
+        font-weight: 300;
+        color: #777;
+        margin-right: 8px;
+      }
+    }
+    .price-and-amount{
+      min-width: 146px;
+      text-align: right;
+      margin-left: 48px;
+    }
+
+  }
+  .title{
+    font-size: 24px;
+    color: #141414
+  }
+  .score-emmit-l{
+    width: 225px;
+  }
+  .score-emmit-r{
+    margin-left: 48px;
+    min-width: 146px;
+  }
+  .separator-issuer{
+    margin-top: 15px;
+    border-top: 3px solid #DDDDDD;
   }
 
 }
@@ -22,6 +55,12 @@
     margin-bottom: 10px;
   }
 }
+#issuer-bills-general{
+  .website-link{
+    color: #42A4F4;
+  }
+}
+
 
 
 
