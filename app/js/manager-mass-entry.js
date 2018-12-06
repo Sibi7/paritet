@@ -73,39 +73,7 @@ $(function () {
                 inputCheckValForBtnActive();
             }
         }
-        // Инкремент/декремент при нажатии стрелки вверх в контролле ввода
-        if (e.keyCode === 38) {
-            var parent = $(this).closest('.input-hide-wrap'),
-                count = parent.find('.input-hide'),
-                saveFraction = count.val().slice(count.val().indexOf(' ')),
-                replaceVal = count.val();
 
-            if (isNaN(saveFraction)) {
-                replaceVal = count.val().slice(0, count.val().indexOf(' '));
-                count.val(+replaceVal + 1 + saveFraction).change().trigger('keyup').change().focus();
-            }
-            else {
-                count.val(+replaceVal + 1).change().trigger('keyup').change().focus();
-            }
-            return false;
-        }
-        // Инкремент/декремент при нажатии стрелки вниз в контролле ввода
-        if (e.keyCode === 40) {
-            var parent = $(this).closest('.input-hide-wrap');
-            var count = parent.find('.input-hide'),
-                replaceVal = parseInt(count.val().slice(0, count.val().indexOf(' '))) || parseInt(count.val()),
-                saveFraction = count.val().slice(count.val().indexOf(' '));
-            if (isNaN(Number(saveFraction))) {
-                replaceVal = replaceVal === 0 ? 0 + saveFraction : replaceVal - 1 + saveFraction;
-            } else {
-                replaceVal = replaceVal === 0 ? 0 : replaceVal - 1;
-            }
-            count.val(replaceVal).trigger('keyup').change().focus();
-            $('.js-single-addtocart').attr('data-quantity', replaceVal);
-            $('.js-single-favorites').attr('data-quantity', replaceVal);
-            calculateTotalVoises(parent.find('.input-hide'));
-            return false;
-        }
         // если во время ввода в контроле ввода был нажат ESC закрываем контрол вввода и обнуляем значение
         if (e.keyCode === 27) {
             $(this).val('0');
@@ -623,7 +591,7 @@ $(function () {
 
         additionFraction(arrOfInputsYesVal.join(';')).done(function (res) {
             givenZa.text(res.result);
-            givenZa.closest('.separation-cumulative-wrap-input').find('.input-hide').val(res.result);
+            givenZa.closest('.separation-cumulative-wrap-input').find('.input-hide').val(res.result.replace(/\s+/g, ''));
             calculateTotalVoises(givenZa)
         });
 
@@ -635,12 +603,11 @@ $(function () {
         var arrOfInputsYesVal = [];
         arrOfInputsYes.each(function () {
             //Заменяем пробелы на 0, что бы с сервера не возвращалась ошибка
-
             arrOfInputsYesVal.push($(this).val().replace(/\u00a0/g, '')); // Значение каждого инпута заносим в массив
         });
         additionFraction(arrOfInputsYesVal.join(';')).done(function (res) {
             givenZa.text(res.result);
-            givenZa.closest('.separation-cumulative-wrap-input').find('.input-hide').val(res.result);
+            givenZa.closest('.separation-cumulative-wrap-input').find('.input-hide').val(res.result.replace(/\s+/g, ''));
             calculateTotalVoises(givenZa);
             var votingTrue = parent.find('.voting-true.voting-btn-cumulative');
             if (givenZa.text() === "0") {
@@ -829,9 +796,11 @@ $(function () {
                 var request = html.result.replace(/\u00a0/g, '').replace('  ', ' '); // Удаляем спецсимволы пробела, и двойные пробелы заменяем на одинарные
                 if (request.indexOf('-') !== -1 || request.indexOf('Invalid') !== -1) {  // Если в ответе есть отрицательное значение
                     input.val('Ошибка');
-                } else {
+                }
+                else {
+                    var saveFraction = request.slice(-1);
                     input.val(request);
-                    span.text(request);
+                    span.text(request.replace(/[^0-9.]/g,'').replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " " + saveFraction);
                     var arrOfInputs = parent.find('.separation-cumulative-za');
                     var arrOfInputsVal = [];
                     arrOfInputs.each(function () {
