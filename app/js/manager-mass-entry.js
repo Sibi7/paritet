@@ -1085,7 +1085,9 @@ $(function () {
     $(document).on('click', '.input-hide-minus', function () {
         var parent = $(this).closest('.input-hide-wrap');
         var count = parent.find('.input-hide'),
-            replaceVal = parseInt(count.val().slice(0, count.val().indexOf(' '))) || parseInt(count.val()),
+
+            replaceVal = parseInt(count.val()) || parseInt(count.val().slice(0, count.val().indexOf(' '))),
+
             saveFraction = count.val().slice(count.val().indexOf(' '));
         if (isNaN(Number(saveFraction))) {
             replaceVal = replaceVal === 0 ? 0 + saveFraction : replaceVal - 1 + saveFraction;
@@ -1109,7 +1111,6 @@ $(function () {
             allSeparationBtnClose.click(); // делаем по ним клик тем самым вызывая ajax запрос на сворачивание разделенного голосования
         }
     });
-
 
 });
 
