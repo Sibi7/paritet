@@ -225,11 +225,11 @@ $(function() {
 $(function () {
     $(document).on('click', '.filter .add', function () {
         var insideModal = $(this).closest('.filter').find('.filter');
-        insideModal.show()
+        insideModal.show();
     });
 
     $(document).on('click', '.admin-represent', function () {
-        $(this).siblings('.filter').show()
+        $(this).siblings('.filter').show();
     });
 
     // Очистка модального окна по клику на кнопку отмена, при создании пользователя в роли Админа. "Представляет"
@@ -248,10 +248,30 @@ $(function () {
             submitNotDisabled.addClass('disabled');
         }
     });
+
+
 });
+// клик в меню удалить группу
+function DeleteGroup(e, groupId) {
+    e.preventDefault();
+    $('#groupToDelete').attr('value', groupId);
+    $('.overlay').has('.modal-group-delete').show();
+}
+
+// клик в меню удалить группу
+function ArchiveUser(e, userId) {
+    e.preventDefault();
+    $('#userToDelete').attr('value', userId);
+    $('.overlay').has('.modal-user-delete').show();
+}
+
 // проверяем если в реестре счета для данного пользователя
 function FindAccountsForUser() {
-    $("#validate-form").valid();
+    $(".user_name").valid();
+    $(".user_doc").valid();
+    if (!($(".user_doc").valid() && $(".user_name").valid())) {
+        return;
+    }
     name = $(".user_name").val();
     docnum = $(".user_doc").val();
     $.post("/admin/user/FindsAccountsForUser", {Name: name, DocNum: docnum}, function (data) {
@@ -274,8 +294,8 @@ function FindAccountsForUser() {
 }
 
 function ChangePassword() {
-    if ($("[name=TwoFactorEnabled]").val() == "True" && $("#SmsToken").val() == false) {
-        $.post("/profile/SendSmsForChangePassword")
+    if ($("[name=TwoFactorEnabled]").val() === "True" && $("#SmsToken").val() === false) {
+        $.post("/profile/SendSmsForChangePassword");
         $(".string").has("#SmsToken").slideDown("slow");
         return;
     }
@@ -336,7 +356,7 @@ function GetChoosenRepresentatives() {
     return result;
 }
 
-//Добавленные прдеставители по физикам
+//Добавленные представители по физикам
 function GetRegistryPersonRepresentatives() {
     var result = [];
 
@@ -350,7 +370,7 @@ function GetRegistryPersonRepresentatives() {
     return result;
 }
 
-//Добавленные прдеставители по юрикам
+//Добавленные представители по юрикам
 function GetRegistryLegalRepresentatives() {
     var result = [];
 
@@ -375,30 +395,33 @@ function AddRegistryRepresentative() {
     var isLegal = $("label.modal__tab[data-id='entity'] input").prop("checked");
     var isPerson = $("label.modal__tab[data-id='individual'] input").prop("checked");
     if (isLegal) {
-        if (lname === "" && INN === "") {
+        $(".entity-doc").valid();
+        $(".entity-name").valid();
+        if (!($(".entity-doc").valid() && $(".entity-name").valid())) {
             return;
         }
         rowtext = lname + ", " + INN;
         htmlData = "data-is-legal=True data-lname=" + lname + " data-inn=" + INN;
     }
     if (isPerson) {
-        if (pname === "" && docnum === "") {
+        $(".individual-doc").valid();
+        $(".individual-name").valid();
+        if (!($(".individual-doc").valid() && $(".individual-name").valid())) {
             return;
         }
         rowtext = pname + ", " + docnum;
         htmlData = "data-is-legal=False data-pname=" + pname + " data-docnum=" + docnum;
     }
 
-    // Если добавляем новго
-    console.log($("#edit-represntative-number").val());
-    if ($("#edit-represntative-number").val().length == 0) {
+    // Если добавляем нового
+    if ($("#edit-represntative-number").val().length === 0) {
         // Добавляем нового представителя в список выбора
         $(".filter__body table tr:last").after("\
         <tr>\
         <td>\<div class='input-check-wrap'>\
         <input type='checkbox' \
         data-is-registry=True " + htmlData + " \
-        'checked'>\
+        checked>\
         <label></label>\
         <span class='filter__row-text'>" + rowtext + "</span></div>\
         <div class='filter__edit-btn'>\
@@ -407,6 +430,8 @@ function AddRegistryRepresentative() {
         </div>\
         </td>\
         </tr>");
+
+        $(".submit-checked").removeClass("disabled");
     }
 
 
@@ -435,11 +460,17 @@ function AddRegistryRepresentative() {
 
 // Обновляем список представителей
 function UpdateRepresentatives() {
+    $(".filter.represent-filter").hide();
+
     var model = {
         UserId: $("#UserId").val(),
         Representatives: GetChoosenRepresentatives(),
         RegistryLegalRepresentatives: GetRegistryLegalRepresentatives(),
         RegistryPersonRepresentatives: GetRegistryPersonRepresentatives()
+    };
+
+    if (model.UserId === undefined) {
+        return;
     }
 
     $.ajax({
@@ -456,7 +487,6 @@ function UpdateRepresentatives() {
             }
         }
     });
-    $(".filter.represent-filter").hide();
 }
 
 // вызываем функцию добавления пользователя
@@ -596,12 +626,12 @@ $(function () {
     //клик по кнопке "Добавить" во всплывающем окне представителей
     $(document).on('click', '.filter .add', function () {
         var insideModal = $(this).closest('.filter').find('.filter');
-        insideModal.closest('.overlay').show()
+        insideModal.closest('.overlay').show();
     });
 
     //клик на поле ввода представителей - открывает окно представителей
     $(document).on('click', '.admin-represent', function () {
-        $(this).siblings('.filter').closest('.overlay').show()
+        $(this).siblings('.filter').closest('.overlay').show();
     });
 
     //клик на кнопку "Выбрать" в окне представителей
@@ -611,13 +641,11 @@ $(function () {
         var IsAnyRep = $(".filter_wrapper input").length > 0;
         $(".filter_wrapper input:checked").each(function () {
             if ($(this).data("lname")) {
-                users.push($(this).data("lname"));
+                users.push($(this).data("lname") + " " + $(this).data("inn"));
             }
-            ;
             if ($(this).data("pname")) {
-                users.push($(this).data("pname"))
+                users.push($(this).data("pname") + " " + $(this).data("docnum"));
             }
-            ;
         });
 
         if (users.length > 0) {
@@ -657,23 +685,13 @@ $(function () {
     // модалка при удалении группы
     $(document).on('click', '.groups-list .group-delete', function () {
         $('#groupToDelete').attr('value', $(this).data('group-id'));
-        $('.modal-delete').closest('.overlay').show();
+        $('.overlay').has('.modal-group-delete').show();
     });
 
     // модалка при удалении пользователя
     $(document).on('click', '.users-list .user-delete', function () {
         $('#userToDelete').attr("value", $(this).data('userid'));
-        $('.modal-delete-user').closest('.overlay').show();
-    });
-
-    // клик в меню удалить группу
-    $(document).on('click', 'a:contains("Удалить")', function (event) {
-        event.preventDefault();
-        // немного костыльно, получаем идишинк из ссылки
-        var url = $(this).attr("href");
-        var id = url.substring(url.lastIndexOf('/') + 1);
-        $('#groupToDelete').attr('value', id);
-        $('.modal-delete').closest('.overlay').show();
+        $('.overlay').has('.modal-user-delete').show();
     });
 
     $(document).on('click', '.groups-by-user .filter .submit', function () {
@@ -706,13 +724,11 @@ $(function () {
             $("input.entity-name").val(input.data("lname"));
             $("input.entity-doc").val(input.data("inn"));
         }
-        ;
 
         if (input.data("is-legal") === "False") {
             $("input.individual-doc").val(input.data("docnum"));
             $("input.individual-name").val(input.data("pname"));
         }
-        ;
 
         $(".filter.represent-modal-filter").show();
     });
@@ -720,12 +736,21 @@ $(function () {
     $(document).on("change", "#select-personal-manager-for-issuer", function () {
         var manager = $("#select-personal-manager-for-issuer").val();
         var emitent = $("#emitent-id").val();
-        var model = {manager: manager, issuerId: emitent}
+        var model = { manager: manager, issuerId: emitent };
         $.ajax({
             url: "/admin/issuer/AssignManagerToIssuer",
             type: "POST",
-            data: model,
+            data: model
         });
+    });
+
+    $(document).on("click", ".groups-by-user .t-search", function () {
+        if ($(".filter table tr").length === 0) {
+            $(".groups-by-user button.submit").hide();
+        }
+        else {
+            $(".groups-by-user button.submit").show();
+        }
     });
 });
 
@@ -2126,10 +2151,10 @@ function handleFileSelect(evt) {
         var reader = new FileReader();
         reader.onload = function (e) {
             $('.content__block--photo img')[0].src = e.target.result;
-            if ($('.content__block--photo').data("forself")) {
+            if ($('.content__block--photo.user').data("forself")) {
                 $('.header__user img')[0].src = e.target.result;
             }
-            if ($('.content__block--photo').data("autoLoad")) {
+            if ($('.content__block--photo.user').data("autoLoad")) {
                 sendImageToServer();
             }
         };
@@ -2206,7 +2231,7 @@ function handleFileRegistrarSelect(evt) {
   }
 }
 
-$('.content__block--photo input[type="file"]').on('change', handleFileSelect);
+$('.content__block--photo.user input[type="file"]').on('change', handleFileSelect);
 $('.content__block--photo.issuers input[type="file"]').on('change', handleFileIssuerSelect);
 $('.content__block--photo.share input[type="file"]').on('change', handleFileShareSelect);
 $('.content__block--photo.registrar input[type="file"]').on('change', handleFileRegistrarSelect);
@@ -2258,9 +2283,7 @@ function removeShareholderRelationsDepEmplPhoto() {
     data: { registrarId: $('#EntityID').val() },
     success: function (result) {
       $('.content__block--photo.share img')[0].src = "/images/icons/default-avatar.png";
-      $('#delete-photo-share').hide();
-      $('#add-photo-share').show();
-      $('#photo-share-size').show();
+      $('#photo-share').text("Максимальный размер 200К");
     },
       error: function (err) {
           if (err.status === 401) {
@@ -2284,9 +2307,7 @@ function removeIssuerRelationsDepEmplPhoto() {
     data: { registrarId: $('#EntityID').val() },
     success: function (result) {
       $('.content__block--photo.issuers img')[0].src = "/images/icons/default-avatar.png";
-      $('#delete-photo-issuer').hide();
-      $('#add-photo-issuer').show();
-      $('#photo-issuer-size').show();
+      $('#photo-issuer').text("Максимальный размер 200К");
     },
       error: function (err) {
           if (err.status === 401) {
@@ -2310,9 +2331,7 @@ function removeRegistrarAvatar() {
     data: { registrarId: $('#EntityID').val() },
     success: function (result) {
       $('.content__block--photo.registrar img')[0].src = "/images/icons/registrar-avatar.png";
-      $('#delete-avatar').hide();
-      $('#add-avatar').show();
-      $('#avatar-size').show();
+      $('#avatar-reg').text("Максимальный размер 200К");
     },
       error: function (err) {
           if (err.status === 401) {
@@ -2362,10 +2381,13 @@ function sendImageToServer() {
 
 function sendRegistrarIssuerImageToServer() {
   var _url = "";
+  var f_name_issuer = $('.content__block--photo.issuers input[type="file"]')[0].files[0].name;
+
   var formData = new FormData();
   if ($('.content__block--photo.issuers').data("forself")) {
     _url = "/Admin/Settings/LoadIssuerRelationsDepEmplPhoto";
     formData.append('issuerPhotoFile', $('.content__block--photo.issuers input[type="file"]')[0].files[0]);
+    formData.append('issuerPhotoName', f_name_issuer);
   }
 
   formData.append('registrarId', $('#EntityID').val());
@@ -2376,9 +2398,8 @@ function sendRegistrarIssuerImageToServer() {
     processData: false,
     contentType: false,
     success: function (result) {
-      $('#delete-photo-issuer').show();
-      $('#add-photo-issuer').hide();
-      $('#photo-issuer-size').hide();
+      $('#photo-issuer').text(f_name_issuer);
+      $('#photo-issuer-name').val(f_name_issuer);
     },
       error: function (err) {
           if (err.status === 401) {
@@ -2395,10 +2416,13 @@ function sendRegistrarIssuerImageToServer() {
 
 function sendRegistrarShareholderImageToServer() {
   var _url = "";
+  var f_name_share = $('.content__block--photo.share input[type="file"]')[0].files[0].name;
+
   var formData = new FormData();
   if ($('.content__block--photo.share').data("forself")) {
     _url = "/Admin/Settings/LoadShareholderRelationsDepEmplPhoto";
     formData.append('sharePhotoFile', $('.content__block--photo.share input[type="file"]')[0].files[0]);
+    formData.append('sharePhotoName', f_name_share);
   }
 
   formData.append('registrarId', $('#EntityID').val());
@@ -2409,9 +2433,8 @@ function sendRegistrarShareholderImageToServer() {
     processData: false,
     contentType: false,
     success: function (result) {
-      $('#delete-photo-share').show();
-      $('#add-photo-share').hide();
-      $('#photo-share-size').hide();
+      $('#photo-share').text(f_name_share);
+      $('#photo-share-name').val(f_name_share);
     },
       error: function (err) {
           if (err.status === 401) {
@@ -2428,10 +2451,13 @@ function sendRegistrarShareholderImageToServer() {
 
 function sendRegistrarAvatarToServer() {
   var _url = "";
+  var f_name_reg = $('.content__block--photo.registrar input[type="file"]')[0].files[0].name;
+
   var formData = new FormData();
   if ($('.content__block--photo.registrar').data("forself")) {
     _url = "/Admin/Settings/LoadRegistrarAvatar";
     formData.append('avatarPhotoFile', $('.content__block--photo.registrar input[type="file"]')[0].files[0]);
+    formData.append('avatarName', f_name_reg);
   }
 
   formData.append('registrarId', $('#EntityID').val());
@@ -2442,9 +2468,8 @@ function sendRegistrarAvatarToServer() {
     processData: false,
     contentType: false,
     success: function (result) {
-      $('#delete-avatar').show();
-      $('#add-avatar').hide();
-      $('#avatar-size').hide();
+      $('#avatar-reg').text(f_name_reg);
+      $('#avatar-name').val(f_name_reg);
     },
       error: function (err) {
           if (err.status === 401) {
@@ -5231,7 +5256,10 @@ $(function () {
             $(this).addClass('input-selected').find('input').attr('checked', 'checked');
         }
 
+
         return false;
+
+
     });
 });
 
@@ -6731,7 +6759,7 @@ $(function () {
         if (~curLoc.indexOf('admin-users-list')) {
             $('.header__filter--field .filter--input').hide();
             $('.autofilter').hide();
-            $('.autofilter[data-id="user_outside"]').css({'display': 'flex'});
+            $('.autofilter[data-id="user_outside"]').css({ 'display': 'flex' });
         } else {
             window.location = "/app/html/pages/admin-users-list.html"
         }
@@ -6752,7 +6780,7 @@ $(function () {
     $(document).on('click', '.sidebar__item .meeting', function () {
         $('.header__filter--field .filter--input').hide();
         $('.autofilter').hide();
-        $('.autofilter[data-id="meeting"]').css({'display': 'flex'});
+        $('.autofilter[data-id="meeting"]').css({ 'display': 'flex' });
 
     });
 
@@ -6797,11 +6825,20 @@ $(function () {
     });
     /*------------gropdown-user-icon---------------*/
 
+    
+    $(document).on('click',
+        '.issuer-bills-statement .period',
+        function() {
+          $('.issuer-bills-statement .period').removeClass('active-period');
+          $(this).addClass('active-period');
+    });
 
-    $(document).on('click', '.issuer-bills-statement .period', function () {
-        $('.issuer-bills-statement .period').removeClass('active-period');
-        $(this).addClass('active-period');
-    })
+    $(document).on('click',
+        '.mutual-settlements .period',
+        function () {
+          $('.mutual-settlements .period').removeClass('active-period');
+          $(this).addClass('active-period');
+    });
 
 
     $(document).on('change', '.add-files input[type="file"]', function () {
@@ -6809,13 +6846,15 @@ $(function () {
         var chosenFiles = $(this)[0].files;
         for (var i = 0; i < chosenFiles.length; i++) {
             $('.selected-file').remove();
-            $('<p>', {text: chosenFiles[i].name}).addClass('selected-file').appendTo(parent)
+            $('<p>', { text: chosenFiles[i].name }).addClass('selected-file').appendTo(parent)
         }
     });
-    $(document).on('click', '.add-files .cancel', function () {
-        var parent = $(this).closest('.add-files')
-        parent.find('.selected-file').remove()
-    })
+    $(document).on('click',
+        '.add-files .cancel',
+        function() {
+          var parent = $(this).closest('.add-files')
+          parent.find('.selected-file').remove()
+    });
 
 
     $(document).on('click', '.bullet-number', function () {
@@ -7128,7 +7167,7 @@ $(function () {
             },
             error: function (err) {
                 if (err.status === 401) {
-                    location.href='/User/SignIn';
+                    location.href = '/User/SignIn';
                 }
                 else {
                     alert('Ошибка! Ответ сервера: ' + err.status);
@@ -7173,7 +7212,7 @@ $(function () {
         return isAllowedKeyCode(e.originalEvent.key);
     });
 
-//    ридерект формы двухфакторного входа
+    //    ридерект формы двухфакторного входа
     function redirect() {
         var smSTokenId = $('#SMSToken'),
             locationForm = window.location;
@@ -7187,7 +7226,7 @@ $(function () {
     redirect();
 
 
-//    Удаление пробелов
+    //    Удаление пробелов
 
     var inputDeleteSpace = $('.vote-limit');
     if (inputDeleteSpace.length > 0) {
@@ -7196,7 +7235,7 @@ $(function () {
         });
     }
 
-//    проверка checked
+    //    проверка checked
     if ('.bullet-number-all'.length > 0) {
         $('.bullet-number-all input').on('change', function () {
             if ($('.bullet-number-all input').prop('checked')) {
@@ -7246,7 +7285,7 @@ $(function () {
     disableSaveBTn();
 
 
-//    Выпадалка радио кнопок по нажатию на иконку view
+    //    Выпадалка радио кнопок по нажатию на иконку view
 
     $(document).on('click', '.title-view', function () {
         $('.title-dropdown').fadeToggle().addClass('title-dropdown-active');
@@ -7282,10 +7321,12 @@ $(function () {
             },
             error: function (err) {
                 if (err.status === 401) {
-                    location.href='/User/SignIn';
+                    location.href = '/User/SignIn';
                 }
                 else {
-                    alert('Ошибка! Ответ сервера: ' + err.status);
+                    if (err.status) {
+                        alert('Ошибка! Ответ сервера: ' + err.status);
+                    }
                 }
             }
         })
@@ -7347,12 +7388,12 @@ $(function () {
         dotsClass: 'sidebar-dots'
     });
 
-//    Модальное окно регистрации
-//     var inputRegistration = $('.input-hide');
-//     inputRegistration.hide();
-//     $(document).on('click', '.change-span', function () {
-//
-//     });
+    //    Модальное окно регистрации
+    //     var inputRegistration = $('.input-hide');
+    //     inputRegistration.hide();
+    //     $(document).on('click', '.change-span', function () {
+    //
+    //     });
 
 
 
@@ -7376,6 +7417,7 @@ $(function () {
 
         questionModal.fadeToggle();
     });
+
 
 
 });
@@ -14190,24 +14232,42 @@ function submitNearestForm() {
   var ajaxForm = $(".ajax-form");
 
     if (ajaxForm) {
-      var url = ajaxForm.attr("action");
-      var info_controls = $('#load-wrapper').find('.swap-control-info');
-
-      $('#loader').attr('style', 'display: block');
-      $('#load-wrapper').attr('style', 'opacity: 0.5; z-index: 998;');
-
-      info_controls.attr('style', 'cursor: none; z-index: 995;');
+        var url = ajaxForm.attr("action");
+        var info_controls = $('#load-wrapper').find('.swap-control-info');
+        var photo_buttons = $('#load-wrapper').find('.photo-button');
+        var content_blocks_photo = $('#load-wrapper').find('.content__block--photo');
+       
+        $('#loader').attr('style', 'display: block');
+        $('#load-wrapper').attr('style', 'opacity: 0.5;');
+       
+        info_controls.attr('style', 'cursor: none;').attr('disabled', 'disabled');
+        photo_buttons.attr('style', 'cursor: none; display: none;');
 
         $.ajax({
             type: "POST",
             url: url,
             data: ajaxForm.serialize(), // serializes the form's elements.
             success: function (data) {
-                info_controls.attr('style', "cursor: pointer; z-index: 998;");
+                info_controls.attr('style', "cursor: pointer;").removeAttr('disabled');
+                photo_buttons.attr('style', "cursor: pointer; display: inline-block;");
 
-                $('#loader').attr('style', 'display: none');
-                $('#load-wrapper').attr('style', 'opacity: 1; z-index: 995;');
+                $('#loader').attr('style', 'display: none;');
+                $('#load-wrapper').attr('style', 'opacity: 1;');
+
                 ajaxForm[0].outerHTML = data;
+
+                if (content_blocks_photo.length > 0) {
+                    $('.content__block--photo.issuers input[type="file"]').on('change', handleFileIssuerSelect);
+                    $('.content__block--photo.share input[type="file"]').on('change', handleFileShareSelect);
+                    $('.content__block--photo.registrar input[type="file"]').on('change', handleFileRegistrarSelect);
+                    
+                    $('#delete-photo-issuer').on('click', removeIssuerRelationsDepEmplPhoto);
+                    $('#delete-photo-share').on('click', removeShareholderRelationsDepEmplPhoto);
+                  $('#delete-avatar').on('click', removeRegistrarAvatar);
+
+                  var f_name_reg = $('.content__block--photo.registrar input[type="file"]')[0].files[0].name;
+                  $('#avatar-reg').text(f_name_reg);
+                }
             },
             error: function (err) {
                 if (err.status === 401) {

@@ -1,6 +1,24 @@
-﻿// проверяем если в реестре счета для данного пользователя
+﻿// клик в меню удалить группу
+function DeleteGroup(e, groupId) {
+    e.preventDefault();
+    $('#groupToDelete').attr('value', groupId);
+    $('.overlay').has('.modal-group-delete').show();
+}
+
+// клик в меню удалить группу
+function ArchiveUser(e, userId) {
+    e.preventDefault();
+    $('#userToDelete').attr('value', userId);
+    $('.overlay').has('.modal-user-delete').show();
+}
+
+// проверяем если в реестре счета для данного пользователя
 function FindAccountsForUser() {
-    $("#validate-form").valid();
+    $(".user_name").valid();
+    $(".user_doc").valid();
+    if (!($(".user_doc").valid() && $(".user_name").valid())) {
+        return;
+    }
     name = $(".user_name").val();
     docnum = $(".user_doc").val();
     $.post("/admin/user/FindsAccountsForUser", {Name: name, DocNum: docnum}, function (data) {
@@ -23,8 +41,8 @@ function FindAccountsForUser() {
 }
 
 function ChangePassword() {
-    if ($("[name=TwoFactorEnabled]").val() == "True" && $("#SmsToken").val() == false) {
-        $.post("/profile/SendSmsForChangePassword")
+    if ($("[name=TwoFactorEnabled]").val() === "True" && $("#SmsToken").val() === false) {
+        $.post("/profile/SendSmsForChangePassword");
         $(".string").has("#SmsToken").slideDown("slow");
         return;
     }
@@ -85,7 +103,7 @@ function GetChoosenRepresentatives() {
     return result;
 }
 
-//Добавленные прдеставители по физикам
+//Добавленные представители по физикам
 function GetRegistryPersonRepresentatives() {
     var result = [];
 
@@ -99,7 +117,7 @@ function GetRegistryPersonRepresentatives() {
     return result;
 }
 
-//Добавленные прдеставители по юрикам
+//Добавленные представители по юрикам
 function GetRegistryLegalRepresentatives() {
     var result = [];
 
@@ -124,30 +142,33 @@ function AddRegistryRepresentative() {
     var isLegal = $("label.modal__tab[data-id='entity'] input").prop("checked");
     var isPerson = $("label.modal__tab[data-id='individual'] input").prop("checked");
     if (isLegal) {
-        if (lname === "" && INN === "") {
+        $(".entity-doc").valid();
+        $(".entity-name").valid();
+        if (!($(".entity-doc").valid() && $(".entity-name").valid())) {
             return;
         }
         rowtext = lname + ", " + INN;
         htmlData = "data-is-legal=True data-lname=" + lname + " data-inn=" + INN;
     }
     if (isPerson) {
-        if (pname === "" && docnum === "") {
+        $(".individual-doc").valid();
+        $(".individual-name").valid();
+        if (!($(".individual-doc").valid() && $(".individual-name").valid())) {
             return;
         }
         rowtext = pname + ", " + docnum;
         htmlData = "data-is-legal=False data-pname=" + pname + " data-docnum=" + docnum;
     }
 
-    // Если добавляем новго
-    console.log($("#edit-represntative-number").val());
-    if ($("#edit-represntative-number").val().length == 0) {
+    // Если добавляем нового
+    if ($("#edit-represntative-number").val().length === 0) {
         // Добавляем нового представителя в список выбора
         $(".filter__body table tr:last").after("\
         <tr>\
         <td>\<div class='input-check-wrap'>\
         <input type='checkbox' \
         data-is-registry=True " + htmlData + " \
-        'checked'>\
+        checked>\
         <label></label>\
         <span class='filter__row-text'>" + rowtext + "</span></div>\
         <div class='filter__edit-btn'>\
@@ -156,6 +177,8 @@ function AddRegistryRepresentative() {
         </div>\
         </td>\
         </tr>");
+
+        $(".submit-checked").removeClass("disabled");
     }
 
 
@@ -184,11 +207,17 @@ function AddRegistryRepresentative() {
 
 // Обновляем список представителей
 function UpdateRepresentatives() {
+    $(".filter.represent-filter").hide();
+
     var model = {
         UserId: $("#UserId").val(),
         Representatives: GetChoosenRepresentatives(),
         RegistryLegalRepresentatives: GetRegistryLegalRepresentatives(),
         RegistryPersonRepresentatives: GetRegistryPersonRepresentatives()
+    };
+
+    if (model.UserId === undefined) {
+        return;
     }
 
     $.ajax({
@@ -205,7 +234,6 @@ function UpdateRepresentatives() {
             }
         }
     });
-    $(".filter.represent-filter").hide();
 }
 
 // вызываем функцию добавления пользователя
@@ -345,12 +373,12 @@ $(function () {
     //клик по кнопке "Добавить" во всплывающем окне представителей
     $(document).on('click', '.filter .add', function () {
         var insideModal = $(this).closest('.filter').find('.filter');
-        insideModal.closest('.overlay').show()
+        insideModal.closest('.overlay').show();
     });
 
     //клик на поле ввода представителей - открывает окно представителей
     $(document).on('click', '.admin-represent', function () {
-        $(this).siblings('.filter').closest('.overlay').show()
+        $(this).siblings('.filter').closest('.overlay').show();
     });
 
     //клик на кнопку "Выбрать" в окне представителей
@@ -360,13 +388,11 @@ $(function () {
         var IsAnyRep = $(".filter_wrapper input").length > 0;
         $(".filter_wrapper input:checked").each(function () {
             if ($(this).data("lname")) {
-                users.push($(this).data("lname"));
+                users.push($(this).data("lname") + " " + $(this).data("inn"));
             }
-            ;
             if ($(this).data("pname")) {
-                users.push($(this).data("pname"))
+                users.push($(this).data("pname") + " " + $(this).data("docnum"));
             }
-            ;
         });
 
         if (users.length > 0) {
@@ -406,23 +432,13 @@ $(function () {
     // модалка при удалении группы
     $(document).on('click', '.groups-list .group-delete', function () {
         $('#groupToDelete').attr('value', $(this).data('group-id'));
-        $('.modal-delete').closest('.overlay').show();
+        $('.overlay').has('.modal-group-delete').show();
     });
 
     // модалка при удалении пользователя
     $(document).on('click', '.users-list .user-delete', function () {
         $('#userToDelete').attr("value", $(this).data('userid'));
-        $('.modal-delete-user').closest('.overlay').show();
-    });
-
-    // клик в меню удалить группу
-    $(document).on('click', 'a:contains("Удалить")', function (event) {
-        event.preventDefault();
-        // немного костыльно, получаем идишинк из ссылки
-        var url = $(this).attr("href");
-        var id = url.substring(url.lastIndexOf('/') + 1);
-        $('#groupToDelete').attr('value', id);
-        $('.modal-delete').closest('.overlay').show();
+        $('.overlay').has('.modal-user-delete').show();
     });
 
     $(document).on('click', '.groups-by-user .filter .submit', function () {
@@ -455,13 +471,11 @@ $(function () {
             $("input.entity-name").val(input.data("lname"));
             $("input.entity-doc").val(input.data("inn"));
         }
-        ;
 
         if (input.data("is-legal") === "False") {
             $("input.individual-doc").val(input.data("docnum"));
             $("input.individual-name").val(input.data("pname"));
         }
-        ;
 
         $(".filter.represent-modal-filter").show();
     });
@@ -469,11 +483,20 @@ $(function () {
     $(document).on("change", "#select-personal-manager-for-issuer", function () {
         var manager = $("#select-personal-manager-for-issuer").val();
         var emitent = $("#emitent-id").val();
-        var model = {manager: manager, issuerId: emitent}
+        var model = { manager: manager, issuerId: emitent };
         $.ajax({
             url: "/admin/issuer/AssignManagerToIssuer",
             type: "POST",
-            data: model,
+            data: model
         });
+    });
+
+    $(document).on("click", ".groups-by-user .t-search", function () {
+        if ($(".filter table tr").length === 0) {
+            $(".groups-by-user button.submit").hide();
+        }
+        else {
+            $(".groups-by-user button.submit").show();
+        }
     });
 });

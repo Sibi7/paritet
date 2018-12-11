@@ -172,7 +172,7 @@ $(function () {
         if (~curLoc.indexOf('admin-users-list')) {
             $('.header__filter--field .filter--input').hide();
             $('.autofilter').hide();
-            $('.autofilter[data-id="user_outside"]').css({'display': 'flex'});
+            $('.autofilter[data-id="user_outside"]').css({ 'display': 'flex' });
         } else {
             window.location = "/app/html/pages/admin-users-list.html"
         }
@@ -193,7 +193,7 @@ $(function () {
     $(document).on('click', '.sidebar__item .meeting', function () {
         $('.header__filter--field .filter--input').hide();
         $('.autofilter').hide();
-        $('.autofilter[data-id="meeting"]').css({'display': 'flex'});
+        $('.autofilter[data-id="meeting"]').css({ 'display': 'flex' });
 
     });
 
@@ -238,11 +238,20 @@ $(function () {
     });
     /*------------gropdown-user-icon---------------*/
 
+    
+    $(document).on('click',
+        '.issuer-bills-statement .period',
+        function() {
+          $('.issuer-bills-statement .period').removeClass('active-period');
+          $(this).addClass('active-period');
+    });
 
-    $(document).on('click', '.issuer-bills-statement .period', function () {
-        $('.issuer-bills-statement .period').removeClass('active-period');
-        $(this).addClass('active-period');
-    })
+    $(document).on('click',
+        '.mutual-settlements .period',
+        function () {
+          $('.mutual-settlements .period').removeClass('active-period');
+          $(this).addClass('active-period');
+    });
 
 
     $(document).on('change', '.add-files input[type="file"]', function () {
@@ -250,13 +259,15 @@ $(function () {
         var chosenFiles = $(this)[0].files;
         for (var i = 0; i < chosenFiles.length; i++) {
             $('.selected-file').remove();
-            $('<p>', {text: chosenFiles[i].name}).addClass('selected-file').appendTo(parent)
+            $('<p>', { text: chosenFiles[i].name }).addClass('selected-file').appendTo(parent)
         }
     });
-    $(document).on('click', '.add-files .cancel', function () {
-        var parent = $(this).closest('.add-files')
-        parent.find('.selected-file').remove()
-    })
+    $(document).on('click',
+        '.add-files .cancel',
+        function() {
+          var parent = $(this).closest('.add-files')
+          parent.find('.selected-file').remove()
+    });
 
 
     $(document).on('click', '.bullet-number', function () {
@@ -569,7 +580,7 @@ $(function () {
             },
             error: function (err) {
                 if (err.status === 401) {
-                    location.href='/User/SignIn';
+                    location.href = '/User/SignIn';
                 }
                 else {
                     alert('Ошибка! Ответ сервера: ' + err.status);
@@ -614,7 +625,7 @@ $(function () {
         return isAllowedKeyCode(e.originalEvent.key);
     });
 
-//    ридерект формы двухфакторного входа
+    //    ридерект формы двухфакторного входа
     function redirect() {
         var smSTokenId = $('#SMSToken'),
             locationForm = window.location;
@@ -628,7 +639,7 @@ $(function () {
     redirect();
 
 
-//    Удаление пробелов
+    //    Удаление пробелов
 
     var inputDeleteSpace = $('.vote-limit');
     if (inputDeleteSpace.length > 0) {
@@ -637,7 +648,7 @@ $(function () {
         });
     }
 
-//    проверка checked
+    //    проверка checked
     if ('.bullet-number-all'.length > 0) {
         $('.bullet-number-all input').on('change', function () {
             if ($('.bullet-number-all input').prop('checked')) {
@@ -687,7 +698,7 @@ $(function () {
     disableSaveBTn();
 
 
-//    Выпадалка радио кнопок по нажатию на иконку view
+    //    Выпадалка радио кнопок по нажатию на иконку view
 
     $(document).on('click', '.title-view', function () {
         $('.title-dropdown').fadeToggle().addClass('title-dropdown-active');
@@ -723,10 +734,12 @@ $(function () {
             },
             error: function (err) {
                 if (err.status === 401) {
-                    location.href='/User/SignIn';
+                    location.href = '/User/SignIn';
                 }
                 else {
-                    alert('Ошибка! Ответ сервера: ' + err.status);
+                    if (err.status) {
+                        alert('Ошибка! Ответ сервера: ' + err.status);
+                    }
                 }
             }
         })
@@ -788,12 +801,12 @@ $(function () {
         dotsClass: 'sidebar-dots'
     });
 
-//    Модальное окно регистрации
-//     var inputRegistration = $('.input-hide');
-//     inputRegistration.hide();
-//     $(document).on('click', '.change-span', function () {
-//
-//     });
+    //    Модальное окно регистрации
+    //     var inputRegistration = $('.input-hide');
+    //     inputRegistration.hide();
+    //     $(document).on('click', '.change-span', function () {
+    //
+    //     });
 
 
 
@@ -817,6 +830,7 @@ $(function () {
 
         questionModal.fadeToggle();
     });
+
 
 
 });

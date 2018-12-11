@@ -1,11 +1,11 @@
 $(function () {
     $(document).on('click', '.filter .add', function () {
         var insideModal = $(this).closest('.filter').find('.filter');
-        insideModal.show()
+        insideModal.show();
     });
 
     $(document).on('click', '.admin-represent', function () {
-        $(this).siblings('.filter').show()
+        $(this).siblings('.filter').show();
     });
 
     // Очистка модального окна по клику на кнопку отмена, при создании пользователя в роли Админа. "Представляет"
@@ -24,4 +24,6 @@ $(function () {
             submitNotDisabled.addClass('disabled');
         }
     });
+
+
 });

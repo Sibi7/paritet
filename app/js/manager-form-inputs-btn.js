@@ -75,7 +75,10 @@ $(function () {
             $(this).addClass('input-selected').find('input').attr('checked', 'checked');
         }
 
+
         return false;
+
+
     });
 });
 
