@@ -117,6 +117,13 @@ gulp.task('compress', ['clean'], function () {// Создаем таск compres
         .pipe(browserSync.stream({}));
 
 });
+gulp.task('concatJs', ['clean'], function () {// Создаем таск compress
+    return gulp.src('app/js/*.js')// Берем все необходимые библиотеки
+        .pipe(plumber())
+        .pipe(concat('main.js'))// Собираем их в кучу в новом файле main.js
+        .pipe(plumber.stop())
+        .pipe(gulp.dest('js'))// Выгружаем в папку js
+    });
 
 gulp.task("clean", function (cb) {
     rimraf('./js/script.min.js', cb);
