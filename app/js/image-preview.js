@@ -71,6 +71,7 @@ function handleFileShareSelect(evt) {
 }
 
 function handleFileRegistrarSelect(evt) {
+    console.log(evt);
   var files = evt.target.files;
 
   for (var i = 0, f; i < files.length; i++) {
@@ -200,6 +201,7 @@ function removeRegistrarAvatar() {
       $('#delete-avatar').hide();
       $('#add-avatar').show();
       $('#avatar-size').show();
+      $('#avatarPhotoFile').val('')
     },
       error: function (err) {
           if (err.status === 401) {
@@ -320,7 +322,6 @@ function sendRegistrarAvatarToServer() {
     _url = "/Admin/Settings/LoadRegistrarAvatar";
     formData.append('avatarPhotoFile', $('.content__block--photo.registrar input[type="file"]')[0].files[0]);
   }
-
   formData.append('registrarId', $('#EntityID').val());
   $.ajax({
     url: _url,
@@ -332,6 +333,7 @@ function sendRegistrarAvatarToServer() {
       $('#delete-avatar').show();
       $('#add-avatar').hide();
       $('#avatar-size').hide();
+
     },
       error: function (err) {
           if (err.status === 401) {
