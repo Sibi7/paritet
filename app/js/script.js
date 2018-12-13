@@ -832,5 +832,15 @@ $(function () {
     });
 
 
+// редирект модалки
+    $(document).on('click', '.overlay', function () {
+        var modalSucses = $('.modal.modal-success');
+        var useId = ("#UserId").val();
+        if(modalSucses.is(':visible')){
+            location.href = '/Admin/User/DetailsUser/' + useId;
+        }
+    });
+
+
 
 });

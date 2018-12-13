@@ -33,10 +33,7 @@
                     
                     $('#delete-photo-issuer').on('click', removeIssuerRelationsDepEmplPhoto);
                     $('#delete-photo-share').on('click', removeShareholderRelationsDepEmplPhoto);
-                  $('#delete-avatar').on('click', removeRegistrarAvatar);
-
-                  var f_name_reg = $('.content__block--photo.registrar input[type="file"]')[0].files[0].name;
-                  $('#avatar-reg').text(f_name_reg);
+                    $('#delete-avatar').on('click', removeRegistrarAvatar);
                 }
             },
             error: function (err) {
@@ -84,5 +81,12 @@ $(document).on("click", ".ajax-form", function (e) {
         $(".swap-control-edit").each(function () {
             returnControlInEditMode(this, false);
         });
+    }
+});
+
+$(document).on('keydown', '.ajax-form', function (e) {
+    if (e.keyCode === 13){
+        submitNearestForm();
+        return false
     }
 });
