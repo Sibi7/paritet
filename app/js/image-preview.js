@@ -13,10 +13,10 @@ function handleFileSelect(evt) {
         var reader = new FileReader();
         reader.onload = function (e) {
             $('.content__block--photo img')[0].src = e.target.result;
-            if ($('.content__block--photo.user').data("forself")) {
+            if ($('.content__block--photo').data("forself")) {
                 $('.header__user img')[0].src = e.target.result;
             }
-            if ($('.content__block--photo.user').data("autoLoad")) {
+            if ($('.content__block--photo').data("autoLoad")) {
                 sendImageToServer();
             }
         };
@@ -94,6 +94,7 @@ function handleFileRegistrarSelect(evt) {
 }
 
 $('.content__block--photo.user input[type="file"]').on('change', handleFileSelect);
+$('.content__block--photo.profile input[type="file"]').on('change', handleFileSelect);
 $('.content__block--photo.issuers input[type="file"]').on('change', handleFileIssuerSelect);
 $('.content__block--photo.share input[type="file"]').on('change', handleFileShareSelect);
 $('.content__block--photo.registrar input[type="file"]').on('change', handleFileRegistrarSelect);
@@ -146,6 +147,8 @@ function removeShareholderRelationsDepEmplPhoto() {
     success: function (result) {
       $('.content__block--photo.share img')[0].src = "/images/icons/default-avatar.png";
       $('#photo-share').text("Максимальный размер 200К");
+      $('#delete-photo-share').hide();
+
     },
       error: function (err) {
           if (err.status === 401) {
@@ -170,6 +173,8 @@ function removeIssuerRelationsDepEmplPhoto() {
     success: function (result) {
       $('.content__block--photo.issuers img')[0].src = "/images/icons/default-avatar.png";
       $('#photo-issuer').text("Максимальный размер 200К");
+      $('#delete-photo-issuer').hide();
+
     },
       error: function (err) {
           if (err.status === 401) {
@@ -194,6 +199,7 @@ function removeRegistrarAvatar() {
     success: function (result) {
       $('.content__block--photo.registrar img')[0].src = "/images/icons/registrar-avatar.png";
       $('#avatar-reg').text("Максимальный размер 200К");
+      $('#delete-avatar').hide();
     },
       error: function (err) {
           if (err.status === 401) {
@@ -262,6 +268,7 @@ function sendRegistrarIssuerImageToServer() {
     success: function (result) {
       $('#photo-issuer').text(f_name_issuer);
       $('#photo-issuer-name').val(f_name_issuer);
+      $('#delete-photo-issuer').show();
     },
       error: function (err) {
           if (err.status === 401) {
@@ -297,6 +304,7 @@ function sendRegistrarShareholderImageToServer() {
     success: function (result) {
       $('#photo-share').text(f_name_share);
       $('#photo-share-name').val(f_name_share);
+      $('#delete-photo-share').show();
     },
       error: function (err) {
           if (err.status === 401) {
@@ -321,7 +329,6 @@ function sendRegistrarAvatarToServer() {
     formData.append('avatarPhotoFile', $('.content__block--photo.registrar input[type="file"]')[0].files[0]);
     formData.append('avatarName', f_name_reg);
   }
-
   formData.append('registrarId', $('#EntityID').val());
   $.ajax({
     url: _url,
@@ -329,9 +336,10 @@ function sendRegistrarAvatarToServer() {
     data: formData,
     processData: false,
     contentType: false,
-    success: function (result) {
+    success: function () {
       $('#avatar-reg').text(f_name_reg);
       $('#avatar-name').val(f_name_reg);
+      $('#delete-avatar').show();
     },
       error: function (err) {
           if (err.status === 401) {

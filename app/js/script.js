@@ -832,13 +832,14 @@ $(function () {
     });
 
 
-// редирект модалки
+// редирект overlay модалки
     $(document).on('click', '.overlay', function () {
         var modalSucses = $('.modal.modal-success');
-        var useId = ("#UserId").val();
+        var useId = $("#UserId").val();
         if(modalSucses.is(':visible')){
             location.href = '/Admin/User/DetailsUser/' + useId;
         }
+        console.log(useId)
     });
 
 
