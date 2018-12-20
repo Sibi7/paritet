@@ -842,6 +842,12 @@ $(function () {
         console.log(useId)
     });
 
-
+    function target() {
+        var targetText = $('.website-link').attr('href');
+        if(targetText === 'http://не указан'){
+            $('.website-link').removeAttr('href')
+        }
+    }
+    target();
 
 });
