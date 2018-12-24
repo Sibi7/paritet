@@ -123,7 +123,7 @@ gulp.task('concatJs', ['clean'], function () {// Создаем таск compres
         .pipe(concat('main.js'))// Собираем их в кучу в новом файле main.js
         .pipe(plumber.stop())
         .pipe(gulp.dest('js'))// Выгружаем в папку js
-    });
+});
 
 gulp.task("clean", function (cb) {
     rimraf('./js/script.min.js', cb);

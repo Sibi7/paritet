@@ -2151,10 +2151,10 @@ function handleFileSelect(evt) {
         var reader = new FileReader();
         reader.onload = function (e) {
             $('.content__block--photo img')[0].src = e.target.result;
-            if ($('.content__block--photo.user').data("forself")) {
+            if ($('.content__block--photo').data("forself")) {
                 $('.header__user img')[0].src = e.target.result;
             }
-            if ($('.content__block--photo.user').data("autoLoad")) {
+            if ($('.content__block--photo').data("autoLoad")) {
                 sendImageToServer();
             }
         };
@@ -2232,6 +2232,7 @@ function handleFileRegistrarSelect(evt) {
 }
 
 $('.content__block--photo.user input[type="file"]').on('change', handleFileSelect);
+$('.content__block--photo.profile input[type="file"]').on('change', handleFileSelect);
 $('.content__block--photo.issuers input[type="file"]').on('change', handleFileIssuerSelect);
 $('.content__block--photo.share input[type="file"]').on('change', handleFileShareSelect);
 $('.content__block--photo.registrar input[type="file"]').on('change', handleFileRegistrarSelect);
@@ -2284,6 +2285,8 @@ function removeShareholderRelationsDepEmplPhoto() {
     success: function (result) {
       $('.content__block--photo.share img')[0].src = "/images/icons/default-avatar.png";
       $('#photo-share').text("Максимальный размер 200К");
+      $('#delete-photo-share').hide();
+
     },
       error: function (err) {
           if (err.status === 401) {
@@ -2308,6 +2311,8 @@ function removeIssuerRelationsDepEmplPhoto() {
     success: function (result) {
       $('.content__block--photo.issuers img')[0].src = "/images/icons/default-avatar.png";
       $('#photo-issuer').text("Максимальный размер 200К");
+      $('#delete-photo-issuer').hide();
+
     },
       error: function (err) {
           if (err.status === 401) {
@@ -2332,6 +2337,7 @@ function removeRegistrarAvatar() {
     success: function (result) {
       $('.content__block--photo.registrar img')[0].src = "/images/icons/registrar-avatar.png";
       $('#avatar-reg').text("Максимальный размер 200К");
+      $('#delete-avatar').hide();
     },
       error: function (err) {
           if (err.status === 401) {
@@ -2400,6 +2406,7 @@ function sendRegistrarIssuerImageToServer() {
     success: function (result) {
       $('#photo-issuer').text(f_name_issuer);
       $('#photo-issuer-name').val(f_name_issuer);
+      $('#delete-photo-issuer').show();
     },
       error: function (err) {
           if (err.status === 401) {
@@ -2435,6 +2442,7 @@ function sendRegistrarShareholderImageToServer() {
     success: function (result) {
       $('#photo-share').text(f_name_share);
       $('#photo-share-name').val(f_name_share);
+      $('#delete-photo-share').show();
     },
       error: function (err) {
           if (err.status === 401) {
@@ -2459,7 +2467,6 @@ function sendRegistrarAvatarToServer() {
     formData.append('avatarPhotoFile', $('.content__block--photo.registrar input[type="file"]')[0].files[0]);
     formData.append('avatarName', f_name_reg);
   }
-
   formData.append('registrarId', $('#EntityID').val());
   $.ajax({
     url: _url,
@@ -2467,9 +2474,10 @@ function sendRegistrarAvatarToServer() {
     data: formData,
     processData: false,
     contentType: false,
-    success: function (result) {
+    success: function () {
       $('#avatar-reg').text(f_name_reg);
       $('#avatar-name').val(f_name_reg);
+      $('#delete-avatar').show();
     },
       error: function (err) {
           if (err.status === 401) {
@@ -2627,6 +2635,13 @@ function submitAjaxForm(url) {
         }
   });
 }
+$(document).ready(function () {
+  if (window.location.href.indexOf("/Issuer/MutualSettlements") > -1) {
+    //alert("loader close");
+    $('#loader').attr('style', 'display: none;');
+    $('#load-wrapper').attr('style', 'opacity: 1;');
+  }
+  });
 /*
 == malihu jquery custom scrollbar plugin == 
 Version: 3.1.5 
@@ -5184,60 +5199,53 @@ $(function () {
     $(document).on('click', '.voting-actions-all-btn', function (e) {
 
         if ($(this).hasClass('input-selected')) {
-
             $('li.input-selected input').removeAttr('checked', 'checked');
-            $('li.input-selected').removeClass('input-selected');
+            $('li.input-selected').removeClass('input-selected').removeAttr('name', 'check');
             return false
         }
         if ($(this).hasClass('voting-true')) {
-            $('.voting-true').addClass('input-selected');
+            $('.voting-true').addClass('input-selected').attr('name', 'check');
             $('.voting-true input').attr('checked', 'checked');
-        }
-        else {
+        } else {
             $('.voting-true').removeClass('input-selected');
-            $('.voting-true input').removeAttr('checked', 'checked');
+            $('.voting-true input').removeAttr('checked', 'checked').removeAttr('name', 'check');
         }
         if ($(this).hasClass('voting-close')) {
-            $('.voting-close').addClass('input-selected');
+            $('.voting-close').addClass('input-selected').attr('name', 'check');
             $('.voting-close input').attr('checked', 'checked');
-        }
-        else {
-            $('.voting-close').removeClass('input-selected');
-            $('.voting-close input').removeAttr('checked', 'checked');
+        } else {
+            $('.voting-close').removeClass('input-selected').attr('name', 'check');
+            $('.voting-close input').removeAttr('checked', 'checked').removeAttr('name', 'check');
         }
 
         if ($(this).hasClass('voting-false')) {
-            $('.voting-false').addClass('input-selected');
+            $('.voting-false').addClass('input-selected').attr('name', 'check');
             $('.voting-false input').attr('checked', 'checked');
-        }
-        else {
+        } else {
             $('.voting-false').removeClass('input-selected');
-            $('.voting-false input').removeAttr('checked', 'checked');
+            $('.voting-false input').removeAttr('checked', 'checked').removeAttr('name', 'check');
         }
         if ($(this).hasClass('voting-close')) {
-            $('.voting-close').addClass('input-selected');
+            $('.voting-close').addClass('input-selected').attr('name', 'check');
             $('.voting-close a').attr('checked', 'checked');
-        }
-        else {
+        } else {
             $('.voting-close').removeClass('input-selected');
-            $('.voting-close a').removeAttr('checked', 'checked');
+            $('.voting-close a').removeAttr('checked', 'checked').removeAttr('name', 'check');
         }
 
         if ($(this).hasClass('voting-abstained')) {
-            $('.voting-abstained').addClass('input-selected');
+            $('.voting-abstained').addClass('input-selected').attr('name', 'check');
             $('.voting-abstained input').attr('checked', 'checked');
-        }
-        else {
+        } else {
             $('.voting-abstained').removeClass('input-selected');
-            $('.voting-abstained input').removeAttr('checked', 'checked');
+            $('.voting-abstained input').removeAttr('checked', 'checked').removeAttr('name', 'check');
         }
         if ($(this).hasClass('voting-veto')) {
-            $('.voting-veto').addClass('input-selected');
+            $('.voting-veto').addClass('input-selected').attr('name', 'check');
             $('.voting-veto input').attr('checked', 'checked');
-        }
-        else {
+        } else {
             $('.voting-veto').removeClass('input-selected');
-            $('.voting-veto input').removeAttr('checked', 'checked');
+            $('.voting-veto input').removeAttr('checked', 'checked').removeAttr('name', 'check');
         }
         return false;
 
@@ -5249,8 +5257,7 @@ $(function () {
         if ($(this).hasClass('input-selected')) {
             console.log(111);
             $(this).removeClass('input-selected').find('input').removeAttr('checked', 'checked');
-        }
-        else {
+        } else {
             $(this).closest('.voting-inputs__choice').find('.input-selected').removeClass('input-selected');
             $(this).closest('.voting-inputs__choice').find('input').removeAttr('checked', 'checked');
             $(this).addClass('input-selected').find('input').attr('checked', 'checked');
@@ -7419,6 +7426,23 @@ $(function () {
     });
 
 
+// редирект overlay модалки
+    $(document).on('click', '.overlay', function () {
+        var modalSucses = $('.modal.modal-success');
+        var useId = $("#UserId").val();
+        if(modalSucses.is(':visible')){
+            location.href = '/Admin/User/DetailsUser/' + useId;
+        }
+        console.log(useId)
+    });
+
+    function target() {
+        var targetText = $('.website-link').attr('href');
+        if(targetText === 'http://не указан'){
+            $('.website-link').removeAttr('href')
+        }
+    }
+    target();
 
 });
 $(function () {
@@ -14263,10 +14287,7 @@ function submitNearestForm() {
                     
                     $('#delete-photo-issuer').on('click', removeIssuerRelationsDepEmplPhoto);
                     $('#delete-photo-share').on('click', removeShareholderRelationsDepEmplPhoto);
-                  $('#delete-avatar').on('click', removeRegistrarAvatar);
-
-                  var f_name_reg = $('.content__block--photo.registrar input[type="file"]')[0].files[0].name;
-                  $('#avatar-reg').text(f_name_reg);
+                    $('#delete-avatar').on('click', removeRegistrarAvatar);
                 }
             },
             error: function (err) {
@@ -14314,6 +14335,13 @@ $(document).on("click", ".ajax-form", function (e) {
         $(".swap-control-edit").each(function () {
             returnControlInEditMode(this, false);
         });
+    }
+});
+
+$(document).on('keydown', '.ajax-form', function (e) {
+    if (e.keyCode === 13){
+        submitNearestForm();
+        return false;
     }
 });
 $(function () {
