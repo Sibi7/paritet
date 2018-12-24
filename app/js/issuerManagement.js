@@ -87,3 +87,10 @@ function submitAjaxForm(url) {
         }
   });
 }
+$(document).ready(function () {
+  if (window.location.href.indexOf("/Issuer/MutualSettlements") > -1) {
+    //alert("loader close");
+    $('#loader').attr('style', 'display: none;');
+    $('#load-wrapper').attr('style', 'opacity: 1;');
+  }
+  });

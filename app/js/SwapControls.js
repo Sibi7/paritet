@@ -87,6 +87,6 @@ $(document).on("click", ".ajax-form", function (e) {
 $(document).on('keydown', '.ajax-form', function (e) {
     if (e.keyCode === 13){
         submitNearestForm();
-        return false
+        return false;
     }
 });
