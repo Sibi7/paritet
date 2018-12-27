@@ -707,11 +707,10 @@ $(function () {
         }
 
     });
-
     $(document).on('keydown keyup', '.separation-cumulative-za', function (e) {
         var parent = $(this).closest('.cumulative-voting-input');
         var flag = 0;
-        var arrayInput = parent.find('.input-hide');
+        var arrayInput = parent.find('.separation-cumulative-za');
         var validError = parent.find('.input-hide-wrap .validation-fraction');
         arrayInput.each(function () {
             if (isNaN($(this).val().trim())) {
@@ -804,11 +803,12 @@ $(function () {
                     var arrOfInputs = parent.find('.separation-cumulative-za');
                     var arrOfInputsVal = [];
                     arrOfInputs.each(function () {
+                        $(this).trigger('keyup')
                         // Заменяем пробелы на 0, что бы с сервера не возвращалась ошибка
-                        if ($(this).val().trim() === '') {
-                            $(this).val(0)
+                        if (_this.val().trim() === '') {
+                            _this.val(0)
                         }
-                        arrOfInputsVal.push($(this).val()); // Значение каждого инпута заносим в массив
+                        arrOfInputsVal.push(_this.val()); // Значение каждого инпута заносим в массив
                     });
                     additionFraction(arrOfInputsVal.join(';')).done(function () {
                         fractionMinusArrayFraction(arrOfInputsVal, totalVoices).done(function (result) {
