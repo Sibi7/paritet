@@ -238,20 +238,20 @@ $(function () {
     });
     /*------------gropdown-user-icon---------------*/
 
-    
+
     $(document).on('click',
         '.issuer-bills-statement .period',
         function() {
-          $('.issuer-bills-statement .period').removeClass('active-period');
-          $(this).addClass('active-period');
-    });
+            $('.issuer-bills-statement .period').removeClass('active-period');
+            $(this).addClass('active-period');
+        });
 
     $(document).on('click',
         '.mutual-settlements .period',
         function () {
-          $('.mutual-settlements .period').removeClass('active-period');
-          $(this).addClass('active-period');
-    });
+            $('.mutual-settlements .period').removeClass('active-period');
+            $(this).addClass('active-period');
+        });
 
 
     $(document).on('change', '.add-files input[type="file"]', function () {
@@ -265,9 +265,9 @@ $(function () {
     $(document).on('click',
         '.add-files .cancel',
         function() {
-          var parent = $(this).closest('.add-files')
-          parent.find('.selected-file').remove()
-    });
+            var parent = $(this).closest('.add-files')
+            parent.find('.selected-file').remove()
+        });
 
 
     $(document).on('click', '.bullet-number', function () {
