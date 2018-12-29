@@ -40,23 +40,17 @@ $(function () {
 
 
     });
-    
-    
     $(document).on('click', '.voting-actions-sing-btn', function (e) {
         $('.voting-actions-all-btn').removeClass('input-selected');
-        $('.voting-actions-all-btn input').removeAttr('checked');
+        $('.voting-actions-all-btn input').removeAttr('checked', 'checked');
         if ($(this).hasClass('input-selected')) {
-            $(this).removeClass('input-selected').find('input').removeAttr('checked');
+            $(this).removeClass('input-selected').find('input').removeAttr('checked', 'checked');
         } else {
             $(this).closest('.voting-inputs__choice').find('.input-selected').removeClass('input-selected');
-            $(this).closest('.voting-inputs__choice').find('input').removeAttr('checked');
+            $(this).closest('.voting-inputs__choice').find('input').removeAttr('checked', 'checked');
             $(this).addClass('input-selected').find('input').attr('checked', 'checked');
         }
-
-
         return false;
-
-
     });
 });
 
