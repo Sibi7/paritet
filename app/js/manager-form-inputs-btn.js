@@ -31,6 +31,7 @@ $(function () {
             $('.voting-abstained input').attr('checked', 'checked');
             return false
         }
+
         if ($(this).hasClass('voting-veto')) {
             $('.voting-veto').addClass('input-selected');
             $('.voting-veto input').attr('checked', 'checked');

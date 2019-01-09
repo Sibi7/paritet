@@ -122,9 +122,8 @@ gulp.task('concatJs', ['clean'], function () {// Создаем таск compres
         .pipe(plumber())
         .pipe(concat('main.js'))// Собираем их в кучу в новом файле main.js
         .pipe(plumber.stop())
-        .pipe(gulp.dest('C:/Users/lipod/RiderProjects/pir/Pir/ClientApp/js'))// Выгружаем в папку js
+        .pipe(gulp.dest('C:/Users/Vladimir/RiderProjects/Paritet/Pir/ClientApp/js'))// Выгружаем в папку js
 });
-
 gulp.task("clean", function (cb) {
     rimraf('./js/script.min.js', cb);
 });

@@ -275,6 +275,7 @@ $(function () {
         var spansForClear = parent.find('.change-span');
         clearInputs(inputsForClear, spansForClear);
         $(this).trigger('focus');
+        $(this).trigger('keyup');
     });
 
 
